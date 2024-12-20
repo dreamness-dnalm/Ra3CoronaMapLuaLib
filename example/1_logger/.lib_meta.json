@@ -1,0 +1,33 @@
+{
+  "FileName": "1_logger",
+  "FilePath": "H:\\workspace\\RA3CoronaMapLuaLib\\example\\1_logger",
+  "FileType": "dir",
+  "IsEnabled": true,
+  "IsIncluded": true,
+  "RunOnce": true,
+  "IsEvaluateEachFrame": true,
+  "EvaluationInterval": 1,
+  "ActiveInEasy": true,
+  "ActiveInMedium": true,
+  "ActiveInHard": true,
+  "OrderNum": 99,
+  "Children": [
+    {
+      "FileName": "logger_demo.lua",
+      "FilePath": "\\1_logger\\logger_demo.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": true,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 0,
+      "Children": [],
+      "LibPath": "H:\\workspace\\RA3CoronaMapLuaLib\\example\\1_logger"
+    }
+  ],
+  "LibPath": "H:\\workspace\\RA3CoronaMapLuaLib\\example\\1_logger"
+}

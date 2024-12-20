@@ -1,0 +1,194 @@
+--- UnitModule.lua
+--- Created by dreamness
+--- DateTime: 10/13/2024 2:48 PM
+---
+
+
+UnitModule = {}
+
+-- TODO: test, package
+--- 根据单位的命名获取unit table
+--- @param name string 单位的名字
+--- @return SystemUnitTable
+UnitModule.from_name = function(name)
+    return GetObjectByScriptName(name)
+end
+
+-- TODO: test, package
+--- 根据单位的id获取unit table
+--- @param id number 单位的id
+--- @return SystemUnitTable
+UnitModule.from_id = function(id)
+    return GetObjectById(id)
+end
+
+-- TODO: test, package
+--- 获取单位的唯一id
+--- @param unitTable SystemUnitTable 单位table
+--- @return number
+UnitModule.to_id = function(unitTable)
+    return ObjectGetId(unitTable)
+end
+
+-- TODO: test, package
+--- 判断两个unit table是否为同一个单位
+--- @param unitTable1 SystemUnitTable 单位table
+--- @param unitTable2 SystemUnitTable 单位table
+--- @return boolean
+UnitModule.equals = function(unitTable1, unitTable2)
+    return ObjectsIsSame(unitTable1, unitTable2)
+end
+
+-- TODO: test, package
+--- 检测单位是否存活;
+--- 和 EvaluateCondition("NAMED_NOT_DESTROYED", self) 是等价的, 但更快;
+--- @param unitTable SystemUnitTable 单位
+--- @return boolean 是否存活, 1 存活, nil 死亡
+UnitModule.alive = function(unitTable)
+    return ObjectIsAlive(unitTable)
+end
+
+-- TODO: test, package
+--- 生成单位 (23)
+--- @param thing string 单位名
+--- @param team_name string 队伍名/playerName
+--- @param position table 位置 {X, Y, Z}
+--- @param angle number 角度
+UnitModule.create = function(thing, team_name, position, angle)
+    if type(thing) ~= "string" then
+        LoggerModule.error("unitFuncs.create", "thing must be a string")
+    end
+    if type(team_name) ~= "string" then
+        LoggerModule.error("unitFuncs.create", "team_name must be a string")
+    end
+    if type(position) ~= "table" then
+        LoggerModule.error("unitFuncs.create", "position must be a table")
+    end
+    if type(angle) ~= "number" then
+        LoggerModule.error("unitFuncs.create", "angle must be a number")
+    end
+    ExecuteAction("CREATE_OBJECT", thing, team_name, position, angle)
+end
+
+-- TODO: test, package
+--- 生成单位并命名 (35)
+--- @param name string 单位名
+--- @param thing string 单位名
+--- @param team_name string 队伍名/playerName
+--- @param waypoint_name string 路径点名
+UnitModule.create_and_name_unit_at_waypoint = function(name, thing, team_name, waypoint_name)
+    -- LoggerModule.debug("UnitModule.create_and_name_unit_at_waypoint", "name: " .. tostring(name) .. ", thing: " .. tostring(thing) .. ", teamName: " .. tostring(team_name) .. ", waypointName: " .. tostring(waypoint_name))
+    if type(name) ~= "string" then
+        LoggerModule.error("UnitModule.create_and_name_unit_at_waypoint", "name must be a string")
+        return
+    end
+    if type(thing) ~= "string" then
+        LoggerModule.error("UnitModule.create_and_name_unit_at_waypoint", "thing must be a string")
+        return
+    end
+    if type(team_name) ~= "string" then
+        LoggerModule.error("UnitModule.create_and_name_unit_at_waypoint", "team_name must be a string")
+        return
+    end
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("UnitModule.create_and_name_unit_at_waypoint", "waypoint_name must be a string")
+        return
+    end
+    ExecuteAction("CREATE_NAMED_ON_TEAM_AT_WAYPOINT", name, thing, team_name, waypoint_name)
+end
+
+-- TODO: test, package
+--- 删除单位 (64)
+--- @param unit_table_or_name SystemUnitTable|string 单位table|name
+UnitModule.delete = function(unit_table_or_name)
+    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+        LoggerModule.error("unitFuncs.delete", "unit_table_or_name must be a string or table")
+    end
+    ExecuteAction("NAMED_DELETE", unit_table_or_name)
+end
+
+-- TODO: test, package
+--- 在单位上生成子物体((527))
+--- @param unit_name string 单位名
+--- @param thing string 物体名
+--- @param team_name string 队伍名
+--- @param parent_unit_name string 父单位名
+UnitModule.createSubUnit = function(unit_name, thing, team_name, parent_unit_name)
+    if type(unit_name) ~= "string" then
+        LoggerModule.error("unitFuncs.createSubUnit", "unitName must be a string")
+    end
+    if type(thing) ~= "string" then
+        LoggerModule.error("unitFuncs.createSubUnit", "thing must be a string")
+    end
+    if type(team_name) ~= "string" then
+        LoggerModule.error("unitFuncs.createSubUnit", "team_name must be a string")
+    end
+    if type(parent_unit_name) ~= "string" then
+        LoggerModule.error("unitFuncs.createSubUnit", "parent_unit_name must be a string")
+    end
+    ExecuteAction("UNIT_SPAWN_NAMED_OBJECT_ON_TEAM_AT_NAMED_OBJECT_LOCATION", unit_name, thing, team_name, parent_unit_name)
+end
+
+-- TODO: test, package
+--- 给单位命名
+--- @param name string 单位名
+--- @param unit_table SystemUnitTable 单位table
+UnitModule.name_unit = function(name, unit_table)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("unitFuncs.nameUnit", "unitTable must be a table")
+    end
+    if type(name) ~= "string" then
+        LoggerModule.error("unitFuncs.nameUnit", "name must be a string")
+    end
+    ExecuteAction("SET_UNIT_REFERENCE", name, unit_table)
+end
+
+-- TODO: test
+--- 设置单位所属玩家 (77)
+--- @param unit_table_or_name table|string unitTable | unit_name
+--- @param player_name string playerEnum
+UnitModule.set_owner_player = function(unit_table_or_name, player_name)
+    LoggerModule.debug("UnitModule.set_owner_player", "unit_table_or_name: " .. tostring(unit_table_or_name) .. ", player_name: " .. tostring(player_name))
+    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+        LoggerModule.error("UnitModule.set_owner_player", "unit_table_or_name must be a table or string")
+    end
+
+    if type(player_name) ~= "string" then
+        LoggerModule.error("UnitModule.set_owner_player", "player_name must be a string")
+    end
+    ExecuteAction("NAMED_TRANSFER_OWNERSHIP_PLAYER", unit_table_or_name, player_name)
+    LoggerModule.debug("UnitModule.set_owner_player", "finished")
+end
+
+-- TODO: test, package
+--- 单位是否被玩家所建造 [19]
+--- @param unit_table_or_name table|string 单位table | 单位名
+--- @param player_name_list string|string[] 玩家名 | 玩家名列表
+--- @return boolean
+UnitModule.is_built_by_player = function(unit_table_or_name, player_name_list)
+    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+        LoggerModule.error("UnitModule.is_built_by_player", "unit_table_or_name must be a table or string")
+    end
+
+    if type(player_name_list) ~= "table" and type(player_name_list) ~= 'name' then
+        LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table or string")
+    end
+
+    local tmp_player_name_list = player_name_list
+    if type(tmp_player_name_list) == "string" then
+        tmp_player_name_list = {tmp_player_name_list}
+    end
+
+
+    for i = 1, getn(tmp_player_name_list) do
+        if type(tmp_player_name_list[i]) ~= "string" then
+            LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table of string")
+        end
+        if EvaluateCondition("BUILT_BY_PLAYER", unit_table_or_name, tmp_player_name_list[i]) then
+            return 1
+        end
+    end
+
+    return nil
+end
+
