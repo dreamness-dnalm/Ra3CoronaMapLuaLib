@@ -100,13 +100,12 @@ end
 --     ExecuteAction("UNIT_SPAWN_NAMED_OBJECT_ON_TEAM_AT_NAMED_OBJECT_LOCATION", unit_name, thing, team_name, parent_unit_name)
 -- end
 
--- TODO: test
 --- 给单位命名
 --- @param name string 单位名
 --- @param unit_table SystemUnitTable 单位table
 UnitModule.name_unit = function(name, unit_table)
     if type(unit_table) ~= "table" then
-        LoggerModule.error("unitFuncs.nameUnit", "unitTable must be a table")
+        LoggerModule.error("unitFuncs.nameUnit", "unit_table must be a table")
     end
     if type(name) ~= "string" then
         LoggerModule.error("unitFuncs.nameUnit", "name must be a string")

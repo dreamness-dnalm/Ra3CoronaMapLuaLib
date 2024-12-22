@@ -46,7 +46,7 @@ end
 --- 显示文字标题 (116)
 --- @param msg string 信息
 --- @param seconds number 持续时长(s)
---- @param player_name PlayerEnum|nil 玩家名字
+--- @param player_name PlayerEnum|nil 玩家名字, nil为全体玩家
 MsgBoxModule.show_msg_caption = function(msg, seconds, player_name)
     if type(msg) ~= "string" then
         LoggerModule.error("infoBoxFuncs.showMsgCaption", "msg must be a string")

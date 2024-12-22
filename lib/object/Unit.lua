@@ -11,17 +11,16 @@
 Unit = {}
 -- ---- 系统 -----
 
--- TODO: test
 --- 给单位命名
 --- @param name string
 function Unit:set_name(name)
     if type(name) ~= "string" then
         LoggerModule.error("Unit:set_name", "name must be a string")
     end
-    UnitModule.name_unit(self.unit_table, name)
+    UnitModule.name_unit(name, self.unit_table)
+    self.name = name
 end
 
--- TODO: test
 --- 判断两个unit是否为同一个单位
 --- @param other_unit Unit
 --- @return boolean
