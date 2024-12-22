@@ -66,26 +66,7 @@ UnitPhysicsModule.get_distance_3D = function(unit_table_1, unit_table_2)
 end
 
 
--- TODO: test, package
--- todo 解析出更详细的数据
---- 获取单位的详细信息
---- @param unit_table SystemUnitTable 单位
---- @return table 单位详细信息, 坐标, 旋转, 缩放等
-UnitPhysicsModule.get_transform_matrix = function(unit_table)
-    if type(unit_table) ~= "table" then
-        LoggerModule.error("UnitPhysicsModule.get_detail_matrix", "unit_table must be a table")
-        return nil
-    end
-    return ObjectGetTransform(unit_table)
-end
 
--- TODO: test, package
---- 设置单位的详细信息
---- @param unit_table SystemUnitTable 单位
---- @param matrix table 详细信息
-UnitPhysicsModule.set_transform_matrix = function(unit_table, matrix)
-    ObjectSetTransform(unit_table, matrix)
-end
 
 
 
@@ -129,74 +110,159 @@ UnitPhysicsModule.face_to_waypoint = function(unit_table_or_name, waypoint_name)
     LoggerModule.debug("UnitPhysicsModule.face_to_waypoint", "end")
 end
 
-UnitPhysicsModule.__matrixCount = function(matrix1, matrix2)
-    local matrixdata={{0,0,0},{0,0,0},{0,0,0}}
-    for i = 1, 3, 1 do
-        for j = 1, 3, 1 do
-            for k = 1, 3, 1 do
-                matrixdata[i][j]=matrixdata[i][j]+matrix1[i][k]*matrix2[k][j]
-            end
-        end
-    end
-    return matrixdata
-end
-
-UnitPhysicsModule.__getUnitMatrix_X = function(anglex)
-    local nx=anglex-floor(anglex/360)*360
-    local sina=MathUtil.sin(nx)
-    local cosa=MathUtil.cos(nx)
-    local matrixforx={{cosa,sina,0},{-sina,cosa,0},{0,0,1}}
-    return matrixforx
-end
-
-UnitPhysicsModule.__getUnitMatrix_Y = function(anglex)
-    local nx=anglex-floor(anglex/360)*360
-    local sina=MathUtil.sin(nx)
-    local cosa=MathUtil.cos(nx)
-    local matrixfory={{cosa,0,sina},{0,1,0},{-sina,0,cosa}}
-    return matrixfory
-end
-
-UnitPhysicsModule.__getUnitMatrix_Z = function(anglex)
-    local nx=anglex-floor(anglex/360)*360
-    local cosa=MathUtil.cos(nx)
-    local sina=MathUtil.sin(nx)
-    local matrixforz={{1,0,0},{0,cosa,-sina},{0,sina,cosa}}
-    return matrixforz
-end
-
-
+-- ------------ 以下为齐次坐标系相关 ------------
 
 -- TODO: test, package
---- 设置单位旋转角度
+--- 获取单位的齐次坐标矩阵
+--- @param unit_table SystemUnitTable 单位
+--- @return Matrix
+UnitPhysicsModule.get_homogeneous_coordinates = function(unit_table)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.get_detail_matrix", "unit_table must be a table")
+        return nil
+    end
+    return HomogeneousCoordinatesUtil.transform_matrix_to_homogeneous_coordinates(ObjectGetTransform(unit_table))
+end
+
+-- TODO: test, package
+--- 设置单位的详细信息
+--- @param unit_table SystemUnitTable 单位
+--- @param hc_matrix Matrix 详细信息
+UnitPhysicsModule.set_homogeneous_coordinates = function(unit_table, hc_matrix)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.set_detail_matrix", "unit_table must be a table")
+        return
+    end
+    if type(hc_matrix) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.set_detail_matrix", "hc_matrix must be a table")
+        return
+    end
+    ObjectSetTransform(unit_table, HomogeneousCoordinatesUtil.homogeneous_coordinates_to_transform_matrix(hc_matrix))
+end
+
+-- TODO: package
+--- 平移单位
 --- @param unit_table SystemUnitTable 单位
 --- @param x number x
 --- @param y number y
 --- @param z number z
-UnitPhysicsModule.set_rotate = function(unit_table, x, y, z)
-    LoggerModule.debug("UnitPhysicsModule.set_rotate", "unit_table: " .. tostring(unit_table) .. ", x: " .. tostring(x) .. ", y: " .. tostring(y) .. ", z: " .. tostring(z))
-    local matrix={{1,-0,0},{0,1,0},{-0,0,1}}
-    if x-floor(x/360)*360~=0 then
-        matrix= UnitPhysicsModule.__matrixCount(matrix, UnitPhysicsModule.__getUnitMatrix_X(x))
+UnitPhysicsModule.translation = function(unit_table, x, y, z)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.translation", "unit_table must be a table")
+        return
     end
-    if y-floor(y/360)*360~=0 then
-        matrix= UnitPhysicsModule.__matrixCount(matrix, UnitPhysicsModule.__getUnitMatrix_Y(y))
+    if type(x) ~= "number" and type(y) ~= "number" and type(z) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.translation", "x, y, z must be a number")
+        return
     end
-    if z-floor(z/360)*360~=0 then
-        matrix= UnitPhysicsModule.__matrixCount(matrix, UnitPhysicsModule.__getUnitMatrix_Z(z))
+
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    hc = MatrixUtil.dot(HomogeneousCoordinatesUtil.get_translation_matrix(x, y, z), hc)
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+-- -- TODO: test, package
+-- --- 绕x/y/z轴旋转
+-- --- @param unit_table SystemUnitTable 单位
+-- --- @param x_angle number 绕x轴角度
+-- --- @param y_angle number 绕y轴角度
+-- --- @param z_angle number 绕z轴角度
+-- UnitPhysicsModule.rotation_by_axis = function(unit_table, x_angle, y_angle, z_angle)
+--     local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+--     local return_back_matrix = HomogeneousCoordinatesUtil.get_return_back_from_origin_translation_matrix_by_hc(hc)
+
+--     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_return_origin_translation_matrix_by_hc(hc))
+--     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({0, 0, 1}, z_angle))
+--     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({0, 1, 0}, y_angle))
+--     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({1, 0, 0}, x_angle))
+--     hc = MatrixUtil.dot(hc, return_back_matrix)
+    
+--     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+-- end
+
+-- TODO: package
+--- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
+--- @param unit_table SystemUnitTable 单位
+--- @param roll_angle number
+--- @param pitch_angle number
+--- @param yaw_angle number
+UnitPhysicsModule.rotate_by_euler = function(unit_table, roll_angle, pitch_angle, yaw_angle)
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    local x_dir_vec, y_dir_vec, z_dir_vec = HomogeneousCoordinatesUtil.get_direction_vec_by_hc(hc)
+
+    hc = MatrixUtil.dot(
+        HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
+        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(x_dir_vec, roll_angle),
+        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(y_dir_vec, pitch_angle),
+        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(z_dir_vec, yaw_angle),
+        HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
+        hc
+    )
+
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+
+-- TODO: package
+--- 缩放单位
+--- @param unit_table SystemUnitTable 单位
+--- @param scale number 缩放比例
+UnitPhysicsModule.set_scale = function(unit_table, scale)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.scale", "unit_table must be a table")
+        return
     end
-    LoggerModule.debug("UnitPhysicsModule.set_rotate", "matrix: " .. tostring(matrix))
-    local matrixobject=ObjectGetTransform(unit_table)
-    local num=0
-    for i = 1, 3, 1 do
-        for j = 1, 3, 1 do
-            num=num+1
-            if num==4 or num==8 then
-                num=num+1
-            end
-            matrixobject[num]=matrix[i][j]
-        end
+    if type(scale) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.scale", "scale must be a number")
+        return
     end
-    UnitPhysicsModule.set_transform_matrix(unit_table, matrixobject)
-    LoggerModule.debug("UnitPhysicsModule.set_rotate", "end")
+
+
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+
+    hc = MatrixUtil.dot(
+        HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
+        HomogeneousCoordinatesUtil.get_uniform_scale_matrix(scale),
+        HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
+        hc
+    )
+    
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+-- TODO: package
+--- 获取单位缩放比例
+--- @param unit_table SystemUnitTable 单位
+--- @return number, number, number 分别在x, y, z轴的缩放比例
+UnitPhysicsModule.get_scale = function(unit_table)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.get_scale", "unit_table must be a table")
+        return nil, nil, nil
+    end
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    return HomogeneousCoordinatesUtil.get_scale_by_hc(hc)
+end
+
+-- TODO: package
+--- 单位镜像, 模型可能会出问题!
+--- @param unit_table SystemUnitTable 单位
+--- @param x boolean 是否在x轴镜像
+--- @param y boolean 是否在y轴镜像
+--- @param z boolean 是否在z轴镜像
+UnitPhysicsModule.set_mirror = function(unit_table, x, y, z)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.set_mirror", "unit_table must be a table")
+        return
+    end
+
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+
+    hc = MatrixUtil.dot(
+        HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
+        HomogeneousCoordinatesUtil.get_mirror_matrix(x, y, z),
+        HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
+        hc
+    )
+    
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end
