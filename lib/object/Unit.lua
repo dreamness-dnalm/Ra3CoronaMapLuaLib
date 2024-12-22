@@ -160,7 +160,6 @@ function Unit:add_modifier(modifiers, frame_cnt)
     AttributeModifierModule.add_modifier(self.unit_table, modifiers, frame_cnt)
 end
 
--- TODO: test
 --- 移除BUFF
 --- @param modifiers AttributeModifierEnum | AttributeModifierEnum[] 修改器数组
 function Unit:remove_modifier(modifiers)

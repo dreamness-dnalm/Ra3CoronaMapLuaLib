@@ -28,7 +28,6 @@ function FastHash(content)  end
 --- @return SystemFilter 过滤器
 function CreateObjectFilter(filter_config_table)  end
 
--- TODO: test, package
 --- 测试目标单位是否满足过滤器
 --- @param unit_table table 单位
 --- @param relation_reference_unit_table table 参考单位
@@ -41,7 +40,6 @@ function ObjectTestTargetObjectWithFilter(unit_table, relation_reference_unit_ta
 --- @return number, number, number x, y, z
 function ObjectGetPosition(unit_table) end
 
--- TODO: test, package
 ---找到某个区域内所有符合 ObjectFilter 的单位（无论单位是否有 Lua 模块都能被找到）
 --- @param unit_table table 单位, 可为nil
 --- @param find_area_table table 区域, 可为nil, {X=x, Y=y, Z=z, Radius=1000, DistType="CENTER_2D"/"EXTENTS_3D"}
@@ -92,8 +90,6 @@ function ObjectSetTransform(unit_table, matrix) end
 function ObjectGetId(unit_table)  end
 
 -- TODO: test
--- todo package
--- todo test
 --- 获取单位的当前生命值
 --- @param unit_table table 单位
 --- @return number 当前生命值
@@ -106,24 +102,18 @@ function ObjectGetCurrentHealth(unit_table)  end
 function ObjectGetInitialHealth(unit_table)  end
 
 -- TODO: test, package
--- todo package
--- todo test
 --- 获取矿脉的初始数量
 --- @param unit_table table 需要是一个有 OreNodeBody 模块的单位（例如矿脉）
 --- @return number 数量
 function ObjectGetInitialOreAmount(unit_table) end
 
 -- TODO: test, package
--- todo package
--- todo test
 --- 获取矿脉已经被开采了多少矿石
 --- @param unit_table table 需要是一个有 OreNodeBody 模块的单位（例如矿脉）
 --- @return number 数量
 function ObjectGetGatheredOreAmount(unit_table) end
 
 -- TODO: test, package
--- todo package
--- todo test
 --- 设置矿脉已经被开采了多少矿石, 不会重新触发“矿脉已枯竭”的 EVA 播报, 否则需要调用 ObjectResetOreNodeBehaviorEvaState(unit_table);ObjectSetGatheredOreAmount(self, maxOreAmount) 会让矿脉干枯; ObjectSetGatheredOreAmount(self, 0) 会让矿脉恢复到初始状态
 --- @param unit_table table 需要是一个有 OreNodeBody 模块的单位（例如矿脉）
 function ObjectSetGatheredOreAmount(unit_table, amount) end
@@ -170,7 +160,6 @@ function ScrapeSetFloat(script_name, attr_name, attr_value)  end
 --- @param ... any 函数的参数
 function InvokeAptFunction(movieClipName, functionName, ...) end
 
--- TODO: test
 --- 检测两个单位的 table 是否是同一个单位; 不能用==来判断
 --- @param unit_table1 table 单位1
 --- @param unit_table2 table 单位2
@@ -393,7 +382,6 @@ function ObjectLoadAttributeModifier(unit_table, attribute_modifier_name, frameC
 --- @param attribute_modifier_name string buff/debuff 名称
 function ObjectLoadAttributeModifier(unit_table, attribute_modifier_name) end
 
--- TODO: test, package
 --- 移除单位的buff/debuff
 --- @param unit_table table 单位
 --- @param attribute_modifier_name string buff/debuff 名称

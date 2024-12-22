@@ -37,7 +37,6 @@ AttributeModifierModule.add_modifier = function (unit_table, modifiers, frame_cn
     end
 end
 
--- TODO: test
 ---移除属性修改器
 --- @param unit_table SystemUnitTable 单位
 --- @param modifiers AttributeModifierEnum | AttributeModifierEnum[] 修改器数组
@@ -46,16 +45,14 @@ AttributeModifierModule.remove_modifier = function (unit_table, modifiers)
         LoggerModule.error("AttributeModifierModule.remove_modifier", "unit_table should be table")
         return
     end
-    if type(modifiers) ~= "table" or type(modifiers) ~= 'string' then
+    if type(modifiers) ~= "table" and type(modifiers) ~= 'string' then
         LoggerModule.error("AttributeModifierModule.remove_modifier", "modifiers should be table or string")
         return
     end
-
     local m = modifiers
     if type(modifiers) == 'string' then
         m = {modifiers}
     end
-
     for i = 1, getn(m) do
         local modifier = m[i]
         ObjectUnloadAttributeModifier(unit_table, modifier)

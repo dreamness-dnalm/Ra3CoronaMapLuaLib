@@ -2,8 +2,8 @@
 --- Created by dreamness
 --- DateTime: 12/22/2024 00:21 PM
 
-LoggerModule.setup(LoggerLevelEnum.DEBUG, {LoggerTargetEnum.PUBLIC_BOARD})
-LoggerModule.info("DemoDialogModule", "start load.")
+LoggerModule.setup(LoggerLevelEnum.DEBUG, {LoggerTargetEnum.DEBUG_LOG_FILE})
+LoggerModule.debug("DemoDialogModule", "start load.")
 DemoDialogModule = {}
 
 DemoDialogModule.dialog_metas = {
