@@ -273,7 +273,7 @@ function exPlayerTechChangeTechFaction(player_name, faction_tech) end
 --- @param btn4 string 按钮4
 --- @param btn5 string 按钮5
 --- @param btn6 string 按钮6
-function exShowCustomBtnChoiceDialog(dialog_id, title, btn1, btn2, btn3, btn4, btn5, btn6) end
+function exShowCustomBtnChoiceDialog(dialog_id, title, btn1, btn2, btn3, btn4, btn5, btn6, btn7) end
 
 -- TODO: test
 --- 显示按钮选项弹框
@@ -395,13 +395,13 @@ function exShowLongTextDialogForPlayer(player_name, dialog_id, content, btn1, bt
 --- @param player_name string 玩家名字
 function exHideLongTextDialogForPlayer(player_name) end
 
--- TODO: test, package
+
 --- 显添加一条公屏文本，如果有换行符，会被拆陈多行
 --- @param content string 长文本，支持多行
 --- @param duration number 显示持续时间， 最多30秒
 function exAddTextToPublicBoard(content, duration) end
 
--- TODO: test, package
+
 --- 添加一条公屏文本，如果有换行符，会被拆陈多行
 --- @param player_name string 玩家名字
 --- @param content string 长文本，支持多行
@@ -627,13 +627,13 @@ function exPlayerGetSelectedObjectIds(player_name) end
 --- @return number 资金
 function exPlayerGetCurrentMoney(player_name) end
 
---- TODO: test
+
 --- 获取指定玩家当前产生的电力
 --- @param player_name PlayerEnum
 --- @return number 电力
 function exPlayerGetProducePower(player_name) end
 
---- TODO: test
+
 --- 获取指定玩家当前消耗的电力
 --- @param player_name PlayerEnum
 --- @return number 电力

@@ -5,9 +5,9 @@
 
 --- 过滤器对象
 --- @class Filter
+--- @field system_filter x
 Filter = {}
 
--- TODO: test
 --- 过滤单位
 --- @param area_config AreaConfig 区域配置
 --- @param relation_reference_unit Unit 单位
@@ -39,7 +39,6 @@ function Filter:filter_units(area_config, relation_reference_unit)
     return units, getn(units)
 end
 
--- TODO: test
 --- 单位是否通过过滤器
 --- @param unit Unit 单位
 --- @param reference_unit Unit 参考单位

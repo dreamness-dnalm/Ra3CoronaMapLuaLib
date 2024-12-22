@@ -7,11 +7,11 @@
 
 UnitTopTextModule = {}
 
--- TODO: test, package
+-- TODO: test
 --- @param object_id number 对象id
 --- @param content string 文字内容
 --- @param z_offset number z轴偏移量
---- @param color number 颜色
+--- @param color number 颜色 (十进制) 请使用ColorUtil进行转换
 --- @param player_name_list string|string[]|nil 玩家名字列表
 UnitTopTextModule.set_or_update = function(object_id, content, z_offset, color, player_name_list)
     if type(object_id) ~= 'number' then
@@ -52,7 +52,7 @@ UnitTopTextModule.set_or_update = function(object_id, content, z_offset, color, 
     end
 end
 
--- TODO: test, package
+-- TODO: test
 --- 删除单位顶部文字
 --- @param object_id number 对象id
 --- @param player_name_list string|string[]|nil 玩家名字列表

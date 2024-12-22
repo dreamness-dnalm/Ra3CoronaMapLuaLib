@@ -24,7 +24,6 @@ TeamEnum = {
 --- 队伍模块
 TeamModule = {}
 
--- TODO: test
 --- 从玩家名获取队伍名
 --- @param player_name PlayerEnum
 --- @return TeamEnum

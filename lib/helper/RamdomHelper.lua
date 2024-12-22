@@ -1,4 +1,4 @@
---- RandomHelper
+--- RandomHelper.lua
 --- Created by dreamness
 --- DateTime: 10/18/2024 11:53 PM
 ---
@@ -6,15 +6,13 @@
 --- 随机数帮助类
 RandomHelper = {}
 
--- TODO: test
 --- 获取一个0-1之间的随机浮点数
 --- @return number
 RandomHelper.random_float = function()
     return GetRandomNumber()
 end
 
--- TODO: test
---- 获取一个minNum和maxNum之间的随机浮点数, 左闭右开
+--- 获取一个min_num和max_num之间的随机浮点数, 左闭右开
 --- @param min_num number 最小值, 包含
 --- @param max_num number 最大值, 不包含
 --- @return number
@@ -26,8 +24,7 @@ RandomHelper.randon_range_float = function(min_num, max_num)
     return (max_num - min_num) * RandomHelper.random_float() + min_num
 end
 
--- TODO: test
---- 获取一个minNum和maxNum之间的随机整数, 左闭右开
+--- 获取一个min_num和max_num之间的随机整数, 左闭右开
 --- @param min_num number 最小值, 包含
 --- @param max_num number 最大值, 不包含
 --- @return number
@@ -39,7 +36,6 @@ RandomHelper.random_range_int = function(min_num, max_num)
     return floor(RandomHelper.randon_range_float(min_num, max_num))
 end
 
--- TODO: test
 --- 从数组中随机选择一个元素
 --- @param array table
 --- @return any
@@ -57,7 +53,6 @@ RandomHelper.choice = function(array)
     return array[index]
 end
 
--- TODO: test
 --- 从数组中随机选择N个不相同的元素
 --- @param array table
 --- @param n number
@@ -87,8 +82,7 @@ RandomHelper.choices = function(array, n)
 end
 
 
--- TODO: test
---- 将数组打乱, 返回新数组
+--- 将数组打乱, 返回新数组; 不会更改原数组
 --- @param array table
 --- @return table
 RandomHelper.shuffle = function(array)

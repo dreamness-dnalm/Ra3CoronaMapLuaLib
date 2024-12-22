@@ -4,7 +4,7 @@
 ---
 
 
---- @class areaDistTypeEnum
+--- @class AreaDistTypeEnum
 AreaDistTypeEnum = {
     CENTER_2D = "CENTER_2D",
     EXTENTS_3D = "EXTENTS_3D",
@@ -18,12 +18,12 @@ AreaDistTypeEnum = {
 FilterModule = {}
 
 --- 筛选filter的目标单位
---- @param parentUnitTable table|nil 单位table
---- @param area_config_table table 区域配置table
---- @param SystemFilter|nil filter filter
+--- @param unit_table table|nil 用于关系参考的单位table
+--- @param area_config_table AreaConfig 区域配置table
+--- @param filter SystemFilter|nil 
 --- @return SystemUnitTable[], number 单位集合, 单位数量
-FilterModule.filter_units = function(unitTable, area_config_table, filter)
-    return ObjectFindObjects(unitTable, area_config_table, filter)
+FilterModule.filter_units = function(unit_table, area_config_table, filter)
+    return ObjectFindObjects(unit_table, area_config_table, filter)
 end
 
 --- @class FilterRuleEnum
@@ -56,14 +56,14 @@ FilterModule.create_filter_by_config = function(filter_config)
     --     IncludeThing = include_things,
     --     ExcludeThing = exclude_things
     -- }
-    LoggerModule.debug("FilterModule.create_filter_by_config", "Rule: " .. tostring(filter_config.Rule))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "Relationship: " .. tostring(filter_config.Relationship))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "Include: " .. tostring(filter_config.Include))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "Exclude: " .. tostring(filter_config.Exclude))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "StatusBitFlags: " .. tostring(filter_config.StatusBitFlags))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "StatusBitFlagsExclude: " .. tostring(filter_config.StatusBitFlagsExclude))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "IncludeThing: " .. tostring(filter_config.IncludeThing))
-    LoggerModule.debug("FilterModule.create_filter_by_config", "ExcludeThing: " .. tostring(filter_config.ExcludeThing))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "Rule: " .. tostring(filter_config.Rule))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "Relationship: " .. tostring(filter_config.Relationship))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "Include: " .. tostring(filter_config.Include))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "Exclude: " .. tostring(filter_config.Exclude))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "StatusBitFlags: " .. tostring(filter_config.StatusBitFlags))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "StatusBitFlagsExclude: " .. tostring(filter_config.StatusBitFlagsExclude))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "IncludeThing: " .. tostring(filter_config.IncludeThing))
+    -- LoggerModule.debug("FilterModule.create_filter_by_config", "ExcludeThing: " .. tostring(filter_config.ExcludeThing))
 
 
     return CreateObjectFilter(filter_config)
@@ -72,8 +72,8 @@ end
 --- 创建filter
 --- @param rule FilterRuleEnum|nil filterRuleEnum
 --- @param relationships FilterRelationshipEnum[]|nil 关系
---- @param include_kind_ofs KinkOfEnum[]|nil 包含单位种类
---- @param exclude_kind_ofs KinkOfEnum[]|nil 排除单位种类
+--- @param include_kind_ofs KindOfEnum[]|nil 包含单位种类
+--- @param exclude_kind_ofs KindOfEnum[]|nil 排除单位种类
 --- @param include_statuses StatusEnum[]|nil 包含状态
 --- @param exclude_statuses StatusEnum[]|nil 排除状态
 --- @param include_things ThingEnum[]|nil 包含单位
@@ -113,15 +113,14 @@ end
 --- @field Y number 中心y
 --- @field Z number 中心z
 --- @field Radius number 半径
---- @field DistType areaDistTypeEnum 区域距离类型
+--- @field DistType AreaDistTypeEnum 区域距离类型
 
--- todo test
 --- 创建区域配置
 --- @param center_x number 中心x
 --- @param center_y number 中心y
 --- @param center_z number 中心z
 --- @param radius number 半径
---- @param area_dist_type areaDistTypeEnum 区域距离类型
+--- @param area_dist_type AreaDistTypeEnum 区域距离类型
 --- @return AreaConfig
 FilterModule.create_area_config = function(center_x, center_y, center_z, radius, area_dist_type)
    return {
@@ -131,7 +130,6 @@ FilterModule.create_area_config = function(center_x, center_y, center_z, radius,
    }
 end
 
--- todo test
 --- 单位是否通过筛选器
 --- @param unit_table SystemUnitTable
 --- @param relation_reference_unit_table SystemUnitTable

@@ -10,18 +10,16 @@ SchedulerModule = {}
 --- @field aready_called_times number 已经调用的次数
 --- @field repeat_times number 重复次数
 --- @field interval_frame_num number 间隔帧数
---- @field repeat_num number 重复次数
---- @field passed_frames number 已经过去的时间
+--- @field passed_frames number 已经过去的帧数
 --- @field is_active boolean 是否激活
 
 --- @type SchedulerConfig[]
 SchedulerModule._schedulers = {}
 
--- TODO: test
 --- 每N帧调用一次某函数
 --- @param callback function 回调函数
 --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
---- @param repeat_num number| nil 重复次数, nil或小于0表示无限次, 0表示不调用
+--- @param repeat_num number| nil 重复次数, nil表示无限次, 0或小于0表示不调用
 SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num)
     if type(callback) ~= "function" then
         LoggerModule.error("SchedulerModule.call_every_x_frame", "callback must be a function")
@@ -49,7 +47,6 @@ SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repe
     return id
 end
 
--- TODO: test
 --- N帧后调用某函数
 --- @param callback function 回调函数
 --- @param delay number 延迟帧数 (15帧=1秒)
@@ -57,7 +54,6 @@ SchedulerModule.delay_call = function(callback, delay)
     return SchedulerModule.call_every_x_frame(callback, delay, 1)
 end
 
--- TODO: test
 --- 暂停调度器
 --- @param id number 调度器id
 SchedulerModule.pause_scheduler = function(id)
@@ -69,7 +65,6 @@ SchedulerModule.pause_scheduler = function(id)
     scheduler[id].is_active = nil
 end
 
--- TODO: test
 --- 恢复调度器(不会重置已运行次数)
 --- @param id number 调度器id
 SchedulerModule.resume_scheduler = function(id)
@@ -81,7 +76,6 @@ SchedulerModule.resume_scheduler = function(id)
     scheduler[id].is_active = 1
 end
 
--- TODO: test
 --- 重启调度器(会重置已运行次数)
 SchedulerModule.restart_scheduler = function(id)
     local scheduler = SchedulerModule._schedulers
@@ -94,7 +88,6 @@ SchedulerModule.restart_scheduler = function(id)
     scheduler[id].is_active = 1
 end
 
--- TODO: test
 --- 获取调度器配置(危险, 请谨慎修改)
 --- @param id number 调度器id
 --- @return SchedulerConfig

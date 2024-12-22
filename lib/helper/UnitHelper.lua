@@ -8,13 +8,11 @@ UnitHelper = {}
 
 UnitHelper.__unit_auto_number = 0
 
--- TODO: test
 function UnitHelper.get_unit_auto_name()
     UnitHelper.__unit_auto_number = UnitHelper.__unit_auto_number + 1
     return 'name_temp_name__' .. UnitHelper.__unit_auto_number
 end
 
--- TODO: test
 --- 根据id获取Unit对象
 --- @param id number
 --- @return Unit
@@ -22,7 +20,6 @@ function UnitHelper.get_unit_from_id(id)
     return UnitHelper.build_unit(UnitModule.from_id(id), nil)
 end
 
--- TODO: test
 --- 根据名字获取Unit对象
 --- @param name string
 --- @return Unit
@@ -30,7 +27,6 @@ function UnitHelper.get_unit_from_name(name)
     return UnitHelper.build_unit(UnitModule.from_name(name), name)
 end
 
--- TODO: test
 --- 根据unit table获取Unit对象
 --- @param unit_table SystemUnitTable
 --- @return Unit
@@ -38,7 +34,6 @@ function UnitHelper.get_unit_from_table(unit_table)
     return UnitHelper.build_unit(unit_table, nil)
 end
 
--- TODO: test
 --- 构建单位对象
 --- @param unit_table SystemUnitTable
 --- @param name string|nil 单位名字

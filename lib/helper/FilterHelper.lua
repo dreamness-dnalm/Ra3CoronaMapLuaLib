@@ -10,14 +10,13 @@
 --- @field exclude_things ThingEnum[]
 --- @field include_statuses StatusEnum[]
 --- @field exclude_statuses StatusEnum[]
---- @field include_kind_ofs KinkOfEnum[]
---- @field exclude_kind_ofs KinkOfEnum[]
+--- @field include_kind_ofs KindOfEnum[]
+--- @field exclude_kind_ofs KindOfEnum[]
 FilterBuilder = {}
 
 --- @class FilterHelper
 FilterHelper = {}
 
--- TODO: test
 --- 新建Filter构建器
 --- @return FilterBuilder
 FilterHelper.new_filter_builder = function()
@@ -30,19 +29,17 @@ FilterHelper.new_filter_builder = function()
     return obj
 end
 
--- TODO: test
 --- 创建区域配置
 --- @param center_x number 中心x
 --- @param center_y number 中心y
 --- @param center_z number 中心z
 --- @param radius number 半径
---- @param area_dist_type areaDistTypeEnum 区域距离类型
+--- @param area_dist_type AreaDistTypeEnum 区域距离类型
 --- @return AreaConfig
 FilterHelper.new_area_config = function(center_x, center_y, center_z, radius, area_dist_type)
     return FilterModule.create_area_config(center_x, center_y, center_z, radius, area_dist_type)
 end
 
--- TODO: test
 --- 创建Filter构建器
 --- @return Filter
 function FilterBuilder:build()
@@ -65,9 +62,8 @@ function FilterBuilder:build()
     return obj
 end
 
--- TODO: test
 --- 添加包含的单位
---- @param units ThingEnum[]|string 单位名字数组或单位名字
+--- @param things ThingEnum[]|ThingEnum 单位名字数组或单位名字
 --- @return FilterBuilder
 function FilterBuilder:add_include_things(things)
     if self.include_things == nil then
@@ -85,7 +81,6 @@ function FilterBuilder:add_include_things(things)
     return self
 end
 
--- TODO: test
 --- 添加排除的单位
 --- @param units ThingEnum[]|string 单位名字数组或单位名字
 --- @return FilterBuilder
@@ -105,9 +100,8 @@ function FilterBuilder:add_exclude_things(things)
     return self
 end
 
--- TODO: test
 --- 添加包含的状态
---- @param statuses StatusEnum[]|string 状态数组或状态
+--- @param statuses StatusEnum[]|StatusEnum 状态数组或状态
 --- @return FilterBuilder
 function FilterBuilder:add_include_statuses(statuses)
     if self.include_statuses == nil then
@@ -125,9 +119,8 @@ function FilterBuilder:add_include_statuses(statuses)
     return self
 end
 
--- TODO: test
 --- 添加排除的状态
---- @param statuses StatusEnum[]|string 状态数组或状态
+--- @param statuses StatusEnum[]|StatusEnum 状态数组或状态
 --- @return FilterBuilder
 function FilterBuilder:add_exclude_statuses(statuses)
     if self.exclude_statuses == nil then
@@ -145,9 +138,8 @@ function FilterBuilder:add_exclude_statuses(statuses)
     return self
 end
 
--- TODO: test
---- 添加包含的种类(kind of)
---- @param kind_ofs string[]|string 种类数组或种类
+--- 添加包含的类别(kind of)
+--- @param kind_ofs KindOfEnum[]|KindOfEnum 类别数组或类别
 --- @return FilterBuilder
 function FilterBuilder:add_include_kind_ofs(kind_ofs)
     if self.include_kind_ofs == nil then
@@ -165,9 +157,8 @@ function FilterBuilder:add_include_kind_ofs(kind_ofs)
     return self
 end
 
--- TODO: test
---- 添加排除的种类(kind of)
---- @param kind_ofs string[]|string 种类数组或种类
+--- 添加排除的类别(kind of)
+--- @param kind_ofs KindOfEnum[]|KindOfEnum 类别数组或类别
 --- @return FilterBuilder
 function FilterBuilder:add_exclude_kind_ofs(kind_ofs)
     if self.exclude_kind_ofs == nil then
@@ -185,9 +176,8 @@ function FilterBuilder:add_exclude_kind_ofs(kind_ofs)
     return self
 end
 
--- TODO: test
 --- 添加关系过滤
---- @param relationships FilterRelationshipEnum[]|string 关系数组或关系
+--- @param relationships FilterRelationshipEnum[]|FilterRelationshipEnum 关系数组或关系
 --- @return FilterBuilder
 function FilterBuilder:add_relationships(relationships)
     if self.relationships == nil then
@@ -205,8 +195,7 @@ function FilterBuilder:add_relationships(relationships)
     return self
 end
 
--- TODO: test
---- 添加规则过滤
+--- 设置过滤器的过滤规则
 --- @param rule FilterRuleEnum
 --- @return FilterBuilder
 function FilterBuilder:set_rule(rule)

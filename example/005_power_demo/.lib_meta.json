@@ -1,0 +1,33 @@
+{
+  "FileName": "5_power_demo",
+  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\5_power_demo",
+  "FileType": "dir",
+  "IsEnabled": true,
+  "IsIncluded": true,
+  "RunOnce": true,
+  "IsEvaluateEachFrame": true,
+  "EvaluationInterval": 1,
+  "ActiveInEasy": true,
+  "ActiveInMedium": true,
+  "ActiveInHard": true,
+  "OrderNum": 99,
+  "Children": [
+    {
+      "FileName": "power_demo.lua",
+      "FilePath": "\\5_power_demo\\power_demo.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": true,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 0,
+      "Children": [],
+      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\5_power_demo"
+    }
+  ],
+  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\5_power_demo"
+}

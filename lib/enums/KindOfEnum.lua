@@ -3,8 +3,8 @@
 --- DateTime: 10/18/2024 5:55 PM
 ---
 
---- @class KinkOfEnum
-KinkOfEnum = {
+--- @class KindOfEnum
+KindOfEnum = {
     --- 可以被选择，既指可以被点选也指可以被选作攻击目标，配合步兵、载具、建筑可显示该物体血条，进度条等，可以被AI操控
     SELECTABLE = "SELECTABLE",
 

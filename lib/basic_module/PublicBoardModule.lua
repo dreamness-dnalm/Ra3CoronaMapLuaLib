@@ -6,7 +6,6 @@
 PublicBoardModule = {}
 
 
--- TODO: package
 --- 在公屏输出文字
 --- @param text string 文本内容
 --- @param duration number 持续时间, 单位秒, 最长30秒

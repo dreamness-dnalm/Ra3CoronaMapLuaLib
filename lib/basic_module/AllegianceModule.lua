@@ -13,9 +13,9 @@ AllegianceEnum = {
 }
 
 --- 设置玩家单向关系 (78)
---- @param player_name1 string 玩家1
---- @param player_name2 string 玩家2
---- @param relationship string AllegianceEnum
+--- @param player_name1 PlayerEnum 玩家1
+--- @param player_name2 PlayerEnum 玩家2
+--- @param relationship AllegianceEnum
 AllegianceModule.set_allegiance_single_way = function(player_name1, player_name2, allegiance)
     if type(player_name1) ~= "string" then
         LoggerModule.error("AllegianceModule.set_allegiance_single_way", "player_name1 must be a string")
@@ -34,9 +34,9 @@ end
 
 
 --- 设置玩家双向关系
---- @param playerName1 string 玩家1
---- @param player_name2 string 玩家2
---- @param relationship string AllegianceEnum
+--- @param playerName1 PlayerEnum 玩家1
+--- @param player_name2 PlayerEnum 玩家2
+--- @param relationship AllegianceEnum
 AllegianceModule.set_allegiance_both_way = function(player_name1, player_name2, allegiance)
     if type(player_name1) ~= "string" then
         LoggerModule.error("AllegianceModule.set_allegiance_both_way", "player_name1 must be a string")

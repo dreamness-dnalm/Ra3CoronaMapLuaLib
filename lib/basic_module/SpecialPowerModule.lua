@@ -5,9 +5,8 @@
 
 SpecialPowerModule = {}
 
--- TODO: test
 --- 特殊能力是否准备好了 [64]
---- @param player_name string 玩家名
+--- @param player_name PlayerEnum 玩家名
 --- @param special_power_name SpecialPowerEnum 特殊能力名
 SpecialPowerModule.is_ready = function(player_name, special_power_name)
     if type(player_name) ~= "string" then

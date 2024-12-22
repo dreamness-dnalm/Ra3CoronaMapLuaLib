@@ -23,28 +23,27 @@ StatusModule.is_unit_has_status = function(unit_table_or_name, status)
     return EvaluateCondition("UNIT_HAS_OBJECT_STATUS", unit_table_or_name, status) --59
 end
 
--- TODO: test
---- 队伍是否拥有状态 [60], [61]
---- @param team_name string 队伍名
---- @param status StatusEnum
---- @param is_all boolean 是否全部拥有
-StatusModule.is_team_has_status = function(team_name, status, is_all)
-    if type(team_name) ~= "string" then
-        LoggerModule.error("StatusModule.is_team_has_status", "team_name must be a number")
-        return nil
-    end
-    if type(status) ~= "string" then
-        LoggerModule.error("StatusModule.is_team_has_status", "status must be a string")
-        return nil
-    end
-    if is_all then
-        return EvaluateCondition("TEAM_ALL_HAS_OBJECT_STATUS", team_name, status) --60
-    else
-        return EvaluateCondition("TEAM_SOME_HAVE_OBJECT_STATUS", team_name, status) --61
-    end
-end
+-- -- TODO: test
+-- --- 队伍是否拥有状态 [60], [61]
+-- --- @param team_name string 队伍名
+-- --- @param status StatusEnum
+-- --- @param is_all boolean 是否全部拥有
+-- StatusModule.is_team_has_status = function(team_name, status, is_all)
+--     if type(team_name) ~= "string" then
+--         LoggerModule.error("StatusModule.is_team_has_status", "team_name must be a number")
+--         return nil
+--     end
+--     if type(status) ~= "string" then
+--         LoggerModule.error("StatusModule.is_team_has_status", "status must be a string")
+--         return nil
+--     end
+--     if is_all then
+--         return EvaluateCondition("TEAM_ALL_HAS_OBJECT_STATUS", team_name, status) --60
+--     else
+--         return EvaluateCondition("TEAM_SOME_HAVE_OBJECT_STATUS", team_name, status) --61
+--     end
+-- end
 
--- TODO: test
 --- 改变单位状态 (411)
 --- @param unit_table_or_name SystemUnitTable|string
 --- @param statuses StatusEnum | StatusEnum[]
@@ -67,19 +66,19 @@ StatusModule.unit_change_status = function(unit_table_or_name, statuses, is_acti
     end
 end
 
--- TODO: test
---- 改变队伍里所有单位状态 (412)
---- @param team_name string 队伍名
---- @param status StatusEnum
---- @param is_active boolean 是否激活 add / remove
-StatusModule.team_change_status = function(team_name, status, is_active)
-    if type(team_name) ~= "string" then
-        LoggerModule.error("StatusModule.team_change_status", "team must be a string")
-        return
-    end
-    if type(status) ~= "string" then
-        LoggerModule.error("StatusModule.team_change_status", "status must be a string")
-        return
-    end
-    ExecuteAction("TEAM_CHANGE_OBJECT_STATUS", team_name, status, is_active) --412
-end
+-- -- TODO: test
+-- --- 改变队伍里所有单位状态 (412)
+-- --- @param team_name string 队伍名
+-- --- @param status StatusEnum
+-- --- @param is_active boolean 是否激活 add / remove
+-- StatusModule.team_change_status = function(team_name, status, is_active)
+--     if type(team_name) ~= "string" then
+--         LoggerModule.error("StatusModule.team_change_status", "team must be a string")
+--         return
+--     end
+--     if type(status) ~= "string" then
+--         LoggerModule.error("StatusModule.team_change_status", "status must be a string")
+--         return
+--     end
+--     ExecuteAction("TEAM_CHANGE_OBJECT_STATUS", team_name, status, is_active) --412
+-- end

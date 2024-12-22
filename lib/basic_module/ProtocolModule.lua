@@ -5,7 +5,6 @@
 --- 协议模块
 ProtocolModule = {}
 
--- TODO: test
 --- 授权玩家协议 (528)
 --- @param player_name PlayerEnum 玩家名
 --- @param protocol_name ProtocolEnum 协议名
@@ -45,7 +44,6 @@ ProtocolModule.set_point = function(player_name, cnt)
     ExecuteAction("PLAYER_SET_PLAYER_POWER_POINTS", player_name, cnt)
 end
 
--- TODO: test
 --- 协议是否就绪
 --- @param player_name PlayerEnum 玩家名
 --- @param protocol_name ProtocolEnum 协议名
@@ -60,7 +58,6 @@ ProtocolModule.is_ready = function(player_name, protocol_name)
     return SpecialPowerModule.is_ready(player_name, protocol_name)
 end
 
--- TODO: test
 --- 覆盖玩家的协议面板
 --- @param player_name PlayerEnum 玩家名
 --- @param faction_name FactionEnum

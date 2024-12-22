@@ -5,14 +5,15 @@
 --- 和整个游戏流程和系统相关的函数
 GameModule = {}
 
--- TODO: test
 --- 获取当前帧序号
 --- @return number
 GameModule.get_frame_number = function()
     return GetFrame()
 end
 
--- TODO: test
+--- 获取字符串的快速哈希值
+--- @param content string
+--- @return number
 GameModule.get_string_fast_hash = function(content)
     return FastHash(content)
 end

@@ -1,0 +1,33 @@
+{
+  "FileName": "8_random",
+  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\8_random",
+  "FileType": "dir",
+  "IsEnabled": true,
+  "IsIncluded": true,
+  "RunOnce": true,
+  "IsEvaluateEachFrame": true,
+  "EvaluationInterval": 1,
+  "ActiveInEasy": true,
+  "ActiveInMedium": true,
+  "ActiveInHard": true,
+  "OrderNum": 99,
+  "Children": [
+    {
+      "FileName": "random_demo.lua",
+      "FilePath": "\\8_random\\random_demo.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": true,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 0,
+      "Children": [],
+      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\8_random"
+    }
+  ],
+  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\8_random"
+}

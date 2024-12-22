@@ -5,7 +5,6 @@
 
 StringUtil = {}
 
--- TODO: test
 --- 将字符串数组连接成一个字符串
 --- @param strTbl table 字符串数组
 --- @param sep string 分隔符

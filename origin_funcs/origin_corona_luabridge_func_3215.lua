@@ -18,7 +18,6 @@ function ObjectPlayerScriptName(unit_table_or_player_string)  end
 function HexToUInt32(hex) end
 
 
--- TODO: test
 --- 计算字符串哈希值
 --- @param content string 字符串
 --- @return number 哈希值
@@ -37,7 +36,6 @@ function CreateObjectFilter(filter_config_table)  end
 --- @return boolean 是否满足过滤器
 function ObjectTestTargetObjectWithFilter(unit_table, relation_reference_unit_table, filter)  end
 
--- TODO: test, package
 --- 获取单位的位置
 --- @param unit_table table 单位
 --- @return number, number, number x, y, z
@@ -88,13 +86,12 @@ function ObjectGetTransform(unit_table)  end
 --- @param matrix table 单位详细信息, 坐标, 旋转, 缩放等 ;
 function ObjectSetTransform(unit_table, matrix) end
 
--- TODO: test, package
 --- 获取单位的唯一ID
 --- @param unit_table table 单位
 --- @return number 唯一ID
 function ObjectGetId(unit_table)  end
 
--- TODO: test, package
+-- TODO: test
 -- todo package
 -- todo test
 --- 获取单位的当前生命值
@@ -102,9 +99,7 @@ function ObjectGetId(unit_table)  end
 --- @return number 当前生命值
 function ObjectGetCurrentHealth(unit_table)  end
 
--- TODO: test, package
--- todo package
--- todo test
+-- TODO: test
 --- 获取单位的初始生命值, 假如单位不存在或者单位没有 ActiveBody 模块，会返回 nil
 --- @param unit_table table 单位
 --- @return number 初始生命值
@@ -175,19 +170,17 @@ function ScrapeSetFloat(script_name, attr_name, attr_value)  end
 --- @param ... any 函数的参数
 function InvokeAptFunction(movieClipName, functionName, ...) end
 
--- TODO: test, package
+-- TODO: test
 --- 检测两个单位的 table 是否是同一个单位; 不能用==来判断
 --- @param unit_table1 table 单位1
 --- @param unit_table2 table 单位2
 function ObjectsIsSame(unit_table1, unit_table2) end
 
--- TODO: test, package
 --- 根据数字 ID 获取一个单位的 table, 假如这个单位不存在，会返回 nil
 --- @param objectId number 单位的数字 ID
 --- @return table 单位的 table
 function GetObjectById(objectId) end
 
--- TODO: test, package
 --- 根据单位的命名获取一个单位的 table, 假如这个单位不存在，会返回 nil
 --- @param objectName string 单位的命名
 --- @return table 单位的 table
@@ -218,7 +211,6 @@ function ObjectGetContainerObject(unit_table)  end
 --- @return table, number 包含当前单位的单位的列表, 单位数量
 function ObjectGetContainedPassengers(unit_table)  end
 
--- TODO: test
 --- 获取建造序列信息
 --- 返回值table={production1...productionN}; production={Id (数字序号), ModuleId (XML 里模块 ID 的哈希值)(FastHash("ModuleTag_ProductionUpdate")), QueueLength, Queue};
 --- Queue={item1...itemN}; item={Type ("Object" 或者 "Upgrade"), InstanceId (正在建造的单位或者升级的哈希值)(FastHash("AlliedConstructionYard")), ProductionPercentage(0-100), ProductionFrames, BuildCost}
@@ -226,13 +218,11 @@ function ObjectGetContainedPassengers(unit_table)  end
 --- @return table, number 建造序列列表, 建造序列数量
 function ObjectGetProductionQueues(unit_table)  end
 
--- TODO: test
 --- 获取单位所属的玩家的威胁度信息（左下角威胁指示器那个）
 --- @param unit_table_or_player_string table|string table单位 或 玩家字符串 "<This Player>" / "<1st Human Player>" / "<1st Human Player's Enemies>"(第一个敌人)
 --- @return number 威胁度
 function ObjectGetRedAlertCurrentThreatLevel(unit_table_or_player_string)  end
 
--- TODO: test
 --- 设置单位所属的玩家的威胁度信息（左下角威胁指示器那个）
 --- @param unit_table_or_player_string table|string table单位 或 玩家字符串 "<This Player>" / "<1st Human Player>" / "<1st Human Player's Enemies>"(第一个敌人)
 --- @param threat number 威胁度
@@ -256,7 +246,6 @@ function ObjectGetPreviousPosition(unit_table)  end
 --- @param target_unit_table table 目标单位; 假如没有特别指定的目标单位，那么必须传入 nil
 function ObjectDetonateProjectile(unit_table, target_unit_table) end
 
--- TODO: test, package
 --- 向任意目标发射任意武器
 --- @param unit_table table 单位
 --- @param weapon_name string 武器名
@@ -341,7 +330,7 @@ function CopyGlobalRegisteredObjectSet(registered_object_set_id) end
 --- @return table, number 单位集合, 单位数量
 function CopyPlayerRegisteredObjectSet(unit_table_or_player_string, registered_object_set_id) end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位武器的弹药量
 --- @param unit_table table 单位
 --- @param weapon_slot_id number 武器槽 ID
@@ -350,7 +339,7 @@ function CopyPlayerRegisteredObjectSet(unit_table_or_player_string, registered_o
 --- @return number 弹药量
 function ObjectGetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_id, weapon_ordering, weapon_index) end
 
--- TODO: test, package
+-- TODO: test
 --- 设置单位武器的弹药量
 --- @param unit_table table 单位
 --- @param weapon_slot_id number 武器槽 ID
@@ -387,21 +376,18 @@ function ObjectIsDisabled(unit_table, status) end
 --- @return number 状态数字
 function ParseDisabledBitFlags(status) end
 
--- TODO: test, package
 --- 检测单位是否存活;
 --- 和 EvaluateCondition("NAMED_NOT_DESTROYED", self) 是等价的, 但更快;
 --- @param unit_table table 单位
 --- @return boolean 是否存活, 1 存活, nil 死亡
 function ObjectIsAlive(unit_table) end
 
--- TODO: test
 --- 为单位加载buff/debuff
 --- @param unit_table table 单位
 --- @param attribute_modifier_name string buff/debuff 名称
 --- @param frameCnt number 持续帧数
 function ObjectLoadAttributeModifier(unit_table, attribute_modifier_name, frameCnt) end
 
--- TODO: test
 --- 为单位加载buff/debuff, 持续时间默认为 XML 里定义的时间
 --- @param unit_table table 单位
 --- @param attribute_modifier_name string buff/debuff 名称

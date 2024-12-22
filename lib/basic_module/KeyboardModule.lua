@@ -7,8 +7,8 @@
 KeyboardModule = {}
 
 --- 注册热键
---- @param key_code_hex string
---- @param assist_key_code_hex string
+--- @param key_code_hex KeyboardKeyCodeEnum
+--- @param assist_key_code_hex KeyboardKeyCodeEnum
 --- @param command_code number
 KeyboardModule.register_hot_key = function(key_code_hex, assist_key_code_hex, command_code)
     if type(key_code_hex) ~= "string" or strlen(key_code_hex) == 0 then

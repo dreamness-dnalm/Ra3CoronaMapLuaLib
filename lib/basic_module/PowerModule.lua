@@ -5,8 +5,7 @@
 --- 电力模块
 PowerModule = {}
 
--- TODO: test
---- 获取玩家生产的电力, 不包含基础电力
+--- 获取玩家生产的电力
 --- @param player_name PlayerEnum 玩家名
 --- @return number
 PowerModule.get_player_power_produced = function(player_name)
@@ -16,7 +15,6 @@ PowerModule.get_player_power_produced = function(player_name)
     return exPlayerGetProducePower(player_name)
 end
 
--- TODO: test
 --- 获取玩家消耗的电力
 --- @param player_name PlayerEnum 玩家名
 --- @return number
@@ -24,7 +22,7 @@ PowerModule.get_player_power_consumed = function(player_name)
     if type(player_name) ~= "string" then
         LoggerModule.error("PowerModule.get_player_power_consumed", "player_name must be a string")
     end
-    return exPlayerGetProducePower(player_name)
+    return exPlayerGetConsumePower(player_name)
 end
 
 --- 设置基础电力 (487)
@@ -43,11 +41,10 @@ PowerModule.set_base_power = function(player_name, value)
     return ExecuteAction("PLAYER_SET_BASE_POWER", player_name, value)
 end
 
--- TODO: test
---- 玩家是否有电 [27]
+--- 玩家是否电力充足 [27]
 --- @param player_name PlayerEnum
 --- @return boolean
-PowerModule.isPlayerHasPower = function(player_name)
+PowerModule.is_player_has_power = function(player_name)
     if type(player_name) ~= "string" then
         LoggerModule.error("PowerModule.isPlayerHasPower", "player_name must be a string")
         return nil
@@ -77,20 +74,30 @@ PowerModule.power_excess_compare = function(player_name, comparison, value)
     return EvaluateCondition("PLAYER_EXCESS_POWER_COMPARE_VALUE", player_name, comparison, value)
 end
 
---- 获取玩家富余电力值 需要确保玩家存在
+--- 获取玩家富余电力值
+--- @param player_name PlayerEnum
+--- @return number
+PowerModule.get_player_power_excess = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PowerModule.get_player_power_excess", "player_name must be a string")
+    end
+    return PowerModule.get_player_power_produced(player_name) - PowerModule.get_player_power_consumed(player_name)
+end
+
+--- (遗弃的)获取玩家富余电力值 需要确保玩家存在
 --- @param player_name PlayerEnum
 --- @param last_excess_power number
 --- @return number
-PowerModule.get_player_power_excess = function(player_name, last_excess_power)
-    LoggerModule.debug("PowerModule.get_player_power_excess", "start")
+PowerModule.__deprecated_get_player_power_excess = function(player_name, last_excess_power)
+    LoggerModule.debug("PowerModule.__deprecated_get_player_power_excess", "start")
     if type(player_name) ~= "string" then
-        LoggerModule.error("PowerModule.get_player_power_excess", "player_name must be a string")
+        LoggerModule.error("PowerModule.__deprecated_get_player_power_excess", "player_name must be a string")
     end
     if last_excess_power == nil then
         last_excess_power = 50
     end
     if type(last_excess_power) ~= "number" then
-        LoggerModule.error("PowerModule.get_player_power_excess", "last_excess_power must be a number")
+        LoggerModule.error("PowerModule.__deprecated_get_player_power_excess", "last_excess_power must be a number")
     end
 
     if PowerModule.power_excess_compare(player_name, "==", last_excess_power) then
@@ -133,6 +140,6 @@ PowerModule.get_player_power_excess = function(player_name, last_excess_power)
             left_value = mid_value + 5
         end
     end
-    LoggerModule.debug("PowerModule.get_player_power_excess", "done")
+    LoggerModule.debug("PowerModule.__deprecated_get_player_power_excess", "done")
     return mid_value
 end

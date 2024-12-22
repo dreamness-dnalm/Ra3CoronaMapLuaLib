@@ -5,7 +5,6 @@
 --- 威胁等级模块
 ThreatLevelModule = {}
 
--- TODO: test
 --- 获取威胁等级
 --- @param player_name PlayerEnum 玩家名
 --- @return number
@@ -16,7 +15,6 @@ ThreatLevelModule.get_threat_level = function(player_name)
     return ObjectGetRedAlertCurrentThreatLevel(player_name)
 end
 
--- TODO: test
 --- 设置威胁等级
 --- @param player_name PlayerEnum 玩家名
 --- @param level number 等级

@@ -14,25 +14,57 @@ TableUtil.get_or_default = function(t, key_or_index, default_value)
     return t[key_or_index] or default_value
 end
 
--- TODO: test
+
 --- table转字符串, 用于输出日志
 --- @param t table
 --- @return string
 TableUtil.to_string = function(t)
+    if type(t) ~= 'table' then
+        return tostring(t)
+    end
     local str = '{'
     for k, v in t do
-        str = str .. tostring(k) .. '=' .. toString(v) .. ','
+        str = str .. tostring(k) .. '=' .. tostring(v) .. ','
     end
     str = str .. '}'
     str = str .. '['
     for i = 1, getn(t) do
-        str = str .. toString(t[i]) .. ','
+        str = str .. tostring(t[i]) .. ','
     end
     str = str .. ']'
     return str
 end
 
--- TODO: test
+--- 数组转字符串
+--- @param t table
+--- @return string
+TableUtil.arr_to_string = function(t)
+    if type(t) ~= 'table' then
+        return tostring(t)
+    end
+    local str = '['
+    for i = 1, getn(t) do
+        str = str .. tostring(t[i]) .. ','
+    end
+    str = str .. ']'
+    return str
+end
+
+--- 字典转字符串
+--- @param t table
+--- @return string
+TableUtil.dict_to_string = function(t)
+    if type(t) ~= 'table' then
+        return tostring(t)
+    end
+    local str = '{'
+    for k, v in t do
+        str = str .. tostring(k) .. '=' .. tostring(v) .. ','
+    end
+    str = str .. '}'
+    return str
+end
+
 --- 判断元素是否在数组中
 --- @param t table
 --- @param ele any
@@ -46,7 +78,6 @@ TableUtil.is_ele_in_array = function(t, ele)
     return nil
 end
 
---- TODO: test
 --- 数组浅拷贝
 --- @param t table
 --- @return table
@@ -59,7 +90,6 @@ TableUtil.array_shallow_copy = function(t)
     return new_table
 end
 
--- TODO: test
 --- 字典浅拷贝
 --- @param t table
 --- @return table

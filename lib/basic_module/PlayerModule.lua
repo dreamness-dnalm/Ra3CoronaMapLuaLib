@@ -6,7 +6,6 @@
 --- 玩家模块
 PlayerModule = {}
 
--- TODO: test
 --- 获取玩家名字, 不能在第一帧调用
 --- @param player_str_or_unit_table SystemUnitTable|playerEnum|PlayerStrEnum
 --- @return PlayerEnum
@@ -76,7 +75,6 @@ PlayerModule.get_player_cnt = function()
     return nil
 end
 
--- TODO: package
 --- 获取玩家派系(国家) [153]
 --- @param player_name PlayerEnum
 --- @return FactionEnum
@@ -98,7 +96,6 @@ PlayerModule.get_player_faction = function(player_name)
     return nil
 end
 
--- TODO: test
 --- 覆盖玩家的协议面板
 --- @param player_name PlayerEnum 玩家名
 --- @param faction_name FactionEnum
@@ -110,4 +107,26 @@ PlayerModule.set_player_protocol_tech_faction = function(player_name, faction_na
         LoggerModule.error("PlayerModule.set_player_protocol_tech_faction", "faction_name must be a string")
     end
     ProtocolModule.set_player_protocol_tech_faction(player_name, faction_name)
+end
+
+
+--- 杀死玩家所有单位 (69)
+--- @param player_name PlayerEnum
+PlayerModule.kill_player_everything = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.kill_player_everything", "player_name must be a string")
+        return
+    end
+    ExecuteAction("PLAYER_KILL", player_name)
+end
+
+-- TODO: test
+--- 出售玩家所有单位 (70)
+--- @param player_name PlayerEnum
+PlayerModule.sell_player_everything = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.sell_player_everything", "player_name must be a string")
+        return nil
+    end
+    ExecuteAction("PLAYER_SELL_EVERYTHING", player_name)
 end

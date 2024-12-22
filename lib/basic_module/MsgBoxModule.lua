@@ -7,7 +7,7 @@
 
 MsgBoxModule = {}
 
--- todo test
+-- TODO: test
 --- 在单位上显示信息框 (538)
 --- @param unit_name_or_table string|table 单位名字 | 单位table
 --- @param msg string 信息
@@ -34,7 +34,7 @@ MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, msg, seconds, i
     end
 end
 
--- todo test
+-- TODO: test
 --- 移除单位上的信息框 (539)
 --- @param unit_name_or_table string|table 单位名字 | 单位table
 MsgBoxModule.remove_msg_box_on_unit = function(unit_name_or_table)
@@ -44,7 +44,7 @@ MsgBoxModule.remove_msg_box_on_unit = function(unit_name_or_table)
     ExecuteAction("NAMED_REMOVE_INFOBOX", unit_name_or_table)
 end
 
--- todo test
+-- TODO: test
 --- 显示文字标题 (116)
 --- @param msg string 信息
 --- @param seconds number 持续时长(s)
