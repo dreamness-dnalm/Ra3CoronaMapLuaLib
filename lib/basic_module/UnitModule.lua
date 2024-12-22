@@ -129,35 +129,36 @@ UnitModule.set_owner_player = function(unit_table_or_name, player_name)
     LoggerModule.debug("UnitModule.set_owner_player", "finished")
 end
 
--- TODO: test
---- 单位是否被玩家所建造 [19]
---- @param unit_table_or_name SystemUnitTable|string 单位table | 单位名
---- @param player_name_list string|string[] 玩家名 | 玩家名列表
---- @return boolean
-UnitModule.is_built_by_player = function(unit_table_or_name, player_name_list)
-    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
-        LoggerModule.error("UnitModule.is_built_by_player", "unit_table_or_name must be a table or string")
-    end
 
-    if type(player_name_list) ~= "table" and type(player_name_list) ~= 'name' then
-        LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table or string")
-    end
+-- -- TODO: test
+-- --- 单位是否被玩家所建造 [19]
+-- --- @param unit_table_or_name SystemUnitTable|string 单位table | 单位名
+-- --- @param player_name_list string|string[] 玩家名 | 玩家名列表
+-- --- @return boolean
+-- UnitModule.is_built_by_player = function(unit_table_or_name, player_name_list)
+--     if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+--         LoggerModule.error("UnitModule.is_built_by_player", "unit_table_or_name must be a table or string")
+--     end
 
-    local tmp_player_name_list = player_name_list
-    if type(tmp_player_name_list) == "string" then
-        tmp_player_name_list = {tmp_player_name_list}
-    end
+--     if type(player_name_list) ~= "table" and type(player_name_list) ~= 'name' then
+--         LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table or string")
+--     end
+
+--     local tmp_player_name_list = player_name_list
+--     if type(tmp_player_name_list) == "string" then
+--         tmp_player_name_list = {tmp_player_name_list}
+--     end
 
 
-    for i = 1, getn(tmp_player_name_list) do
-        if type(tmp_player_name_list[i]) ~= "string" then
-            LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table of string")
-        end
-        if EvaluateCondition("BUILT_BY_PLAYER", unit_table_or_name, tmp_player_name_list[i]) then
-            return 1
-        end
-    end
+--     for i = 1, getn(tmp_player_name_list) do
+--         if type(tmp_player_name_list[i]) ~= "string" then
+--             LoggerModule.error("UnitModule.is_built_by_player", "player_name_list must be a table of string")
+--         end
+--         if EvaluateCondition("BUILT_BY_PLAYER", unit_table_or_name, tmp_player_name_list[i]) then
+--             return 1
+--         end
+--     end
 
-    return nil
-end
+--     return nil
+-- end
 

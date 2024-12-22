@@ -45,16 +45,16 @@ function Unit:set_owner_player(player_name)
     UnitModule.set_owner_player(self.unit_table, player_name)
 end
 
--- TODO: test
---- 单位是否被玩家所建造
---- @param player_name PlayerEnum
---- @return boolean
-function Unit:is_build_by_player(player_name)
-    if type(player_name) ~= "string" then
-        LoggerModule.error("Unit:is_build_by_player", "player_name must be a string")
-    end
-    return UnitModule.is_built_by_player(self.unit_table, player_name)
-end
+-- -- TODO: test
+-- --- 单位是否被玩家所建造
+-- --- @param player_name PlayerEnum
+-- --- @return boolean
+-- function Unit:is_build_by_player(player_name)
+--     if type(player_name) ~= "string" then
+--         LoggerModule.error("Unit:is_build_by_player", "player_name must be a string")
+--     end
+--     return UnitModule.is_built_by_player(self.unit_table, player_name)
+-- end
 
 
 -- -------- 单位存活 --------
