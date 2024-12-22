@@ -6,7 +6,6 @@
 
 StatusModule = {}
 
--- TODO: test
 --- 单位是否拥有状态 [59]
 --- @param unit_table_or_name SystemUnitTable|string 
 --- @param status StatusEnum

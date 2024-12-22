@@ -7,12 +7,11 @@
 
 MsgBoxModule = {}
 
--- TODO: test
 --- 在单位上显示信息框 (538)
---- @param unit_name_or_table string|table 单位名字 | 单位table
+--- @param unit_name_or_table string|SystemUnitTable 单位名字 | 单位table
 --- @param msg string 信息
 --- @param seconds number 持续时长(s)
---- @param img string|nil 图片
+--- @param img ButtonTextureEnum|nil 图片
 MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, msg, seconds, img)
     if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
         LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "unit_name_or_table must be a string or table")
@@ -26,17 +25,17 @@ MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, msg, seconds, i
     if type(img) ~= "nil" and type(img) ~= "string" then
         LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "img must be a string or nil")
     end
-
-    if img == nil then
-        ExecuteAction("NAMED_SHOW_INFOBOX", unit_name_or_table, msg, seconds)
-    else
-        ExecuteAction("NAMED_SHOW_INFOBOX", unit_name_or_table, msg, seconds, img)
+    local target_img = ''
+    if img ~= nil then
+        target_img = img
     end
+
+    ExecuteAction("NAMED_SHOW_INFOBOX", unit_name_or_table, msg, seconds, target_img)
+
 end
 
--- TODO: test
 --- 移除单位上的信息框 (539)
---- @param unit_name_or_table string|table 单位名字 | 单位table
+--- @param unit_name_or_table string|SystemUnitTable 单位名字 | 单位table
 MsgBoxModule.remove_msg_box_on_unit = function(unit_name_or_table)
     if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
         LoggerModule.error("MsgBoxModule.remove_msg_box_on_unit", "unit_name_or_table must be a string or table")
@@ -44,7 +43,6 @@ MsgBoxModule.remove_msg_box_on_unit = function(unit_name_or_table)
     ExecuteAction("NAMED_REMOVE_INFOBOX", unit_name_or_table)
 end
 
--- TODO: test
 --- 显示文字标题 (116)
 --- @param msg string 信息
 --- @param seconds number 持续时长(s)

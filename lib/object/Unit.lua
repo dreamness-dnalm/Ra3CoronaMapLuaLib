@@ -128,7 +128,6 @@ function Unit:add_status(statuses)
     StatusModule.unit_change_status(self.unit_table, statuses, 1)
 end
 
--- TODO: test
 --- 移除单位状态
 --- @param status StatusEnum|StatusEnum[] 状态 或 状态数组
 function Unit:remove_status(statuses)
@@ -139,7 +138,6 @@ function Unit:remove_status(statuses)
     StatusModule.unit_change_status(self.unit_table, statuses, nil)
 end
 
--- TODO: test
 --- 判断单位是否拥有状态
 --- @param status StatusEnum 状态
 --- @return boolean
@@ -317,6 +315,31 @@ end
 --- 删除单位顶部文字
 function Unit:remove_top_text()
     UnitTopTextModule.remove(self.id)
+end
+
+--- 显示消息框
+--- @param msg string 消息内容
+--- @param seconds number 持续时间(秒)
+--- @param img ButtonTextureEnum|nil 图片名称
+function Unit:show_msg_box(msg, seconds, img)
+    if type(msg) ~= "string" then
+        LoggerModule.error("Unit:show_msg_box", "msg must be a string")
+        return
+    end
+    if type(seconds) ~= "number" then
+        LoggerModule.error("Unit:show_msg_box", "seconds must be a number")
+        return
+    end
+    if type(img) ~= "nil" and type(img) ~= "string" then
+        LoggerModule.error("Unit:show_msg_box", "img must be a string or nil")
+        return
+    end
+    MsgBoxModule.show_msg_box_on_unit(self.unit_table, msg, seconds, img)
+end
+
+--- 移除消息框
+function Unit:remove_msg_box()
+    MsgBoxModule.remove_msg_box_on_unit(self.unit_table)
 end
 
 -- --------- 物理信息 -----------

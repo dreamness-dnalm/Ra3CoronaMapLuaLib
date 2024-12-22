@@ -11,7 +11,7 @@ AttributeModifierModule.__attributeModifierObjectCache = {}
 ---添加属性修改器
 --- @param unit_table SystemUnitTable 单位
 --- @param modifiers AttributeModifierEnum | AttributeModifierEnum[] 修改器数组
---- @param frame_cnt number 帧数
+--- @param frame_cnt number 帧数, nil为默认
 AttributeModifierModule.add_modifier = function (unit_table, modifiers, frame_cnt)
     if type(unit_table) ~= "table" then
         LoggerModule.error("AttributeModifierModule.add_Modifier", "unit_table should be table")
