@@ -81,39 +81,39 @@ function Unit:use_ability(ability_name)
     AbilityModule.unit_use_ability(self.unit_table, ability_name)
 end
 
--- TODO: test
---- 单位使用技能在指定路径点
---- @param ability_name AbilityEnum 技能名
---- @param waypoint string 路径点
-function Unit:use_ability_at_waypoint(ability_name, waypoint)
-    if type(ability_name) ~= "string" then
-        LoggerModule.error("Unit:use_ability_at_waypoint", "ability_name must be a string")
-    end
-    if type(waypoint) ~= "string" then
-        LoggerModule.error("Unit:use_ability_at_waypoint", "waypoint must be a string")
-    end
-    AbilityModule.unit_use_ability_at_waypoint(self.unit_table, ability_name, waypoint)
-end
+-- -- TODO: test
+-- --- 单位使用技能在指定路径点
+-- --- @param ability_name AbilityEnum 技能名
+-- --- @param waypoint string 路径点
+-- function Unit:use_ability_at_waypoint(ability_name, waypoint)
+--     if type(ability_name) ~= "string" then
+--         LoggerModule.error("Unit:use_ability_at_waypoint", "ability_name must be a string")
+--     end
+--     if type(waypoint) ~= "string" then
+--         LoggerModule.error("Unit:use_ability_at_waypoint", "waypoint must be a string")
+--     end
+--     AbilityModule.unit_use_ability_at_waypoint(self.unit_table, ability_name, waypoint)
+-- end
 
--- TODO: test
---- 单位使用技能在指定单位, 需要指定单位名字!!
---- @param ability_name AbilityEnum 技能名
---- @param target_unit Unit 目标单位
-function Unit:use_ability_on_unit(ability_name, target_unit)
-    if type(ability_name) ~= "string" then
-        LoggerModule.error("Unit:use_ability_on_unit", "ability_name must be a string")
-    end
-    if target_unit == nil then
-        LoggerModule.error("Unit:use_ability_on_unit", "target_unit must be a Unit")
-    end
-    if type(target_unit.name) ~= "string" then
-        LoggerModule.error("Unit:use_ability_on_unit", "target_unit.name must be a string")
-    end
-    if type(self.name) ~= "string" then
-        LoggerModule.error("Unit:use_ability_on_unit", "self.name must be a string")
-    end
-    AbilityModule.unit_use_ability_on_unit(self.name, ability_name, target_unit.name)
-end
+-- -- TODO: test
+-- --- 单位使用技能在指定单位, 需要指定单位名字!!
+-- --- @param ability_name AbilityEnum 技能名
+-- --- @param target_unit Unit 目标单位
+-- function Unit:use_ability_on_unit(ability_name, target_unit)
+--     if type(ability_name) ~= "string" then
+--         LoggerModule.error("Unit:use_ability_on_unit", "ability_name must be a string")
+--     end
+--     if target_unit == nil then
+--         LoggerModule.error("Unit:use_ability_on_unit", "target_unit must be a Unit")
+--     end
+--     if type(target_unit.name) ~= "string" then
+--         LoggerModule.error("Unit:use_ability_on_unit", "target_unit.name must be a string")
+--     end
+--     if type(self.name) ~= "string" then
+--         LoggerModule.error("Unit:use_ability_on_unit", "self.name must be a string")
+--     end
+--     AbilityModule.unit_use_ability_on_unit(self.name, ability_name, target_unit.name)
+-- end
 
 -- -------- 单位状态 --------
 
