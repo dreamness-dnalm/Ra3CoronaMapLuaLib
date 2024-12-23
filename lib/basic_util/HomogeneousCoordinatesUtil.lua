@@ -8,7 +8,7 @@ HomogeneousCoordinatesUtil = {}
 --- Ra3的单位转换矩阵转换为齐次坐标矩阵
 --- @param m table
 --- @return Matrix
-HomogeneousCoordinatesUtil.transform_matrix_to_homogeneous_coordinates = function(m)
+HomogeneousCoordinatesUtil.system_matrix_to_homogeneous_coordinates = function(m)
     return {
         {m[1], m[2], m[3], m[4]},
         {m[5], m[6], m[7], m[8]},
@@ -20,12 +20,28 @@ end
 --- 齐次坐标矩阵转换为Ra3的单位转换矩阵
 --- @param m Matrix
 --- @return table
-HomogeneousCoordinatesUtil.homogeneous_coordinates_to_transform_matrix = function(m)
+HomogeneousCoordinatesUtil.homogeneous_coordinates_to_system_matrix = function(m)
     local w = m[4][4]
     return {
         m[1][1], m[1][2], m[1][3], m[1][4],
         m[2][1], m[2][2], m[2][3], m[2][4],
         m[3][1], m[3][2], m[3][3], m[3][4],
+    }
+end
+
+-- TODO: test
+--- 齐次坐标矩阵转换为变换矩阵
+--- @param m Matrix
+--- @return Matrix
+HomogeneousCoordinatesUtil.get_transform_matrix_by_hc = function(m)
+    if type(m) ~= "table" then
+        LoggerModule.error("HomogeneousCoordinatesUtil.get_transform_matrix_by_hc", "m should be a table")
+        return nil
+    end
+    return {
+        m[1][1], m[1][2], m[1][3],
+        m[2][1], m[2][2], m[2][3],
+        m[3][1], m[3][2], m[3][3],
     }
 end
 
@@ -43,14 +59,32 @@ HomogeneousCoordinatesUtil.get_translation_matrix = function(x, y, z)
     }
 end
 
---- 根据齐次坐标矩阵获取方向向量
+--- 根据齐次坐标矩阵获取单位的x, y, z轴的方向向量
 --- @param m Matrix
 --- @return Vector, Vector, Vector 分别为x, y, z轴的方向向量
-HomogeneousCoordinatesUtil.get_direction_vec_by_hc = function(m)
+HomogeneousCoordinatesUtil.get_axis_vecs_by_hc = function(m)
     return VectorUtil.to_unit_vec({m[1][1], m[1][2], m[1][3]}),
         VectorUtil.to_unit_vec({m[2][1], m[2][2], m[2][3]}),
         VectorUtil.to_unit_vec({m[3][1], m[3][2], m[3][3]})
 end 
+
+-- TODO: test
+--- 获取当前的方向向量
+--- @param m Matrix
+--- @param origin_vec Vector
+--- @return Vector
+HomogeneousCoordinatesUtil.get_direction_vec = function(m, origin_vec)
+    if type(m) ~= "table" then
+        LoggerModule.error("HomogeneousCoordinatesUtil.get_direction_vec", "m should be a table")
+        return nil
+    end
+    if type(origin_vec) ~= "table" then
+        LoggerModule.error("HomogeneousCoordinatesUtil.get_direction_vec", "origin_vec should be a table")
+        return nil
+    end
+    local transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(m)
+    return MatrixUtil.dot_vector(transform_matrix, origin_vec)
+end
 
 --- 获取平移到原点的齐次坐标矩阵
 --- @param m Matrix
@@ -114,6 +148,8 @@ HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec = function(vec, angle)
         {0, 0, 0, 1}
     }
 end
+
+
 
 --- 镜像矩阵
 --- @param x boolean 是否x轴镜像

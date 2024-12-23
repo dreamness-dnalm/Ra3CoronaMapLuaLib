@@ -53,6 +53,31 @@ MatrixUtil.__dot2 = function(m1, m2)
 end
 
 -- TODO: test
+--- 矩阵与向量相乘
+--- @param m Matrix 矩阵
+--- @param v Vector 向量
+--- @return Vector
+MatrixUtil.dot_vector = function(m, v)
+    
+    local m_row = getn(m)
+    local m_col = getn(m[1])
+    local v_len = getn(v)
+    if m_row ~= v_len then
+        LoggerModule.error("MatrixUtil.dot_vector", "m_row must be equal to v_len")
+        return nil
+    end
+
+    local result = {}
+    for i = 1, m_row do
+        result[i] = 0
+        for j = 1, m_col do
+            result[i] = result[i] + m[i][j] * v[j]
+        end
+    end
+    return result
+end
+
+-- TODO: test
 --- 转置矩阵
 --- @param m Matrix 矩阵
 --- @return Matrix

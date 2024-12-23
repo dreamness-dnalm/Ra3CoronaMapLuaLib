@@ -120,7 +120,7 @@ UnitPhysicsModule.get_homogeneous_coordinates = function(unit_table)
         LoggerModule.error("UnitPhysicsModule.get_detail_matrix", "unit_table must be a table")
         return nil
     end
-    return HomogeneousCoordinatesUtil.transform_matrix_to_homogeneous_coordinates(ObjectGetTransform(unit_table))
+    return HomogeneousCoordinatesUtil.system_matrix_to_homogeneous_coordinates(ObjectGetTransform(unit_table))
 end
 
 --- 设置单位的详细信息
@@ -135,7 +135,7 @@ UnitPhysicsModule.set_homogeneous_coordinates = function(unit_table, hc_matrix)
         LoggerModule.error("UnitPhysicsModule.set_detail_matrix", "hc_matrix must be a table")
         return
     end
-    ObjectSetTransform(unit_table, HomogeneousCoordinatesUtil.homogeneous_coordinates_to_transform_matrix(hc_matrix))
+    ObjectSetTransform(unit_table, HomogeneousCoordinatesUtil.homogeneous_coordinates_to_system_matrix(hc_matrix))
 end
 
 --- 平移单位
@@ -184,13 +184,30 @@ end
 --- @param yaw_angle number
 UnitPhysicsModule.rotate_by_euler = function(unit_table, roll_angle, pitch_angle, yaw_angle)
     local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
-    local x_dir_vec, y_dir_vec, z_dir_vec = HomogeneousCoordinatesUtil.get_direction_vec_by_hc(hc)
+    local x_dir_vec, y_dir_vec, z_dir_vec = HomogeneousCoordinatesUtil.get_axis_vecs_by_hc(hc)
 
     hc = MatrixUtil.dot(
         HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(x_dir_vec, roll_angle),
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(y_dir_vec, pitch_angle),
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(z_dir_vec, yaw_angle),
+        HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
+        hc
+    )
+
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+UnitPhysicsModule.rotate_to_target_vec = function(unit_table, target_vec)
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    local x_dir_vec, y_dir_vec, z_dir_vec = HomogeneousCoordinatesUtil.get_axis_vecs_by_hc(hc)
+
+    local angle = VectorUtil.angle(z_dir_vec, target_vec)
+    local axis = VectorUtil.cross_product(z_dir_vec, target_vec)
+
+    hc = MatrixUtil.dot(
+        HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
+        HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(axis, angle),
         HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
         hc
     )
