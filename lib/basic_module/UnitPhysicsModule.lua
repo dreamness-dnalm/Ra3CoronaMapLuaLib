@@ -112,7 +112,6 @@ end
 
 -- ------------ 以下为齐次坐标系相关 ------------
 
--- TODO: test, package
 --- 获取单位的齐次坐标矩阵
 --- @param unit_table SystemUnitTable 单位
 --- @return Matrix
@@ -124,7 +123,6 @@ UnitPhysicsModule.get_homogeneous_coordinates = function(unit_table)
     return HomogeneousCoordinatesUtil.transform_matrix_to_homogeneous_coordinates(ObjectGetTransform(unit_table))
 end
 
--- TODO: test, package
 --- 设置单位的详细信息
 --- @param unit_table SystemUnitTable 单位
 --- @param hc_matrix Matrix 详细信息
@@ -140,19 +138,18 @@ UnitPhysicsModule.set_homogeneous_coordinates = function(unit_table, hc_matrix)
     ObjectSetTransform(unit_table, HomogeneousCoordinatesUtil.homogeneous_coordinates_to_transform_matrix(hc_matrix))
 end
 
--- TODO: package
 --- 平移单位
 --- @param unit_table SystemUnitTable 单位
 --- @param x number x
 --- @param y number y
 --- @param z number z
-UnitPhysicsModule.translation = function(unit_table, x, y, z)
+UnitPhysicsModule.translate = function(unit_table, x, y, z)
     if type(unit_table) ~= "table" then
-        LoggerModule.error("UnitPhysicsModule.translation", "unit_table must be a table")
+        LoggerModule.error("UnitPhysicsModule.translate", "unit_table must be a table")
         return
     end
     if type(x) ~= "number" and type(y) ~= "number" and type(z) ~= "number" then
-        LoggerModule.error("UnitPhysicsModule.translation", "x, y, z must be a number")
+        LoggerModule.error("UnitPhysicsModule.translate", "x, y, z must be a number")
         return
     end
 
@@ -180,7 +177,6 @@ end
 --     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 -- end
 
--- TODO: package
 --- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
 --- @param unit_table SystemUnitTable 单位
 --- @param roll_angle number
@@ -192,9 +188,9 @@ UnitPhysicsModule.rotate_by_euler = function(unit_table, roll_angle, pitch_angle
 
     hc = MatrixUtil.dot(
         HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
-        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(x_dir_vec, roll_angle),
-        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(y_dir_vec, pitch_angle),
-        HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec(z_dir_vec, yaw_angle),
+        HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(x_dir_vec, roll_angle),
+        HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(y_dir_vec, pitch_angle),
+        HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(z_dir_vec, yaw_angle),
         HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
         hc
     )
@@ -203,7 +199,6 @@ UnitPhysicsModule.rotate_by_euler = function(unit_table, roll_angle, pitch_angle
 end
 
 
--- TODO: package
 --- 缩放单位
 --- @param unit_table SystemUnitTable 单位
 --- @param scale number 缩放比例
@@ -230,7 +225,6 @@ UnitPhysicsModule.set_scale = function(unit_table, scale)
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end
 
--- TODO: package
 --- 获取单位缩放比例
 --- @param unit_table SystemUnitTable 单位
 --- @return number, number, number 分别在x, y, z轴的缩放比例
@@ -243,7 +237,6 @@ UnitPhysicsModule.get_scale = function(unit_table)
     return HomogeneousCoordinatesUtil.get_scale_by_hc(hc)
 end
 
--- TODO: package
 --- 单位镜像, 模型可能会出问题!
 --- @param unit_table SystemUnitTable 单位
 --- @param x boolean 是否在x轴镜像

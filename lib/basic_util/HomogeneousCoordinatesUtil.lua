@@ -100,7 +100,7 @@ end
 --- 获取绕任意向量旋转的矩阵
 --- @param vec Vector 向量
 --- @param angle number 角度(度数)
-HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec = function(vec, angle)
+HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec = function(vec, angle)
     local x = vec[1]
     local y = vec[2]
     local z = vec[3]
