@@ -29,6 +29,18 @@ HomogeneousCoordinatesUtil.homogeneous_coordinates_to_system_matrix = function(m
     }
 end
 
+--- 复制矩阵(深拷贝)
+--- @param m Matrix
+--- @return Matrix
+HomogeneousCoordinatesUtil.copy = function(m)
+    return {
+        {m[1][1], m[1][2], m[1][3], m[1][4]},
+        {m[2][1], m[2][2], m[2][3], m[2][4]},
+        {m[3][1], m[3][2], m[3][3], m[3][4]},
+        {m[4][1], m[4][2], m[4][3], m[4][4]}
+    }
+end
+
 -- TODO: test
 --- 齐次坐标矩阵转换为变换矩阵
 --- @param m Matrix
@@ -39,9 +51,9 @@ HomogeneousCoordinatesUtil.get_transform_matrix_by_hc = function(m)
         return nil
     end
     return {
-        m[1][1], m[1][2], m[1][3],
-        m[2][1], m[2][2], m[2][3],
-        m[3][1], m[3][2], m[3][3],
+        {m[1][1], m[1][2], m[1][3]},
+        {m[2][1], m[2][2], m[2][3]},
+        {m[3][1], m[3][2], m[3][3]},
     }
 end
 
@@ -59,6 +71,13 @@ HomogeneousCoordinatesUtil.get_translation_matrix = function(x, y, z)
     }
 end
 
+--- 根据向量获取平移矩阵
+--- @param vec Vector
+--- @return Matrix
+HomogeneousCoordinatesUtil.get_translation_matrix_by_vec = function(vec)
+    return HomogeneousCoordinatesUtil.get_translation_matrix(vec[1], vec[2], vec[3])
+end
+
 --- 根据齐次坐标矩阵获取单位的x, y, z轴的方向向量
 --- @param m Matrix
 --- @return Vector, Vector, Vector 分别为x, y, z轴的方向向量
@@ -73,17 +92,13 @@ end
 --- @param m Matrix
 --- @param origin_vec Vector
 --- @return Vector
-HomogeneousCoordinatesUtil.get_direction_vec = function(m, origin_vec)
+HomogeneousCoordinatesUtil.get_direction_vec = function(m)
     if type(m) ~= "table" then
         LoggerModule.error("HomogeneousCoordinatesUtil.get_direction_vec", "m should be a table")
         return nil
     end
-    if type(origin_vec) ~= "table" then
-        LoggerModule.error("HomogeneousCoordinatesUtil.get_direction_vec", "origin_vec should be a table")
-        return nil
-    end
     local transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(m)
-    return MatrixUtil.dot_vector(transform_matrix, origin_vec)
+    return MatrixUtil.dot_vector(transform_matrix, {1, 0, 0})
 end
 
 --- 获取平移到原点的齐次坐标矩阵
@@ -176,4 +191,22 @@ HomogeneousCoordinatesUtil.get_mirror_matrix = function(x, y, z)
         {0, 0, z_v, 0},
         {0, 0, 0, 1}
     }
+end
+
+--- 根据齐次坐标矩阵获取位置
+--- @param m Matrix
+--- @return Vector
+HomogeneousCoordinatesUtil.get_position_vec_by_hc = function(m)
+    return {m[1][4], m[2][4], m[3][4]}
+end
+
+--- 设置位置
+--- @param m Matrix
+--- @param vec Vector
+--- @return Matrix
+HomogeneousCoordinatesUtil.set_position_vec = function(m, vec)
+    m[1][4] = vec[1]
+    m[2][4] = vec[2]
+    m[3][4] = vec[3]
+    return m
 end

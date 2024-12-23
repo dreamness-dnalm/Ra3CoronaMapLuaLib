@@ -158,25 +158,6 @@ UnitPhysicsModule.translate = function(unit_table, x, y, z)
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end
 
--- -- TODO: test, package
--- --- 绕x/y/z轴旋转
--- --- @param unit_table SystemUnitTable 单位
--- --- @param x_angle number 绕x轴角度
--- --- @param y_angle number 绕y轴角度
--- --- @param z_angle number 绕z轴角度
--- UnitPhysicsModule.rotation_by_axis = function(unit_table, x_angle, y_angle, z_angle)
---     local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
---     local return_back_matrix = HomogeneousCoordinatesUtil.get_return_back_from_origin_translation_matrix_by_hc(hc)
-
---     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_return_origin_translation_matrix_by_hc(hc))
---     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({0, 0, 1}, z_angle))
---     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({0, 1, 0}, y_angle))
---     hc = MatrixUtil.dot(hc, HomogeneousCoordinatesUtil.get_rotate_matrix_by_vec({1, 0, 0}, x_angle))
---     hc = MatrixUtil.dot(hc, return_back_matrix)
-    
---     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
--- end
-
 --- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
 --- @param unit_table SystemUnitTable 单位
 --- @param roll_angle number
@@ -191,23 +172,6 @@ UnitPhysicsModule.rotate_by_euler = function(unit_table, roll_angle, pitch_angle
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(x_dir_vec, roll_angle),
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(y_dir_vec, pitch_angle),
         HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(z_dir_vec, yaw_angle),
-        HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
-        hc
-    )
-
-    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
-end
-
-UnitPhysicsModule.rotate_to_target_vec = function(unit_table, target_vec)
-    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
-    local x_dir_vec, y_dir_vec, z_dir_vec = HomogeneousCoordinatesUtil.get_axis_vecs_by_hc(hc)
-
-    local angle = VectorUtil.angle(z_dir_vec, target_vec)
-    local axis = VectorUtil.cross_product(z_dir_vec, target_vec)
-
-    hc = MatrixUtil.dot(
-        HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
-        HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec(axis, angle),
         HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
         hc
     )
@@ -275,4 +239,16 @@ UnitPhysicsModule.set_mirror = function(unit_table, x, y, z)
     )
     
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+--- 获取单位的方向向量
+--- @param unit_table SystemUnitTable 单位
+--- @return Vector
+UnitPhysicsModule.get_direction_vec = function(unit_table)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.get_direction_vec", "unit_table must be a table")
+        return nil
+    end
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    return HomogeneousCoordinatesUtil.get_direction_vec(hc)
 end

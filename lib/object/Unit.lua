@@ -349,13 +349,46 @@ function Unit:get_position()
     return UnitPhysicsModule.get_position(self.unit_table)
 end
 
+--- 获取单位坐标向量
+--- @return Vector
+function Unit:get_position_vec()
+    local x, y, z = self:get_position()
+    return {x, y, z}
+end
+
 -- TODO: test
 --- 设置单位坐标
 --- @param x number x
 --- @param y number y
 --- @param z number|nil z, 可以缺省为nil
 function Unit:set_position(x, y, z)
+    if type(x) ~= "number" then
+        LoggerModule.error("Unit:set_position", "x must be a number")
+        return
+    end
+    if type(y) ~= "number" then
+        LoggerModule.error("Unit:set_position", "y must be a number")
+        return
+    end
+    if type(z) ~= "number" and z ~= nil then
+        LoggerModule.error("Unit:set_position", "z must be a number or nil")
+        return
+    end
     UnitPhysicsModule.set_position(self.unit_table, x, y, z)
+end
+
+--- 设置单位坐标向量
+--- @param vec Vector
+function Unit:set_position_by_vec(vec)
+    if type(vec) ~= "table" then
+        LoggerModule.error("Unit:set_position_by_vec", "vec must be a table")
+        return
+    end
+    if getn(vec) ~= 3 then
+        LoggerModule.error("Unit:set_position_by_vec", "vec must have length 3")
+        return
+    end
+    UnitPhysicsModule.set_position(self.unit_table, vec[1], vec[2], vec[3])
 end
 
 -- TODO: test
@@ -408,7 +441,6 @@ function Unit:set_homogeneous_coordinates(matrix)
     UnitPhysicsModule.set_homogeneous_coordinates(self.unit_table, matrix)
 end
 
--- TODO: test
 --- 平移单位
 --- @param x number x
 --- @param y number y
@@ -421,7 +453,6 @@ function Unit:translate(x, y, z)
     UnitPhysicsModule.translate(self.unit_table, x, y, z)
 end
 
--- TODO: test
 --- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
 --- @param roll_angle number
 --- @param pitch_angle number
@@ -434,7 +465,6 @@ function Unit:rotate_by_euler(roll_angle, pitch_angle, yaw_angle)
     UnitPhysicsModule.rotate_by_euler(self.unit_table, roll_angle, pitch_angle, yaw_angle)
 end
 
--- TODO: test
 --- 缩放单位
 --- @param scale number 缩放比例
 function Unit:set_scale(scale)
@@ -445,18 +475,23 @@ function Unit:set_scale(scale)
     UnitPhysicsModule.set_scale(self.unit_table, scale)    
 end
 
--- TODO: test
 --- 获取单位的缩放比例
 --- @return number, number, number 分别在x, y, z轴的缩放比例
 function Unit:get_scale()
     return UnitPhysicsModule.get_scale(self.unit_table)
 end
 
--- TODO: test
 --- 单位镜像, 模型可能会出问题!
 --- @param x boolean 是否在x轴镜像
 --- @param y boolean 是否在y轴镜像
 --- @param z boolean 是否在z轴镜像
 function Unit:set_mirror(x, y, z)
     UnitPhysicsModule.set_mirror(self.unit_table, x, y, z)
+end
+
+-- TODO: test
+--- 获取单位的方向向量
+--- @return Vector
+function Unit:get_direction_vec()
+    return UnitPhysicsModule.get_direction_vec(self.unit_table)
 end

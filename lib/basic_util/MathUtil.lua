@@ -83,3 +83,26 @@ MathUtil.is_integer = function(n)
         return ceil(n) == n
     end
 end
+
+--- 判断是否在误差范围内
+--- @param n number
+--- @param target number
+--- @param tolerate number
+--- @return boolean
+MathUtil.is_in_error_range = function(n, target, tolerate)
+    if type(n) ~= "number" then
+        LoggerModule.error("MathUtil.is_in_error_range", "n should be a number")
+        return nil
+    end
+
+    if type(target) ~= "number" then
+        LoggerModule.error("MathUtil.is_in_error_range", "target should be a number")
+        return nil
+    end
+
+    if type(tolerate) ~= "number" then
+        LoggerModule.error("MathUtil.is_in_error_range", "tolerate should be a number")
+        return nil
+    end
+    return abs(n - target) < abs(tolerate)
+end
