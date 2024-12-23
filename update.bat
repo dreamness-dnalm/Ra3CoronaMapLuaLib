@@ -17,7 +17,7 @@ echo 警告: 对 lua 库的所有更改都会被覆盖
 echo.
 echo [y] 确认 / [n] 取消
 set "input=y"
-set /p input=请输入: [默认为y] 
+set /p input=请输入: [直接回车, 默认为y] 
 
 :: 判断用户输入
 echo.
@@ -28,7 +28,9 @@ if /i "%input%"=="n" (
 )
 
 if not "%input%"=="y" (
-    echo 未识别的输入, 默认继续.
+    echo 未识别的输入, 更新已取消.
+    pause
+    exit /b
 )
 
 :: 强行拉取远程分支并覆盖本地所有更改
