@@ -45,18 +45,18 @@ function DemoRorate:update()
     LoggerModule.info('rorate_demo', 'step 2')
     local base_hc = main_unit:get_homogeneous_coordinates()
     LoggerModule.info('rorate_demo', 'step 3')
-    local main_unit_pos_vec = HomogeneousCoordinatesUtil.get_position_vec_by_hc(base_hc)
-    main_unit_pos_vec[3] = DemoRorate.config.height
+    -- local main_unit_pos_vec = HomogeneousCoordinatesUtil.get_position_vec_by_hc(base_hc)
+    -- main_unit_pos_vec[3] = DemoRorate.config.height
     LoggerModule.info('rorate_demo', 'step 4')
     --- 设置单位高度, 防止单位掉落
-    HomogeneousCoordinatesUtil.set_position_vec(base_hc, main_unit_pos_vec)
+    -- HomogeneousCoordinatesUtil.set_position_vec(base_hc, main_unit_pos_vec)
     LoggerModule.info('rorate_demo', 'step 5')
     -- 变换主单位
     -- 对主单位进行放缩
-    local main_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
-    LoggerModule.info('rorate_demo', 'step 6')
-    local scale_x, scale_y, scale_z = HomogeneousCoordinatesUtil.get_scale_by_hc(main_unit_hc)
-    LoggerModule.info('rorate_demo', 'step 7')
+    -- local main_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
+    -- LoggerModule.info('rorate_demo', 'step 6')
+    -- local scale_x, scale_y, scale_z = HomogeneousCoordinatesUtil.get_scale_by_hc(main_unit_hc)
+    -- LoggerModule.info('rorate_demo', 'step 7')
     -- if not MathUtil.is_in_error_range(scale_x, DemoRorate.config.scale, 0.05) then
     --     LoggerModule.info('rorate_demo', 'step 8')
     --     main_unit_hc = MatrixUtil.dot(
@@ -67,31 +67,55 @@ function DemoRorate:update()
     --     )
     --     LoggerModule.info('rorate_demo', 'step 9')
     -- end
-    LoggerModule.info('rorate_demo', 'step 10 ' .. VectorUtil.to_string(HomogeneousCoordinatesUtil.get_position_vec_by_hc(main_unit_hc)))
-    main_unit:set_homogeneous_coordinates(main_unit_hc)
-    LoggerModule.info('rorate_demo', 'step 11')
-    local main_unit_x_axis, main_unit_y_axis, main_unit_z_axis = HomogeneousCoordinatesUtil.get_axis_vecs_by_hc(base_hc)
+    -- LoggerModule.info('rorate_demo', 'step 10 ' .. VectorUtil.to_string(HomogeneousCoordinatesUtil.get_position_vec_by_hc(main_unit_hc)))
+    -- main_unit:set_homogeneous_coordinates(main_unit_hc)
+    -- LoggerModule.info('rorate_demo', 'step 11')
+    -- local main_unit_x_axis, main_unit_y_axis, main_unit_z_axis = HomogeneousCoordinatesUtil.get_axis_vecs_by_hc(base_hc)
+
+    -- local base_transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(base_hc)
+    -- local base_position_vec = HomogeneousCoordinatesUtil.get_position_vec_by_hc(base_hc)
+
+    -- local left_hc = HomogeneousCoordinatesUtil.merge(
+    --     base_transform_matrix,
+    --     VectorUtil.add(base_position_vec, {100, 0, 0})
+    -- )
+    -- left_sub_unit:set_homogeneous_coordinates(left_hc)
 
     --- 左僚机的偏移方向
-    local left_sub_unit_translate_vec = main_unit_y_axis
+
+
+    -- local left_sub_unit_translate_vec = main_unit_y_axis
+    -- local left_sub_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
+    -- left_sub_unit_hc = MatrixUtil.dot(
+    --     left_sub_unit_hc,
+    --     -- HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(left_sub_unit_hc),
+    --     HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(VectorUtil.multiply(left_sub_unit_translate_vec, DemoRorate.config.left_right_sub_unit_distance))
+    --     -- HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(left_sub_unit_hc),
+        
+    -- )
+    -- left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
+
+
     local left_sub_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
+    local transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(left_sub_unit_hc)
     left_sub_unit_hc = MatrixUtil.dot(
-        -- HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(left_sub_unit_hc),
-        HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(VectorUtil.multiply(left_sub_unit_translate_vec, DemoRorate.config.left_right_sub_unit_distance)),
-        -- HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(left_sub_unit_hc),
+        HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
+            MatrixUtil.dot_vector(transform_matrix, {0, DemoRorate.config.left_right_sub_unit_distance, 0})
+        ),
         left_sub_unit_hc
     )
     left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
 
 
-    --- 右僚机的偏移方向
-    local right_sub_unit_translate_vec = VectorUtil.multiply(left_sub_unit_translate_vec, -1)
-    local right_sub_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
-    right_sub_unit_hc = MatrixUtil.dot(
-        -- HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(right_sub_unit_hc),
-        HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(VectorUtil.multiply(right_sub_unit_translate_vec, DemoRorate.config.left_right_sub_unit_distance)),
-        -- HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(right_sub_unit_hc),
-        right_sub_unit_hc
-    )
-    right_sub_unit:set_homogeneous_coordinates(right_sub_unit_hc)
+    -- --- 右僚机的偏移方向
+    -- local right_sub_unit_translate_vec = VectorUtil.multiply(left_sub_unit_translate_vec, -1)
+    -- local right_sub_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
+    -- right_sub_unit_hc = MatrixUtil.dot(
+    --     right_sub_unit_hc,
+    --     -- HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(right_sub_unit_hc),
+    --     HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(VectorUtil.multiply(right_sub_unit_translate_vec, DemoRorate.config.left_right_sub_unit_distance))
+    --     -- HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(right_sub_unit_hc),
+        
+    -- )
+    -- right_sub_unit:set_homogeneous_coordinates(right_sub_unit_hc)
 end

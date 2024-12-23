@@ -210,3 +210,16 @@ HomogeneousCoordinatesUtil.set_position_vec = function(m, vec)
     m[3][4] = vec[3]
     return m
 end
+
+--- 合并矩阵和位置向量
+--- @param transform_matrix Matrix
+--- @param position_vector Vector
+--- @return Matrix
+HomogeneousCoordinatesUtil.merge = function(transform_matrix, position_vector)
+    return {
+        {transform_matrix[1][1], transform_matrix[1][2], transform_matrix[1][3], position_vector[1]},
+        {transform_matrix[2][1], transform_matrix[2][2], transform_matrix[2][3], position_vector[2]},
+        {transform_matrix[3][1], transform_matrix[3][2], transform_matrix[3][3], position_vector[3]},
+        {0, 0, 0, 1}
+    }
+end
