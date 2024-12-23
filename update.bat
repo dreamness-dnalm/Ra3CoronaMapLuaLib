@@ -27,7 +27,7 @@ if /i "%input%"=="n" (
     exit /b
 )
 
-if not "%input%"=="y" (
+if /i not "%input%"=="y" (
     echo 未识别的输入, 更新已取消.
     pause
     exit /b
