@@ -1,4 +1,5 @@
 @echo off
+@chcp 65001 >nul
 
 :: 检查是否安装了 Git
 git --version >nul 2>&1
