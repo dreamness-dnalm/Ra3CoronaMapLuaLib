@@ -138,25 +138,55 @@ UnitPhysicsModule.set_homogeneous_coordinates = function(unit_table, hc_matrix)
     ObjectSetTransform(unit_table, HomogeneousCoordinatesUtil.homogeneous_coordinates_to_system_matrix(hc_matrix))
 end
 
---- 平移单位
+--- 平移单位(全局坐标)
 --- @param unit_table SystemUnitTable 单位
---- @param x number x
---- @param y number y
---- @param z number z
-UnitPhysicsModule.translate = function(unit_table, x, y, z)
+--- @param vec Vector
+UnitPhysicsModule.translate = function(unit_table, vec)
     if type(unit_table) ~= "table" then
         LoggerModule.error("UnitPhysicsModule.translate", "unit_table must be a table")
         return
     end
-    if type(x) ~= "number" and type(y) ~= "number" and type(z) ~= "number" then
-        LoggerModule.error("UnitPhysicsModule.translate", "x, y, z must be a number")
+    if type(vec) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.translate", "vec must be a table")
         return
     end
 
     local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
-    hc = MatrixUtil.dot(HomogeneousCoordinatesUtil.get_translation_matrix(x, y, z), hc)
+    hc = MatrixUtil.dot(HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(vec), hc)
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end
+
+-- TODO: test
+--- 平移单位(相对坐标)
+--- @param unit_table SystemUnitTable 单位
+--- @param vec Vector
+UnitPhysicsModule.translate_relatively = function(unit_table, vec)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.translate_relatively", "unit_table must be a table")
+        return
+    end
+    if type(vec) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.translate_relatively", "vec must be a table")
+        return
+    end
+
+    -- left_sub_unit_hc = MatrixUtil.dot(
+    --     HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
+    --         MatrixUtil.dot_vector(transform_matrix, {0, DemoRorate.config.left_right_sub_unit_distance, 0})
+    --     ),
+    --     left_sub_unit_hc
+    -- )
+    local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+    hc = MatrixUtil.dot(
+        HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
+            MatrixUtil.dot_vector(HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(hc), vec)
+        ), 
+        hc
+    )
+    UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+end
+
+
 
 --- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
 --- @param unit_table SystemUnitTable 单位

@@ -41,7 +41,6 @@ HomogeneousCoordinatesUtil.copy = function(m)
     }
 end
 
--- TODO: test
 --- 齐次坐标矩阵转换为变换矩阵
 --- @param m Matrix
 --- @return Matrix
@@ -58,24 +57,23 @@ HomogeneousCoordinatesUtil.get_transform_matrix_by_hc = function(m)
 end
 
 --- 获取齐次坐标矩阵的平移矩阵
---- @param x number x轴平移距离
---- @param y number y轴平移距离
---- @param z number z轴平移距离
---- @return Matrix
-HomogeneousCoordinatesUtil.get_translation_matrix = function(x, y, z)
-    return {
-        {1, 0, 0, x},
-        {0, 1, 0, y},
-        {0, 0, 1, z},
-        {0, 0, 0, 1}
-    }
-end
-
---- 根据向量获取平移矩阵
 --- @param vec Vector
 --- @return Matrix
 HomogeneousCoordinatesUtil.get_translation_matrix_by_vec = function(vec)
-    return HomogeneousCoordinatesUtil.get_translation_matrix(vec[1], vec[2], vec[3])
+    if type(vec) ~= "table" then
+        LoggerModule.error("HomogeneousCoordinatesUtil.get_translation_matrix_by_vec", "vec should be a table")
+        return nil
+    end
+    if getn(vec) ~= 3 then
+        LoggerModule.error("HomogeneousCoordinatesUtil.get_translation_matrix_by_vec", "vec should have length 3")
+        return nil
+    end
+    return {
+        {1, 0, 0, vec[1]},
+        {0, 1, 0, vec[2]},
+        {0, 0, 1, vec[3]},
+        {0, 0, 0, 1}
+    }
 end
 
 --- 根据齐次坐标矩阵获取单位的x, y, z轴的方向向量
@@ -87,7 +85,6 @@ HomogeneousCoordinatesUtil.get_axis_vecs_by_hc = function(m)
         VectorUtil.to_unit_vec({m[3][1], m[3][2], m[3][3]})
 end 
 
--- TODO: test
 --- 获取当前的方向向量
 --- @param m Matrix
 --- @param origin_vec Vector

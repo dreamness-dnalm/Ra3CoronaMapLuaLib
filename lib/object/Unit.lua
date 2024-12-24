@@ -430,7 +430,6 @@ function Unit:get_homogeneous_coordinates()
     return UnitPhysicsModule.get_homogeneous_coordinates(self.unit_table)
 end
 
--- TODO: test
 --- 设置单位的齐次坐标矩阵
 --- @param matrix Matrix
 function Unit:set_homogeneous_coordinates(matrix)
@@ -441,16 +440,25 @@ function Unit:set_homogeneous_coordinates(matrix)
     UnitPhysicsModule.set_homogeneous_coordinates(self.unit_table, matrix)
 end
 
---- 平移单位
---- @param x number x
---- @param y number y
---- @param z number z
-function Unit:translate(x, y, z)
-    if type(x) ~= "number" or type(y) ~= "number" or type(z) ~= "number" then
-        LoggerModule.error("Unit:translate", "x, y, z must be a number")
+--- 平移单位(全局坐标)
+--- @param vec Vector
+function Unit:translate(vec)
+    if type(vec) ~= "table" then
+        LoggerModule.error("Unit:translate", "vec must be a table")
         return
     end
-    UnitPhysicsModule.translate(self.unit_table, x, y, z)
+    UnitPhysicsModule.translate(self.unit_table, vec)
+end
+
+-- TODO: test
+--- 平移单位(相对坐标)
+--- @param vec Vector
+function Unit:translate_relative(vec)
+    if type(vec) ~= "table" then
+        LoggerModule.error("Unit:translate_relative", "vec must be a table")
+        return
+    end
+    UnitPhysicsModule.translate_relatively(self.unit_table, vec)
 end
 
 --- 欧拉角旋转, 具体的旋转方向可使用右手定则确定

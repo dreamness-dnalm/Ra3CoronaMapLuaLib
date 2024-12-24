@@ -97,14 +97,17 @@ function DemoRorate:update()
 
 
     local left_sub_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
-    local transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(left_sub_unit_hc)
-    left_sub_unit_hc = MatrixUtil.dot(
-        HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
-            MatrixUtil.dot_vector(transform_matrix, {0, DemoRorate.config.left_right_sub_unit_distance, 0})
-        ),
-        left_sub_unit_hc
-    )
+    -- local transform_matrix = HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(left_sub_unit_hc)
+    -- left_sub_unit_hc = MatrixUtil.dot(
+    --     HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
+    --         MatrixUtil.dot_vector(transform_matrix, {0, DemoRorate.config.left_right_sub_unit_distance, 0})
+    --     ),
+    --     left_sub_unit_hc
+    -- )
+    -- left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
+
     left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
+    left_sub_unit:translate_relative({0, DemoRorate.config.left_right_sub_unit_distance, 0})
 
 
     -- --- 右僚机的偏移方向
