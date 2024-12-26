@@ -11,6 +11,7 @@ StatusEnum = {
     UNSELECTABLE = "UNSELECTABLE",
     --- 单位或建筑展开中, 技能前摇
     UNPACKING = "UNPACKING",
+    STRUCTURE_UNPACKING = "STRUCTURE_UNPACKING",
     --- 无音效
     INAUDIBLE = "INAUDIBLE",
 

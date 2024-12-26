@@ -223,8 +223,10 @@ UnitPhysicsModule.set_scale = function(unit_table, scale)
         return
     end
 
-
+    LoggerModule.debug("UnitPhysicsModule.scale", "unit_table: " .. tostring(unit_table) .. ", scale: " .. tostring(scale))
     local hc = UnitPhysicsModule.get_homogeneous_coordinates(unit_table)
+
+    LoggerModule.debug("UnitPhysicsModule.scale", "hc: " .. MatrixUtil.m_tostring(hc))
 
     hc = MatrixUtil.dot(
         HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
@@ -232,6 +234,8 @@ UnitPhysicsModule.set_scale = function(unit_table, scale)
         HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
         hc
     )
+
+    LoggerModule.debug("UnitPhysicsModule.scale", "hc: " .. MatrixUtil.m_tostring(hc))
     
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end

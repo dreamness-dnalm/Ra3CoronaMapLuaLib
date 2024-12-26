@@ -102,14 +102,14 @@ end
 --- @param m Matrix
 --- @return Matrix
 HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc = function(m)
-    return HomogeneousCoordinatesUtil.get_translation_matrix(-m[1][4], -m[2][4], -m[3][4])
+    return HomogeneousCoordinatesUtil.get_translation_matrix_by_vec({-m[1][4], -m[2][4], -m[3][4]})
 end
 
 --- 获取从原点平移回去的齐次坐标矩阵
 --- @param m Matrix
 --- @return Matrix
 HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc = function(m)
-    return HomogeneousCoordinatesUtil.get_translation_matrix(m[1][4], m[2][4], m[3][4])
+    return HomogeneousCoordinatesUtil.get_translation_matrix_by_vec({m[1][4], m[2][4], m[3][4]})
 end
 
 

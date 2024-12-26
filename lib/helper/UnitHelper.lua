@@ -46,8 +46,14 @@ function UnitHelper.build_unit(unit_table, name)
     if unit_id == nil then
         return nil
     end
+    local final_name = name
+    if final_name == nil then
+        final_name = UnitHelper.get_unit_auto_name()
+        UnitModule.name_unit(final_name, unit_table)
+    end
+    
 
-    local obj = { unit_table = unit_table, name = name, id = unit_id }
+    local obj = { unit_table = unit_table, name = final_name, id = unit_id }
 
     settag(obj, _meta.tags.unit_tag)
 

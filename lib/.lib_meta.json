@@ -860,6 +860,38 @@
           "OrderNum": 27,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+        },
+        {
+          "FileName": "UnitModelStateModule.lua",
+          "FilePath": "\\lib\\basic_module\\UnitModelStateModule.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 28,
+          "Children": [],
+          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+        },
+        {
+          "FileName": "GarrisonModule.lua",
+          "FilePath": "\\lib\\basic_module\\GarrisonModule.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 29,
+          "Children": [],
+          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
         }
       ],
       "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
