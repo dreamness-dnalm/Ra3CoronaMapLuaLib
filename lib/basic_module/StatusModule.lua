@@ -19,7 +19,7 @@ StatusModule.is_unit_has_status = function(unit_table_or_name, status)
         LoggerModule.error("StatusModule.is_unit_has_status", "status must be a string")
         return nil
     end
-    return EvaluateCondition("UNIT_HAS_OBJECT_STATUS", unit_table_or_name, status) --59
+    return GameModule.from_ra3_boolean(EvaluateCondition("UNIT_HAS_OBJECT_STATUS", unit_table_or_name, status)) --59)
 end
 
 -- -- TODO: test

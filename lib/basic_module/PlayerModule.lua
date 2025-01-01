@@ -29,39 +29,9 @@ PlayerModule.is_start_pos = function(player_name, start_pos)
         LoggerModule.error("PlayerModule.is_start_pos", "start_pos must be a number")
         return nil
     end
-    return EvaluateCondition("START_POSITION_IS", player_name, start_pos)
+    return GameModule.from_ra3_boolean(EvaluateCondition("START_POSITION_IS", player_name, start_pos))
 end
 
-
--- TODO: test, package
---- 是否允许玩家建造建筑 (59)/(56)
---- @param player_name PlayerEnum
---- @param is_allowed boolean
-PlayerModule.allow_build_building = function(player_name, is_allowed)
-    if type(player_name) ~= "string" then
-        LoggerModule.error("PlayerModule.allow_build_building", "player_name must be a string")
-    end
-    if is_allowed then
-        ExecuteAction("PLAYER_ENABLE_BASE_CONSTRUCTION", player_name)
-    else
-        ExecuteAction("PLAYER_DISABLE_BASE_CONSTRUCTION", player_name)
-    end
-end
-
--- TODO: test, package
---- 是否允许玩家建造单位 (61)/(58)
---- @param player_name PlayerEnum
---- @param is_allow boolean
-PlayerModule.allow_build_unit = function(player_name, is_allow)
-    if type(player_name) ~= "string" then
-        LoggerModule.error("PlayerModule.allow_build_unit", "player_name must be a string")
-    end
-    if is_allow then
-        ExecuteAction("PLAYER_ENABLE_UNIT_CONSTRUCTION", player_name)
-    else
-        ExecuteAction("PLAYER_DISABLE_UNIT_CONSTRUCTION", player_name)
-    end
-end
 
 -- TODO: test, package
 --- 获取玩家数 [114]

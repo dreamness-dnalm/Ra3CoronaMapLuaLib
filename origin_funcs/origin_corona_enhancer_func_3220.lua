@@ -621,7 +621,6 @@ function exPlayerGetSelectedObjectIds(player_name) end
 --  -- ...
 -- end
 
---- TODO: test, package
 --- 获取指定玩家当前资金
 --- @param player_name PlayerEnum
 --- @return number 资金

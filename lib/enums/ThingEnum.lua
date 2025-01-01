@@ -93,6 +93,8 @@ ThingEnum = {
     --- 耗电物体
     CelestialPowerExpendObject_200A = "CelestialPowerExpendObject_200A",
 
+    CelestialPowerExaminer = "CelestialPowerExaminer",
+
     --- 电能纳贡
     CelestialPowerReduceEffectObject = "CelestialPowerReduceEffectObject",
     --- 电能纳贡
@@ -174,4 +176,6 @@ ThingEnum = {
     AP_OilDrum01 = "AP_OilDrum01",
     --- 天启
     SovietAntiVehicleVehicleTech3 = "SovietAntiVehicleVehicleTech3",
+    --- 渔船的莲灯
+    CelestialSonarBuoy = "CelestialSonarBuoy",
 }

@@ -71,7 +71,7 @@ PowerModule.power_excess_compare = function(player_name, comparison, value)
         return nil
     end
 
-    return EvaluateCondition("PLAYER_EXCESS_POWER_COMPARE_VALUE", player_name, comparison, value)
+    return GameModule.from_ra3_boolean(EvaluateCondition("PLAYER_EXCESS_POWER_COMPARE_VALUE", player_name, comparison, value))
 end
 
 --- 获取玩家富余电力值

@@ -25,5 +25,7 @@ StatusEnum = {
     HIJACKED = "HIJACKED",
     --- 不可攻击
     NO_ATTACK = "NO_ATTACK",
+    --- 不可被出售
+    CANNOT_BE_SOLD = "CANNOT_BE_SOLD",
 
 }

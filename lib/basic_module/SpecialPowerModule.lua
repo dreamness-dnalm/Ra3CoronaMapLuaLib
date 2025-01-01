@@ -15,6 +15,6 @@ SpecialPowerModule.is_ready = function(player_name, special_power_name)
     if type(special_power_name) ~= "string" then
         LoggerModule.error("SpecialPowerModule.is_ready", "special_power_name must be a string")
     end
-    return EvaluateCondition("SKIRMISH_SPECIAL_POWER_READY", player_name, special_power_name)
+    return GameModule.from_ra3_boolean(EvaluateCondition("SKIRMISH_SPECIAL_POWER_READY", player_name, special_power_name))
 end
 

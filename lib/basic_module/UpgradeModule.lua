@@ -26,22 +26,20 @@ UpgradeModule = {}
 --     return ret
 -- end
 
--- -- TODO: test, package
--- --- 允许玩家升级 (535)
--- --- @param player_name string
--- --- @param upgrade_name UpgradeEnum
--- --- @param is_allow boolean
--- UpgradeModule.allow_upgrade = function(player_name, upgrade_name, is_allow)
---     LoggerModule.debug("UpgradeModule.allow_upgrade", "start")
---     if type(player_name) ~= "string" then
---         LoggerModule.error("UpgradeModule.allow_upgrade", "player_name must be a string")
---     end
---     if type(upgrade_name) ~= "string" then
---         LoggerModule.error("UpgradeModule.allow_upgrade", "upgrade_name must be a string")
---     end
---     ExecuteAction("ALLOW_DISALLOW_ONE_UPGRADE", player_name, upgrade_name, is_allow)
---     LoggerModule.debug("UpgradeModule.allow_upgrade", "end")
--- end
+-- TODO: test, package
+--- 允许/禁止玩家升级 (535)
+--- @param player_name PlayerEnum
+--- @param upgrade_name UpgradeEnum
+--- @param is_allow boolean
+UpgradeModule.allow_upgrade = function(player_name, upgrade_name, is_allow)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("UpgradeModule.allow_upgrade", "player_name must be a string")
+    end
+    if type(upgrade_name) ~= "string" then
+        LoggerModule.error("UpgradeModule.allow_upgrade", "upgrade_name must be a string")
+    end
+    ExecuteAction("ALLOW_DISALLOW_ONE_UPGRADE", player_name, upgrade_name, GameModule.to_ra3_boolean(is_allow))
+end
 
 -- -- TODO: test, package
 -- --- 玩家是否拥有某升级 (314) / (504) 用途暂时不明
@@ -83,6 +81,7 @@ UpgradeModule.unit_enable_upgrade = function(unit_name_or_table, upgrade_name, i
     end
     LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "end")
 end
+
 
 -- -- TODO: test, package
 -- --- 单位是否有升级 [138]
