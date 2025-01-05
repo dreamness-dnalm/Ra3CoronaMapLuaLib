@@ -1,6 +1,6 @@
 {
-  "FileName": "012_rorate",
-  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\012_rorate",
+  "FileName": "012_rotate",
+  "FilePath": "dir",
   "FileType": "dir",
   "IsEnabled": true,
   "IsIncluded": true,
@@ -14,7 +14,7 @@
   "Children": [
     {
       "FileName": "rorate_demo.lua",
-      "FilePath": "\\012_rorate\\rorate_demo.lua",
+      "FilePath": "\\012_rotate\\rorate_demo.lua",
       "FileType": "lua",
       "IsEnabled": true,
       "IsIncluded": true,
@@ -26,24 +26,24 @@
       "ActiveInHard": true,
       "OrderNum": 0,
       "Children": [],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\012_rorate"
+      "Comment": ""
     },
     {
       "FileName": "rorate_demo_update.lua",
-      "FilePath": "\\012_rorate\\rorate_demo_update.lua",
+      "FilePath": "\\012_rotate\\rorate_demo_update.lua",
       "FileType": "lua",
       "IsEnabled": true,
       "IsIncluded": true,
       "RunOnce": false,
       "IsEvaluateEachFrame": true,
-      "EvaluationInterval": 1,
+      "EvaluationInterval": 2,
       "ActiveInEasy": true,
       "ActiveInMedium": true,
       "ActiveInHard": true,
       "OrderNum": 1,
       "Children": [],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\012_rorate"
+      "Comment": ""
     }
   ],
-  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\012_rorate"
+  "Comment": ""
 }

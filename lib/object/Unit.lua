@@ -450,7 +450,6 @@ function Unit:translate(vec)
     UnitPhysicsModule.translate(self.unit_table, vec)
 end
 
--- TODO: test
 --- 平移单位(相对坐标)
 --- @param vec Vector
 function Unit:translate_relative(vec)

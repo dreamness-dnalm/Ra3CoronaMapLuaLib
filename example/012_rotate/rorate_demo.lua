@@ -18,9 +18,9 @@ LoggerModule.setup(LoggerLevelEnum.DEBUG, {LoggerTargetEnum.DEBUG_LOG_FILE})
 -- LoggerModule.info('rotate_demo', 'direction_vec: ' .. tostring(direction_vec))
 -- LoggerModule.info('rorate_demo', 'direction_vec: ' .. VectorUtil.to_string(direction_vec))
 
-DemoRorate = {}
+DemoRotate = {}
 
-DemoRorate.config = {
+DemoRotate.config = {
     spaw_waypoint = 'Waypoint 3',
     height = 200,
     left_right_sub_unit_distance = 100,
@@ -30,27 +30,79 @@ DemoRorate.config = {
 
 local team_name = TeamModule.from_player_name(PlayerEnum.Player_1)
 
-DemoRorate.main_unit = UnitCreateHelper.create_unit_at_waypoint('main_unit', ThingEnum.JapanMiner, team_name, DemoRorate.config.spaw_waypoint, nil, nil, nil)
-DemoRorate.left_sub_unit = UnitCreateHelper.create_unit_at_waypoint('left_sub_unit', ThingEnum.AlliedMCV, team_name, DemoRorate.config.spaw_waypoint, nil, nil, nil)
-DemoRorate.right_sub_unit = UnitCreateHelper.create_unit_at_waypoint('right_sub_unit', ThingEnum.AlliedMCV, team_name, DemoRorate.config.spaw_waypoint, nil, nil, nil)
+-- DemoRotate.main_unit = UnitCreateHelper.create_unit_at_waypoint('main_unit', ThingEnum.JapanMiner, team_name, DemoRotate.config.spaw_waypoint, nil, nil, nil)
+-- DemoRotate.left_sub_unit = UnitCreateHelper.create_unit_at_waypoint('left_sub_unit', ThingEnum.AlliedMCV, team_name, DemoRotate.config.spaw_waypoint, nil, nil, nil)
+-- DemoRotate.right_sub_unit = UnitCreateHelper.create_unit_at_waypoint('right_sub_unit', ThingEnum.AlliedMCV, team_name, DemoRotate.config.spaw_waypoint, nil, nil, nil)
 
 -- DemoRorate.main_unit:set_position_by_vec(DemoRorate.config.start_position)
-DemoRorate.main_unit:translate(0, 0, DemoRorate.config.height)
+-- DemoRorate.main_unit:translate(0, 0, DemoRorate.config.height)
 
-function DemoRorate:update()
-    LoggerModule.info('rorate_demo', 'step 1')
-    local main_unit = DemoRorate.main_unit
-    local left_sub_unit = DemoRorate.left_sub_unit
-    local right_sub_unit = DemoRorate.right_sub_unit
-    LoggerModule.info('rorate_demo', 'step 2')
-    local base_hc = main_unit:get_homogeneous_coordinates()
-    LoggerModule.info('rorate_demo', 'step 3')
-    -- local main_unit_pos_vec = HomogeneousCoordinatesUtil.get_position_vec_by_hc(base_hc)
-    -- main_unit_pos_vec[3] = DemoRorate.config.height
-    LoggerModule.info('rorate_demo', 'step 4')
-    --- 设置单位高度, 防止单位掉落
-    -- HomogeneousCoordinatesUtil.set_position_vec(base_hc, main_unit_pos_vec)
-    LoggerModule.info('rorate_demo', 'step 5')
+local unit0 = UnitHelper.get_unit_from_name('r0')
+local unit1 = UnitHelper.get_unit_from_name('r1')
+local unit2 = UnitHelper.get_unit_from_name('r2')
+local unit3 = UnitHelper.get_unit_from_name('r3')
+
+unit0:translate_relative({0, 0, 100})
+unit1:translate_relative({0, 0, 100})
+unit2:translate_relative({0, 0, 100})
+unit3:translate_relative({0, 0, 100})
+
+unit1:rotate_by_euler(30, 0, 0)
+unit2:rotate_by_euler(0, 30, 0)
+unit3:rotate_by_euler(0, 0, 30)
+
+
+
+-- -- DemoRotate.unit1:set_scale(2)
+-- local hc = DemoRotate.unit1:get_homogeneous_coordinates()
+-- hc = MatrixUtil.dot(
+--     HomogeneousCoordinatesUtil.get_move_back_translation_matrix_by_hc(hc),
+--     HomogeneousCoordinatesUtil.get_uniform_scale_matrix(2),
+--     HomogeneousCoordinatesUtil.get_move_origin_translation_matrix_by_hc(hc),
+--     hc
+-- )
+-- DemoRotate.unit1:set_homogeneous_coordinates(hc)
+
+-- LoggerModule.debug("UnitPhysicsModule.scale", "hc: " .. MatrixUtil.m_tostring(hc))
+
+-- UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
+
+
+
+function DemoRotate:update()
+    -- 分别在x, y, z轴上的缩放比例
+    local sx, sy, sz = DemoRotate.unit2:get_scale()
+    -- 如果unit2当前的缩放比例不是3, 则设置为3 (允许一定计算误差)
+    if not MathUtil.is_in_error_range(sx, 3, 0.1) then
+        DemoRotate.unit2:set_scale(3)
+    end
+
+
+
+    -- DemoRotate.left_sub_unit:set_homogeneous_coordinates(DemoRotate.main_unit:get_homogeneous_coordinates())
+    -- DemoRotate.left_sub_unit:translate_relative({30, 90, 0})
+    -- local hc = DemoRotate.main_unit:get_homogeneous_coordinates()
+    -- hc = MatrixUtil.dot(
+    --     HomogeneousCoordinatesUtil.get_translation_matrix_by_vec(
+    --         MatrixUtil.dot_vector(HomogeneousCoordinatesUtil.get_transform_matrix_by_hc(hc), {30, 90, 0})
+    --     ), 
+    --     hc
+    -- )
+    -- DemoRotate.left_sub_unit:set_homogeneous_coordinates(hc)
+
+    -- LoggerModule.info('rorate_demo', 'step 1')
+    -- local main_unit = DemoRorate.main_unit
+    -- local left_sub_unit = DemoRorate.left_sub_unit
+    -- local right_sub_unit = DemoRorate.right_sub_unit
+    -- LoggerModule.info('rorate_demo', 'step 2')
+    -- local base_hc = main_unit:get_homogeneous_coordinates()
+    -- LoggerModule.info('rorate_demo', 'step 3')
+    -- -- local main_unit_pos_vec = HomogeneousCoordinatesUtil.get_position_vec_by_hc(base_hc)
+    -- -- main_unit_pos_vec[3] = DemoRorate.config.height
+    -- LoggerModule.info('rorate_demo', 'step 4')
+    -- --- 设置单位高度, 防止单位掉落
+    -- -- HomogeneousCoordinatesUtil.set_position_vec(base_hc, main_unit_pos_vec)
+    -- LoggerModule.info('rorate_demo', 'step 5')
     -- 变换主单位
     -- 对主单位进行放缩
     -- local main_unit_hc = HomogeneousCoordinatesUtil.copy(base_hc)
@@ -107,7 +159,7 @@ function DemoRorate:update()
     -- left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
 
     left_sub_unit:set_homogeneous_coordinates(left_sub_unit_hc)
-    left_sub_unit:translate_relative({0, DemoRorate.config.left_right_sub_unit_distance, 0})
+    left_sub_unit:translate_relative({0, DemoRotate.config.left_right_sub_unit_distance, 0})
 
 
     -- --- 右僚机的偏移方向
