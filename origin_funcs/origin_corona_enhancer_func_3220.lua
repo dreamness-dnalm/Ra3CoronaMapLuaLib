@@ -56,7 +56,6 @@ function exTerrainGetHeightByPos(x, y) end
 --- @return string 纹理名称
 function exTerrainGetTextureNameByPos(x, y)  end
 
--- TODO: test, package
 --- 注册按键, 以响应键盘事件
 --- @param keyCode number 按键码 参考https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 --- @param assistKeyCode number 辅助按键码，如果不需要，传0即可 参考https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes

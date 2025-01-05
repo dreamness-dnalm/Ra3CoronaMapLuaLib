@@ -69,7 +69,6 @@ function ObjectsDistance2D(unit_table1, unit_table_2)  end
 --- @return number 距离
 function ObjectsDistance3D(unit_table1, unit_table_2)  end
 
--- TODO: test, package
 --- 获取单位详细信息
 --- @param unit_table table 单位
 --- @return table 单位详细信息, 坐标, 旋转, 缩放等 ;
@@ -78,7 +77,6 @@ function ObjectsDistance3D(unit_table1, unit_table_2)  end
 ---angle = atan2(direction2D.Y, direction2D.X)
 function ObjectGetTransform(unit_table)  end
 
--- TODO: test, package
 --- 设置单位的详细信息
 --- @param unit_table table 单位
 --- @param matrix table 单位详细信息, 坐标, 旋转, 缩放等 ;
