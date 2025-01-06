@@ -5,6 +5,11 @@
 
 [使用文档](https://www.yuque.com/muzeqaq/ra3mapwiki/afe5t67gxdl6krgd)
 
+## 社区
+QQ群
+513118543 (lua库交流)
+
+
 ## 软件架构
 
 ![软件架构](doc/img/arch.png)

@@ -64,6 +64,12 @@ function Unit:delete()
     UnitModule.delete(self.unit_table)
 end
 
+-- TODO: test
+--- 杀死单位
+function Unit:kill()
+    UnitHealthModule.kill_unit(self.unit_table)
+end
+
 --- 判断单位是否存活
 --- @return boolean
 function Unit:is_alive()
@@ -417,7 +423,7 @@ end
 -- TODO: test
 --- 使单位面向另一个单位
 --- @param other_unit Unit
-function Unit:face_to_unit__require_name(other_unit)
+function Unit:face_to_unit(other_unit)
     UnitPhysicsModule.face_to_unit(self.name, other_unit.name)
 end
 

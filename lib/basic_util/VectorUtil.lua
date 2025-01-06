@@ -137,6 +137,22 @@ VectorUtil.add = function(vec1, vec2)
     return result
 end
 
+--- 向量减法
+--- @param vec1 Vector 向量1
+--- @param vec2 Vector 向量2
+--- @return Vector
+VectorUtil.subtract = function(vec1, vec2)
+    if type(vec1) ~= "table" or type(vec2) ~= "table" then
+        LoggerModule.error("VectorUtil.subtract", "vec1 and vec2 must be table")
+        return nil
+    end
+    if getn(vec1) ~= getn(vec2) then
+        LoggerModule.error("VectorUtil.subtract", "vec1 and vec2 must have the same length")
+        return nil
+    end
+    return VectorUtil.add(vec1, VectorUtil.multiply(vec2, -1))
+end
+
 --- 向量转字符串, 用于日志输出
 --- @param vec Vector 向量
 --- @return string
@@ -147,4 +163,12 @@ VectorUtil.to_string = function(vec)
     end
     return TableUtil.arr_to_string(vec)
     
+end
+
+--- 两点之间的距离
+--- @param p1 Vector 点1
+--- @param p2 Vector 点2
+--- @return number
+VectorUtil.point_distance = function(p1, p2)
+    return VectorUtil.norm(VectorUtil.subtract(p1, p2))
 end

@@ -86,13 +86,13 @@ end
 --- @param this_unit_name string 单位名称
 --- @param other_unit_name string 单位名称
 UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)
-    LoggerModule.debug("UnitPhysicsModule.face_to_unit", "this_unit_name: " .. tostring(this_unit_name) .. ", face_to_unit: " .. tostring(other_unit_name))
+    -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "this_unit_name: " .. tostring(this_unit_name) .. ", face_to_unit: " .. tostring(other_unit_name))
     if type(this_unit_name) ~= "string" or type(other_unit_name) ~= "string" then
         LoggerModule.error("UnitPhysicsModule.face_to_unit", "thisUnitName and otherUnitName must be a string")
         return
     end
     ExecuteAction("NAMED_FACE_NAMED", this_unit_name, other_unit_name)
-    LoggerModule.debug("UnitPhysicsModule.face_to_unit", "end")
+    -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "end")
 end
 
 

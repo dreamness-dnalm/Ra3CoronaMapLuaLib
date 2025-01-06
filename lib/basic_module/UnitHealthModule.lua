@@ -45,7 +45,7 @@ UnitHealthModule.set_unit_health_percentage = function(unit_name_or_table, perce
     ExecuteAction("SET_UNIT_HEALTH_PERCENTAGE_TO_COUNTER", unit_name_or_table, percentage)
 end
 
--- TODO: test, package
+-- TODO: test
 --- 设置单位生命值
 --- @param unit_table SystemUnitTable
 --- @param health number
@@ -63,8 +63,8 @@ UnitHealthModule.set_unit_health = function(unit_table, health)
     UnitHealthModule.set_unit_health_percentage(healthPercentage)
 end
 
--- TODO: test, package
---- 单位承受伤害
+-- TODO: test
+--- 单位承受伤害 (63)
 --- @param unit_name_or_table SystemUnitTable|string
 --- @param point number
 UnitHealthModule.unit_suffer_damage = function(unit_name_or_table, point)
@@ -80,3 +80,13 @@ UnitHealthModule.unit_suffer_damage = function(unit_name_or_table, point)
     ExecuteAction("NAMED_DAMAGE", unit_name_or_table, point)
 end
 
+-- TODO: test
+--- 杀死单位 (67)
+--- @param unit_name_or_table SystemUnitTable|string
+UnitHealthModule.kill_unit = function(unit_name_or_table)
+    if type(unit_name_or_table) ~= "table" then
+        LoggerModule.error('UnitHealthModule.kill_unit', 'unit_name_or_table should be table')
+        return
+    end
+    ExecuteAction("NAMED_KILL", unit_name_or_table)
+end
