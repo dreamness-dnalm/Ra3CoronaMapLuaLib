@@ -5,8 +5,6 @@
 
 --- @class Matrix 矩阵
 
---- @class Vector 向量
-
 --- 矩阵工具类
 MatrixUtil = {}
 

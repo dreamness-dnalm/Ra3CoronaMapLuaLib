@@ -68,7 +68,7 @@ end
 --- @param unit_name_or_table SystemUnitTable|string
 --- @param point number
 UnitHealthModule.unit_suffer_damage = function(unit_name_or_table, point)
-    if type(unit_name_or_table) ~= "table" and type(point) ~= number then
+    if type(unit_name_or_table) ~= "table" and type(point) ~= 'number' then
         LoggerModule.error('UnitHealthModule.unit_suffer_damage', 'unit_name_or_table should be table or string')
         return
     end

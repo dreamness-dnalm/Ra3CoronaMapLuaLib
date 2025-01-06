@@ -97,6 +97,11 @@ function strfind(s, pattern, init, plain) end
 --- @param j number 可选参数, 结束位置
 function strsub(s, i, j) end
 
+--- 获取字符串长度
+--- @param s string
+--- @return number
+function strlen(s) end
+
 -------- tag相关 -------
 
 --- 创建一个新的tag

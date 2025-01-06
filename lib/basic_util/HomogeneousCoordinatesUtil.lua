@@ -150,8 +150,8 @@ HomogeneousCoordinatesUtil.get_rotation_matrix_by_vec = function(vec, angle)
     local x = vec[1]
     local y = vec[2]
     local z = vec[3]
-    local c = cos(angle)
-    local s = sin(angle)
+    local c = MathUtil.cos(angle)
+    local s = MathUtil.sin(angle)
     local t = 1 - c
     return {
         {t * x * x + c, t * x * y - s * z, t * x * z + s * y, 0},

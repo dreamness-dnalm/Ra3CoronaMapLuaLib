@@ -15,27 +15,27 @@ UnitWeaponMododule = {}
 --- @param target_unit_table SystemUnitTable|nil 目标单位table
 UnitWeaponMododule.fire_with_temp_weapon = function(unit_table, weapon_name, x, y, z, target_unit_table)
     if type(unit_table) ~= "table" then
-        logger.error("UnitWeaponMododule.fire_with_temp_weapon", "unitTable must be a table")
+        LoggerModule.error("UnitWeaponMododule.fire_with_temp_weapon", "unitTable must be a table")
         return
     end
     if type(weapon_name) ~= "string" then
-        logger.error("UnitWeaponMododule.fire_with_temp_weapon", "weaponName must be a string")
+        LoggerModule.error("UnitWeaponMododule.fire_with_temp_weapon", "weaponName must be a string")
         return
     end
 
     if type(x) ~= "number" or type(y) ~= "number" or type(z) ~= "number" then
-        logger.error("UnitWeaponMododule.fire_with_temp_weapon", "x, y, z must be a number")
+        LoggerModule.error("UnitWeaponMododule.fire_with_temp_weapon", "x, y, z must be a number")
         return
     end
 
     if target_unit_table ~= nil and type(target_unit_table) ~= "table" then
-        logger.error("UnitWeaponMododule.fire_with_temp_weapon", "target_unit_table must be a table or nil")
+        LoggerModule.error("UnitWeaponMododule.fire_with_temp_weapon", "target_unit_table must be a table or nil")
         return
     end
     local targetPos = {X = x, Y = y, Z = z}
     local ret, err = ObjectCreateAndFireTempWeaponToTarget(unit_table, weapon_name, targetPos, target_unit_table)
     if not ret then
-        logger.error("UnitWeaponMododule.fire_with_temp_weapon", "create temp weapon failed: " .. tostring(err))
+        LoggerModule.error("UnitWeaponMododule.fire_with_temp_weapon", "create temp weapon failed: " .. tostring(err))
         return
     end
 end
@@ -50,23 +50,23 @@ end
 --- @param ammo_cnt number 弹药数量
 UnitWeaponMododule.set_weapon_ammo_cnt = function(unit_table, weapon_slot_id, weapon_ording, weapon_index, ammo_cnt)
     if type(unit_table) ~= "table" then
-        logger.error("UnitWeaponMododule.set_weapon_ammo_cnt", "unit_table must be a table")
+        LoggerModule.error("UnitWeaponMododule.set_weapon_ammo_cnt", "unit_table must be a table")
         return
     end
     if type(weapon_slot_id) ~= "number" then
-        logger.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_slot_id must be a number")
+        LoggerModule.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_slot_id must be a number")
         return
     end
     if type(weapon_ording) ~= "number" then
-        logger.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_ording must be a number")
+        LoggerModule.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_ording must be a number")
         return
     end
     if type(weapon_index) ~= "number" then
-        logger.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_index must be a number")
+        LoggerModule.error("UnitWeaponMododule.set_weapon_ammo_cnt", "weapon_index must be a number")
         return
     end
     if type(ammo_cnt) ~= "number" then
-        logger.error("UnitWeaponMododule.set_weapon_ammo_cnt", "ammo_cnt must be a number")
+        LoggerModule.error("UnitWeaponMododule.set_weapon_ammo_cnt", "ammo_cnt must be a number")
         return
     end
 
@@ -83,19 +83,19 @@ end
 --- @return number 弹药数量
 UnitWeaponMododule.get_weapon_ammo_cnt = function(unit_table, weapon_slot_id, weapon_ording, weapon_index)
     if type(unit_table) ~= "table" then
-        logger.error("UnitWeaponMododule.get_weapon_ammo_cnt", "unit_table must be a table")
+        LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "unit_table must be a table")
         return
     end
     if type(weapon_slot_id) ~= "number" then
-        logger.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_slot_id must be a number")
+        LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_slot_id must be a number")
         return
     end
     if type(weapon_ording) ~= "number" then
-        logger.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_ording must be a number")
+        LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_ording must be a number")
         return
     end
     if type(weapon_index) ~= "number" then
-        logger.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_index must be a number")
+        LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_index must be a number")
         return
     end
 
