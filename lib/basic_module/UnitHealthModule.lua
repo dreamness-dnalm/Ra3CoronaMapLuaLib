@@ -80,7 +80,6 @@ UnitHealthModule.unit_suffer_damage = function(unit_name_or_table, point)
     ExecuteAction("NAMED_DAMAGE", unit_name_or_table, point)
 end
 
--- TODO: test
 --- 杀死单位 (67)
 --- @param unit_name_or_table SystemUnitTable|string
 UnitHealthModule.kill_unit = function(unit_name_or_table)

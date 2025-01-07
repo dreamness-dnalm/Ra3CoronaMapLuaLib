@@ -48,7 +48,7 @@ function UnitHelper.build_unit(unit_table, name)
     end
     local final_name = name
     if final_name == nil then
-        final_name = UnitHelper.get_unit_auto_name()
+        final_name = 'name_temp_name__id_' .. tostring(unit_id)
         UnitModule.name_unit(final_name, unit_table)
     end
     

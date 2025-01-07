@@ -29,14 +29,11 @@ function exFXShowFXTemplate(FXParticleSystemTemplate, x, y, z)  end
 --- @param z number z
 function exFXShowFXList(FXShowFXList, x, y, z)  end
 
-
--- TODO: test, package
 --- 设置或新建计数器
 --- @param counterName string 计数器名
 --- @param value number 计数器值
 function exCounterSetByName(counterName, value) end
 
--- TODO: test, package
 --- 获取计数器的值
 --- @param counterName string 计数器名
 --- @return number 计数器值
@@ -136,83 +133,80 @@ function exInfoBoxTopCenterShowForPlayer(player_name, content, duration_seconds)
 --- @param amount number 伤害值, 整数, 正数表示增加冰冻量，负数表示解冻量
 function exObjectDealSecondaryDamage(object_id, amount)  end
 
--- TODO: test, package
+-- TODO: test
 -- 针对全体玩家
---设置相机位置
+--- 设置相机位置
 function exCameraAdjustPos(x, y, z)  end
--- TODO: test, package
---设置相机旋转
+-- TODO: test
+--- 设置相机旋转
 function exCameraAdjustRotation(value)  end
--- TODO: test, package
---设置相机俯仰
+-- TODO: test
+--- 设置相机俯仰
 function exCameraAdjustPitch(value)  end
--- TODO: test, package
---设置相机滚转
+-- TODO: test
+--- 设置相机滚转
 function exCameraAdjustRoll(value)  end
--- TODO: test, package
---设置相机位置相对于当前位置的偏移
+-- TODO: test
+--- 设置相机位置相对于当前位置的偏移
 function exCameraAdjustPosBy(dx, dy, dz)  end
--- TODO: test, package
---设置相机旋转改变量（相对于当前值)
+-- TODO: test
+--- 设置相机旋转改变量（相对于当前值)
 function exCameraAdjustRotationBy(value)  end
--- TODO: test, package
---设置相机俯仰改变量（相对于当前值)
+-- TODO: test
+--- 设置相机俯仰改变量（相对于当前值)
 function exCameraAdjustPitchBy(value)  end
--- TODO: test, package
---设置相机滚转改变量（相对于当前值)
+-- TODO: test
+--- 设置相机滚转改变量（相对于当前值)
 function exCameraAdjustRollBy(value)  end
 
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机位置
-function exCameraAdjustPosForPlayer(playerName, x, y, z)  end
+function exCameraAdjustPosForPlayer(player_name, x, y, z)  end
 
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机旋转
 function exCameraAdjustRotationForPlayer(playerName, value)  end
 
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机俯仰
 function exCameraAdjustPitchForPlayer(playerName, value)  end
 
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机滚转
 function exCameraAdjustRollForPlayer(playerName, value)  end
 
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机位置相对于当前位置的偏移
 function exCameraAdjustPosByForPlayer(playerName, dx, dy, dz)  end
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机旋转改变量（相对于当前值)
 function exCameraAdjustRotationByForPlayer(playerName, value)  end
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机俯仰改变量（相对于当前值)
 function exCameraAdjustPitchByForPlayer(playerName, value)  end
--- TODO: test, package
+-- TODO: test
 ---设置某玩家相机滚转改变量（相对于当前值)
 function exCameraAdjustRollByForPlayer(playerName, value)  end
 
--- TODO: test, package
 -- 相机动画，跟随相机相关, 开启相机插值
 function exEnableCameraInterpolate() end
 
--- TODO: test, package
 -- 关闭相机插值
 function exDisableCameraInterpolate() end
 
--- TODO: test, package
 --- 设置相机各个参数
 ---  使用方法，要进行连续的相机动画，或者跟随某单位，首先exEnableCameraInterpolate，然后每一帧调用一次SetFollowCameraParam（必须有一次且只能调用一次）
 --  然后使用 exDisableCameraInterpolate 结束
 --  注意，如果地图不需要相机动画或者跟随物体，不要调用exEnableCameraInterpolate
 --  这里的插值，是自动在渲染帧预测和设置相机参数，来实现平稳的相机连续动作（因为lua设置参数只能在逻辑帧）
---- @param playerName string 玩家名字
---- @param posX number 相机位置x
---- @param posY number 相机位置y
---- @param posZ number 相机位置z
+--- @param player_name string 玩家名字
+--- @param pos_x number 相机位置x
+--- @param pos_y number 相机位置y
+--- @param pos_z number 相机位置z
 --- @param yaw number 相机旋转
 --- @param pitch number 相机俯仰
 --- @param roll number 相机滚转
-function exSetFollowCameraParam(playerName, posX, posY, posZ, yaw, pitch, roll) end
+function exSetFollowCameraParam(player_name, pos_x, pos_y, pos_z, yaw, pitch, roll) end
 
 
 -- TODO: test, package

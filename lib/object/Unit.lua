@@ -64,7 +64,6 @@ function Unit:delete()
     UnitModule.delete(self.unit_table)
 end
 
--- TODO: test
 --- 杀死单位
 function Unit:kill()
     UnitHealthModule.kill_unit(self.unit_table)
