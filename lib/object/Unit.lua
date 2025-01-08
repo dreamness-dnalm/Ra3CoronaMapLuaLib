@@ -501,7 +501,6 @@ function Unit:set_mirror(x, y, z)
     UnitPhysicsModule.set_mirror(self.unit_table, x, y, z)
 end
 
--- TODO: test
 --- 获取单位的方向向量
 --- @return Vector
 function Unit:get_direction_vec()
