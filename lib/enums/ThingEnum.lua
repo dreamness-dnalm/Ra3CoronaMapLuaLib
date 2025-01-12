@@ -115,20 +115,7 @@ ThingEnum = {
     CelestialWarFactory = "CelestialWarFactory",
     CelestialWarFactory_Enhanced = "CelestialWarFactory_Enhanced",
 
-    --- 浑天高塔
-    CelesticalBaseDefenseAdvanced = "CelesticalBaseDefenseAdvanced",
-    --- 重弩碉台
-    CelestialBaseDefenseAir = "CelestialBaseDefenseAir",
-    --- 磁弩防控系统
-    CelestialAntiAirShip = "CelestialAntiAirShip",
 
-    --- 光谱塔
-    AlliedBaseDefenseAdvanced = "AlliedBaseDefenseAdvanced",
-    ---多功能炮塔
-    AlliedBaseDefense = "AlliedBaseDefense",
-
-    --- 麒麟破阵战车
-    CelestialAntiVehicleVehicleTech1 = "CelestialAntiVehicleVehicleTech1",
 
     --- 谭雅
     AlliedCommandoTech1 = "AlliedCommandoTech1",
@@ -174,8 +161,149 @@ ThingEnum = {
 
     --- 油桶
     AP_OilDrum01 = "AP_OilDrum01",
-    --- 天启
-    SovietAntiVehicleVehicleTech3 = "SovietAntiVehicleVehicleTech3",
     --- 渔船的莲灯
     CelestialSonarBuoy = "CelestialSonarBuoy",
+
+    --- 光谱塔
+    AlliedBaseDefenseAdvanced = "AlliedBaseDefenseAdvanced",
+    ---多功能炮塔
+    AlliedBaseDefense = "AlliedBaseDefense",
+
+
+    --- 施耐德巨炮
+    AlliedHeavyArtilleryDefenseBase = "AlliedHeavyArtilleryDefenseBase",
+    --- 雅典娜炮
+    AlliedAntiStructureVehicle = "AlliedAntiStructureVehicle",
+    --- 光棱坦克
+    AlliedPrismTank = "AlliedPrismTank",
+    --- 幻影坦克
+    AlliedAntiVehicleVehicleTech3 = "AlliedAntiVehicleVehicleTech3",
+    --- 未来坦克X-1
+    AlliedFutureTank = "AlliedFutureTank",
+    --- 守护者坦克
+    AlliedAntiVehicleVehicleTech1 = "AlliedAntiVehicleVehicleTech1",
+    --- 波塞冬巡洋舰
+    AlliedAntiNavyShipTech3 = "AlliedAntiNavyShipTech3",
+    --- 突袭驱逐舰
+    AlliedAntiNavyShipTech1 = "AlliedAntiNavyShipTech1",
+    --- 航空母舰
+    AlliedAntiStructureShip = "AlliedAntiStructureShip",
+
+    --- 发电机核心
+    JapanPowerPlantEgg = "JapanPowerPlantEgg",
+    --- 道场核心
+    JapanBarracksEgg = "JapanBarracksEgg",
+    --- 矿石精炼厂核心f
+    JapanRefineryEgg = "JapanRefineryEgg",
+    --- 码头核心
+    JapanNavalYardEgg = "JapanNavalYardEgg",
+    --- 机甲工厂核心
+    JapanWarFactoryEgg = "JapanWarFactoryEgg",
+    --- 电脑主机核心
+    JapanTechStructureEgg = "JapanTechStructureEgg",
+    --- VIP要塞核心
+    JapanHighTechStructureEgg = "JapanHighTechStructureEgg",
+    --- 高阶码头核心
+    JapanNavalYardEgg_T3 = "JapanNavalYardEgg_T3",
+    --- 高阶机甲工厂核心
+    JapanWarFactoryEgg_T3 = "JapanWarFactoryEgg_T3",
+    --- 高阶道场核心f
+    JapanBarracksEgg_T3 = "JapanBarracksEgg_T3",
+    --- 超级要塞核心
+    JapanFortressShipEgg = "JapanFortressShipEgg",
+    --- 防卫者核心
+    JapanBaseDefenseEgg = "JapanBaseDefenseEgg",
+    --- 投射塔核心
+    JapanPointShieldControlTowerEgg = "JapanPointShieldControlTowerEgg",
+    --- 塔楼核心
+    JapanBaseDefenseAdvancedEgg = "JapanBaseDefenseAdvancedEgg",
+    --- 防卫者-VX
+    JapanBaseDefense = "JapanBaseDefense",
+    --- 瞬息纳米护盾投射塔
+    JapanPointShieldControlTower = "JapanPointShieldControlTower",
+    --- 波能塔
+    JapanBaseDefenseAdvanced = "JapanBaseDefenseAdvanced",
+    --- 打击者-VX
+    JapanAntiAirVehicleTech1 = "JapanAntiAirVehicleTech1",
+    --- 鬼王
+    JapanAntiVehicleVehicleTech3 = "JapanAntiVehicleVehicleTech3",
+    --- 天狗机器人
+    JapanAntiInfantryVehicle = "JapanAntiInfantryVehicle",
+    --- 波能坦克
+    JapanAntiStructureVehicle = "JapanAntiStructureVehicle",
+    --- 钢铁浪人
+    JapanSentinelVehicle = "JapanSentinelVehicle",
+    --- 海啸坦克
+    JapanAntiVehicleVehicleTech1 = "JapanAntiVehicleVehicleTech1",
+    --- 心神机甲
+    JapanMissileMechaAdvanced = "JapanMissileMechaAdvanced",
+    --- 鬼王X
+    JapanMechaX = "JapanMechaX",
+    --- 迅雷运输挺
+    JapanLightTransportVehicle = "JapanLightTransportVehicle",
+    --- 薙刀驱逐舰
+    JapanAntiVehicleShip = "JapanAntiVehicleShip",
+    --- 太刀重巡洋舰
+    JapanAntiNavyShipTech3 = "JapanAntiNavyShipTech3",
+    --- 将军战列舰
+    JapanAntiStructureShip = "JapanAntiStructureShip",
+
+
+    --- 牛蛙战车
+    SovietAntiAirShip = "SovietAntiAirShip",
+    --- 镰刀机甲
+    SovietAntiInfantryVehicle = "SovietAntiInfantryVehicle",
+    --- 恐怖机器人
+    SovietScoutVehicle = "SovietScoutVehicle",
+    --- V4导弹发射车
+    SovietAntiStructureVehicle = "SovietAntiStructureVehicle",
+    --- 犀牛坦克
+    SovietHeavyAntiVehicleVehicleTech2 = "SovietHeavyAntiVehicleVehicleTech2",
+    --- 重锤突击炮
+    SovietSledgehammerSPG = "SovietSledgehammerSPG",
+    --- 哨兵枪
+    SovietBaseDefenseGround = "SovietBaseDefenseGround",
+    --- 磁爆线圈
+    SovietBaseDefenseAdvanced = "SovietBaseDefenseAdvanced",
+    --- 联盟重型坦克
+    SovietAntiVehicleVehicleTech4 = "SovietAntiVehicleVehicleTech4",
+    --- 天启坦克
+    SovietAntiVehicleVehicleTech3 = "SovietAntiVehicleVehicleTech3",
+    --- 无畏级武库舰
+    SovietAntiStructureShip = "SovietAntiStructureShip",
+    --- 磁爆快艇
+    SovietAntiNavyShipTech1 = "SovietAntiNavyShipTech1",
+    --- 光荣级导弹巡洋舰
+    SovietAntiNavyShipTech3 = "SovietAntiNavyShipTech3",
+    
+    --- 祝融攻坚战车
+    CelestialAntiVehicleVehicleTech3 = "CelestialAntiVehicleVehicleTech3",
+    --- 破军金甲
+    CelestialAntiVehicleVehicleTech4 = "CelestialAntiVehicleVehicleTech4",
+    --- 麒麟破阵战车
+    CelestialAntiVehicleVehicleTech1 = "CelestialAntiVehicleVehicleTech1",
+    --- 磁弩防空系统
+    CelestialAntiAirShip = "CelestialAntiAirShip",
+    --- 凌波护卫战车
+    CelestialAntiInfantryVehicle = "CelestialAntiInfantryVehicle",
+    --- 青锋导弹车
+    CelestialHJ_10 = "CelestialHJ-10",
+    --- 东风洲际导弹发射车
+    CelestialDF41 = "CelestialDF41",
+    --- 重弩碉台
+    CelestialBaseDefenseAir = "CelestialBaseDefenseAir",
+    --- 储元鼎
+    CelestialBattery = "CelestialBattery",
+    --- 疾雷统台
+    CelestialEnergyGatlingTower = "CelestialEnergyGatlingTower",
+    --- 浑天高塔
+    CelestialBaseDefenseAdvanced = "CelestialBaseDefenseAdvanced",
+    --- 乌蓬猎船
+    CelestialAntiNavyShipTech1 = "CelestialAntiNavyShipTech1",
+    --- 计蒙驱逐舰
+    CelestialAlmightlyShip = "CelestialAlmightlyShip",
+    --- 玄冥级战列巡洋舰
+    CelestialAntiNavyShipTech3 = "CelestialAntiNavyShipTech3",
+    --- 玄武级攻击潜艇
+    CelestialAntiStructureShip = "CelestialAntiStructureShip",
 }

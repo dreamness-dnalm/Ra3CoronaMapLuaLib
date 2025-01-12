@@ -101,3 +101,29 @@ TableUtil.dict_shallow_copy = function(t)
     return new_table
 end
 
+-- TODO: test
+--- 构造数组
+--- @param ele any
+--- @param cnt number
+--- @return table
+TableUtil.make_array = function(ele, cnt)
+    local t = {}
+    for i = 1, cnt do
+        tinsert(t, ele)
+    end
+    return t
+end
+
+-- TODO: test
+--- 合并数组
+--- @param ... table[]
+--- @return table
+TableUtil.merge_array = function(...)
+    local t = {}
+    for i = 1, getn(arg) do
+        for j = 1, getn(arg[i]) do
+            tinsert(t, arg[i][j])
+        end
+    end
+    return t
+end

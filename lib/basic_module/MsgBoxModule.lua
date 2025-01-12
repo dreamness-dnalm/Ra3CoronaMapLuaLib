@@ -9,15 +9,15 @@ MsgBoxModule = {}
 
 --- 在单位上显示信息框 (538)
 --- @param unit_name_or_table string|SystemUnitTable 单位名字 | 单位table
---- @param msg string 信息
+--- @param key_map_str string 信息
 --- @param seconds number 持续时长(s)
 --- @param img ButtonTextureEnum|nil 图片
-MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, msg, seconds, img)
+MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, key_map_str, seconds, img)
     if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
         LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "unit_name_or_table must be a string or table")
     end
-    if type(msg) ~= "string" then
-        LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "msg must be a string")
+    if type(key_map_str) ~= "string" then
+        LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "key_map_str must be a string")
     end
     if type(seconds) ~= "number" then
         LoggerModule.error("MsgBoxModule.show_msg_box_on_unit", "seconds must be a number")
@@ -30,7 +30,7 @@ MsgBoxModule.show_msg_box_on_unit = function(unit_name_or_table, msg, seconds, i
         target_img = img
     end
 
-    ExecuteAction("NAMED_SHOW_INFOBOX", unit_name_or_table, msg, seconds, target_img)
+    ExecuteAction("NAMED_SHOW_INFOBOX", unit_name_or_table, key_map_str, seconds, target_img)
 
 end
 

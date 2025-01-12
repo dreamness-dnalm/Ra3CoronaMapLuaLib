@@ -14,6 +14,7 @@ UnitCreateHelper = {}
 --- @param attrs AttributeModifierEnum | AttributeModifierEnum[] | nil
 --- @param attrs_frame_cnt number | nil
 --- @param statuses StatusEnum | StatusEnum[] | nil
+--- @return Unit
 UnitCreateHelper.create_unit_at_waypoint = function(unit_name, thing, team_name, waypoint_name, attrs, attrs_frame_cnt, statuses)
     if type(unit_name) ~= "string" then
         LoggerModule.error("UnitCreateHelper.create_unit_at_waypoint", "unit_name must be a string")

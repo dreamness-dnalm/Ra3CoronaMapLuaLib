@@ -172,3 +172,10 @@ end
 VectorUtil.point_distance = function(p1, p2)
     return VectorUtil.norm(VectorUtil.subtract(p1, p2))
 end
+
+--- 复制向量
+--- @param vec Vector 向量
+--- @return Vector
+VectorUtil.copy = function(vec)
+    return TableUtil.array_shallow_copy(vec)
+end
