@@ -24,7 +24,7 @@ ColorUtil.get_color_from_rgb = function(r, g, b)
     color.r = r
     color.g = g
     color.b = b
-    color.hex_value = MathUtil.dec_to_hex(color.dec_value) .. MathUtil.dec_to_hex(color.g) .. MathUtil.dec_to_hex(color.b)
+    color.hex_value = MathUtil.dec_to_hex(color.r) .. MathUtil.dec_to_hex(color.g) .. MathUtil.dec_to_hex(color.b)
     color.dec_value = MathUtil.hex_to_dec(color.hex_value)
     return color
 end

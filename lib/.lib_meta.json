@@ -269,22 +269,6 @@
       "OrderNum": 2,
       "Children": [
         {
-          "FileName": "ColorUtil.lua",
-          "FilePath": "\\lib\\basic_util\\ColorUtil.lua",
-          "FileType": "lua",
-          "IsEnabled": true,
-          "IsIncluded": true,
-          "RunOnce": true,
-          "IsEvaluateEachFrame": true,
-          "EvaluationInterval": 1,
-          "ActiveInEasy": true,
-          "ActiveInMedium": true,
-          "ActiveInHard": true,
-          "OrderNum": 0,
-          "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
-        },
-        {
           "FileName": "FP.lua",
           "FilePath": "\\lib\\basic_util\\FP.lua",
           "FileType": "lua",
@@ -296,7 +280,7 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 1,
+          "OrderNum": 0,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
@@ -312,7 +296,7 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 2,
+          "OrderNum": 1,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
@@ -328,7 +312,7 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 3,
+          "OrderNum": 2,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
@@ -344,7 +328,7 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 4,
+          "OrderNum": 3,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
@@ -360,7 +344,7 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 5,
+          "OrderNum": 4,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
@@ -376,13 +360,29 @@
           "ActiveInEasy": true,
           "ActiveInMedium": true,
           "ActiveInHard": true,
-          "OrderNum": 6,
+          "OrderNum": 5,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
         },
         {
           "FileName": "VectorUtil.lua",
           "FilePath": "\\lib\\basic_util\\VectorUtil.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 6,
+          "Children": [],
+          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+        },
+        {
+          "FileName": "ColorUtil.lua",
+          "FilePath": "\\lib\\basic_util\\ColorUtil.lua",
           "FileType": "lua",
           "IsEnabled": true,
           "IsIncluded": true,

@@ -306,13 +306,13 @@ end
 
 -- --------- 头顶文字 -----------
 
--- TODO: test
 --- 在单位上方添加或更新文字
 --- @param content string 文字内容
 --- @param z_offset number z轴偏移量
 --- @param color Color 颜色
-function Unit:set_top_text(content, z_offset, color)
-    UnitTopTextModule.set_or_update(self.id, content, z_offset, color.dec_value)
+--- @param player_name_list string|string[]|nil 玩家名字列表
+function Unit:set_top_text(content, z_offset, color, player_name_list)
+    UnitTopTextModule.set_or_update(self.id, content, z_offset, color.dec_value, player_name_list)
 end
 
 -- TODO: test
