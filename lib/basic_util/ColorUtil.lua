@@ -24,7 +24,7 @@ ColorUtil.get_color_from_rgb = function(r, g, b)
     color.r = r
     color.g = g
     color.b = b
-    color.hex_value = MathUtil.dec_to_hex(color.r) .. MathUtil.dec_to_hex(color.g) .. MathUtil.dec_to_hex(color.b)
+    color.hex_value = StringUtil.LPad(MathUtil.dec_to_hex(color.r), 2, '0') .. StringUtil.LPad(MathUtil.dec_to_hex(color.g), 2, '0') .. StringUtil.LPad(MathUtil.dec_to_hex(color.b), 2, '0')
     color.dec_value = MathUtil.hex_to_dec(color.hex_value)
     return color
 end

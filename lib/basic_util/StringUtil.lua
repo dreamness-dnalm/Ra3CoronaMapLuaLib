@@ -51,3 +51,20 @@ StringUtil.split = function(str, sep)
 
     return ret, getn(ret)
 end
+
+
+-- TODO: test
+--- 字符串左填充
+--- @param str string 字符串
+--- @param len number 长度
+--- @param pad string 填充字符
+StringUtil.LPad = function(str, len, pad)
+    if pad == nil then
+        pad = " "
+    end
+    local strLen = strlen(str)
+    if strLen >= len then
+        return str
+    end
+    return strrep(pad, len - strLen) .. str
+end
