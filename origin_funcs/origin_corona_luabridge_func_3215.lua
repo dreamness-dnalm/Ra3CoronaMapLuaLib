@@ -193,7 +193,7 @@ function ObjectGetAttachees(unit_table)  end
 function ObjectGetContainerObject(unit_table)  end
 
 -- TODO: test
---- 返-- todo package回当前单位包含的乘客列表。例如，假如 self 是屎车，那么可能返回包含标枪兵的列表
+--- 返回当前单位包含的乘客列表。例如，假如 self 是屎车，那么可能返回包含标枪兵的列表
 --- @param unit_table table 单位
 --- @return table, number 包含当前单位的单位的列表, 单位数量
 function ObjectGetContainedPassengers(unit_table)  end
