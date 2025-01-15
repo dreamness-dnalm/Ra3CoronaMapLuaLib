@@ -100,3 +100,22 @@ PlayerModule.sell_player_everything = function(player_name)
     end
     ExecuteAction("PLAYER_SELL_EVERYTHING", player_name)
 end
+
+-- TODO: test
+--- 获取玩家昵称
+--- @param player_name PlayerEnum
+--- @return string
+PlayerModule.get_player_nickname = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.get_player_nickname", "player_name must be a string")
+        return nil
+    end
+    return exGetPlayerNickNameByScriptName(player_name)
+end
+
+-- TODO: test
+--- 获取ai经济作弊倍数   注意：1.0表示不指定（而非1倍）
+--- @return number
+PlayerModule.get_ai_cheat_multiplier = function()
+    return exModeGetAICheatMultiplier()
+end

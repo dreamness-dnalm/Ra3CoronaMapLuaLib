@@ -78,3 +78,21 @@ ProtocolModule.set_player_protocol_tech_faction = function(player_name, faction_
         exPlayerTechChangeTechFaction(player_name, 'PlayerTechStore_Neutral')
     end
 end
+
+-- TODO: test
+--- 解锁协议等级(第几行)
+--- @param player_name PlayerEnum 玩家名
+--- @param level number 等级 (2-10)
+ProtocolModule.unlock_rank_tech = function(player_name, level)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("ProtocolModule.unlock_rank_tech", "player_name must be a string")
+    end
+    if type(level) ~= "number" then
+        LoggerModule.error("ProtocolModule.unlock_rank_tech", "level must be a number")
+    end
+    if level < 2 or level > 10 then
+        LoggerModule.error("ProtocolModule.unlock_rank_tech", "level must be in [2, 10]")
+        return
+    end
+    exUnlockPlayerGenericRankTech(player_name, level)
+end

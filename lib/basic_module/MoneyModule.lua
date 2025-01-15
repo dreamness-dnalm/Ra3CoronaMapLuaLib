@@ -5,7 +5,6 @@
 --- 金钱模块
 MoneyModule = {}
 
--- TODO: test, package
 --- 获取玩家当前金钱
 --- @param player_name PlayerEnum
 --- @return number
@@ -17,7 +16,6 @@ MoneyModule.get_player_money = function(player_name)
     return exPlayerGetCurrentMoney(player_name)
 end
 
--- TODO: package
 --- 增加玩家金钱 (129)
 --- @param player_name PlayerEnum
 --- @param money number 金钱, 负数表示减少
@@ -31,9 +29,6 @@ MoneyModule.add_player_money = function(player_name, money)
     ExecuteAction("PLAYER_GIVE_MONEY", player_name, money)
 end
 
-
-
--- TODO: package
 --- 设置玩家金钱 (128)
 --- @param player_name PlayerEnum
 --- @param money number 金钱
@@ -45,4 +40,11 @@ MoneyModule.set_player_money = function(player_name, money)
         LoggerModule.error("MoneyModule.set_player_money", "money must be a number")
     end
     ExecuteAction("PLAYER_SET_MONEY", player_name, money)
+end
+
+-- TODO: test
+--- 获取作弊金钱倍数
+--- @return number
+MoneyModule.get_cheat_multiplier = function()
+    return exModeGetCheatMultiplier()
 end

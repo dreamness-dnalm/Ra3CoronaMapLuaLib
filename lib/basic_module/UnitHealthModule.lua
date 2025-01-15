@@ -89,3 +89,29 @@ UnitHealthModule.kill_unit = function(unit_name_or_table)
     end
     ExecuteAction("NAMED_KILL", unit_name_or_table)
 end
+
+-- TODO: test
+--- 注册单位死亡事件
+--- @param thing ThingEnum
+UnitHealthModule.register_unit_die_event = function(thing)
+    if type(thing) ~= "string" then
+        LoggerModule.error("UnitHealthModule.register_unit_die_event", "thing must be a string")
+        return
+    end
+    exObjectRegisterDieEvent(thing)
+end
+
+-- TODO: test
+--- 注册单位死亡事件回调
+--- @param func function func(dying_object_id, attacker_object_id, dying_object_instance_id, attacker_object_instance_id)
+--- dying_object_id 即将死亡的物体id
+--- attacker_object_id 攻击者id 注意不一定有攻击者，这时这个参数是nil
+--- dying_object_instance_id 死亡物体的InstanceId  (每种单位都有唯一的InstanceId)
+--- attacker_object_instance_id 攻击者的InstanceId  注意不一定有攻击者，这时这个参数是nil
+UnitHealthModule.register_die_event_callback = function(func)
+    if type(func) ~= "function" then
+        LoggerModule.error("UnitHealthModule.register_die_event_callback", "func must be a function")
+        return
+    end
+    globals().onUnitDieEvent = func
+end
