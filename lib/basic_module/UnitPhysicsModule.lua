@@ -40,6 +40,32 @@ UnitPhysicsModule.set_position = function(unit_table, x, y, z)
 end
 
 -- TODO: test, package
+--- 移动到某个位置, 参数是整数
+--- @param object_id number 单位id
+--- @param x number x
+--- @param y number y
+--- @param z number z
+UnitPhysicsModule.move_to = function(object_id, x, y, z)
+    if type(object_id) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.move_to", "object_id must be a number")
+        return
+    end
+    if type(x) ~= "number" or (not MathUtil.is_integer(x)) then
+        LoggerModule.error("UnitPhysicsModule.move_to", "x must be a number(int)")
+        return
+    end
+    if type(y) ~= "number" or (not MathUtil.is_integer(y)) then
+        LoggerModule.error("UnitPhysicsModule.move_to", "y must be a number(int)")
+        return
+    end
+    if type(z) ~= "number" or (not MathUtil.is_integer(z)) then
+        LoggerModule.error("UnitPhysicsModule.move_to", "z must be a number(int)")
+        return
+    end
+    exObjectMoveTo(object_id, x, y, z)
+end
+
+-- TODO: test, package
 --- 获取单位间的距离(2D)
 --- @param unit_table_1 SystemUnitTable 单位1
 --- @param unit_table_2 SystemUnitTable 单位2

@@ -5,7 +5,7 @@
 
 --- 本文件中包含了日冕mod在3.220版本中, 于EnhancerCorona.dll内新增的函数
 
---- 在聊天框输出文字(本地遭遇战不支持)
+--- 在聊天框输出文字
 --- @param message string 文字
 function exMessageAppendToMessageArea(message) end
 
@@ -595,7 +595,7 @@ function exAptHideObjectDetailsArea() end
 -- 显示右下角的技能栏区域
 function exAptShowObjectDetailsArea() end
 
---- TODO: test, package
+--- TODO: test
 --- 移动单位到某个位置  坐标都是整数
 --- @param objectId number 单位id
 --- @param x number x 整数
@@ -603,7 +603,7 @@ function exAptShowObjectDetailsArea() end
 --- @param z number z 整数
 function exObjectMoveTo(objectId, x, y, z) end
 
---- TODO: test, package
+--- TODO: test
 --- 获取指定玩家当前选中的物体   比使用ObjectFilter获取要快很多
 --- @param player_name PlayerEnum
 function exPlayerGetSelectedObjectIds(player_name) end

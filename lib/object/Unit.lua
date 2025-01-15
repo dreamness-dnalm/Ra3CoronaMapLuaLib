@@ -362,6 +362,27 @@ function Unit:get_position_vec()
 end
 
 -- TODO: test
+--- 单位移动到指定坐标, 参数为整数. 涉及到游戏状态机, 慎用
+--- @param x number x
+--- @param y number y
+--- @param z number z
+function Unit:move_to(x, y, z)
+    if type(x) ~= "number" then
+        LoggerModule.error("Unit:move_to", "x must be a number")
+        return
+    end
+    if type(y) ~= "number" then
+        LoggerModule.error("Unit:move_to", "y must be a number")
+        return
+    end
+    if type(z) ~= "number" then
+        LoggerModule.error("Unit:move_to", "z must be a number")
+        return
+    end
+    UnitPhysicsModule.move_to(self.id, x, y, z)
+end
+
+-- TODO: test
 --- 设置单位坐标
 --- @param x number x
 --- @param y number y
