@@ -47,7 +47,7 @@ function ObjectGetPosition(unit_table) end
 --- @return table, number 单位集合, 单位数量
 function ObjectFindObjects(unit_table, find_area_table, filter)  end
 
--- TODO: test, package
+-- TODO: test
 --- 设置单位的位置
 --- @param unit_table table 单位
 --- @param x number x
@@ -55,14 +55,14 @@ function ObjectFindObjects(unit_table, find_area_table, filter)  end
 --- @param z number z
 function ObjectSetPosition(unit_table, x, y, z) end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位间的距离(2D)
 --- @param unit_table1 table 单位1
 --- @param unit_table_2 table 单位2
 --- @return number 距离
 function ObjectsDistance2D(unit_table1, unit_table_2)  end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位间的距离(3D)
 --- @param unit_table1 table 单位1
 --- @param unit_table_2 table 单位2
@@ -186,13 +186,13 @@ function ObjectGetAttachers(unit_table)  end
 --- @return table, number 贴在当前单位身上的单位的列表, 单位数量
 function ObjectGetAttachees(unit_table)  end
 
--- TODO: test, package
+-- TODO: test
 --- 返回包含当前单位的单位。例如，假如 self 是子炮台，那么可能返回大船。假如 self 是标枪兵，那么可能返回车。
 --- @param unit_table table 单位
 --- @return table 包含当前单位的单位
 function ObjectGetContainerObject(unit_table)  end
 
--- TODO: test, package
+-- TODO: test
 --- 返-- todo package回当前单位包含的乘客列表。例如，假如 self 是屎车，那么可能返回包含标枪兵的列表
 --- @param unit_table table 单位
 --- @return table, number 包含当前单位的单位的列表, 单位数量
@@ -215,7 +215,7 @@ function ObjectGetRedAlertCurrentThreatLevel(unit_table_or_player_string)  end
 --- @param threat number 威胁度
 function ObjectSetRedAlertCurrentThreatLevel(unit_table_or_player_string, threat)  end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位在前一帧的坐标（便于计算速度） (每秒15帧);
 --- 请在做除法之前进行判断，避免除以 0;
 --- px, py, pz = ObjectGetPreviousPosition(self);

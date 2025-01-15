@@ -92,10 +92,6 @@ UnitPhysicsModule.get_distance_3D = function(unit_table_1, unit_table_2)
 end
 
 
-
-
-
-
 -- TODO: test, package
 --- 获取单位在前一帧的坐标（便于计算速度） (每秒15帧);
 --- @param unit_table SystemUnitTable 单位
@@ -182,7 +178,6 @@ UnitPhysicsModule.translate = function(unit_table, vec)
     UnitPhysicsModule.set_homogeneous_coordinates(unit_table, hc)
 end
 
--- TODO: test
 --- 平移单位(相对坐标)
 --- @param unit_table SystemUnitTable 单位
 --- @param vec Vector
