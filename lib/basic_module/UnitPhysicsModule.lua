@@ -39,7 +39,7 @@ UnitPhysicsModule.set_position = function(unit_table, x, y, z)
     end
 end
 
--- TODO: test, package
+-- TODO: test
 --- 移动到某个位置, 参数是整数
 --- @param object_id number 单位id
 --- @param x number x
@@ -65,7 +65,7 @@ UnitPhysicsModule.move_to = function(object_id, x, y, z)
     exObjectMoveTo(object_id, x, y, z)
 end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位间的距离(2D)
 --- @param unit_table_1 SystemUnitTable 单位1
 --- @param unit_table_2 SystemUnitTable 单位2
@@ -78,7 +78,7 @@ UnitPhysicsModule.get_distance_2D = function(unit_table_1, unit_table_2)
     return ObjectsDistance2D(unit_table_1, unit_table_2)
 end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位间的距离(3D)
 --- @param unit_table_1 SystemUnitTable 单位1
 --- @param unit_table_2 SystemUnitTable 单位2
@@ -107,7 +107,7 @@ UnitPhysicsModule.get_previous_position = function(unit_table)
     return ObjectGetPreviousPosition(unit_table)
 end
 
--- TODO: test, package
+-- TODO: test
 --- 使单位的朝向另一个单位 ((230))
 --- @param this_unit_name string 单位名称
 --- @param other_unit_name string 单位名称
@@ -122,7 +122,7 @@ UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)
 end
 
 
--- TODO: test, package
+-- TODO: test
 --- 使单位的朝向路径点 (231)
 --- @param unit_table_or_name SystemUnitTable|string 单位名称
 --- @param waypoint_name string 路径点名称
