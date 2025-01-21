@@ -31,6 +31,14 @@ function Unit:equals(other_unit)
     return self.id == other_unit.id
 end
 
+-- TODO: test
+--- 单位是否是指定的物体
+--- @param thing_name ThingEnum
+--- @return boolean
+function Unit:is_thing(thing_name)
+    return MathUtil.hex_to_dec(GameModule.get_string_fast_hash(thing_name)) ==  MathUtil.hex_to_dec(UnitModule.get_instance_id(self.id))
+end
+
 -- ------ 单位所属 --------
 
 --- 获取所属玩家, 不能再第一帧调用!

@@ -53,7 +53,6 @@ StringUtil.split = function(str, sep)
 end
 
 
--- TODO: test
 --- 字符串左填充
 --- @param str string 字符串
 --- @param len number 长度
