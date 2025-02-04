@@ -9,7 +9,8 @@ _meta = {
         filter_tag = newtag(),
         player_tag = newtag(),
         unit_tag = newtag(),
-    }
+    },
+    cache = {}
 }
 
 --- @class SystemUnitTable

@@ -89,4 +89,4 @@ function ScoreBoardSetTextForPlayer(player_name, text, row, col) end
 -- TODO: test
 --- 设置公屏文字的颜色(是整个公屏文字的颜色)
 --- @param color number
-function SetPublicBoardColor(color) end
+function exSetPublicBoardColor(color) end

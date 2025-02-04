@@ -1036,6 +1036,22 @@
           "OrderNum": 37,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+        },
+        {
+          "FileName": "UIModule.lua",
+          "FilePath": "\\lib\\basic_module\\UIModule.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 38,
+          "Children": [],
+          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
         }
       ],
       "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
@@ -1115,6 +1131,22 @@
           "ActiveInMedium": true,
           "ActiveInHard": true,
           "OrderNum": 3,
+          "Children": [],
+          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+        },
+        {
+          "FileName": "KeyBoardHelper.lua",
+          "FilePath": "\\lib\\helper\\KeyBoardHelper.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 4,
           "Children": [],
           "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
         }

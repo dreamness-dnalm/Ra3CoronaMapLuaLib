@@ -1,0 +1,33 @@
+{
+  "FileName": "015_ui",
+  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\015_ui",
+  "FileType": "dir",
+  "IsEnabled": true,
+  "IsIncluded": true,
+  "RunOnce": true,
+  "IsEvaluateEachFrame": true,
+  "EvaluationInterval": 1,
+  "ActiveInEasy": true,
+  "ActiveInMedium": true,
+  "ActiveInHard": true,
+  "OrderNum": 99,
+  "Children": [
+    {
+      "FileName": "init.lua",
+      "FilePath": "\\015_ui\\init.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": true,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 0,
+      "Children": [],
+      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\015_ui"
+    }
+  ],
+  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\015_ui"
+}

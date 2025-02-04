@@ -42,7 +42,6 @@ PublicBoardModule.show_text = function(text, duration, player_name_list)
 
 end
 
--- TODO: test
 --- 设置公屏文字的颜色(是整个公屏文字的颜色)
 --- @param color Color
 PublicBoardModule.set_color = function(color)
@@ -50,5 +49,5 @@ PublicBoardModule.set_color = function(color)
         LoggerModule.error('PublicBoardModule.set_color', 'color type error:' .. type(color))
         return
     end
-    SetPublicBoardColor(color.dec_value)
+    exSetPublicBoardColor(color.dec_value)
 end

@@ -454,128 +454,120 @@ function exObjectDeleteBtnAtTopForPlayer(player_name, object_id) end
 
 -- 界面顶部按钮相关
 -- ui  目前顶部按钮最多6个， index 取值 1~6
--- textureName 图片名字，对应源码里 PackedTextureImage 类型的id, 例如
--- "Button_AlliedAntiGroundAircraft_on"
--- "Button_AlliedAntiInfantryInfantry_on"
--- "Button_AlliedAntiNavyShipTech1_on"
--- "AUA_Tank_TargetPainter"
--- "Button_PlayerPower_TimeBomb3"
--- "CelestialEMSuppressField_Lv1"
+-- textureName 
 
--- TODO: test, package
 --- 修改指定位置的图片，既是创建也是更新，注意，目前这个函数创建后需要等待1或2帧后才能调用其他的ui函数，不然没有作用
 --- @param index number 位置
 --- @param texture_name string 图片名字
-function exCenterTopBtnShow(index, texture_name) end
+--- @param content string 文字内容
+function exCenterTopBtnShow(index, texture_name, content) end
 
--- TODO: test, package
 --- 是否启用高亮动画 ,enable 1启用 0关闭
 --- @param index number 位置
 --- @param enable number 是否启用高亮动画 ,enable 1启用 0关闭
 function exCenterTopBtnToggleHighLight(index, enable) end
 
--- TODO: test, package
 --- 设置时间overlay层可见性, visible 1可见，0隐藏
 --- @param index number 位置
 --- @param visible number 1可见，0隐藏
 function exCenterTopBtnSetTimerOverlayVisibility(index, visible) end
 
--- TODO: test, package
 --- 设置时间overlay层的百分比，value范围 0-99  注意先要让时间overlay层可见
 --- @param index number 位置
 --- @param value number 百分比
 function exCenterTopBtnSetTimerOverlayValue(index, value) end
 
--- TODO: test, package
 --- 设置血条可见性, visible 1可见，0隐藏
 --- @param index number 位置
---- @param visiblev number 1可见，0隐藏
-function exCenterTopBtnSetHealthBarValue(index, visiblev) end
+--- @param visible number 1可见，0隐藏
+function exCenterTopBtnSetHealthBarVisibility(index, visible) end
 
--- TODO: test, package
 --- 设置血条的百分比，value范围 1-100  注意先要让血条可见
 --- @param index number 位置
 --- @param value number 百分比
-function exCenterTopBtnSetHealthBarVisibility(index, value) end
+function exCenterTopBtnSetHealthBarValue(index, value) end
 
--- TODO: test, package
 --- 设置某个位置按钮的可见性
 --- @param index number 位置
 --- @param visible number 1可见，0不可见
 function exCenterTopBtnSetVisibility(index, visible) end
--- TODO: test, package
+
 -- 设置是否选中态，selected 1选中， 0未选中
 function exCenterTopBtnSetSelected(index, selected) end
--- TODO: test, package
+
 -- 设置整个顶部栏按钮区域的可见性, visible  1可见，0不可见
 function exCenterTopBtnsChangeVisibility(visible) end
 
--- TODO: test, package
+--- 设置按钮是否可用
+--- @param index number 位置
+--- @param enable number 1可用，0不可用
+function exCenterTopBtnSetEnable(index, enable) end
+
 -- 玩家特化版本
 --- 修改指定位置的图片，既是创建也是更新，注意，目前这个函数创建后需要等待1或2帧后才能调用其他的ui函数，不然没有作用
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param texture_name string 图片名字
-function exCenterTopBtnShowForPlayer(player_name, index, texture_name) end
+--- @param content string 文字内容
+function exCenterTopBtnShowForPlayer(player_name, index, texture_name, content) end
 
--- TODO: test, package
+
 --- 是否启用高亮动画 ,enable 1启用 0关闭
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param enable number 是否启用高亮动画 ,enable 1启用 0关闭
 function exCenterTopBtnToggleHighLightForPlayer(player_name, index, enable) end
 
--- TODO: test, package
 --- 设置时间overlay层可见性, visible 1可见，0隐藏
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param visible number 1可见，0隐藏
 function exCenterTopBtnSetTimerOverlayVisibilityForPlayer(player_name, index, visible) end
 
--- TODO: test, package
 --- 设置时间overlay层的百分比，value范围 0-99  注意先要让时间overlay层可见
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param value number 百分比
 function exCenterTopBtnSetTimerOverlayValueForPlayer(player_name, index, value) end
 
--- TODO: test, package
 --- 设置血条可见性, visible 1可见，0隐藏
 --- @param player_name string 玩家名字
 --- @param index number 位置
---- @param visiblev number 1可见，0隐藏
-function exCenterTopBtnSetHealthBarValueForPlayer(player_name, index, visiblev) end
+--- @param visible number 1可见，0隐藏 
+function exCenterTopBtnSetHealthBarVisibilityForPlayer(player_name, index, visible) end
 
--- TODO: test, package
 --- 设置血条的百分比，value范围 1-100  注意先要让血条可见
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param value number 百分比
-function exCenterTopBtnSetHealthBarVisibilityForPlayer(player_name, index, value) end
+function exCenterTopBtnSetHealthBarValueForPlayer(player_name, index, value) end
 
--- TODO: test, package
+
 --- 设置某个位置按钮的可见性
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param visible number 1可见，0不可见
 function exCenterTopBtnSetVisibilityForPlayer(player_name, index, visible) end
 
--- TODO: test, package
 --- 设置是否选中态，selected 1选中， 0未选中
 --- @param player_name string 玩家名字
 --- @param index number 位置
 --- @param selected number 1选中， 0未选中
 function exCenterTopBtnSetSelectedForPlayer(player_name, index, selected) end
 
--- TODO: test, package
 --- 设置整个顶部栏按钮区域的可见性, visible  1可见，0不可见
 --- @param player_name string 玩家名字
 --- @param visible number 1可见，0不可见
 function exCenterTopBtnsChangeVisibilityForPlayer(player_name, visible) end
 
+--- 设置按钮是否可用(不可用时，按钮会变灰, 仍然会响应点击事件)
+--- @param index number 位置
+--- @param enable number 1可用，0不可用
+function exCenterTopBtnSetEnableForPlayer(player_name, index, enable) end
+
 ---- 顶部按钮点击事件
 ---- 定义一个固定名字的函数
---function onCenterTopBtnClickEvent(player_name, btnIndex)
+--function onCenterTopBtnClickEvent(player_name, btn_index)
 ---- btnIndex 按钮编号，第一个按钮是1，第二个按钮是2，以此类推
 --end
 
@@ -587,11 +579,9 @@ function exEnableWBScript(script_name) end
 -- 禁用地编脚本
 function exDisableWBScript(script_name) end
 
---- TODO: test, package
 -- 隐藏右下角的技能栏区域
 function exAptHideObjectDetailsArea() end
 
---- TODO: test, package
 -- 显示右下角的技能栏区域
 function exAptShowObjectDetailsArea() end
 
