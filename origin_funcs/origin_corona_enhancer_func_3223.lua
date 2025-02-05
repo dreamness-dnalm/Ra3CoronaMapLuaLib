@@ -50,41 +50,41 @@ function exModeGetAICheatMultiplier() end
 -- 计分板相关  计分版有7行3列  标题和文字都支持昵称，$p1Name，$p2Name，$p3Name，$p4Name，$p5Name，$p6Name将被自动替换为对应的玩家昵称（对应Player_1~Player_6的昵称）
 --- 设置计分板可进行, visible  1可见，0不可见
 --- @param visible number
-function ScoreBoardSetVisibility(visible) end
+function exScoreBoardSetVisibility(visible) end
 
 -- TODO: test
---- 设置标题文字
+--- 设置记分板标题文字
 --- @param title string
-function ScoreBoardSetTitle(title) end
+function exScoreBoardSetTitle(title) end
 -- TODO: test
--- 设置某行某列的文字
+-- 设置记分板某行某列的文字
 -- row 行  范围1~7
 -- col 列  范围1~3
 --- @param text string
 --- @param row number
 --- @param col number
-function ScoreBoardSetText(text, row, col) end
+function exScoreBoardSetText(text, row, col) end
 
 -- TODO: test
 -- 玩家特化版本
 --- 设置计分板可进行, visible  1可见，0不可见
 --- @param player_name string
 --- @param visible number
-function ScoreBoardSetVisibilityForPlayer(player_name, visible) end
+function exScoreBoardSetVisibilityForPlayer(player_name, visible) end
 
 -- TODO: test
---- 设置标题文字
+--- 设置记分板标题文字
 --- @param player_name string
 --- @param title string
-function ScoreBoardSetTitleForPlayer(player_name, title) end
+function exScoreBoardSetTitleForPlayer(player_name, title) end
 
 -- TODO: test
---- 设置某行某列的文字
+--- 设置记分板某行某列的文字
 --- @param player_name string
 --- @param text string
 --- @param row number
 --- @param col number
-function ScoreBoardSetTextForPlayer(player_name, text, row, col) end
+function exScoreBoardSetTextForPlayer(player_name, text, row, col) end
 
 -- TODO: test
 --- 设置公屏文字的颜色(是整个公屏文字的颜色)

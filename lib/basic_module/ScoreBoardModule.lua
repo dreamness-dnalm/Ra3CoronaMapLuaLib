@@ -14,15 +14,15 @@ ScoreBoardModule.set_visible = function(visible, player_name_list)
         v = 1
     end
     if player_name_list == nil then
-        ScoreBoardSetVisibility(v)
+        exScoreBoardSetVisibility(v)
     elseif type(player_name_list) == 'string' then
-        ScoreBoardSetVisibilityForPlayer(player_name_list, v)
+        exScoreBoardSetVisibilityForPlayer(player_name_list, v)
     elseif type(player_name_list) == 'table' then
         for i = 1, getn(player_name_list) do
             if type(player_name_list[i]) ~= 'string' then
                 LoggerModule.warn('ScoreBoardModule.set_visible', 'player_name_list element type error:' .. type(player_name_list[i]))
             else
-                ScoreBoardSetVisibilityForPlayer(player_name_list[i], v)
+                exScoreBoardSetVisibilityForPlayer(player_name_list[i], v)
             end
         end
     end
@@ -38,15 +38,15 @@ ScoreBoardModule.set_title = function(text, player_name_list)
         return
     end
     if player_name_list == nil then
-        ScoreBoardSetTitle(text)
+        exScoreBoardSetTitle(text)
     elseif type(player_name_list) == 'string' then
-        ScoreBoardSetTitleForPlayer(player_name_list, text)
+        exScoreBoardSetTitleForPlayer(player_name_list, text)
     elseif type(player_name_list) == 'table' then
         for i = 1, getn(player_name_list) do
             if type(player_name_list[i]) ~= 'string' then
                 LoggerModule.warn('ScoreBoardModule.set_title', 'player_name_list element type error:' .. type(player_name_list[i]))
             else
-                ScoreBoardSetTitleForPlayer(player_name_list[i], text)
+                exScoreBoardSetTitleForPlayer(player_name_list[i], text)
             end
         end
     end
@@ -72,17 +72,52 @@ ScoreBoardModule.set_cell = function (text, row, col, player_name_list)
         return
     end
     if player_name_list == nil then
-        ScoreBoardSetText(text, row, col)
+        exScoreBoardSetText(text, row, col)
     elseif type(player_name_list) == 'string' then
-        ScoreBoardSetTextForPlayer(player_name_list, text, row, col)
+        exScoreBoardSetTextForPlayer(player_name_list, text, row, col)
     elseif type(player_name_list) == 'table' then
         for i = 1, getn(player_name_list) do
             if type(player_name_list[i]) ~= 'string' then
                 LoggerModule.warn('ScoreBoardModule.set_cell', 'player_name_list element type error:' .. type(player_name_list[i]))
             else
-                ScoreBoardSetTextForPlayer(player_name_list[i], text, row, col)
+                exScoreBoardSetTextForPlayer(player_name_list[i], text, row, col)
             end
         end
     end    
 end
 
+-- TODO: test
+--- 设置记分板内容
+--- @param content_table table 内容表格, 二维数组
+--- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
+ScoreBoardModule.set_table_content = function (content_table, player_name_list)
+    if type(content_table) ~= 'table' then
+        LoggerModule.error('ScoreBoardModule.set_table_content', 'content_table type error:' .. type(content_table))
+        return
+    end
+    for i = 1, 7 do
+        local row = content_table[i]
+        if row == nil then
+            row = {}
+        elseif type(row) ~= 'table' then
+            LoggerModule.error('ScoreBoardModule.set_table_content', 'content_table element type error:' .. type(row))
+            return
+        end
+        for j = 1, 3 do
+            local cell = row[j]
+            if cell == nil then
+                cell = ''
+            else
+                cell = tostring(cell)
+            end
+            ScoreBoardModule.set_cell(cell, i, j, player_name_list)
+        end
+    end
+end
+
+-- TODO: test
+--- 清空记分板内容
+--- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
+ScoreBoardModule.clear = function (player_name_list)
+    ScoreBoardModule.set_table_content({}, player_name_list)
+end
