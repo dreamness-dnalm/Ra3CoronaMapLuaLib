@@ -11,6 +11,8 @@ EventHelper._meta = {
     unit_top_button_click_funcs = {},
     unit_top_button_click_callback_func_register_flag = nil,
 
+    top_button_click_funcs = {},
+    top_button_click_callback_func_register_flag = nil,
 }
 
 -- TODO: test
@@ -109,6 +111,36 @@ EventHelper.register_unit_top_button_click_event = function(unit, callback_func)
             local func = EventHelper._meta.unit_top_button_click_funcs[tostring(unit_id)]
             if func ~= nil then
                 func(player_name, _unit)
+            end
+        end
+    )
+end
+
+-- TODO: test
+--- 注册顶部按钮点击事件
+--- @param pos_index number 1-6
+--- @param callback_func function 监听器 func(player_name, shift_pressed)
+EventHelper.register_top_button_click_event = function(pos_index, callback_func)
+    if type(pos_index) ~= "number" then
+        LoggerModule.error("EventHelper.register_top_button_click_event", "pos_index must be a number")
+        return
+    end
+    if pos_index < 1 or pos_index > 6 then
+        LoggerModule.error("EventHelper.register_top_button_click_event", "pos_index must be in [1, 6]")
+        return
+    end
+    if callback_func ~= nil and type(callback_func) ~= "function" then
+        LoggerModule.error("EventHelper.register_top_button_click_event", "callback_func must be a function")
+        return
+    end
+
+    EventHelper._meta.top_button_click_funcs[tostring(pos_index)] = callback_func
+
+    TopButtonModule.register_button_click_callback(
+        function(player_name, shift_pressed, pos_index)
+            local func = EventHelper._meta.top_button_click_funcs[tostring(pos_index)]
+            if func ~= nil then
+                func(player_name, shift_pressed)
             end
         end
     )
