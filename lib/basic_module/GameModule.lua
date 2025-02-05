@@ -53,3 +53,15 @@ GameModule.from_ra3_boolean = function(value)
         return nil
     end
 end
+
+-- TODO: test
+--- 启用/禁用脚本, 不优雅的方法, 不建议使用
+--- @param script_name string
+--- @param enable boolean
+GameModule.enable_script = function(script_name, enable)
+    if enable then
+        exEnableWBScript(script_name)
+    else
+        exDisableWBScript(script_name)
+    end
+end

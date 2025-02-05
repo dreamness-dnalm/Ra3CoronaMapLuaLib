@@ -80,3 +80,18 @@ UnitTopTextModule.remove = function(object_id, player_name_list)
     end
 end
 
+-- TODO: test, package
+--- 显示浮动整数数字
+--- @param object_id number 对象id
+--- @param value number 数值
+UnitTopTextModule.show_float_int_number = function(object_id, value)
+    if type(object_id) ~= 'number' then
+        LoggerModule.error('UnitTopTextModule.show_float_int_number', 'object_id is not a number, object_id=' .. tostring(object_id))
+        return
+    end
+    if type(value) ~= 'number' then
+        LoggerModule.error('UnitTopTextModule.show_float_int_number', 'value is not a number, value=' .. tostring(value))
+        return
+    end
+    exShowFloatingIntAtObject(object_id, value)
+end

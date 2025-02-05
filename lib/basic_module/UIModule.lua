@@ -11,6 +11,16 @@ UIModule.set_skill_ui_visible = function(visible)
     end
 end
 
+-- TODO: test
+--- 设置左下角协议按钮是否可见
+UIModule.set_protocol_button_visible = function(visible)
+    if visible then
+        exAptHidePlayerTechButton()
+    else
+        exAptShowPlayerTechButton()
+    end
+end
+
 -- TODO: test 
 --- 启用/禁用玩家输入(鼠标/键盘) (84) / (83)
 --- @param enable boolean

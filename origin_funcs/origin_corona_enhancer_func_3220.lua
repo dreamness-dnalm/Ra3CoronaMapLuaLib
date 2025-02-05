@@ -120,7 +120,7 @@ function exLightSetAccent1Direction(x, y, z)  end
 --- @param z number float
 function exLightSetAccent2Direction(x, y, z)  end
 
--- TODO: test, package
+-- TODO: test
 --- 为某个玩家显示提示框
 --- @param player_name string 玩家名字
 --- @param content string 提示框内容
@@ -208,31 +208,29 @@ function exDisableCameraInterpolate() end
 --- @param roll number 相机滚转
 function exSetFollowCameraParam(player_name, pos_x, pos_y, pos_z, yaw, pitch, roll) end
 
-
--- TODO: test, package
---- 获取单位当前血量
+--- 获取单位当前血量(重复的api, 放弃封装)
 --- @param object_id number 单位ID
 --- @return number 当前血量
 function exObjectGetCurrentHealth(object_id) end
 
--- TODO: test, package
+-- TODO: test
 --- 获取单位最大血量
 --- @param object_id number 单位ID
 --- @return number 最大血量
 function exObjectGetMaxHealth(object_id) end
 
--- TODO: test, package
+-- TODO: test
 --- 在单位上方显示漂浮数字（整数，效果类似油井的那个数字）
 --- @param object_id number 单位ID
 --- @param value number 数字(int)
 function exShowFloatingIntAtObject(object_id, value) end
 
 
--- TODO: test, package
+-- TODO: test
 --- 隐藏左下角的协议按钮
 function exAptHidePlayerTechButton() end
 
--- TODO: test, package
+-- TODO: test
 --- 显示左下角的协议按钮
 function exAptShowPlayerTechButton() end
 
@@ -295,8 +293,6 @@ function exHideCustomBtnChoiceDialog() end
 function exHideCustomBtnChoiceDialogForPlayer(player_name) end
 
 
-
----- todo package
 ---- 监听按钮选项弹框的点击事件
 ---- 定义一个固定名字的函数
 --function onUserBtnChoiceDialogEvent(playerName, btnIndex, dialogId)
@@ -316,7 +312,7 @@ function exObjectShowTextAtTop(object_id, content, offset, color) end
    -- content 文字内容，单行
    -- offset 相对于单位z的偏移值
 
--- TODO: test, package
+-- TODO: test
 --- 更新单位头顶显示文字
 --- @param object_id number 单位id
 --- @param content string 文字内容，单行
@@ -408,38 +404,38 @@ function exAddTextToPublicBoardForPlayer(player_name, content, duration) end
 --- @return number 冰冻量
 function exObjectGetCurrentSecondaryDamage(object_id) end
 
--- TODO: test, package
+-- TODO: test
 --- 单位顶部按钮, 添加按钮
 --- @param object_id number 单位id
 --- @param offset number 偏移量位置
 function exObjectShowBtnAtTop(object_id, offset) end   -- 添加按钮
 
--- TODO: test, package
+-- TODO: test
 --- 单位顶部按钮, 修改按钮可见性
 --- @param object_id number 单位id
 --- @param visible number  1是可见，0是隐藏
 function exObjectChangeBtnAtTopVisibility(object_id, visible) end  -- visible  1是可见，0是隐藏
 
--- TODO: test, package
+-- TODO: test
 --- 单位顶部按钮, 删除按钮
 --- @param object_id number 单位id
 function exObjectDeleteBtnAtTop(object_id) end  -- 删除按钮
 
--- TODO: test, package
+-- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 添加按钮
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id
 --- @param offset number 位置
 function exObjectShowBtnAtTopForPlayer(player_name, object_id, offset) end
 
--- TODO: test, package
+-- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 修改按钮可见性
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id
 --- @param visible number  1是可见，0是隐藏
 function exObjectChangeBtnAtTopVisibilityForPlayer(player_name, object_id, visible) end
 
--- TODO: test, package
+-- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 删除按钮
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id
@@ -572,10 +568,10 @@ function exCenterTopBtnSetEnableForPlayer(player_name, index, enable) end
 --end
 
 
---- TODO: test, package
+--- TODO: test
 -- 启用地编脚本
 function exEnableWBScript(script_name) end
---- TODO: test, package
+--- TODO: test
 -- 禁用地编脚本
 function exDisableWBScript(script_name) end
 

@@ -17,6 +17,18 @@ UnitHealthModule.get_health = function(unit_table)
     return ObjectGetCurrentHealth(unit_table)
 end
 
+-- TODO: test, package
+--- 获取单位的最大生命值
+--- @param unit_id number 单位id
+--- @return number
+UnitHealthModule.get_max_health = function(unit_id)
+    if type(unit_id) ~= "number" then
+        LoggerModule.error('UnitHealthModule.get_max_health', 'unit_id should be number')
+        return
+    end
+    return exObjectGetMaxHealth(unit_id)
+end
+
 -- TODO: test
 --- 获取单位的初始生命值
 --- @param unit_table SystemUnitTable 单位table
