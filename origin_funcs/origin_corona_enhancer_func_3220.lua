@@ -443,7 +443,7 @@ function exObjectDeleteBtnAtTopForPlayer(player_name, object_id) end
 
 ---- 单位头顶按钮点击事件
 ---- 定义一个固定名字的函数
---function onUnitTopBtnClickEvent(player_name, unitId)
+--function onUnitTopBtnClickEvent(player_name, unit_id)
 ---- unitId 单位id
 --end
 

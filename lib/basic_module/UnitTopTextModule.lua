@@ -80,7 +80,7 @@ UnitTopTextModule.remove = function(object_id, player_name_list)
     end
 end
 
--- TODO: test, package
+-- TODO: test
 --- 显示浮动整数数字
 --- @param object_id number 对象id
 --- @param value number 数值

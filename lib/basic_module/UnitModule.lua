@@ -27,7 +27,7 @@ UnitModule.to_id = function(unit_table)
     return ObjectGetId(unit_table)
 end
 
--- TODO: test, package
+-- TODO: package
 --- 获取单位的instance_id(instance_id=fast_hash(thing_name))
 --- @param object_id number 单位的id
 --- @return number
