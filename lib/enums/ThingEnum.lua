@@ -306,4 +306,11 @@ ThingEnum = {
     CelestialAntiNavyShipTech3 = "CelestialAntiNavyShipTech3",
     --- 玄武级攻击潜艇
     CelestialAntiStructureShip = "CelestialAntiStructureShip",
+
+    AlliedEngineer = "AlliedEngineer",
+    SovietEngineer = "SovietEngineer",
+    JapanEngineer = "JapanEngineer",
+    CelestialEngineer = "CelestialEngineer"
+
+
 }

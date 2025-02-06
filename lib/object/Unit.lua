@@ -182,6 +182,49 @@ function Unit:remove_modifier(modifiers)
     AttributeModifierModule.remove_modifier(self.unit_table, modifiers)
 end
 
+-- ------ 模型状态 ------
+
+-- TODO: test
+--- 添加模型状态
+--- @param model_states ModuleStateEnum | ModuleStateEnum[] 模型状态 或 模型状态数组
+--- @param duration_seconds number
+function Unit:add_model_state(model_states, duration_seconds)
+    if type(model_states) == 'string' then
+        UnitModelStateModule.add_unit_model_state(self.name, model_states, duration_seconds)
+    elseif type(model_states) == 'table' then
+        for i=1, getn(model_states) do
+            local ms = model_states[i]
+            if type(ms) == 'string' then
+                UnitModelStateModule.add_unit_model_state(self.name, ms, duration_seconds)
+            else
+                LoggerModule.error('Unit:add_model_state', 'bad model_state')
+            end
+        end
+    else
+        LoggerModule.error('Unit:add_model_state', 'bad model_states')
+    end
+end
+
+-- TODO: test
+--- 移除模型状态
+--- @param model_states ModuleStateEnum | ModuleStateEnum[] 模型状态 或 模型状态数组
+function Unit:remove_model_state(model_states)
+    if type(model_states) == 'string' then
+        UnitModelStateModule.remove_unit_model_state(self.name, model_states)
+    elseif type(model_states) == 'table' then
+        for i=1, getn(model_states) do
+            local ms = model_states[i]
+            if type(ms) == 'string' then
+                UnitModelStateModule.remove_unit_model_state(self.name, ms)
+            else
+                LoggerModule.error('Unit:remove_model_state', 'bad model_state')
+            end
+        end
+    else
+        LoggerModule.error('Unit:remove_model_state', 'bad model_states')
+    end
+end
+
 -- ------ 单位健康 -------
 
 -- TODO: test
