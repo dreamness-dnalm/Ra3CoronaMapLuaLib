@@ -108,7 +108,7 @@ end
 --     ExecuteAction("UNIT_SPAWN_NAMED_OBJECT_ON_TEAM_AT_NAMED_OBJECT_LOCATION", unit_name, thing, team_name, parent_unit_name)
 -- end
 
---- 给单位命名
+--- 给单位命名 （278)
 --- @param name string 单位名
 --- @param unit_table SystemUnitTable 单位table
 UnitModule.name_unit = function(name, unit_table)

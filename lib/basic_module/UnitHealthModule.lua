@@ -75,7 +75,6 @@ UnitHealthModule.set_unit_health = function(unit_table, health)
     UnitHealthModule.set_unit_health_percentage(healthPercentage)
 end
 
--- TODO: test
 --- 单位承受伤害 (63)
 --- @param unit_name_or_table SystemUnitTable|string
 --- @param point number

@@ -5,7 +5,6 @@
 
 UnitPhysicsModule = {}
 
--- TODO: test, package
 --- 获取单位的位置
 --- @param unit_table SystemUnitTable 单位
 --- @return number, number, number x, y, z
@@ -17,7 +16,6 @@ UnitPhysicsModule.get_position = function(unit_table)
     return ObjectGetPosition(unit_table)
 end
 
--- TODO: test, package
 --- 设置单位的位置
 --- @param unit_table SystemUnitTable 单位
 --- @param x number x
@@ -103,8 +101,8 @@ UnitPhysicsModule.get_previous_position = function(unit_table)
     return ObjectGetPreviousPosition(unit_table)
 end
 
--- TODO: test
 --- 使单位的朝向另一个单位 ((230))
+--- 注意: 某些单位不可用
 --- @param this_unit_name string 单位名称
 --- @param other_unit_name string 单位名称
 UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)

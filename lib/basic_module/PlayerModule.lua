@@ -33,11 +33,10 @@ PlayerModule.is_start_pos = function(player_name, start_pos)
 end
 
 
--- TODO: test, package
 --- 获取玩家数 [114]
 --- @return number
 PlayerModule.get_player_cnt = function()
-    for i = 0, 10 do
+    for i = 1, 20 do
         if EvaluateCondition("COMPARE_NUM_PLAYERS_IN_GAME", '==', i) then
             return i
         end
@@ -90,8 +89,8 @@ PlayerModule.kill_player_everything = function(player_name)
     ExecuteAction("PLAYER_KILL", player_name)
 end
 
--- TODO: test
---- 出售玩家所有单位 (70)
+
+--- 出售玩家所有单位 (55)
 --- @param player_name PlayerEnum
 PlayerModule.sell_player_everything = function(player_name)
     if type(player_name) ~= "string" then
@@ -101,17 +100,17 @@ PlayerModule.sell_player_everything = function(player_name)
     ExecuteAction("PLAYER_SELL_EVERYTHING", player_name)
 end
 
--- TODO: test
---- 获取玩家昵称
---- @param player_name PlayerEnum
---- @return string
-PlayerModule.get_player_nickname = function(player_name)
-    if type(player_name) ~= "string" then
-        LoggerModule.error("PlayerModule.get_player_nickname", "player_name must be a string")
-        return nil
-    end
-    return exGetPlayerNickNameByScriptName(player_name)
-end
+-- 该功能已被删除
+-- --- 获取玩家昵称
+-- --- @param player_name PlayerEnum
+-- --- @return string
+-- PlayerModule.get_player_nickname = function(player_name)
+--     if type(player_name) ~= "string" then
+--         LoggerModule.error("PlayerModule.get_player_nickname", "player_name must be a string")
+--         return nil
+--     end
+--     return exGetPlayerNickNameByScriptName(player_name)
+-- end
 
 -- TODO: test
 --- 获取ai经济作弊倍数   注意：1.0表示不指定（而非1倍）

@@ -5,7 +5,7 @@
 
 GarrisonModule = {}
 
---- 使单位进入建筑 ((428))
+--- 使单位进入另一个单位 ((428))
 --- @param parent_unit_name string
 --- @param child_unit_name string
 GarrisonModule.garrison = function(parent_unit_name, child_unit_name)
