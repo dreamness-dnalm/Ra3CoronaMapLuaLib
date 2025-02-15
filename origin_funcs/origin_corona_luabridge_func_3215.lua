@@ -186,13 +186,11 @@ function ObjectGetAttachers(unit_table)  end
 --- @return table, number 贴在当前单位身上的单位的列表, 单位数量
 function ObjectGetAttachees(unit_table)  end
 
--- TODO: test
 --- 返回包含当前单位的单位。例如，假如 self 是子炮台，那么可能返回大船。假如 self 是标枪兵，那么可能返回车。
 --- @param unit_table table 单位
 --- @return table 包含当前单位的单位
 function ObjectGetContainerObject(unit_table)  end
 
--- TODO: test
 --- 返回当前单位包含的乘客列表。例如，假如 self 是屎车，那么可能返回包含标枪兵的列表
 --- @param unit_table table 单位
 --- @return table, number 包含当前单位的单位的列表, 单位数量

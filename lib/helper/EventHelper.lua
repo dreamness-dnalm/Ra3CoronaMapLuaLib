@@ -15,7 +15,6 @@ EventHelper._meta = {
     top_button_click_callback_func_register_flag = nil,
 }
 
--- TODO: test
 --- 注册键盘热键
 --- @param key_code_hex KeyboardKeyCodeEnum
 --- @param assist_key_code_hex KeyboardKeyCodeEnum
@@ -39,7 +38,7 @@ EventHelper.register_hot_key = function(key_code_hex, assist_key_code_hex, callb
 
     EventHelper._meta.keyboard_command_code_index = EventHelper._meta.keyboard_command_code_index + 1
 
-    KeyboardModule.register_hot_key(key_code_hex, assist_key_code_hex, KeyboardHelper._meta.command_code_index)
+    KeyboardModule.register_hot_key(key_code_hex, assist_key_code_hex, EventHelper._meta.keyboard_command_code_index)
     
     
     EventHelper._meta.keyboard_funcs[EventHelper._meta.keyboard_command_code_index] = callback_func

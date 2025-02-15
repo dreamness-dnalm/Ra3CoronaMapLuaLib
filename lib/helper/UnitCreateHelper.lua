@@ -61,3 +61,118 @@ UnitCreateHelper.create_unit_at_waypoint = function(unit_name, thing, team_name,
     return unit
 end
 
+
+--- 在矿脉上建造矿场
+--- @param ore_node_unit Unit 矿脉unit
+--- @param faction_name FactionEnum
+--- @param player_name PlayerEnum
+--- @param waypoint_name WeaponEnum
+function UnitCreateHelper.create_refinery(ore_node_unit, faction_name, player_name, waypoint_name)
+    if type(ore_node_unit) ~= "table" then
+        LoggerModule.error("UnitCreateHelper.create_refinery", "ore_node_unit must be a table")
+        return
+    end
+    if type(faction_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_refinery", "faction_name must be a string")
+        return
+    end
+    if type(player_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_refinery", "player_name must be a string")
+        return
+    end
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_refinery", "waypoint_name must be a string")
+        return
+    end
+
+    local refinery_thing = ''
+    if faction_name == FactionEnum.ALLIED then
+        refinery_thing = 'AlliedRefinery'
+    elseif faction_name == FactionEnum.SOVIET then
+        refinery_thing = 'SovietRefinery'
+    elseif faction_name == FactionEnum.CELESTIAL then
+        refinery_thing = 'CelestialRefinery'
+    elseif faction_name == FactionEnum.JAPAN then
+        refinery_thing = 'JapanRefinery'
+    else
+        LoggerModule.error('UnitCreateHelper.create_refinery', 'unknown faction')
+        return
+    end
+
+    local pos_vec = ore_node_unit:get_position_vec()
+    local direction_vec = ore_node_unit:get_direction_vec()
+    
+    local angle = VectorUtil.angle(direction_vec, {1, 0, 0})
+    if angle ~= angle then
+        angle = 0
+    end
+
+    if VectorUtil.cross2({direction_vec[1], direction_vec[2]}, {1, 0}) < 0 then
+        angle = -angle
+    end
+
+    angle = 180 - angle
+    pos_vec = VectorUtil.add(pos_vec, VectorUtil.multiply(direction_vec, 180))
+
+    local refinery_unit = UnitCreateHelper.create_unit_at_waypoint(
+    UnitHelper.get_unit_auto_name(),
+    refinery_thing,
+    TeamModule.from_player_name(player_name),
+    waypoint_name,
+    nil, nil, nil)
+
+    refinery_unit:set_position_by_vec(pos_vec)
+    refinery_unit:rotate_by_euler(0, 0, angle)
+end
+
+
+--- 创建有乘客的单位
+--- @param parent_thing_name ThingEnum
+--- @param child_thing_names ThingEnum[]
+--- @param team_name TeamEnum
+--- @param waypoint_name string
+--- @return Unit, Unit[] 母单位, 子单位列表
+function UnitCreateHelper.create_unit_with_garrison(parent_thing_name, child_thing_names, team_name, waypoint_name)
+    if type(parent_thing_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_unit_with_garrison", "parent_thing_name must be a string")
+        return
+    end
+    if type(child_thing_names) ~= "table" then
+        LoggerModule.error("UnitCreateHelper.create_unit_with_garrison", "child_thing_names must be a table")
+        return
+    end
+    if type(team_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_unit_with_garrison", "team_name must be a string")
+        return
+    end
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("UnitCreateHelper.create_unit_with_garrison", "waypoint_name must be a string")
+        return
+    end
+
+    local parent_unit = UnitCreateHelper.create_unit_at_waypoint(
+        UnitHelper.get_unit_auto_name(),
+        parent_thing_name,
+        team_name,
+        waypoint_name,
+        nil, nil, nil
+    )
+
+    local child_units = {}
+
+    for i = 1, getn(child_thing_names) do
+        local child_thing_name = child_thing_names[i]
+        local child_unit = UnitCreateHelper.create_unit_at_waypoint(
+            UnitHelper.get_unit_auto_name(),
+            child_thing_name,
+            team_name,
+            waypoint_name,
+            nil, nil, nil
+        )
+        child_unit:garrison_other_unit(parent_unit)
+        tinsert(child_units, child_unit)
+    end
+
+    return parent_unit, child_units
+    
+end

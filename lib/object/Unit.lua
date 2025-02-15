@@ -33,12 +33,11 @@ function Unit:equals(other_unit)
     return self.id == other_unit.id
 end
 
--- TODO: test
 --- 单位是否是指定的物体
 --- @param thing_name ThingEnum
 --- @return boolean
 function Unit:is_thing(thing_name)
-    return MathUtil.hex_to_dec(GameModule.get_string_fast_hash(thing_name)) ==  MathUtil.hex_to_dec(UnitModule.get_instance_id(self.id))
+    return MathUtil.dec_to_hex(GameModule.get_string_fast_hash(thing_name)) ==  MathUtil.dec_to_hex(UnitModule.get_instance_id(self.id))
 end
 
 -- ------ 单位所属 --------
@@ -328,291 +327,47 @@ function Unit:get_weapon_ammo_cnt(weapon_slot_id, weapon_ording, weapon_index)
     return UnitWeaponMododule.get_weapon_ammo_cnt(self.unit_table, weapon_slot_id, weapon_ording, weapon_index)
 end
 
--- --------- highlight ----------
 
---- 单位白色闪烁
---- @param seconds number 闪烁时间
-function Unit:highlight_white_flash(seconds)
-    if type(seconds) ~= "number" then
-        LoggerModule.error("Unit:highlight_white_flash", "seconds must be a number")
+-- ------- 进驻 ------
+
+--- 进驻可进驻单位(建造,ifv等)
+--- @param parent_unit Unit
+function Unit:garrison_other_unit(parent_unit)
+    if type(parent_unit) ~= "table" then
+        LoggerModule.error("Unit:garrison_other_unit", "parent_unit must be a table")
     end
-    UnitHighlightModule.unit_white_flash(self.unit_table, seconds)
+    GarrisonModule.garrison(parent_unit.name, self.name)
 end
 
---- 单位闪烁
---- @param seconds number 闪烁时间
-function Unit:highlight_flash(seconds)
-    if type(seconds) ~= "number" then
-        LoggerModule.error("Unit:highlight_flash", "seconds must be a number")
-    end
-    UnitHighlightModule.unit_flash(self.unit_table, seconds)
+--- 离开可进驻单位(建造,ifv等)
+function Unit:cancel_garrison()
+    GarrisonModule.leave(self.unit_table)
 end
 
---- 为单位标注轮廓
---- @param outline_type UnitOutlineTypeEnum 轮廓类型
-function Unit:highlight_outline(outline_type)
-    if type(outline_type) ~= "string" then
-        LoggerModule.error("Unit:highlight_outline", "outline_type must be a string")
-    end
-    UnitHighlightModule.unit_outline(self.unit_table, outline_type)
+--- 清空已进驻的单位
+function Unit:empty_garrison_inside()
+    GarrisonModule.empty(self.name)
 end
 
--- --------- 头顶文字 -----------
-
---- 在单位上方添加或更新文字
---- @param content string 文字内容
---- @param z_offset number z轴偏移量
---- @param color Color 颜色
---- @param player_name_list string|string[]|nil 玩家名字列表
-function Unit:set_top_text(content, z_offset, color, player_name_list)
-    UnitTopTextModule.set_or_update(self.id, content, z_offset, color.dec_value, player_name_list)
-end
-
--- TODO: test
---- 删除单位顶部文字
-function Unit:remove_top_text()
-    UnitTopTextModule.remove(self.id)
-end
-
---- 显示消息框
---- @param msg string 消息内容
---- @param seconds number 持续时间(秒)
---- @param img ButtonTextureEnum|nil 图片名称
-function Unit:show_msg_box(msg, seconds, img)
-    if type(msg) ~= "string" then
-        LoggerModule.error("Unit:show_msg_box", "msg must be a string")
-        return
-    end
-    if type(seconds) ~= "number" then
-        LoggerModule.error("Unit:show_msg_box", "seconds must be a number")
-        return
-    end
-    if type(img) ~= "nil" and type(img) ~= "string" then
-        LoggerModule.error("Unit:show_msg_box", "img must be a string or nil")
-        return
-    end
-    MsgBoxModule.show_msg_box_on_unit(self.unit_table, msg, seconds, img)
-end
-
---- 移除消息框
-function Unit:remove_msg_box()
-    MsgBoxModule.remove_msg_box_on_unit(self.unit_table)
-end
-
--- TODO: test
---- 显示浮动整数数字
---- @param value number
-function Unit:show_float_int_number(value)
-    UnitTopTextModule.show_float_int_number(self.id, value)
-end
-
--- --------- 顶部按钮 -----------
-
--- TODO: test
---- 添加顶部按钮
---- @param offset number z轴偏移量
---- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
-function Unit:add_top_button(offset, player_list)
-    UnitTopButtonModule.add_button(self.id, offset, player_list)
-end
-
--- TODO: test
---- 删除顶部按钮
---- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
-function Unit:remove_top_button(player_list)
-    UnitTopButtonModule.remove_button(self.id, player_list)
-end
-
--- TODO: test
---- 设置顶部按钮是否可见
---- @param visible boolean 是否可见
---- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
-function Unit:set_top_button_visible(visible, player_list)
-    if type(visible) ~= "boolean" then
-        LoggerModule.error("Unit:set_top_button_visible", "visible must be a boolean")
-        return
-    end
-    UnitTopButtonModule.set_button_visible(self.id, visible, player_list)
-end
-
--- --------- 物理信息 -----------
-
---- 获取单位坐标
---- @return number, number, number x, y, z
-function Unit:get_position()
-    return UnitPhysicsModule.get_position(self.unit_table)
-end
-
---- 获取单位坐标向量
---- @return Vector
-function Unit:get_position_vec()
-    local x, y, z = self:get_position()
-    return {x, y, z}
-end
-
--- TODO: test
---- 单位移动到指定坐标, 参数为整数. 涉及到游戏状态机, 慎用
---- @param x number x
---- @param y number y
---- @param z number z
-function Unit:move_to(x, y, z)
-    if type(x) ~= "number" then
-        LoggerModule.error("Unit:move_to", "x must be a number")
-        return
-    end
-    if type(y) ~= "number" then
-        LoggerModule.error("Unit:move_to", "y must be a number")
-        return
-    end
-    if type(z) ~= "number" then
-        LoggerModule.error("Unit:move_to", "z must be a number")
-        return
-    end
-    UnitPhysicsModule.move_to(self.id, x, y, z)
-end
-
--- TODO: test
---- 设置单位坐标
---- @param x number x
---- @param y number y
---- @param z number|nil z, 可以缺省为nil
-function Unit:set_position(x, y, z)
-    if type(x) ~= "number" then
-        LoggerModule.error("Unit:set_position", "x must be a number")
-        return
-    end
-    if type(y) ~= "number" then
-        LoggerModule.error("Unit:set_position", "y must be a number")
-        return
-    end
-    if type(z) ~= "number" and z ~= nil then
-        LoggerModule.error("Unit:set_position", "z must be a number or nil")
-        return
-    end
-    UnitPhysicsModule.set_position(self.unit_table, x, y, z)
-end
-
---- 设置单位坐标向量
---- @param vec Vector
-function Unit:set_position_by_vec(vec)
-    if type(vec) ~= "table" then
-        LoggerModule.error("Unit:set_position_by_vec", "vec must be a table")
-        return
-    end
-    if getn(vec) ~= 3 then
-        LoggerModule.error("Unit:set_position_by_vec", "vec must have length 3")
-        return
-    end
-    UnitPhysicsModule.set_position(self.unit_table, vec[1], vec[2], vec[3])
-end
-
--- TODO: test
---- 获取与另一个单位的2D距离
---- @param other_unit Unit
---- @return number
-function Unit:get_distance_2d(other_unit)
-    return UnitPhysicsModule.get_distance_2D(self.unit_table, other_unit.unit_table)
-end
-
--- TODO: test
---- 获取与另一个单位的3D距离
---- @param other_unit Unit
---- @return number
-function Unit:get_distance_3D(other_unit)
-    return UnitPhysicsModule.get_distance_3D(self.unit_table, other_unit.unit_table)
-end
-
--- TODO: test
---- 使单位面向路径点
---- @param waypoint_name string 路径点名字
-function Unit:fact_to_waypoint(waypoint_name)
-    UnitPhysicsModule.face_to_waypoint(self.unit_table, waypoint_name)
-end
-
--- TODO: test
---- 使单位面向另一个单位
---- @param other_unit Unit
-function Unit:face_to_unit(other_unit)
-    UnitPhysicsModule.face_to_unit(self.name, other_unit.name)
-end
-
--- ------------------  齐次坐标相关 ------------------
-
--- TODO: test
---- 获取单位的齐次坐标矩阵
---- @return Matrix
-function Unit:get_homogeneous_coordinates()
-    return UnitPhysicsModule.get_homogeneous_coordinates(self.unit_table)
-end
-
---- 设置单位的齐次坐标矩阵
---- @param matrix Matrix
-function Unit:set_homogeneous_coordinates(matrix)
-    if type(matrix) ~= "table" then
-        LoggerModule.error("Unit:set_homogeneous_coordinates", "matrix must be a table")
+--- 获取单位的父单位
+--- @return Unit
+function Unit:get_parent_unit()
+    local parent_unit_table = GarrisonModule.get_parent_unit(self.unit_table)
+    if parent_unit_table == nil then
         return nil
     end
-    UnitPhysicsModule.set_homogeneous_coordinates(self.unit_table, matrix)
+    return UnitHelper.get_unit_from_table(parent_unit_table)
 end
 
---- 平移单位(全局坐标)
---- @param vec Vector
-function Unit:translate(vec)
-    if type(vec) ~= "table" then
-        LoggerModule.error("Unit:translate", "vec must be a table")
-        return
+--- 获取子单位列表
+--- @return Unit[], number
+function Unit:get_child_units()
+    local child_unit_tables, cnt = GarrisonModule.get_child_units(self.unit_table)
+    local child_units = {}
+    for i=1, cnt do
+        local child_unit_table = child_unit_tables[i]
+        local child_unit = UnitHelper.get_unit_from_table(child_unit_table)
+        tinsert(child_units, child_unit)
     end
-    UnitPhysicsModule.translate(self.unit_table, vec)
-end
-
---- 平移单位(相对坐标)
---- @param vec Vector
-function Unit:translate_relative(vec)
-    if type(vec) ~= "table" then
-        LoggerModule.error("Unit:translate_relative", "vec must be a table")
-        return
-    end
-    UnitPhysicsModule.translate_relatively(self.unit_table, vec)
-end
-
---- 欧拉角旋转, 具体的旋转方向可使用右手定则确定
---- @param roll_angle number
---- @param pitch_angle number
---- @param yaw_angle number
-function Unit:rotate_by_euler(roll_angle, pitch_angle, yaw_angle)
-    if type(roll_angle) ~= "number" or type(pitch_angle) ~= "number" or type(yaw_angle) ~= "number" then
-        LoggerModule.error("Unit:rotate_by_euler", "roll_angle, pitch_angle, yaw_angle must be a number")
-        return
-    end
-    UnitPhysicsModule.rotate_by_euler(self.unit_table, roll_angle, pitch_angle, yaw_angle)
-end
-
---- 缩放单位
---- @param scale number 缩放比例
-function Unit:set_scale(scale)
-    if type(scale) ~= "number" then
-        LoggerModule.error("Unit:set_scale", "scale must be a number")
-        return
-    end
-    UnitPhysicsModule.set_scale(self.unit_table, scale)    
-end
-
---- 获取单位的缩放比例
---- @return number, number, number 分别在x, y, z轴的缩放比例
-function Unit:get_scale()
-    return UnitPhysicsModule.get_scale(self.unit_table)
-end
-
---- 单位镜像, 模型可能会出问题!
---- @param x boolean 是否在x轴镜像
---- @param y boolean 是否在y轴镜像
---- @param z boolean 是否在z轴镜像
-function Unit:set_mirror(x, y, z)
-    UnitPhysicsModule.set_mirror(self.unit_table, x, y, z)
-end
-
---- 获取单位的方向向量
---- @return Vector
-function Unit:get_direction_vec()
-    return UnitPhysicsModule.get_direction_vec(self.unit_table)
+    return child_units, cnt
 end
