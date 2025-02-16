@@ -11,7 +11,7 @@ StatusEnum = {
     UNSELECTABLE = "UNSELECTABLE",
     --- 单位或建筑展开中, 技能前摇
     UNPACKING = "UNPACKING",
-    STRUCTURE_UNPACKING = "STRUCTURE_UNPACKING",
+    UNDER_CONSTRUCTION = "UNDER_CONSTRUCTION",
     --- 无音效
     INAUDIBLE = "INAUDIBLE",
 
@@ -27,5 +27,8 @@ StatusEnum = {
     NO_ATTACK = "NO_ATTACK",
     --- 不可被出售
     CANNOT_BE_SOLD = "CANNOT_BE_SOLD",
+
+    PLACED_BY_PLAYER = "PLACED_BY_PLAYER",
+    LOADED_BY_MAP = "LOADED_BY_MAP",
 
 }

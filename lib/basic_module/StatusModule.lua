@@ -54,11 +54,11 @@ StatusModule.unit_change_status = function(unit_table_or_name, statuses, is_acti
     end
 
     if type(statuses) == 'string' then
-        ExecuteAction("UNIT_CHANGE_OBJECT_STATUS", unit_table_or_name, statuses, is_active) --411
+        ExecuteAction("UNIT_CHANGE_OBJECT_STATUS", unit_table_or_name, statuses, GameModule.to_ra3_boolean(is_active)) --411
         return
     elseif type(statuses) == 'table' then
         for i = 1, getn(statuses) do
-            ExecuteAction("UNIT_CHANGE_OBJECT_STATUS", unit_table_or_name, statuses[i], is_active) --411
+            ExecuteAction("UNIT_CHANGE_OBJECT_STATUS", unit_table_or_name, statuses[i], GameModule.to_ra3_boolean(is_active)) --411
         end
     else
         LoggerModule.error("StatusModule.unit_change_status", "statuses must be a table or string")

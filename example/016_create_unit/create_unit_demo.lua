@@ -1,3 +1,5 @@
+LoggerModule.setup(LoggerLevelEnum.DEBUG, {LoggerTargetEnum.DEBUG_LOG_FILE})
+
 UnitCreateHelper.create_unit_at_waypoint(
     UnitHelper.get_unit_auto_name(),
     ThingEnum.AlliedBaseDefenseAdvanced, -- 光谱塔
@@ -20,12 +22,13 @@ UnitCreateHelper.create_refinery(
     "Waypoint 3"
 )
 
-UnitCreateHelper.create_refinery(
+local u_s = UnitCreateHelper.create_refinery(
     UnitHelper.get_unit_from_name("ore3"),
     FactionEnum.SOVIET,
     PlayerEnum.Player_1,
     "Waypoint 3"
 )
+
 
 UnitCreateHelper.create_refinery(
     UnitHelper.get_unit_from_name("ore4"),

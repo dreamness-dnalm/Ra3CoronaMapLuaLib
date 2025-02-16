@@ -67,6 +67,7 @@ end
 --- @param faction_name FactionEnum
 --- @param player_name PlayerEnum
 --- @param waypoint_name WeaponEnum
+--- @return Unit
 function UnitCreateHelper.create_refinery(ore_node_unit, faction_name, player_name, waypoint_name)
     if type(ore_node_unit) ~= "table" then
         LoggerModule.error("UnitCreateHelper.create_refinery", "ore_node_unit must be a table")
@@ -123,6 +124,7 @@ function UnitCreateHelper.create_refinery(ore_node_unit, faction_name, player_na
 
     refinery_unit:set_position_by_vec(pos_vec)
     refinery_unit:rotate_by_euler(0, 0, angle)
+    return refinery_unit
 end
 
 

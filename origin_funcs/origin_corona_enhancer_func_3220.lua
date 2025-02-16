@@ -93,7 +93,7 @@ function exLightSetMainLightColor(r, g, b)  end
 function exLightSetAccent1Color(r, g, b)  end
 
 -- TODO: test, package
---- 设置补光1颜色
+--- 设置补光2颜色
 --- @param r number float 红色
 --- @param g number float 绿色
 --- @param b number float 蓝色

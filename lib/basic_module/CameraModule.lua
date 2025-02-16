@@ -15,7 +15,7 @@ CameraModule.enable_camera_interpolate = function(is_enable)
     end
 end
 
---- 设置相机位置, 进行相机动画, 每帧调用一次
+--- 设置相机位置, 进行相机动画, 每帧调用一次(需要先开启摄像机插值)
 --- @param player_name PlayerEnum 玩家名字
 --- @param pos_x number 相机位置x
 --- @param pos_y number 相机位置y
@@ -148,7 +148,7 @@ CameraModule.translate_relative = function(player_name, x, y, z)
         return
     end
     if player_name == nil then
-        exCameraTranslateRelative(x, y, z)
+        exCameraAdjustPos(x, y, z)
     elseif type(player_name) == 'string' then
         exCameraAdjustPosByForPlayer(player_name, x, y, z)
     else
