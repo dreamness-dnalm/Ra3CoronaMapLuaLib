@@ -213,7 +213,6 @@ function exSetFollowCameraParam(player_name, pos_x, pos_y, pos_z, yaw, pitch, ro
 --- @return number 当前血量
 function exObjectGetCurrentHealth(object_id) end
 
--- TODO: test
 --- 获取单位最大血量
 --- @param object_id number 单位ID
 --- @return number 最大血量
@@ -225,12 +224,9 @@ function exObjectGetMaxHealth(object_id) end
 --- @param value number 数字(int)
 function exShowFloatingIntAtObject(object_id, value) end
 
-
--- TODO: test
 --- 隐藏左下角的协议按钮
 function exAptHidePlayerTechButton() end
 
--- TODO: test
 --- 显示左下角的协议按钮
 function exAptShowPlayerTechButton() end
 
@@ -404,38 +400,32 @@ function exAddTextToPublicBoardForPlayer(player_name, content, duration) end
 --- @return number 冰冻量
 function exObjectGetCurrentSecondaryDamage(object_id) end
 
--- TODO: test
 --- 单位顶部按钮, 添加按钮
 --- @param object_id number 单位id
 --- @param offset number 偏移量位置
 function exObjectShowBtnAtTop(object_id, offset) end   -- 添加按钮
 
--- TODO: test
 --- 单位顶部按钮, 修改按钮可见性
 --- @param object_id number 单位id
 --- @param visible number  1是可见，0是隐藏
 function exObjectChangeBtnAtTopVisibility(object_id, visible) end  -- visible  1是可见，0是隐藏
 
--- TODO: test
 --- 单位顶部按钮, 删除按钮
 --- @param object_id number 单位id
 function exObjectDeleteBtnAtTop(object_id) end  -- 删除按钮
 
--- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 添加按钮
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id
 --- @param offset number 位置
 function exObjectShowBtnAtTopForPlayer(player_name, object_id, offset) end
 
--- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 修改按钮可见性
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id
 --- @param visible number  1是可见，0是隐藏
 function exObjectChangeBtnAtTopVisibilityForPlayer(player_name, object_id, visible) end
 
--- TODO: test
 --- 玩家特化版本, 单位顶部按钮, 删除按钮
 --- @param player_name string 玩家名字
 --- @param object_id number 单位id

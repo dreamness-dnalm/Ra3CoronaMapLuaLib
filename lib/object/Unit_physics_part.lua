@@ -34,7 +34,6 @@ function Unit:move_to(x, y, z)
     UnitPhysicsModule.move_to(self.id, x, y, z)
 end
 
--- TODO: test
 --- 设置单位坐标
 --- @param x number x
 --- @param y number y

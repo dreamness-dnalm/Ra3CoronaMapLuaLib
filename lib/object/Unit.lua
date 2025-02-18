@@ -224,28 +224,46 @@ end
 
 -- ------ 单位健康 -------
 
--- TODO: test
 --- 获取单位的生命值
 --- @return number
 function Unit:get_health()
     return UnitHealthModule.get_health(self.unit_table)
 end
 
--- TODO: test
---- 获取单位的初始生命值
+--- 获取单位的最大生命值
 --- @return number
-function Unit:get_initial_health()
-    return UnitHealthModule.get_initial_health(self.unit_table)
+function Unit:get_max_health()
+    return UnitHealthModule.get_max_health(self.id)
 end
 
--- TODO: test
+--- 设置单位的最大生命值
+--- @param max_health number
+function Unit:set_max_health(max_health)
+    UnitHealthModule.set_max_health(self.name, max_health)
+end
+
 --- 设置单位生命值
 --- @param health number
 function Unit:set_health(health)
-    UnitHealthModule.set_unit_health(self.unit_table, health)
+    if type(health) ~= 'number' then
+        LoggerModule.error('Unit:set_health', 'health should be number')
+        return
+    end
+    local max_health = self:get_max_health()
+    if health > max_health then
+        self:set_health_percentage(100)
+    else
+        local percentage = health / max_health * 100
+        self:set_health_percentage(percentage)
+    end
 end
 
--- TODO: test
+--- 设置单位的生命值百分比
+--- @param percentage number
+function Unit:set_health_percentage(percentage)
+    UnitHealthModule.set_unit_health_percentage(self.name, percentage)
+end
+
 --- 单位承受伤害
 --- @param point number
 function Unit:suffer_damage(point)

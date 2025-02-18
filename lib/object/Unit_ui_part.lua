@@ -78,7 +78,6 @@ end
 
 -- --------- 顶部按钮 -----------
 
--- TODO: test
 --- 添加顶部按钮
 --- @param offset number z轴偏移量
 --- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
@@ -86,22 +85,16 @@ function Unit:add_top_button(offset, player_list)
     UnitTopButtonModule.add_button(self.id, offset, player_list)
 end
 
--- TODO: test
 --- 删除顶部按钮
 --- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
 function Unit:remove_top_button(player_list)
     UnitTopButtonModule.remove_button(self.id, player_list)
 end
 
--- TODO: test
 --- 设置顶部按钮是否可见
 --- @param visible boolean 是否可见
 --- @param player_list string|string[]|nil 玩家名字列表, nil表示所有玩家
 function Unit:set_top_button_visible(visible, player_list)
-    if type(visible) ~= "boolean" then
-        LoggerModule.error("Unit:set_top_button_visible", "visible must be a boolean")
-        return
-    end
     UnitTopButtonModule.set_button_visible(self.id, visible, player_list)
 end
 

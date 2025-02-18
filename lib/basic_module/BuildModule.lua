@@ -6,8 +6,9 @@
 BuildModule = {}
 
 
--- TODO: test, package
+-- TODO: package
 --- 是否允许玩家建造建筑 (59)/(56)
+--- 注: 帝国的核心不是建筑，所以不受影响
 --- @param player_name PlayerEnum
 --- @param is_allowed boolean
 BuildModule.allow_build_building = function(player_name, is_allowed)
@@ -21,8 +22,9 @@ BuildModule.allow_build_building = function(player_name, is_allowed)
     end
 end
 
--- TODO: test, package
+-- TODO: package
 --- 是否允许玩家建造单位 (61)/(58)
+--- 注: 帝国的核心属于单位, 会受影响
 --- @param player_name PlayerEnum
 --- @param is_allow boolean
 BuildModule.allow_build_unit = function(player_name, is_allow)

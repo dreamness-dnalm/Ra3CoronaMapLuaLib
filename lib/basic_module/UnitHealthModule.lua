@@ -5,7 +5,6 @@
 --- 单位生命值模块
 UnitHealthModule = {}
 
--- TODO: test
 --- 获取单位的生命值
 --- @param unit_table SystemUnitTable 单位table
 --- @return number
@@ -17,62 +16,45 @@ UnitHealthModule.get_health = function(unit_table)
     return ObjectGetCurrentHealth(unit_table)
 end
 
--- TODO: test, package
 --- 获取单位的最大生命值
---- @param unit_id number 单位id
+--- @param unit_table number 单位id
 --- @return number
-UnitHealthModule.get_max_health = function(unit_id)
-    if type(unit_id) ~= "number" then
-        LoggerModule.error('UnitHealthModule.get_max_health', 'unit_id should be number')
-        return
-    end
-    return exObjectGetMaxHealth(unit_id)
-end
-
--- TODO: test
---- 获取单位的初始生命值
---- @param unit_table SystemUnitTable 单位table
---- @return number
-UnitHealthModule.get_initial_health = function(unit_table)
-    if type(unit_table) ~= "table" then
-        LoggerModule.error('UnitHealthModule.get_initial_health', 'unit_table should be table')
+UnitHealthModule.get_max_health = function(unit_table)
+    if type(unit_table) ~= "number" then
+        LoggerModule.error('UnitHealthModule.get_max_health', 'unit_table should be table')
         return
     end
     return ObjectGetInitialHealth(unit_table)
 end
 
--- TODO: test, package
---- 设置单位生命值百分比 [489]
---- @param unit_name_or_table SystemUnitTable|string 
+--- 设置单位的最大生命值 ((551))
+--- @param unit_name string 单位名
+--- @param max_health number 最大生命值
+UnitHealthModule.set_max_health = function(unit_name, max_health)
+    if type(unit_name) ~= "string" then
+        LoggerModule.error('UnitHealthModule.set_max_health', 'unit_name should be string')
+        return
+    end
+    if type(max_health) ~= "number" then
+        LoggerModule.error('UnitHealthModule.set_max_health', 'max_health should be number')
+        return
+    end
+    ExecuteAction("NAMED_SET_MAX_HEALTH", unit_name, max_health, GameModule.to_ra3_boolean(nil))
+end
+
+--- 设置单位生命值百分比 (486)
+--- @param unit_name string 
 --- @param percentage number 百分比
-UnitHealthModule.set_unit_health_percentage = function(unit_name_or_table, percentage)
-    if type(unit_name_or_table) ~= "table" and type(unit_name_or_table) ~= "string" then
-        LoggerModule.error('UnitHealthModule.set_unit_health_percentage', 'unit_name_or_table should be table or string')
+UnitHealthModule.set_unit_health_percentage = function(unit_name, percentage)
+    if type(unit_name) ~= "string" then
+        LoggerModule.error('UnitHealthModule.set_unit_health_percentage', 'unit_name should be string')
         return
     end
     if type(percentage) ~= "number" then
         LoggerModule.error('UnitHealthModule.set_unit_health_percentage', 'percentage should be number')
         return
     end
-    ExecuteAction("SET_UNIT_HEALTH_PERCENTAGE_TO_COUNTER", unit_name_or_table, percentage)
-end
-
--- TODO: test
---- 设置单位生命值
---- @param unit_table SystemUnitTable
---- @param health number
-UnitHealthModule.set_unit_health = function(unit_table, health)
-    if type(unit_table) ~= "table" then
-        LoggerModule.error('UnitHealthModule.set_unit_health', 'unit_table should be table')
-        return
-    end
-    if type(health) ~= "number" then
-        LoggerModule.error('UnitHealthModule.set_unit_health', 'health should be number')
-        return
-    end
-    local initialHealth = UnitHealthModule.get_initial_health(unit_table)
-    local healthPercentage = floor(health / initialHealth * 100)
-    UnitHealthModule.set_unit_health_percentage(healthPercentage)
+    ExecuteAction("UNIT_SET_HEALTH", unit_name, percentage)
 end
 
 --- 单位承受伤害 (63)

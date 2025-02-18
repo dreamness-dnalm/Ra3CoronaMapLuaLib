@@ -88,7 +88,6 @@ EventHelper.register_unit_die_event = function(thing, callback_func)
     end
 end
 
--- TODO: test
 --- 注册单位顶部按钮点击事件
 --- @param unit Unit
 --- @param callback_func function 监听器 func(player_name, unit)

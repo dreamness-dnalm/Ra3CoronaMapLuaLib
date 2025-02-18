@@ -50,7 +50,6 @@ MatrixUtil.__dot2 = function(m1, m2)
     return result
 end
 
--- TODO: test
 --- 矩阵与向量相乘
 --- @param m Matrix 矩阵
 --- @param v Vector 向量

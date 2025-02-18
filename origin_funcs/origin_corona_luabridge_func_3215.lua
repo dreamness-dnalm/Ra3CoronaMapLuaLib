@@ -87,16 +87,14 @@ function ObjectSetTransform(unit_table, matrix) end
 --- @return number 唯一ID
 function ObjectGetId(unit_table)  end
 
--- TODO: test
 --- 获取单位的当前生命值
 --- @param unit_table table 单位
 --- @return number 当前生命值
 function ObjectGetCurrentHealth(unit_table)  end
 
--- TODO: test
 --- 获取单位的初始生命值, 假如单位不存在或者单位没有 ActiveBody 模块，会返回 nil
 --- @param unit_table table 单位
---- @return number 初始生命值
+--- @return number|nil 初始生命值
 function ObjectGetInitialHealth(unit_table)  end
 
 -- TODO: test, package
