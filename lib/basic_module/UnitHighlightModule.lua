@@ -38,9 +38,9 @@ end
 --- @class UnitOutlineTypeEnum
 UnitOutlineTypeEnum = {
     NONE = "NONE",
-    SELECTED = "SELECTED",
-    HOVER_SELECT = "HOVER_SELECT",
-    HOVER_ATTACK = "HOVER_ATTACK"
+    YELLOW = "SELECTED",
+    WHITE = "HOVER_SELECT",
+    RED = "HOVER_ATTACK"
 }
 
 --- 为单位标注轮廓 (512)

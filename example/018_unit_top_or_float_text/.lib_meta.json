@@ -1,0 +1,49 @@
+{
+  "FileName": "018_unit_top_or_float_text",
+  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\018_unit_top_or_float_text",
+  "FileType": "dir",
+  "IsEnabled": true,
+  "IsIncluded": true,
+  "RunOnce": true,
+  "IsEvaluateEachFrame": true,
+  "EvaluationInterval": 1,
+  "ActiveInEasy": true,
+  "ActiveInMedium": true,
+  "ActiveInHard": true,
+  "OrderNum": 99,
+  "Children": [
+    {
+      "FileName": "init.lua",
+      "FilePath": "\\018_unit_top_or_float_text\\init.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": true,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 0,
+      "Children": [],
+      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\018_unit_top_or_float_text"
+    },
+    {
+      "FileName": "update.lua",
+      "FilePath": "\\018_unit_top_or_float_text\\update.lua",
+      "FileType": "lua",
+      "IsEnabled": true,
+      "IsIncluded": true,
+      "RunOnce": false,
+      "IsEvaluateEachFrame": true,
+      "EvaluationInterval": 1,
+      "ActiveInEasy": true,
+      "ActiveInMedium": true,
+      "ActiveInHard": true,
+      "OrderNum": 1,
+      "Children": [],
+      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\018_unit_top_or_float_text"
+    }
+  ],
+  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\018_unit_top_or_float_text"
+}

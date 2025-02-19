@@ -1,6 +1,5 @@
 ScoreBoardModule = {}
 
--- TODO: test
 --- 设置记分板是否可见
 --- @param visible boolean 是否可见
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
@@ -28,7 +27,6 @@ ScoreBoardModule.set_visible = function(visible, player_name_list)
     end
 end
 
--- TODO: test
 --- 设置记分板标题文字
 --- @param text string 文本内容
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
@@ -52,7 +50,6 @@ ScoreBoardModule.set_title = function(text, player_name_list)
     end
 end
 
--- TODO: test
 --- 设置记分板某行某列的文字
 --- @param text string 文本内容
 --- @param row number 行 1-7
@@ -86,7 +83,6 @@ ScoreBoardModule.set_cell = function (text, row, col, player_name_list)
     end    
 end
 
--- TODO: test
 --- 设置记分板内容
 --- @param content_table table 内容表格, 二维数组
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
@@ -115,7 +111,6 @@ ScoreBoardModule.set_table_content = function (content_table, player_name_list)
     end
 end
 
--- TODO: test
 --- 清空记分板内容
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
 ScoreBoardModule.clear = function (player_name_list)

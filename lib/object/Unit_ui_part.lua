@@ -38,10 +38,11 @@ function Unit:set_top_text(content, z_offset, color, player_name_list)
     UnitTopTextModule.set_or_update(self.id, content, z_offset, color.dec_value, player_name_list)
 end
 
--- TODO: test
 --- 删除单位顶部文字
 function Unit:remove_top_text()
-    UnitTopTextModule.remove(self.id)
+    -- TODO: 官方等待修复
+    -- UnitTopTextModule.remove(self.id)
+    Unit:set_top_text("", 0, ColorEnum.White, nil)
 end
 
 --- 显示消息框
@@ -69,7 +70,6 @@ function Unit:remove_msg_box()
     MsgBoxModule.remove_msg_box_on_unit(self.unit_table)
 end
 
--- TODO: test
 --- 显示浮动整数数字
 --- @param value number
 function Unit:show_float_int_number(value)

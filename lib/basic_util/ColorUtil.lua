@@ -13,7 +13,6 @@
 --- 颜色工具库
 ColorUtil = {}
 
--- TODO: test
 --- 从rgb值获取颜色
 --- @param r number 红色值
 --- @param g number 绿色值
