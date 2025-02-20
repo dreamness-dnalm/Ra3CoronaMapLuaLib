@@ -1,6 +1,6 @@
 {
   "FileName": "lib",
-  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib",
+  "FilePath": "dir",
   "FileType": "dir",
   "IsEnabled": true,
   "IsIncluded": true,
@@ -40,10 +40,10 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\_meta"
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\_meta"
+      "Comment": ""
     },
     {
       "FileName": "enums",
@@ -73,7 +73,7 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "ButtonTextureEnum.lua",
@@ -89,7 +89,7 @@
           "ActiveInHard": true,
           "OrderNum": 1,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "KindOfEnum.lua",
@@ -105,7 +105,7 @@
           "ActiveInHard": true,
           "OrderNum": 2,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "ModelStateEnum.lua",
@@ -121,7 +121,7 @@
           "ActiveInHard": true,
           "OrderNum": 3,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "SpecialPowerEnum.lua",
@@ -137,7 +137,7 @@
           "ActiveInHard": true,
           "OrderNum": 4,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "StatusEnum.lua",
@@ -153,7 +153,7 @@
           "ActiveInHard": true,
           "OrderNum": 5,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "ThingEnum.lua",
@@ -169,7 +169,7 @@
           "ActiveInHard": true,
           "OrderNum": 6,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "WeaponEnum.lua",
@@ -185,7 +185,7 @@
           "ActiveInHard": true,
           "OrderNum": 7,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "PlayerEnum.lua",
@@ -201,7 +201,7 @@
           "ActiveInHard": true,
           "OrderNum": 8,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "UpgradeEnum.lua",
@@ -217,7 +217,7 @@
           "ActiveInHard": true,
           "OrderNum": 9,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "AttributeModifierEnum.lua",
@@ -233,7 +233,7 @@
           "ActiveInHard": true,
           "OrderNum": 10,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "FactionEnum.lua",
@@ -249,7 +249,7 @@
           "ActiveInHard": true,
           "OrderNum": 11,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
         },
         {
           "FileName": "WaypointEnum.lua",
@@ -265,10 +265,26 @@
           "ActiveInHard": true,
           "OrderNum": 12,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+          "Comment": ""
+        },
+        {
+          "FileName": "ProtocolEnum.lua",
+          "FilePath": "\\lib\\enums\\ProtocolEnum.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 13,
+          "Children": [],
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\enums"
+      "Comment": ""
     },
     {
       "FileName": "basic_util",
@@ -298,7 +314,7 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "HomogeneousCoordinatesUtil.lua",
@@ -314,7 +330,7 @@
           "ActiveInHard": true,
           "OrderNum": 1,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "MathUtil.lua",
@@ -330,7 +346,7 @@
           "ActiveInHard": true,
           "OrderNum": 2,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "MatrixUtil.lua",
@@ -346,7 +362,7 @@
           "ActiveInHard": true,
           "OrderNum": 3,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "StringUtil.lua",
@@ -362,7 +378,7 @@
           "ActiveInHard": true,
           "OrderNum": 4,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "TableUtil.lua",
@@ -378,7 +394,7 @@
           "ActiveInHard": true,
           "OrderNum": 5,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "VectorUtil.lua",
@@ -394,7 +410,7 @@
           "ActiveInHard": true,
           "OrderNum": 6,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         },
         {
           "FileName": "ColorUtil.lua",
@@ -410,10 +426,10 @@
           "ActiveInHard": true,
           "OrderNum": 7,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_util"
+      "Comment": ""
     },
     {
       "FileName": "basic_module",
@@ -443,7 +459,7 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "AbilityModule.lua",
@@ -459,7 +475,7 @@
           "ActiveInHard": true,
           "OrderNum": 1,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "AllegianceModule.lua",
@@ -475,7 +491,7 @@
           "ActiveInHard": true,
           "OrderNum": 2,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "AttributeModifierModule.lua",
@@ -491,7 +507,7 @@
           "ActiveInHard": true,
           "OrderNum": 3,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "ChatMsgModule.lua",
@@ -507,7 +523,7 @@
           "ActiveInHard": true,
           "OrderNum": 4,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "DialogModule.lua",
@@ -523,7 +539,7 @@
           "ActiveInHard": true,
           "OrderNum": 5,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "FilterModule.lua",
@@ -539,7 +555,7 @@
           "ActiveInHard": true,
           "OrderNum": 6,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "GameModule.lua",
@@ -555,7 +571,7 @@
           "ActiveInHard": true,
           "OrderNum": 7,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "KeyboardModule.lua",
@@ -571,7 +587,7 @@
           "ActiveInHard": true,
           "OrderNum": 8,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "MsgBoxModule.lua",
@@ -587,7 +603,7 @@
           "ActiveInHard": true,
           "OrderNum": 9,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "PlayerModule.lua",
@@ -603,7 +619,7 @@
           "ActiveInHard": true,
           "OrderNum": 10,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "PowerModule.lua",
@@ -619,7 +635,7 @@
           "ActiveInHard": true,
           "OrderNum": 11,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "ProductionQueueModule.lua",
@@ -635,7 +651,7 @@
           "ActiveInHard": true,
           "OrderNum": 12,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "ProtocolModule.lua",
@@ -651,7 +667,7 @@
           "ActiveInHard": true,
           "OrderNum": 13,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "PublicBoardModule.lua",
@@ -667,7 +683,7 @@
           "ActiveInHard": true,
           "OrderNum": 14,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "SchedulerModule.lua",
@@ -683,7 +699,7 @@
           "ActiveInHard": true,
           "OrderNum": 15,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "SchedulerModuleRunner.lua",
@@ -699,7 +715,7 @@
           "ActiveInHard": true,
           "OrderNum": 16,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "SpecialPowerModule.lua",
@@ -715,7 +731,7 @@
           "ActiveInHard": true,
           "OrderNum": 17,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "StatusModule.lua",
@@ -731,7 +747,7 @@
           "ActiveInHard": true,
           "OrderNum": 18,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "TeamModule.lua",
@@ -747,7 +763,7 @@
           "ActiveInHard": true,
           "OrderNum": 19,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "ThreatLevelModule.lua",
@@ -763,7 +779,7 @@
           "ActiveInHard": true,
           "OrderNum": 20,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitModule.lua",
@@ -779,7 +795,7 @@
           "ActiveInHard": true,
           "OrderNum": 21,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitPhysicsModule.lua",
@@ -795,7 +811,7 @@
           "ActiveInHard": true,
           "OrderNum": 22,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitTopTextModule.lua",
@@ -811,7 +827,7 @@
           "ActiveInHard": true,
           "OrderNum": 23,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UpgradeModule.lua",
@@ -827,7 +843,7 @@
           "ActiveInHard": true,
           "OrderNum": 24,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitHealthModule.lua",
@@ -843,7 +859,7 @@
           "ActiveInHard": true,
           "OrderNum": 25,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitHighlightModule.lua",
@@ -859,7 +875,7 @@
           "ActiveInHard": true,
           "OrderNum": 26,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitWeaponModule.lua",
@@ -875,7 +891,7 @@
           "ActiveInHard": true,
           "OrderNum": 27,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitModelStateModule.lua",
@@ -891,7 +907,7 @@
           "ActiveInHard": true,
           "OrderNum": 28,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "GarrisonModule.lua",
@@ -907,7 +923,7 @@
           "ActiveInHard": true,
           "OrderNum": 29,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "FogModule.lua",
@@ -923,7 +939,7 @@
           "ActiveInHard": true,
           "OrderNum": 30,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "BuildModule.lua",
@@ -939,7 +955,7 @@
           "ActiveInHard": true,
           "OrderNum": 31,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "MoneyModule.lua",
@@ -955,7 +971,7 @@
           "ActiveInHard": true,
           "OrderNum": 32,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "CounterModule.lua",
@@ -971,7 +987,7 @@
           "ActiveInHard": true,
           "OrderNum": 33,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "TopButtonModule.lua",
@@ -987,7 +1003,7 @@
           "ActiveInHard": true,
           "OrderNum": 34,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "CameraModule.lua",
@@ -1003,7 +1019,7 @@
           "ActiveInHard": true,
           "OrderNum": 35,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "ScoreBoardModule.lua",
@@ -1019,7 +1035,7 @@
           "ActiveInHard": true,
           "OrderNum": 36,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "WaypointModule.lua",
@@ -1035,7 +1051,7 @@
           "ActiveInHard": true,
           "OrderNum": 37,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UIModule.lua",
@@ -1051,7 +1067,7 @@
           "ActiveInHard": true,
           "OrderNum": 38,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         },
         {
           "FileName": "UnitTopButtonModule.lua",
@@ -1067,10 +1083,10 @@
           "ActiveInHard": true,
           "OrderNum": 39,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+      "Comment": ""
     },
     {
       "FileName": "helper",
@@ -1100,7 +1116,7 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+          "Comment": ""
         },
         {
           "FileName": "RamdomHelper.lua",
@@ -1116,7 +1132,7 @@
           "ActiveInHard": true,
           "OrderNum": 1,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+          "Comment": ""
         },
         {
           "FileName": "UnitHelper.lua",
@@ -1132,7 +1148,7 @@
           "ActiveInHard": true,
           "OrderNum": 2,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+          "Comment": ""
         },
         {
           "FileName": "UnitCreateHelper.lua",
@@ -1148,7 +1164,7 @@
           "ActiveInHard": true,
           "OrderNum": 3,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+          "Comment": ""
         },
         {
           "FileName": "EventHelper.lua",
@@ -1164,10 +1180,10 @@
           "ActiveInHard": true,
           "OrderNum": 4,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+      "Comment": ""
     },
     {
       "FileName": "object",
@@ -1197,7 +1213,7 @@
           "ActiveInHard": true,
           "OrderNum": 0,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+          "Comment": ""
         },
         {
           "FileName": "Unit.lua",
@@ -1213,7 +1229,7 @@
           "ActiveInHard": true,
           "OrderNum": 1,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+          "Comment": ""
         },
         {
           "FileName": "Unit_hc_part.lua",
@@ -1229,7 +1245,7 @@
           "ActiveInHard": true,
           "OrderNum": 2,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+          "Comment": ""
         },
         {
           "FileName": "Unit_physics_part.lua",
@@ -1245,7 +1261,7 @@
           "ActiveInHard": true,
           "OrderNum": 3,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+          "Comment": ""
         },
         {
           "FileName": "Unit_ui_part.lua",
@@ -1261,11 +1277,11 @@
           "ActiveInHard": true,
           "OrderNum": 4,
           "Children": [],
-          "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+          "Comment": ""
         }
       ],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+      "Comment": ""
     }
   ],
-  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib"
+  "Comment": ""
 }
