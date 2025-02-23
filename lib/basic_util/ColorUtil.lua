@@ -28,7 +28,6 @@ ColorUtil.get_color_from_rgb = function(r, g, b)
     return color
 end
 
--- TODO: test
 --- 从十六进制值获取颜色
 --- @param hex_value string 十六进制值
 --- @return Color

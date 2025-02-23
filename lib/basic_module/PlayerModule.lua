@@ -14,25 +14,6 @@ PlayerModule.get_player_name = function(player_str_or_unit_table)
 end
 
 
-
--- TODO: test, package
---- 玩家的起始位置是否是xx [79]
---- @param player_name PlayerEnum
---- @param start_pos number 起始位置编号
---- @return boolean
-PlayerModule.is_start_pos = function(player_name, start_pos)
-    if type(player_name) ~= "string" then
-        LoggerModule.error("PlayerModule.is_start_pos", "player_name must be a string")
-        return nil
-    end
-    if type(start_pos) ~= "number" then
-        LoggerModule.error("PlayerModule.is_start_pos", "start_pos must be a number")
-        return nil
-    end
-    return GameModule.from_ra3_boolean(EvaluateCondition("START_POSITION_IS", player_name, start_pos))
-end
-
-
 --- 获取玩家数 [114]
 --- @return number
 PlayerModule.get_player_cnt = function()
@@ -112,7 +93,6 @@ end
 --     return exGetPlayerNickNameByScriptName(player_name)
 -- end
 
--- TODO: test
 --- 获取ai经济作弊倍数   注意：1.0表示不指定（而非1倍）
 --- @return number
 PlayerModule.get_ai_cheat_multiplier = function()
@@ -120,7 +100,7 @@ PlayerModule.get_ai_cheat_multiplier = function()
 end
 
 
--- TODO: test, package
+-- TODO: package
 --- 获取玩家选中的单位id列表
 --- @param player_name PlayerEnum
 --- @return number[], number  id列表, 数量

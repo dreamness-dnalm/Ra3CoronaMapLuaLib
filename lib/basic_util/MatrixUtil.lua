@@ -74,7 +74,6 @@ MatrixUtil.dot_vector = function(m, v)
     return result
 end
 
--- TODO: test
 --- 转置矩阵
 --- @param m Matrix 矩阵
 --- @return Matrix
@@ -91,8 +90,6 @@ MatrixUtil.transpose = function(m)
     return result
 end
 
-
--- TODO: test
 --- 矩阵相加
 --- @param ... Matrix 矩阵
 --- @return Matrix
@@ -109,8 +106,6 @@ MatrixUtil.add = function(...)
     return result
 end
 
-
--- TODO: test
 --- 矩阵相加
 --- @param m1 Matrix 矩阵1
 --- @param m2 Matrix 矩阵2
@@ -134,7 +129,6 @@ MatrixUtil.__add2 = function(m1, m2)
     return result
 end
 
--- TODO: test
 --- 矩阵转字符串, 用于日志输出
 --- @param m Matrix 矩阵
 --- @return string
@@ -145,13 +139,12 @@ MatrixUtil.m_tostring = function(m)
         for j = 1, getn(m[i]) do
             s = s .. m[i][j] .. ','
         end
-        s = s .. '],'
+        s = s .. '],\n'
     end
     s = s .. '\n]'
     return s
 end
 
--- TODO: test
 --- 获取单位矩阵
 --- @param rank number 秩
 --- @return Matrix

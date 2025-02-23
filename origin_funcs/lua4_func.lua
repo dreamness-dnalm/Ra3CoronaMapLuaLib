@@ -140,3 +140,8 @@ function type(any) end
 --- 获取全局变量table
 --- @return table
 function globals() end
+
+--- 执行字符串
+--- @param cmd string
+--- @return any  失败返回nil
+function dostring(cmd) end

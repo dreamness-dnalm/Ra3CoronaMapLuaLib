@@ -13,7 +13,6 @@ function Unit:get_position_vec()
     return {x, y, z}
 end
 
--- TODO: test
 --- 单位移动到指定坐标, 参数为整数. 涉及到游戏状态机, 慎用
 --- @param x number x
 --- @param y number y
@@ -68,15 +67,13 @@ function Unit:set_position_by_vec(vec)
     UnitPhysicsModule.set_position(self.unit_table, vec[1], vec[2], vec[3])
 end
 
--- TODO: test
 --- 获取与另一个单位的2D距离
 --- @param other_unit Unit
 --- @return number
-function Unit:get_distance_2d(other_unit)
+function Unit:get_distance_2D(other_unit)
     return UnitPhysicsModule.get_distance_2D(self.unit_table, other_unit.unit_table)
 end
 
--- TODO: test
 --- 获取与另一个单位的3D距离
 --- @param other_unit Unit
 --- @return number
@@ -84,15 +81,15 @@ function Unit:get_distance_3D(other_unit)
     return UnitPhysicsModule.get_distance_3D(self.unit_table, other_unit.unit_table)
 end
 
--- TODO: test
 --- 使单位面向路径点
+--- 注: 不是所有单位都有效
 --- @param waypoint_name string 路径点名字
 function Unit:fact_to_waypoint(waypoint_name)
     UnitPhysicsModule.face_to_waypoint(self.unit_table, waypoint_name)
 end
 
--- TODO: test
 --- 使单位面向另一个单位
+--- 注: 不是所有单位都有效
 --- @param other_unit Unit
 function Unit:face_to_unit(other_unit)
     UnitPhysicsModule.face_to_unit(self.name, other_unit.name)

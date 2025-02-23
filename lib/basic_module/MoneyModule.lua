@@ -42,7 +42,6 @@ MoneyModule.set_player_money = function(player_name, money)
     ExecuteAction("PLAYER_SET_MONEY", player_name, money)
 end
 
--- TODO: test
 --- 获取作弊金钱倍数
 --- @return number
 MoneyModule.get_cheat_multiplier = function()

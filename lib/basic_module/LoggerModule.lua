@@ -20,14 +20,14 @@ LoggerModule.LoggerLevel = LoggerLevelEnum.INFO
 
 --- @class LoggerTargetEnum 日志输出目标枚举
 LoggerTargetEnum = {
-    --- 输出到debug工具的日志文件(地编路径\NewWorldBuilder\data\logs)
+    --- 输出到debug工具的日志文件(地编路径\NewWorldBuilder\game\logs)
     --- 推荐, 普通玩家不会收到任何日志
     DEBUG_LOG_FILE = 1,
     --- 输出到dll的日志文件(日冕客户端路径\CoronaData\Logs)
     DLL_LOG_FILE = 2,
     --- 输出到公屏
     PUBLIC_BOARD = 3,
-    --- 输出到聊天框(仅多人游戏)
+    --- 输出到聊天框
     CHAT_MSG = 4
 }
 

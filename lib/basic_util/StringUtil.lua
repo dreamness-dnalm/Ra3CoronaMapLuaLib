@@ -20,13 +20,12 @@ StringUtil.make_string = function(strTbl, sep)
     return str
 end
 
--- TODO: test
 --- 分割字符串
 --- @param str string 字符串
 --- @param sep string 分隔符
 --- @return table,number subStrs,subStrsCount
 StringUtil.split = function(str, sep)
-    if str == "" then
+    if sep == "" then
         -- 返回字符数组
         local ret = {}
         for i = 1, strlen(str) do

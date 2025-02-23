@@ -6,6 +6,15 @@
 --- 对话框模块
 DialogModule = {}
 
+DialogModule._meta = {
+    auto_index = 1
+}
+
+DialogModule.get_auto_dialog_id = function()
+    DialogModule._meta.auto_index = DialogModule._meta.auto_index + 1
+    return DialogModule._meta.auto_index
+end
+
 --- 显示按钮选项弹框, 弹框全局只有一个，如果之前的弹框还未消失，则会覆盖之前的弹框数据和ui, 弹框按钮点击后，弹框自动消失
 --- @param dialog_id number 弹框id
 --- @param title string 弹框标题
@@ -72,8 +81,6 @@ DialogModule.hide_choice_dialog = function(player_name_list)
     end
 end
 
--- 该函数有问题, 以后更新...
--- TODO: test
 --- 显示长文本弹框, 弹框全局只有一个，如果之前的弹框还未消失，则会覆盖之前的弹框数据和ui, 弹框按钮点击后，弹框自动消失
 --- @param dialog_id number 弹框id
 --- @param content string 弹框内容
@@ -116,7 +123,6 @@ DialogModule.show_long_text_dialog = function(dialog_id,  content, button_conten
     end
 end
 
--- TODO: test
 --- 隐藏长文本弹框
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字, nil则针对所有玩家
 DialogModule.hide_long_text_dialog = function(player_name_list)
@@ -145,6 +151,6 @@ DialogModule.register_dialog_click_listener = function(func)
         return
     end
     globals().onUserBtnChoiceDialogEvent = func
-    globals().onUserBtnLongTextDialogEvent = func
+    globals().onUserLongTextDialogEvent = func
 end
 

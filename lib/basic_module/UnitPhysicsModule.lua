@@ -37,7 +37,6 @@ UnitPhysicsModule.set_position = function(unit_table, x, y, z)
     end
 end
 
--- TODO: test
 --- 移动到某个位置, 参数是整数
 --- @param object_id number 单位id
 --- @param x number x
@@ -63,7 +62,6 @@ UnitPhysicsModule.move_to = function(object_id, x, y, z)
     exObjectMoveTo(object_id, x, y, z)
 end
 
--- TODO: test
 --- 获取单位间的距离(2D)
 --- @param unit_table_1 SystemUnitTable 单位1
 --- @param unit_table_2 SystemUnitTable 单位2
@@ -76,7 +74,6 @@ UnitPhysicsModule.get_distance_2D = function(unit_table_1, unit_table_2)
     return ObjectsDistance2D(unit_table_1, unit_table_2)
 end
 
--- TODO: test
 --- 获取单位间的距离(3D)
 --- @param unit_table_1 SystemUnitTable 单位1
 --- @param unit_table_2 SystemUnitTable 单位2
@@ -90,7 +87,7 @@ UnitPhysicsModule.get_distance_3D = function(unit_table_1, unit_table_2)
 end
 
 
--- TODO: test, package
+-- TODO: package
 --- 获取单位在前一帧的坐标（便于计算速度） (每秒15帧);
 --- @param unit_table SystemUnitTable 单位
 --- @return number, number, number x, y, z
@@ -116,14 +113,17 @@ UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)
 end
 
 
--- TODO: test
 --- 使单位的朝向路径点 (231)
 --- @param unit_table_or_name SystemUnitTable|string 单位名称
 --- @param waypoint_name string 路径点名称
 UnitPhysicsModule.face_to_waypoint = function(unit_table_or_name, waypoint_name)
     LoggerModule.debug("UnitPhysicsModule.unitFaceToWaypoint", "unitName: " .. tostring(unit_table_or_name) .. ", wayPointName: " .. tostring(waypoint_name))
-    if type(unit_table_or_name) ~= "string" or type(waypoint_name) ~= "string" then
-        LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "unitName and wayPointName must be a string")
+    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+        LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "unit_table_or_name must be a string or table")
+        return
+    end
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "wayPointName must be a string")
         return
     end
     ExecuteAction("NAMED_FACE_WAYPOINT", unit_table_or_name, waypoint_name)

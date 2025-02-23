@@ -18,19 +18,16 @@ GameModule.get_string_fast_hash = function(content)
     return FastHash(content)
 end
 
--- TODO: test
 --- 游戏结束, 显示胜利画面 (3)
 GameModule.game_over_with_victory_screen = function()
     ExecuteAction("VICTORY")
 end
 
--- TODO: test
 --- 游戏结束, 显示失败画面 (4)
 GameModule.game_over_with_defeat_screen = function()
     ExecuteAction("DEFEAT")
 end
 
--- TODO: test
 --- 游戏结束, 显示游戏结束画面 (223)
 GameModule.game_over_with_game_over_screen = function()
     ExecuteAction("LOCALDEFEAT")

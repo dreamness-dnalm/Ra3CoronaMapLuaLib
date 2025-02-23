@@ -1,7 +1,5 @@
 WaypointModule = {}
 
-
--- TODO: test
 --- 修改Waypoint点的坐标位置  坐标都需要是整数
 --- @param waypoint_name string
 --- @param x number

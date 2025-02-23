@@ -101,7 +101,6 @@ TableUtil.dict_shallow_copy = function(t)
     return new_table
 end
 
--- TODO: test
 --- 构造数组
 --- @param ele any
 --- @param cnt number
@@ -114,7 +113,6 @@ TableUtil.make_array = function(ele, cnt)
     return t
 end
 
--- TODO: test
 --- 合并数组
 --- @param ... table[]
 --- @return table

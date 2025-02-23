@@ -79,7 +79,6 @@ ProtocolModule.set_player_protocol_tech_faction = function(player_name, faction_
     end
 end
 
--- TODO: test
 --- 解锁协议等级(第几行)
 --- @param player_name PlayerEnum 玩家名
 --- @param level number 等级 (2-10)
