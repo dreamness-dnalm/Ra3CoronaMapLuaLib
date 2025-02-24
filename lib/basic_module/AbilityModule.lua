@@ -20,43 +20,43 @@ AbilityModule.unit_use_ability = function(unit_table_or_name, ability_name)
     ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY", unit_table_or_name, ability_name)
 end
 
--- -- TODO: test
--- --- 使用技能在指定路径点 (162)
--- --- @param unit_table_or_name string|SystemUnitTable 单位table或单位名
--- --- @param ability_name AbilityEnum 技能名
--- --- @param waypoint string 路径点
--- AbilityModule.unit_use_ability_at_waypoint = function(unit_table_or_name, ability_name, waypoint)
---     if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= 'table' then
---         LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "unit_table_or_name must be a string")
---     end
---     if type(ability_name) ~= "string" then
---         LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "ability_name must be a string")
---     end
---     if type(waypoint) ~= "string" then
---         LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "waypoint must be a string")
---     end
+-- TODO: test
+--- 使用技能在指定路径点 (162)
+--- @param unit_table_or_name string|SystemUnitTable 单位table或单位名
+--- @param ability_name AbilityEnum 技能名
+--- @param waypoint string 路径点
+AbilityModule.unit_use_ability_at_waypoint = function(unit_table_or_name, ability_name, waypoint)
+    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= 'table' then
+        LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "unit_table_or_name must be a string")
+    end
+    if type(ability_name) ~= "string" then
+        LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "ability_name must be a string")
+    end
+    if type(waypoint) ~= "string" then
+        LoggerModule.error("AbilityModule.unit_use_ability_at_waypoint", "waypoint must be a string")
+    end
 
---     ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_AT_WAYPOINT", unit_table_or_name, ability_name, waypoint)
--- end
+    ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_AT_WAYPOINT", unit_table_or_name, ability_name, waypoint)
+end
 
--- -- TODO: test
--- --- 在单位上使用技能 ((161))
--- --- @param unit_name string 单位名
--- --- @param ability_name AbilityEnum 技能名
--- --- @param target_unit_name string 目标单位名
--- AbilityModule.unit_use_ability_on_unit = function(unit_name, ability_name, target_unit_name)
---     if type(unit_name) ~= "string" then
---         LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "unit_name must be a string")
---     end
---     if type(ability_name) ~= "string" then
---         LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "ability_name must be a string")
---     end
---     if type(target_unit_name) ~= "string"then
---         LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "target_unit_name must be a string")
---     end
+-- TODO: test
+--- 在单位上使用技能 ((161))
+--- @param unit_name string 单位名
+--- @param ability_name AbilityEnum 技能名
+--- @param target_unit_name string 目标单位名
+AbilityModule.unit_use_ability_on_unit = function(unit_name, ability_name, target_unit_name)
+    if type(unit_name) ~= "string" then
+        LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "unit_name must be a string")
+    end
+    if type(ability_name) ~= "string" then
+        LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "ability_name must be a string")
+    end
+    if type(target_unit_name) ~= "string"then
+        LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "target_unit_name must be a string")
+    end
 
---     ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_ON_UNIT", unit_name, ability_name, target_unit_name)
--- end
+    ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_ON_UNIT", unit_name, ability_name, target_unit_name)
+end
 
 
 -- -- TODO: test, package

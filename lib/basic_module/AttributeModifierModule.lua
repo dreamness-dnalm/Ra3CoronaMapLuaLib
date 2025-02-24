@@ -62,7 +62,7 @@ end
 -- -- TODO: test
 -- --- 获取AttributeModifier对象
 -- --- @param attribute_modifier_name AttributeModifierEnum 属性修改器名称
--- AttributeModifierModule.get_attribute_modifier_object = function(attribute_modifier_name)
+-- AttributeModifierModule.__get_attribute_modifier_object = function(attribute_modifier_name)
 --     if type(attribute_modifier_name) ~= 'string' then
 --         LoggerModule.error("AttributeModifierModule.get_attribute_modifier_object", "attribute_modifier_name should be string")
 --         return nil
@@ -97,7 +97,7 @@ end
 --         -- 如果获取不到modifier对象, 则在对象缓存中存储'-1', 保证以后不再重试
 --         if modifier_name ~= nil then
 --             if AttributeModifierModule.__attributeModifierObjectCache[modifier_name] == nil then
---                 local obj = AttributeModifierModule.get_attribute_modifier_object(modifier_name)
+--                 local obj = AttributeModifierModule.__get_attribute_modifier_object(modifier_name)
 --                 if obj == nil then
 --                     AttributeModifierModule.__attributeModifierObjectCache[modifier_name] = -1
 --                 else

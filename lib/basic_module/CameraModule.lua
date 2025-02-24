@@ -55,7 +55,6 @@ CameraModule.set_player_follow = function(player_name, pos_x, pos_y, pos_z, yaw,
     exSetFollowCameraParam(player_name, pos_x, pos_y, pos_z, yaw, pitch, roll)
 end
 
--- TODO: test
 --- 设置相机位置
 --- @param player_name PlayerEnum|nil 玩家名字, nil表示所有玩家
 CameraModule.set_camera_pos = function(player_name, pos_x, pos_y, pos_z)
@@ -80,7 +79,6 @@ CameraModule.set_camera_pos = function(player_name, pos_x, pos_y, pos_z)
     end
 end
 
--- TODO: test
 --- 设置相机位置
 --- @param player_name PlayerEnum|nil 玩家名字, nil表示所有玩家
 --- @param pos_vec Vector
@@ -96,7 +94,6 @@ CameraModule.set_camera_pos_by_vec = function(player_name, pos_vec)
     CameraModule.set_camera_pos(player_name, pos_vec[1], pos_vec[2], pos_vec[3])
 end
 
--- TODO: test
 --- 根据欧拉角旋转相机
 --- @param player_name PlayerEnum|nil 玩家名字, nil表示所有玩家
 --- @param yaw number
@@ -128,7 +125,6 @@ CameraModule.rotate_by_euler = function(player_name, yaw, pitch, roll)
     end
 end
 
--- TODO: test
 --- 相对于单位进行平移
 --- @param player_name PlayerEnum|nil 玩家名字, nil表示所有玩家
 --- @param x number
@@ -157,8 +153,7 @@ CameraModule.translate_relative = function(player_name, x, y, z)
 end
 
 
--- TODO: test
---- 设置相机角度(相对于{1,0,0})
+--- 设置相机角度(相对于{0,1,0})
 --- @param player_name PlayerEnum|nil 玩家名字, nil表示所有玩家
 --- @param yaw number | nil
 --- @param pitch number | nil

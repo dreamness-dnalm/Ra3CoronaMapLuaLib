@@ -106,3 +106,5 @@ end
 LoggerModule.error = function(pos, msg)
     LoggerModule._log("ERROR", pos, msg, LoggerModule.DefaultTargets)
 end
+
+logger = LoggerModule

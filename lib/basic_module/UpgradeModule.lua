@@ -5,8 +5,6 @@
 --- 升级模块
 UpgradeModule = {}
 
-
--- TODO: test, package
 --- 玩家是否拥有某升级 [53]
 --- @param player_name string
 --- @param upgrade_name UpgradeEnum
@@ -40,7 +38,6 @@ UpgradeModule.allow_upgrade = function(player_name, upgrade_name, is_allow)
     ExecuteAction("ALLOW_DISALLOW_ONE_UPGRADE", player_name, upgrade_name, GameModule.to_ra3_boolean(is_allow))
 end
 
--- TODO: test, package
 --- 给予/剥夺 玩家某升级 (314) / (504) 用途暂时不明
 --- @param player_name string
 --- @param upgrade_name UpgradeEnum
@@ -56,7 +53,7 @@ UpgradeModule.enable_upgrade = function(player_name, upgrade_name, is_enable)
     if is_enable then
         ExecuteAction("GIVE_PLAYER_UPGRADE", player_name, upgrade_name)
     else
-        ExecuteAction("REMOVE_PLAYER_UPGRADE", upgrade_name, player_name)
+        ExecuteAction("REMOVE_PLAYER_UPGRADE", player_name, upgrade_name)
     end
     LoggerModule.debug("UpgradeModule.enable_upgrade", "end")
 end
@@ -81,8 +78,6 @@ UpgradeModule.unit_enable_upgrade = function(unit_name_or_table, upgrade_name, i
     LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "end")
 end
 
-
--- TODO: test, package
 --- 单位是否有升级 [138]
 --- @param unit_name_or_table string|SystemUnitTable
 --- @param upgrade_name UpgradeEnum
@@ -94,8 +89,5 @@ UpgradeModule.unit_has_upgrade = function(unit_name_or_table, upgrade_name)
     if type(upgrade_name) ~= "string" then
         LoggerModule.error("UpgradeModule.unit_has_upgrade", "upgradeName must be a string")
     end
-    local ret = EvaluateCondition("UNIT_HAS_UPGRADE", unit_name_or_table, upgrade_name)
-
-    LoggerModule.debug("UpgradeModule.unit_has_upgrade", "end ret:"..tostring(ret))
-    return ret
+    return GameModule.from_ra3_boolean(EvaluateCondition("UNIT_HAS_UPGRADE", unit_name_or_table, upgrade_name))
 end
