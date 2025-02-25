@@ -84,7 +84,6 @@ function Unit:use_ability(ability_name)
     AbilityModule.unit_use_ability(self.unit_table, ability_name)
 end
 
--- TODO: test
 --- 单位使用技能在指定路径点
 --- @param ability_name AbilityEnum 技能名
 --- @param waypoint string 路径点
@@ -98,7 +97,6 @@ function Unit:use_ability_at_waypoint(ability_name, waypoint)
     AbilityModule.unit_use_ability_at_waypoint(self.unit_table, ability_name, waypoint)
 end
 
--- TODO: test
 --- 单位使用技能在指定单位, 需要指定单位名字!!
 --- @param ability_name AbilityEnum 技能名
 --- @param target_unit Unit 目标单位

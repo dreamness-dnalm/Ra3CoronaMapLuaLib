@@ -244,7 +244,7 @@ end
 --- @param pos_index number 位置索引, 1-6
 --- @param value number 血条值, 1-100
 --- @param player_name_list PlayerEnum|PlayerEnum[]|nil 玩家名字列表, nil则针对所有玩家
-TopButtonModule.set_button_hp_var_value = function(pos_index, value, player_name_list)
+TopButtonModule.set_button_hp_bar_value = function(pos_index, value, player_name_list)
     if type(pos_index) ~= 'number' then
         LoggerModule.error('TopButtonModule.set_button_hp_var_value', 'pos_index type error:' .. type(pos_index))
         return

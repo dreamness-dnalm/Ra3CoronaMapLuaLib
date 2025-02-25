@@ -114,7 +114,6 @@ EventHelper.register_unit_top_button_click_event = function(unit, callback_func)
     )
 end
 
--- TODO: test
 --- 注册顶部按钮点击事件
 --- @param pos_index number 1-6
 --- @param callback_func function 监听器 func(player_name, shift_pressed)
@@ -135,7 +134,7 @@ EventHelper.register_top_button_click_event = function(pos_index, callback_func)
     EventHelper._meta.top_button_click_funcs[tostring(pos_index)] = callback_func
 
     TopButtonModule.register_button_click_callback(
-        function(player_name, shift_pressed, pos_index)
+        function(player_name, pos_index, shift_pressed)
             local func = EventHelper._meta.top_button_click_funcs[tostring(pos_index)]
             if func ~= nil then
                 func(player_name, shift_pressed)

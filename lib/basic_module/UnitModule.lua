@@ -86,28 +86,6 @@ UnitModule.delete = function(unit_table_or_name)
     ExecuteAction("NAMED_DELETE", unit_table_or_name)
 end
 
--- -- TODO: test, package
--- --- 在单位上生成子物体((527))
--- --- @param unit_name string 单位名
--- --- @param thing string 物体名
--- --- @param team_name string 队伍名
--- --- @param parent_unit_name string 父单位名
--- UnitModule.createSubUnit = function(unit_name, thing, team_name, parent_unit_name)
---     if type(unit_name) ~= "string" then
---         LoggerModule.error("unitFuncs.createSubUnit", "unitName must be a string")
---     end
---     if type(thing) ~= "string" then
---         LoggerModule.error("unitFuncs.createSubUnit", "thing must be a string")
---     end
---     if type(team_name) ~= "string" then
---         LoggerModule.error("unitFuncs.createSubUnit", "team_name must be a string")
---     end
---     if type(parent_unit_name) ~= "string" then
---         LoggerModule.error("unitFuncs.createSubUnit", "parent_unit_name must be a string")
---     end
---     ExecuteAction("UNIT_SPAWN_NAMED_OBJECT_ON_TEAM_AT_NAMED_OBJECT_LOCATION", unit_name, thing, team_name, parent_unit_name)
--- end
-
 --- 给单位命名 （278)
 --- @param name string 单位名
 --- @param unit_table SystemUnitTable 单位table

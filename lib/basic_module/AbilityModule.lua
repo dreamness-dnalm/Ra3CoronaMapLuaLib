@@ -20,7 +20,6 @@ AbilityModule.unit_use_ability = function(unit_table_or_name, ability_name)
     ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY", unit_table_or_name, ability_name)
 end
 
--- TODO: test
 --- 使用技能在指定路径点 (162)
 --- @param unit_table_or_name string|SystemUnitTable 单位table或单位名
 --- @param ability_name AbilityEnum 技能名
@@ -39,7 +38,6 @@ AbilityModule.unit_use_ability_at_waypoint = function(unit_table_or_name, abilit
     ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_AT_WAYPOINT", unit_table_or_name, ability_name, waypoint)
 end
 
--- TODO: test
 --- 在单位上使用技能 ((161))
 --- @param unit_name string 单位名
 --- @param ability_name AbilityEnum 技能名
@@ -55,7 +53,7 @@ AbilityModule.unit_use_ability_on_unit = function(unit_name, ability_name, targe
         LoggerModule.error("AbilityModule.unit_use_ability_on_unit", "target_unit_name must be a string")
     end
 
-    ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_ON_UNIT", unit_name, ability_name, target_unit_name)
+    ExecuteAction("NAMED_USE_COMMANDBUTTON_ABILITY_ON_NAMED", unit_name, ability_name, target_unit_name)
 end
 
 
