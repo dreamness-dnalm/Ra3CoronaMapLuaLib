@@ -98,37 +98,37 @@ UnitPhysicsModule.get_previous_position = function(unit_table)
     return ObjectGetPreviousPosition(unit_table)
 end
 
---- 使单位的朝向另一个单位 ((230))
---- 注意: 某些单位不可用
---- @param this_unit_name string 单位名称
---- @param other_unit_name string 单位名称
-UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)
-    -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "this_unit_name: " .. tostring(this_unit_name) .. ", face_to_unit: " .. tostring(other_unit_name))
-    if type(this_unit_name) ~= "string" or type(other_unit_name) ~= "string" then
-        LoggerModule.error("UnitPhysicsModule.face_to_unit", "thisUnitName and otherUnitName must be a string")
-        return
-    end
-    ExecuteAction("NAMED_FACE_NAMED", this_unit_name, other_unit_name)
-    -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "end")
-end
+-- --- 使单位的朝向另一个单位 ((230))
+-- --- 注意: 某些单位不可用
+-- --- @param this_unit_name string 单位名称
+-- --- @param other_unit_name string 单位名称
+-- UnitPhysicsModule.face_to_unit = function(this_unit_name, other_unit_name)
+--     -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "this_unit_name: " .. tostring(this_unit_name) .. ", face_to_unit: " .. tostring(other_unit_name))
+--     if type(this_unit_name) ~= "string" or type(other_unit_name) ~= "string" then
+--         LoggerModule.error("UnitPhysicsModule.face_to_unit", "thisUnitName and otherUnitName must be a string")
+--         return
+--     end
+--     ExecuteAction("NAMED_FACE_NAMED", this_unit_name, other_unit_name)
+--     -- LoggerModule.debug("UnitPhysicsModule.face_to_unit", "end")
+-- end
 
 
---- 使单位的朝向路径点 (231)
---- @param unit_table_or_name SystemUnitTable|string 单位名称
---- @param waypoint_name string 路径点名称
-UnitPhysicsModule.face_to_waypoint = function(unit_table_or_name, waypoint_name)
-    LoggerModule.debug("UnitPhysicsModule.unitFaceToWaypoint", "unitName: " .. tostring(unit_table_or_name) .. ", wayPointName: " .. tostring(waypoint_name))
-    if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
-        LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "unit_table_or_name must be a string or table")
-        return
-    end
-    if type(waypoint_name) ~= "string" then
-        LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "wayPointName must be a string")
-        return
-    end
-    ExecuteAction("NAMED_FACE_WAYPOINT", unit_table_or_name, waypoint_name)
-    LoggerModule.debug("UnitPhysicsModule.face_to_waypoint", "end")
-end
+-- --- 使单位的朝向路径点 (231)
+-- --- @param unit_table_or_name SystemUnitTable|string 单位名称
+-- --- @param waypoint_name string 路径点名称
+-- UnitPhysicsModule.face_to_waypoint = function(unit_table_or_name, waypoint_name)
+--     LoggerModule.debug("UnitPhysicsModule.unitFaceToWaypoint", "unitName: " .. tostring(unit_table_or_name) .. ", wayPointName: " .. tostring(waypoint_name))
+--     if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
+--         LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "unit_table_or_name must be a string or table")
+--         return
+--     end
+--     if type(waypoint_name) ~= "string" then
+--         LoggerModule.error("UnitPhysicsModule.face_to_waypoint", "wayPointName must be a string")
+--         return
+--     end
+--     ExecuteAction("NAMED_FACE_WAYPOINT", unit_table_or_name, waypoint_name)
+--     LoggerModule.debug("UnitPhysicsModule.face_to_waypoint", "end")
+-- end
 
 -- ------------ 以下为齐次坐标系相关 ------------
 

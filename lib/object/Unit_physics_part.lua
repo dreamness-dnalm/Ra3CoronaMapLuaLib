@@ -81,17 +81,17 @@ function Unit:get_distance_3D(other_unit)
     return UnitPhysicsModule.get_distance_3D(self.unit_table, other_unit.unit_table)
 end
 
---- 使单位面向路径点
---- 注: 不是所有单位都有效
---- @param waypoint_name string 路径点名字
-function Unit:fact_to_waypoint(waypoint_name)
-    UnitPhysicsModule.face_to_waypoint(self.unit_table, waypoint_name)
-end
+-- --- 使单位面向路径点
+-- --- 注: 不是所有单位都有效
+-- --- @param waypoint_name string 路径点名字
+-- function Unit:fact_to_waypoint(waypoint_name)
+--     UnitPhysicsModule.face_to_waypoint(self.unit_table, waypoint_name)
+-- end
 
---- 使单位面向另一个单位
---- 注: 不是所有单位都有效
---- @param other_unit Unit
-function Unit:face_to_unit(other_unit)
-    UnitPhysicsModule.face_to_unit(self.name, other_unit.name)
-end
+-- --- 使单位面向另一个单位
+-- --- 注: 不是所有单位都有效
+-- --- @param other_unit Unit
+-- function Unit:face_to_unit(other_unit)
+--     UnitPhysicsModule.face_to_unit(self.name, other_unit.name)
+-- end
 
