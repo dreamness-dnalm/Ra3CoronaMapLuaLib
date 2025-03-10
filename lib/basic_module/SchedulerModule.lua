@@ -18,68 +18,6 @@ SchedulerModule = {}
 --- @type SchedulerConfig[]
 SchedulerModule._schedulers = {}
 
--- -- TODO: test
--- --- 每N帧调用一次某函数, 带参数
--- --- @param callback function 回调函数
--- --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
--- --- @param repeat_num number| nil 重复次数, nil表示无限次, 0或小于0表示不调用
--- --- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
--- SchedulerModule.call_every_x_frame_with_arguments = function(callback, interval_frame_num, repeat_num, arguments)
---     if type(callback) ~= "function" then
---         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "callback must be a function")
---         return
---     end
---     if type(interval_frame_num) ~= "number" or interval_frame_num <= 0 then
---         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "interval_frame_num must be a number and greater than 0")
---         return
---     end
---     if type(repeat_num) ~= "number" and repeat_num ~= nil then
---         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "repeat_num must be a number or nil")
---         return
---     end
---     if type(arguments) ~= "table" and arguments ~= nil then
---         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "arguments must be a table or nil")
---         return
---     end
-
---     local scheduler = SchedulerModule._schedulers
---     local id = getn(SchedulerModule._schedulers) + 1
---     scheduler[id] = {
---         callback = callback,
---         aready_called_times = 0,
---         repeat_times = repeat_num,
---         interval_frame_num = interval_frame_num,
---         passed_frames = 0,
---         is_active = 1,
---         arguments = arguments or {},
---         argument_length = getn(arguments or {})
---     }
---     return id
--- end
-
--- -- TODO: test
--- --- 每N帧调用一次某函数
--- --- @param callback function 回调函数
--- --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
--- --- @param repeat_num number| nil 重复次数, nil表示无限次, 0或小于0表示不调用
--- SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num)
---     if type(callback) ~= "function" then
---         LoggerModule.error("SchedulerModule.call_every_x_frame", "callback must be a function")
---         return
---     end
---     if type(interval_frame_num) ~= "number" or interval_frame_num <= 0 then
---         LoggerModule.error("SchedulerModule.call_every_x_frame", "interval_frame_num must be a number and greater than 0")
---         return
---     end
---     if type(repeat_num) ~= "number" and repeat_num ~= nil then
---         LoggerModule.error("SchedulerModule.call_every_x_frame", "repeat_num must be a number or nil")
---         return
---     end
-
---     return SchedulerModule.call_every_x_frame_with_arguments(callback, interval_frame_num, repeat_num, nil)
--- end
-
--- TODO: test
 --- 每N帧调用一次某函数, 带参数
 --- @param callback function 回调函数
 --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
@@ -118,24 +56,6 @@ SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repe
     return id
 end
 
--- -- TODO: test
--- --- N帧后调用某函数， 带参数
--- --- @param callback function 回调函数
--- --- @param delay number 延迟帧数 (15帧=1秒)
--- --- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
--- SchedulerModule.delay_call_with_arguments = function(callback, delay, arguments)
---     return SchedulerModule.call_every_x_frame_with_arguments(callback, delay, 1, arguments)
--- end
-
--- -- TODO: test
--- --- N帧后调用某函数
--- --- @param callback function 回调函数
--- --- @param delay number 延迟帧数 (15帧=1秒)
--- SchedulerModule.delay_call = function(callback, delay)
---     return SchedulerModule.delay_call_with_arguments(callback, delay, nil)
--- end
-
--- TODO: test
 --- N帧后调用某函数
 --- @param callback function 回调函数
 --- @param delay number 延迟帧数 (15帧=1秒)
@@ -190,7 +110,6 @@ SchedulerModule.get_config = function(id)
     return scheduler[id]
 end
 
--- TODO: test
 --- 调度器内部函数, 请勿使用该函数
 SchedulerModule.__runner_function = function()
     if GetFrame() > 1 then

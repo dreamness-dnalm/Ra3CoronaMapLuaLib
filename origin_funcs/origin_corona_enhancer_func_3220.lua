@@ -133,58 +133,55 @@ function exInfoBoxTopCenterShowForPlayer(player_name, content, duration_seconds)
 --- @param amount number 伤害值, 整数, 正数表示增加冰冻量，负数表示解冻量
 function exObjectDealSecondaryDamage(object_id, amount)  end
 
--- TODO: test
 -- 针对全体玩家
 --- 设置相机位置
 function exCameraAdjustPos(x, y, z)  end
--- TODO: test
+
 --- 设置相机旋转
 function exCameraAdjustRotation(value)  end
--- TODO: test
+
 --- 设置相机俯仰
 function exCameraAdjustPitch(value)  end
--- TODO: test
+
 --- 设置相机滚转
 function exCameraAdjustRoll(value)  end
--- TODO: test
 --- 设置相机位置相对于当前位置的偏移
 function exCameraAdjustPosBy(dx, dy, dz)  end
--- TODO: test
+
 --- 设置相机旋转改变量（相对于当前值)
 function exCameraAdjustRotationBy(value)  end
--- TODO: test
+
 --- 设置相机俯仰改变量（相对于当前值)
 function exCameraAdjustPitchBy(value)  end
--- TODO: test
+
 --- 设置相机滚转改变量（相对于当前值)
 function exCameraAdjustRollBy(value)  end
 
--- TODO: test
 ---设置某玩家相机位置
 function exCameraAdjustPosForPlayer(player_name, x, y, z)  end
 
--- TODO: test
+
 ---设置某玩家相机旋转
 function exCameraAdjustRotationForPlayer(playerName, value)  end
 
--- TODO: test
+
 ---设置某玩家相机俯仰
 function exCameraAdjustPitchForPlayer(playerName, value)  end
 
--- TODO: test
+
 ---设置某玩家相机滚转
 function exCameraAdjustRollForPlayer(playerName, value)  end
 
--- TODO: test
+
 ---设置某玩家相机位置相对于当前位置的偏移
 function exCameraAdjustPosByForPlayer(playerName, dx, dy, dz)  end
 -- TODO: test
 ---设置某玩家相机旋转改变量（相对于当前值)
 function exCameraAdjustRotationByForPlayer(playerName, value)  end
--- TODO: test
+
 ---设置某玩家相机俯仰改变量（相对于当前值)
 function exCameraAdjustPitchByForPlayer(playerName, value)  end
--- TODO: test
+
 ---设置某玩家相机滚转改变量（相对于当前值)
 function exCameraAdjustRollByForPlayer(playerName, value)  end
 
@@ -374,7 +371,6 @@ function exHideLongTextDialog() end
 --- @param btn3 string 按钮3
 function exShowLongTextDialogForPlayer(player_name, dialog_id, content, btn1, btn2, btn3) end
 
--- TODO: test
 --- 玩家特化版本
 --- 隐藏长文本对话框
 --- @param player_name string 玩家名字
@@ -558,10 +554,10 @@ function exCenterTopBtnSetEnableForPlayer(player_name, index, enable) end
 --end
 
 
---- TODO: test
+
 -- 启用地编脚本
 function exEnableWBScript(script_name) end
---- TODO: test
+
 -- 禁用地编脚本
 function exDisableWBScript(script_name) end
 
@@ -571,7 +567,6 @@ function exAptHideObjectDetailsArea() end
 -- 显示右下角的技能栏区域
 function exAptShowObjectDetailsArea() end
 
---- TODO: test
 --- 移动单位到某个位置  坐标都是整数
 --- @param objectId number 单位id
 --- @param x number x 整数

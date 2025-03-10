@@ -47,7 +47,6 @@ function ObjectGetPosition(unit_table) end
 --- @return table, number 单位集合, 单位数量
 function ObjectFindObjects(unit_table, find_area_table, filter)  end
 
--- TODO: test
 --- 设置单位的位置
 --- @param unit_table table 单位
 --- @param x number x
@@ -55,14 +54,12 @@ function ObjectFindObjects(unit_table, find_area_table, filter)  end
 --- @param z number z
 function ObjectSetPosition(unit_table, x, y, z) end
 
--- TODO: test
 --- 获取单位间的距离(2D)
 --- @param unit_table1 table 单位1
 --- @param unit_table_2 table 单位2
 --- @return number 距离
 function ObjectsDistance2D(unit_table1, unit_table_2)  end
 
--- TODO: test
 --- 获取单位间的距离(3D)
 --- @param unit_table1 table 单位1
 --- @param unit_table_2 table 单位2

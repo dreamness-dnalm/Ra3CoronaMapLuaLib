@@ -307,10 +307,55 @@ ThingEnum = {
     --- 玄武级攻击潜艇
     CelestialAntiStructureShip = "CelestialAntiStructureShip",
 
+    --- 工程师
     AlliedEngineer = "AlliedEngineer",
+    --- 工程师
     SovietEngineer = "SovietEngineer",
+    --- 工程师
     JapanEngineer = "JapanEngineer",
-    CelestialEngineer = "CelestialEngineer"
+    --- 工程师
+    CelestialEngineer = "CelestialEngineer",
 
+    --- 间谍
+    AlliedInfiltrationInfantry = "AlliedInfiltrationInfantry",
+    --- 标枪兵
+    AlliedAntiVehicleInfantry = "AlliedAntiVehicleInfantry",
+    --- 维和步兵
+    AlliedAntiInfantryInfantry = "AlliedAntiInfantryInfantry",
+    --- 警犬
+    AlliedScoutInfantry = "AlliedScoutInfantry",
+    --- 冰冻军团
+    AlliedCryoLegionnaire = "AlliedCryoLegionnaire",
 
+    --- 弓箭少女
+    JapanArcherInfantry = "JapanArcherInfantry",
+    --- 帝国武士
+    JapanAntiInfantryInfantry = "JapanAntiInfantryInfantry",
+    --- 坦克杀手
+    JapanAntiVehicleInfantry = "JapanAntiVehicleInfantry",
+    --- 忍者
+    JapanInfiltrationInfantry = "JapanInfiltrationInfantry",
+
+    --- 征召兵
+    SovietAntiInfantryInfantry = "SovietAntiInfantryInfantry",
+    --- 磁暴部队
+    SovietHeavyAntiVehicleInfantry = "SovietHeavyAntiVehicleInfantry",
+    --- 战熊
+    SovietScoutInfantry = "SovietScoutInfantry",
+    --- 防控部队
+    SovietAntiVehicleInfantry = "SovietAntiVehicleInfantry",
+
+    --- 岚影刺
+    CelestialInfiltrationInfantry = "CelestialInfiltrationInfantry",
+    --- 破甲铁卫
+    CelestialAntiVehicleInfantry = "CelestialAntiVehicleInfantry",
+    --- 迅雷天罡
+    CelestialAntiInfantryInfantryAdvanced = "CelestialAntiInfantryInfantryAdvanced",
+    --- 龙炎军
+    CelestialAntiInfantryInfantry = "CelestialAntiInfantryInfantry",
+    --- 维修天灯
+    CelestialEngineerRepairDrone = "CelestialEngineerRepairDrone",
+
+    
+    
 }

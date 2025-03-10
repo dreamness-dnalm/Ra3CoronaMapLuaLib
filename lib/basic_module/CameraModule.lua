@@ -144,7 +144,7 @@ CameraModule.translate_relative = function(player_name, x, y, z)
         return
     end
     if player_name == nil then
-        exCameraAdjustPos(x, y, z)
+        exCameraAdjustPosBy(x, y, z)
     elseif type(player_name) == 'string' then
         exCameraAdjustPosByForPlayer(player_name, x, y, z)
     else
@@ -198,4 +198,94 @@ CameraModule.set_camera_rotation = function(player_name, yaw, pitch, roll)
     else
         LoggerModule.error('CameraModule.set_camera_rotation', 'player_name must be a string or nil')
     end
+end
+
+
+-- TODO: test
+--- 相机是否已经完成移动[7]
+--- @return boolean
+CameraModule.is_camera_moving_finished = function()
+    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_MOVEMENT_FINISHED"))
+end
+
+-- TODO: test
+--- 相机是否已经完成跟随路径达到路径点[87]
+--- @param waypoint_name string
+--- @return boolean
+CameraModule.is_camera_follow_path_and_arrived = function(waypoint_name)
+    if type(waypoint_name) ~= 'string' then
+        LoggerModule.error('CameraModule.is_camera_follow_path_and_arrived', 'waypoint_name must be a string')
+        return false
+    end
+    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_HIT_SPECIFIC_SPLINE_WAYPOINT", waypoint_name))
+end
+
+-- TODO: test
+--- 相机是否已经进入区域[94]
+--- @param area_name string
+--- @return boolean
+CameraModule.is_camera_in_area = function(area_name)
+    if type(area_name) ~= 'string' then
+        LoggerModule.error('CameraModule.is_camera_in_area', 'area_name must be a string')
+        return false
+    end
+    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_ENTERED_AREA", area_name))
+end
+
+-- TODO: test
+--- 相机是否已经复位[132]
+--- @return boolean
+CameraModule.is_camera_reset = function()
+    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_RESET"))
+end
+
+--- 开启/关闭电影模式 (258)/(563)/(259)
+--- @param is_enable boolean
+--- @param with_radar boolean
+CameraModule.enable_camera_letter_mode = function(is_enable, with_radar)
+    if is_enable then
+        if with_radar then
+            ExecuteAction("CAMERA_LETTERBOX_BEGIN_WITH_RADAR") -- (258)
+        else
+            ExecuteAction("CAMERA_LETTERBOX_BEGIN") -- (563)
+        end
+    else
+        ExecuteAction("CAMERA_LETTERBOX_END") -- (259)
+    end
+end
+
+--- 开启/关闭辉光特效 (101) / (102)
+--- @param is_enable boolean
+CameraModule.enable_camera_bloom_effect = function(is_enable)
+    if is_enable then
+        ExecuteAction("CAMERA_BLOOM_EFFECT_BEGIN")
+    else
+        ExecuteAction("CAMERA_BLOOM_EFFECT_END")
+    end
+end
+
+-- TODO: test
+--- 重置相机, 到达指定路径点 (19)
+--- @param waypoint_name string
+--- @param duration number 总时长
+--- @param ease_in number 开始移动时, 从静止到运动的时间
+--- @param ease_out number 结束移动时, 从运动到静止的时间
+CameraModule.reset_camera = function(waypoint_name, duration, ease_in, ease_out)
+    if type(waypoint_name) ~= 'string' then
+        LoggerModule.error('CameraModule.reset_camera', 'waypoint_name must be a string')
+        return
+    end
+    if type(duration) ~= 'number' then
+        LoggerModule.error('CameraModule.reset_camera', 'duration must be a number')
+        return
+    end
+    if type(ease_in) ~= 'number' then
+        LoggerModule.error('CameraModule.reset_camera', 'ease_in must be a number')
+        return
+    end
+    if type(ease_out) ~= 'number' then
+        LoggerModule.error('CameraModule.reset_camera', 'ease_out must be a number')
+        return
+    end
+    ExecuteAction('RESET_CAMERA', waypoint_name, duration, ease_in, ease_out)
 end
