@@ -2,19 +2,18 @@ AudioModule = {}
 
 -- ------------------ 音效 ------------------
 
--- TODO: test
---- 是否正在播放音效 [43]
---- @param sound_name SoundEnum 音效名称
---- @return boolean
-AudioModule.is_playing_sound = function(sound_name)
-    if type(sound_name) ~= 'string' then
-        LoggerModule.error('AudioModule.is_playing_sound', 'sound_name must be a string')
-        return
-    end
-    return not GameModule.from_ra3_boolean(EvaluateCondition('HAS_FINISHED_AUDIO', sound_name))
-end
+-- -- 不可用
+-- --- 是否正在播放音效 [43]
+-- --- @param sound_name SoundEnum 音效名称
+-- --- @return boolean
+-- AudioModule.is_playing_sound = function(sound_name)
+--     if type(sound_name) ~= 'string' then
+--         LoggerModule.error('AudioModule.is_playing_sound', 'sound_name must be a string')
+--         return
+--     end
+--     return not GameModule.from_ra3_boolean(EvaluateCondition('HAS_FINISHED_AUDIO', sound_name))
+-- end
 
--- TODO: test
 --- 设置音效音量 (178)/(179)/(180)/(240)
 --- @param sound_name SoundEnum | nil 音效名称, nil表示全局音量
 --- @param volume number|nil 音量, 0-100, nil表示恢复默认音量
@@ -47,28 +46,23 @@ AudioModule.set_sound_volume = function(sound_name, volume)
 end
 
 
--- TODO: test
---- 移除音效 (245)
---- @param sound_name SoundEnum 音效名称
-AudioModule.remove_sound = function(sound_name)
-    if type(sound_name) ~= 'string' then
-        LoggerModule.error('AudioModule.remove_sound', 'sound_name must be a string')
-        return
-    end
-    ExecuteAction('SOUND_REMOVE_TYPE', sound_name) -- (245)
-end
+-- -- 不可用
+-- --- 移除音效 (245)
+-- --- @param sound_name SoundEnum 音效名称
+-- AudioModule.remove_sound = function(sound_name)
+--     if type(sound_name) ~= 'string' then
+--         LoggerModule.error('AudioModule.remove_sound', 'sound_name must be a string')
+--         return
+--     end
+--     ExecuteAction('SOUND_REMOVE_TYPE', sound_name) -- (245)
+-- end
 
--- TODO: test
 --- 启用/禁用音效 (175)/(176)/(177)
 --- @param sound_name SoundEnum | nil 音效名称, nil表示所有音效, 只能用于启用所有音效, 不能用于禁用所有音效
 --- @param is_enable boolean 是否启用 (真: 启用, 假: 禁用)
 AudioModule.enable_sound = function(sound_name, is_enable)
     if type(sound_name) ~= 'string' and sound_name ~= nil then
         LoggerModule.error('AudioModule.enable_sound', 'sound_name must be a string or nil')
-        return
-    end
-    if type(is_enable) ~= 'boolean' then
-        LoggerModule.error('AudioModule.enable_sound', 'is_enable must be a boolean')
         return
     end
 
@@ -88,31 +82,30 @@ AudioModule.enable_sound = function(sound_name, is_enable)
     end
 end
 
--- TODO: test
---- 启用/触发/禁用环境音 （86)/(85)/(255)/(256)
---- @param is_enable boolean 是否启用 (真: 启用/触发, 假: 禁用)
---- @param unit_table_or_name SystemUnitTable | string | nil nil表示全局环境音
-AudioModule.enable_unit_ambient_sound = function(unit_table_or_name, is_enable)
-    if type(unit_table_or_name) ~= 'table' and type(unit_table_or_name) ~= 'string' and unit_table_or_name ~= nil then
-        LoggerModule.error('AudioModule.enable_unit_ambient_sound', 'unit_table_or_name must be a table or string or nil')
-        return
-    end
-    if unit_table_or_name == nil then
-        if is_enable then
-            ExecuteAction('SOUND_AMBIENT_RESUME') -- (86)
-        else
-            ExecuteAction('SOUND_AMBIENT_PAUSE') -- (85)
-        end
-    else
-        if is_enable then
-            ExecuteAction('ENABLE_OBJECT_SOUND', unit_table_or_name) -- (255)
-        else
-            ExecuteAction('DISABLE_OBJECT_SOUND', unit_table_or_name) -- (256)
-        end
-    end
-end
+-- -- 不可用
+-- --- 启用/触发/禁用环境音 （86)/(85)/(255)/(256)
+-- --- @param is_enable boolean 是否启用 (真: 启用/触发, 假: 禁用)
+-- --- @param unit_table_or_name SystemUnitTable | string | nil nil表示全局环境音
+-- AudioModule.enable_unit_ambient_sound = function(unit_table_or_name, is_enable)
+--     if type(unit_table_or_name) ~= 'table' and type(unit_table_or_name) ~= 'string' and unit_table_or_name ~= nil then
+--         LoggerModule.error('AudioModule.enable_unit_ambient_sound', 'unit_table_or_name must be a table or string or nil')
+--         return
+--     end
+--     if unit_table_or_name == nil then
+--         if is_enable then
+--             ExecuteAction('SOUND_AMBIENT_RESUME') -- (86)
+--         else
+--             ExecuteAction('SOUND_AMBIENT_PAUSE') -- (85)
+--         end
+--     else
+--         if is_enable then
+--             ExecuteAction('ENABLE_OBJECT_SOUND', unit_table_or_name) -- (255)
+--         else
+--             ExecuteAction('DISABLE_OBJECT_SOUND', unit_table_or_name) -- (256)
+--         end
+--     end
+-- end
 
--- TODO: test
 --- 播放音效 后三个参数全部为nil, 或只能有一个不为nil (7)/(74)/(11)/(385)
 --- @param sound_name SoundEnum 音效名称
 --- @param from_unit_table_or_name SystemUnitTable | string | nil 播放音效的单位
@@ -149,26 +142,24 @@ AudioModule.play_sound = function(sound_name, from_unit_table_or_name, from_wayp
     end
 end
 
--- TODO: test
---- 启用/禁用背景音效 (25)/(24)
-AudioModule.enable_background_sound = function(is_enable)
-    if is_enable then
-        ExecuteAction('RESUME_BACKGROUND_SOUNDS') -- (25)
-    else
-        ExecuteAction('SUSPEND_BACKGROUND_SOUNDS') -- (24)
-    end
-end
+-- -- 不可用
+-- --- 启用/禁用背景音效 (25)/(24)
+-- AudioModule.enable_background_sound = function(is_enable)
+--     if is_enable then
+--         ExecuteAction('RESUME_BACKGROUND_SOUNDS') -- (25)
+--     else
+--         ExecuteAction('SUSPEND_BACKGROUND_SOUNDS') -- (24)
+--     end
+-- end
 
 -- ------------------ EVA 音效 ------------------
 
--- TODO: test
 --- 启用/禁用 EVA (221)
 --- @param is_enable boolean 是否启用
 AudioModule.enable_eva = function(is_enable)
     ExecuteAction('EVA_SET_ENABLED_DISABLED', GameModule.to_ra3_boolean(is_enable)) -- (221)
 end
 
--- TODO: test
 --- 播放EVA音效, 后两个参数为选填项, 显示字幕 (570)/(569)/(497)/(496)
 --- @param sound_name EvaSoundEnum EVA音效名称
 --- @param boolean is_from_ai_commander 是否来自AI指挥官 (假: 来源于EVA)
@@ -177,10 +168,6 @@ end
 AudioModule.play_eva_sound = function(sound_name, is_from_ai_commander, map_str_key, duration)
     if type(sound_name) ~= 'string' then
         LoggerModule.error('AudioModule.play_eva_sound', 'sound_name must be a string')
-        return
-    end
-    if type(is_from_ai_commander) ~= 'boolean' then
-        LoggerModule.error('AudioModule.play_eva_sound', 'is_from_ai_commander must be a boolean')
         return
     end
     if type(map_str_key) ~= 'string' and map_str_key ~= nil then
@@ -214,12 +201,37 @@ end
 
 -- ------------------ 音乐 ------------------
 
--- TODO: test
---- 是否正在播放音乐 (使用脚本进行播放) [104]
---- @return boolean
-AudioModule.is_music_play_finished = function()
-    return GameModule.from_ra3_boolean(EvaluateCondition('MUSIC_IS_PLAYING_FROM_SCRIPT'))
+-- 不可用
+-- --- 是否正在播放音乐 (使用脚本进行播放) [104]
+-- --- @return boolean
+-- AudioModule.is_music_play_finished = function()
+--     return GameModule.from_ra3_boolean(EvaluateCondition('MUSIC_IS_PLAYING_FROM_SCRIPT'))
+-- end
+
+--- 播放音乐 (543)
+--- @param music_name MusicEnum 音乐名称
+AudioModule.play_music = function(music_name)
+    ExecuteAction('PATH_MUSIC_PLAY_EVENT', music_name) -- (543)
 end
 
--- TODO: test
---- 将音乐加入播放列表 (105)
+--- 停止音乐 (546)
+AudioModule.stop_music = function()
+    ExecuteAction('PATH_MUSIC_STOP_MUSIC') -- (546)
+end
+
+
+-- 不可用
+-- --- 启用/禁用动态音乐系统 (545/544)
+-- --- @param is_enable boolean 是否启用
+-- AudioModule.enable_dynamic_music = function(is_enable)
+--     if is_enable then
+--         ExecuteAction('PATH_MUSIC_ENABLE_DYNAMIC_SYSTEM') -- (545)
+--     else
+--         ExecuteAction('PATH_MUSIC_DISABLE_DYNAMIC_SYSTEM') -- (544)
+--     end
+-- end
+
+--- 恢复动态音乐系统 (556)
+AudioModule.resume_dynamic_music = function()
+    ExecuteAction('PATH_MUSIC_ENABLE_RESUME_SYSTEM') -- (556)
+end

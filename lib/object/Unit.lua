@@ -291,19 +291,19 @@ end
 function Unit:set_weapon_ammo_cnt(weapon_slot_id, weapon_ording, weapon_index, ammo_cnt)
     if type(weapon_slot_id) ~= "number" then
         LoggerModule.error("Unit:set_weapon_ammo_cnt", "weapon_slot_id must be a number")
-        return
+        return nil
     end
     if type(weapon_ording) ~= "number" then
         LoggerModule.error("Unit:set_weapon_ammo_cnt", "weapon_ording must be a number")
-        return
+        return nil
     end
     if type(weapon_index) ~= "number" then
         LoggerModule.error("Unit:set_weapon_ammo_cnt", "weapon_index must be a number")
-        return
+        return nil
     end
     if type(ammo_cnt) ~= "number" then
         LoggerModule.error("Unit:set_weapon_ammo_cnt", "ammo_cnt must be a number")
-        return
+        return nil
     end
     UnitWeaponMododule.set_weapon_ammo_cnt(self.unit_table, weapon_slot_id, weapon_ording, weapon_index, ammo_cnt)
 end
@@ -317,15 +317,15 @@ end
 function Unit:get_weapon_ammo_cnt(weapon_slot_id, weapon_ording, weapon_index)
     if type(weapon_slot_id) ~= "number" then
         LoggerModule.error("Unit:get_weapon_ammo_cnt", "weapon_slot_id must be a number")
-        return
+        return nil
     end
     if type(weapon_ording) ~= "number" then
         LoggerModule.error("Unit:get_weapon_ammo_cnt", "weapon_ording must be a number")
-        return
-    end
+        return nil
+    end 
     if type(weapon_index) ~= "number" then
         LoggerModule.error("Unit:get_weapon_ammo_cnt", "weapon_index must be a number")
-        return
+        return nil
     end
     return UnitWeaponMododule.get_weapon_ammo_cnt(self.unit_table, weapon_slot_id, weapon_ording, weapon_index)
 end

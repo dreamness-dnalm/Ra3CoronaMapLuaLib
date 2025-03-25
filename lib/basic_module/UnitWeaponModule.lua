@@ -84,19 +84,19 @@ end
 UnitWeaponMododule.get_weapon_ammo_cnt = function(unit_table, weapon_slot_id, weapon_ording, weapon_index)
     if type(unit_table) ~= "table" then
         LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "unit_table must be a table")
-        return
+        return nil
     end
     if type(weapon_slot_id) ~= "number" then
         LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_slot_id must be a number")
-        return
+        return nil
     end
     if type(weapon_ording) ~= "number" then
         LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_ording must be a number")
-        return
+        return nil
     end
     if type(weapon_index) ~= "number" then
         LoggerModule.error("UnitWeaponMododule.get_weapon_ammo_cnt", "weapon_index must be a number")
-        return
+        return nil
     end
 
     return ObjectGetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_id, weapon_ording, weapon_index)

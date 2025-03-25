@@ -200,44 +200,42 @@ CameraModule.set_camera_rotation = function(player_name, yaw, pitch, roll)
     end
 end
 
-
--- TODO: test
 --- 相机是否已经完成移动[7]
 --- @return boolean
 CameraModule.is_camera_moving_finished = function()
     return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_MOVEMENT_FINISHED"))
 end
 
--- TODO: test
---- 相机是否已经完成跟随路径达到路径点[87]
---- @param waypoint_name string
---- @return boolean
-CameraModule.is_camera_follow_path_and_arrived = function(waypoint_name)
-    if type(waypoint_name) ~= 'string' then
-        LoggerModule.error('CameraModule.is_camera_follow_path_and_arrived', 'waypoint_name must be a string')
-        return false
-    end
-    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_HIT_SPECIFIC_SPLINE_WAYPOINT", waypoint_name))
-end
+-- 以后再说
+-- --- 相机是否已经完成跟随路径达到路径点[87]
+-- --- @param waypoint_name string
+-- --- @return boolean
+-- CameraModule.is_camera_follow_path_and_arrived = function(waypoint_name)
+--     if type(waypoint_name) ~= 'string' then
+--         LoggerModule.error('CameraModule.is_camera_follow_path_and_arrived', 'waypoint_name must be a string')
+--         return false
+--     end
+--     return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_HIT_SPECIFIC_SPLINE_WAYPOINT", waypoint_name))
+-- end
 
--- TODO: test
---- 相机是否已经进入区域[94]
---- @param area_name string
---- @return boolean
-CameraModule.is_camera_in_area = function(area_name)
-    if type(area_name) ~= 'string' then
-        LoggerModule.error('CameraModule.is_camera_in_area', 'area_name must be a string')
-        return false
-    end
-    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_ENTERED_AREA", area_name))
-end
+-- 不可用
+-- --- 相机是否已经进入区域[94]
+-- --- @param area_name string
+-- --- @return boolean
+-- CameraModule.is_camera_in_area = function(area_name)
+--     if type(area_name) ~= 'string' then
+--         LoggerModule.error('CameraModule.is_camera_in_area', 'area_name must be a string')
+--         return false
+--     end
+--     return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_ENTERED_AREA", area_name))
+-- end
 
--- TODO: test
---- 相机是否已经复位[132]
---- @return boolean
-CameraModule.is_camera_reset = function()
-    return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_RESET"))
-end
+-- 不可用
+-- --- 相机是否已经复位[132]
+-- --- @return boolean
+-- CameraModule.is_camera_reset = function()
+--     return GameModule.from_ra3_boolean(EvaluateCondition("CAMERA_RESET"))
+-- end
 
 --- 开启/关闭电影模式 (258)/(563)/(259)
 --- @param is_enable boolean
@@ -264,7 +262,6 @@ CameraModule.enable_camera_bloom_effect = function(is_enable)
     end
 end
 
--- TODO: test
 --- 重置相机, 到达指定路径点 (19)
 --- @param waypoint_name string
 --- @param duration number 总时长
