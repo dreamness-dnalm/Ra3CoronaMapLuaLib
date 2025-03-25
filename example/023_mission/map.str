@@ -1,0 +1,28 @@
+HOTSPOT:hotspot_1_title
+"任务热点标题1"
+END
+
+HOTSPOT:hotspot_1_desc
+"任务热点描述1"
+END
+
+HOTSPOT:hotspot_2_title
+"任务热点标题2"
+END
+
+HOTSPOT:hotspot_2_desc
+"任务热点描述2"
+END
+
+
+
+MISSIONOBJ: mission_1_title
+"任务目标标题"
+END
+
+MISSIONOBJ: mission_1_desc
+"任务目标描述"
+END
+
+
+

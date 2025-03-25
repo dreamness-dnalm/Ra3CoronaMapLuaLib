@@ -13,6 +13,9 @@ EventHelper._meta = {
 
     top_button_click_funcs = {},
     top_button_click_callback_func_register_flag = nil,
+
+    mission_hotspot_funcs = {},
+    mission_hotspot_callback_func_register_flag = nil,
 }
 
 --- 注册键盘热键
@@ -141,4 +144,30 @@ EventHelper.register_top_button_click_event = function(pos_index, callback_func)
             end
         end
     )
+end
+
+-- TODO: test
+--- 注册任务热点检测事件
+--- @param callback_func function 监听器 func(hotspot_id)
+EventHelper.register_mission_hotspot_event = function(hotspot_id, callback_func)
+    if callback_func ~= nil and type(callback_func) ~= "function" then
+        LoggerModule.error("EventHelper.register_mission_hotspot_event", "callback_func must be a function")
+        return
+    end
+
+    EventHelper._meta.mission_hotspot_funcs[hotspot_id] = callback_func
+
+    if not EventHelper._meta.mission_hotspot_callback_func_register_flag then
+
+        SchedulerModule.call_every_x_frame(
+        function()
+            for _hotspot_id, _func in EventHelper._meta.mission_hotspot_funcs do
+                if _func ~= nil and MissionHotSpotModule.is_active(_hotspot_id) then
+                    _func(_hotspot_id)
+                    EventHelper._meta.mission_hotspot_funcs[_hotspot_id] = nil
+                end
+            end
+        end, 1, nil, nil)
+        EventHelper._meta.mission_hotspot_callback_func_register_flag = 1
+    end
 end
