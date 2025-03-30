@@ -23,7 +23,7 @@ end
 --- 分割字符串
 --- @param str string 字符串
 --- @param sep string 分隔符
---- @return table,number subStrs,subStrsCount
+--- @return table 子字符串列表, number 子字符串数量
 StringUtil.split = function(str, sep)
     if sep == "" then
         -- 返回字符数组

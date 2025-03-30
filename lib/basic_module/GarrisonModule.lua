@@ -61,7 +61,7 @@ end
 
 --- 获取单位的子单位
 --- @param parent_unit_table table
---- @return Unit[],number units, cnt
+--- @return Unit[] units, number cnt
 GarrisonModule.get_child_units = function(parent_unit_table)
     -- LoggerModule.debug("GarrisonModule.get_child_units", "parent_unit_table: " .. tostring(parent_unit_table))
     if type(parent_unit_table) ~= "table" then

@@ -37,14 +37,14 @@ function ObjectTestTargetObjectWithFilter(unit_table, relation_reference_unit_ta
 
 --- 获取单位的位置
 --- @param unit_table table 单位
---- @return number, number, number x, y, z
+--- @return number x, number y, number z
 function ObjectGetPosition(unit_table) end
 
 ---找到某个区域内所有符合 ObjectFilter 的单位（无论单位是否有 Lua 模块都能被找到）
 --- @param unit_table table 单位, 可为nil
 --- @param find_area_table table 区域, 可为nil, {X=x, Y=y, Z=z, Radius=1000, DistType="CENTER_2D"/"EXTENTS_3D"}
 --- @param filter SystemFilter 过滤器, 可为nil
---- @return table, number 单位集合, 单位数量
+--- @return table 单位集合, number 单位数量
 function ObjectFindObjects(unit_table, find_area_table, filter)  end
 
 --- 设置单位的位置
@@ -68,7 +68,7 @@ function ObjectsDistance3D(unit_table1, unit_table_2)  end
 
 --- 获取单位详细信息
 --- @param unit_table table 单位
---- @return table 单位详细信息, 坐标, 旋转, 缩放等 ;
+--- @return table 单位详细信息 包含 坐标 旋转 缩放等 ;
 ---x, y, z = matrix[4], matrix[8], matrix[12] ;
 ---direction = { X=matrix[1], Y=matrix[5], Z=matrix[9] };
 ---angle = atan2(direction2D.Y, direction2D.X)
@@ -76,7 +76,7 @@ function ObjectGetTransform(unit_table)  end
 
 --- 设置单位的详细信息
 --- @param unit_table table 单位
---- @param matrix table 单位详细信息, 坐标, 旋转, 缩放等 ;
+--- @param matrix table 单位详细信息 坐标 旋转 缩放等 ;
 function ObjectSetTransform(unit_table, matrix) end
 
 --- 获取单位的唯一ID
@@ -171,14 +171,14 @@ function GetObjectByScriptName(object_name) end
 -- TODO: test, package
 --- 返回贴在当前单位身上贴着的单位的列表。例如，假如 self 是矿车，那么可能返回包含蜻蜓以及信标、钱套子之类的列表
 --- @param unit_table table 单位
---- @return table, number 贴在当前单位身上的单位的列表, 单位数量
+--- @return table 贴在当前单位身上的单位的列表, number 单位数量
 function ObjectGetAttachers(unit_table)  end
 
 
 -- TODO: test, package
 --- 返回贴在当前单位正在贴的单位。例如，假如 self 是蜻蜓，那么可能返回包含矿车的列表。一般来说这个列表只会有 0 个或者 1 个单位，除非 self 有多个 AttachUpdate 模块
 --- @param unit_table table 单位
---- @return table, number 贴在当前单位身上的单位的列表, 单位数量
+--- @return table 贴在当前单位身上的单位的列表, number 单位数量
 function ObjectGetAttachees(unit_table)  end
 
 --- 返回包含当前单位的单位。例如，假如 self 是子炮台，那么可能返回大船。假如 self 是标枪兵，那么可能返回车。
@@ -195,7 +195,7 @@ function ObjectGetContainedPassengers(unit_table)  end
 --- 返回值table={production1...productionN}; production={Id (数字序号), ModuleId (XML 里模块 ID 的哈希值)(FastHash("ModuleTag_ProductionUpdate")), QueueLength, Queue};
 --- Queue={item1...itemN}; item={Type ("Object" 或者 "Upgrade"), InstanceId (正在建造的单位或者升级的哈希值)(FastHash("AlliedConstructionYard")), ProductionPercentage(0-100), ProductionFrames, BuildCost}
 --- @param unit_table table 单位
---- @return table, number 建造序列列表, 建造序列数量
+--- @return table 建造序列列表, number 建造序列数量
 function ObjectGetProductionQueues(unit_table)  end
 
 --- 获取单位所属的玩家的威胁度信息（左下角威胁指示器那个）
@@ -217,7 +217,7 @@ function ObjectSetRedAlertCurrentThreatLevel(unit_table_or_player_string, threat
 --- distance = sqrt(dx * dx + dy * dy + dz * dz);
 --- speed = distance / 15 -- 15 帧每秒
 --- @param unit_table table 单位
---- @return number, number, number x, y, z
+--- @return number x, number y, number z
 function ObjectGetPreviousPosition(unit_table)  end
 
 -- TODO: test, package

@@ -1,5 +1,6 @@
 --- @class MusicEnum
 MusicEnum = {
+    ------- 日冕曲目 -------
     --- 华灯初上
     Corona_New_Year = 'Corona_New_Year',
     --- 腾起于风
@@ -24,5 +25,25 @@ MusicEnum = {
     Corona_Liuyang_River = "Corona_Liuyang_River",
     --- 万里神州
     Corona_Wan_Li_Shen_Zhou = "Corona_Wan_Li_Shen_Zhou",
+
+    ------- 尤里曲目 -------
+    --- 冷静思考
+    Yuri_BrainFre = "Yuri_BrainFre",
+    --- 强军势力
+    Yuri_Bully = "Yuri_Bully",
+    --- 欺敌制胜
+    Yuri_Deceiver = "Yuri_Deceiver",
+    --- 防御基地
+    Yuri_Defend = "Yuri_Defend",
+    --- 复仇威力
+    Yuri_Drok = "Yuri_Drok",
+    --- 演员名单BGM
+    Yuri_OptionX = "Yuri_OptionX",
+    --- 攻击前夕
+    Yuri_Phatatta = "Yuri_Phatatta",
+    --- 战术运用
+    Yuri_Tactics = "Yuri_Tactics",
+    --- 征战迷思
+    Yuri_Trancelv = "Yuri_Trancelv",
 }
 

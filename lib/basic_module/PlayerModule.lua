@@ -103,7 +103,7 @@ end
 -- TODO: package
 --- 获取玩家选中的单位id列表
 --- @param player_name PlayerEnum
---- @return number[], number  id列表, 数量
+--- @return number[] id列表, number 数量
 PlayerModule.get_player_selected_unit_ids = function(player_name)
     if type(player_name) ~= "string" then
         LoggerModule.error("PlayerModule.get_player_selected_unit_ids", "player_name must be a string")

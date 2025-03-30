@@ -1,7 +1,7 @@
 -- --------- 物理信息 -----------
 
 --- 获取单位坐标
---- @return number, number, number x, y, z
+--- @return number x, number y, number z
 function Unit:get_position()
     return UnitPhysicsModule.get_position(self.unit_table)
 end
@@ -95,3 +95,8 @@ end
 --     UnitPhysicsModule.face_to_unit(self.name, other_unit.name)
 -- end
 
+--- 设置单位模型体积
+--- @param radius number
+function Unit:set_model_radius(radius)
+    UnitPhysicsModule.set_model_radius(self.id, radius)
+end

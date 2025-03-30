@@ -27,7 +27,7 @@ ProductionQueueItemTypeEnum = {
 
 --- 获取生产队列
 --- @param unit_table SystemUnitTable 单位table
---- @return ProductionQueueInfo[], number 生产队列列表, 队列数量
+--- @return ProductionQueueInfo[] 生产队列列表, number 队列数量
 ProductionQueueModule.get_queues = function(unit_table)
     LoggerModule.debug("ProductionQueueModule.get_queues", "start")
     if type(unit_table) ~= "table" then

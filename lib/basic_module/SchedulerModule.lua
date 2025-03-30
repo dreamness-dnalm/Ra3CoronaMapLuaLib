@@ -105,7 +105,7 @@ SchedulerModule.get_config = function(id)
     local scheduler = SchedulerModule._schedulers
     if id > getn(scheduler) then
         LoggerModule.error("SchedulerModule.get_config", "id is out of range")
-        return
+        return nil
     end
     return scheduler[id]
 end

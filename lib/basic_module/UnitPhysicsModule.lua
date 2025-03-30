@@ -7,7 +7,7 @@ UnitPhysicsModule = {}
 
 --- 获取单位的位置
 --- @param unit_table SystemUnitTable 单位
---- @return number, number, number x, y, z
+--- @return number x, number y, number z
 UnitPhysicsModule.get_position = function(unit_table)
     if type(unit_table) ~= "table" then
         LoggerModule.error("UnitPhysicsModule.get_position", "unit_table must be a table")
@@ -90,7 +90,7 @@ end
 -- TODO: package
 --- 获取单位在前一帧的坐标（便于计算速度） (每秒15帧);
 --- @param unit_table SystemUnitTable 单位
---- @return number, number, number x, y, z
+--- @return number x, number y, number z
 UnitPhysicsModule.get_previous_position = function(unit_table)
     if type(unit_table) ~= "table" then
         LoggerModule.error("UnitPhysicsModule.get_previous_position", "unit_table must be a table")
@@ -129,6 +129,25 @@ end
 --     ExecuteAction("NAMED_FACE_WAYPOINT", unit_table_or_name, waypoint_name)
 --     LoggerModule.debug("UnitPhysicsModule.face_to_waypoint", "end")
 -- end
+
+--- 设置单位模型体积
+--- @param object_id number 单位id
+--- @param radius number 半径, 需要是整数, (据观察, radius越小，单位挨得越近，大于20并且小于40的值会被统一视作40)
+UnitPhysicsModule.set_model_radius = function(object_id, radius)
+    if type(object_id) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_model_radius", "object_id must be a number")
+        return
+    end
+    if type(radius) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_model_radius", "radius must be a number")
+        return
+    end
+    if not MathUtil.is_integer(radius) then
+        LoggerModule.error("UnitPhysicsModule.set_model_radius", "radius must be an integer")
+        return
+    end
+    exObjectSetGeometryMajorRadius(object_id, radius)
+end
 
 -- ------------ 以下为齐次坐标系相关 ------------
 
@@ -261,7 +280,7 @@ end
 
 --- 获取单位缩放比例
 --- @param unit_table SystemUnitTable 单位
---- @return number, number, number 分别在x, y, z轴的缩放比例
+--- @return number 在x轴的缩放比例, number 在y轴的缩放比例, number 在z轴的缩放比例
 UnitPhysicsModule.get_scale = function(unit_table)
     if type(unit_table) ~= "table" then
         LoggerModule.error("UnitPhysicsModule.get_scale", "unit_table must be a table")

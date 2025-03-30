@@ -133,7 +133,7 @@ end
 --- @param child_thing_names ThingEnum[]
 --- @param team_name TeamEnum
 --- @param waypoint_name string
---- @return Unit, Unit[] 母单位, 子单位列表
+--- @return Unit 母单位, Unit[] 子单位列表
 function UnitCreateHelper.create_unit_with_garrison(parent_thing_name, child_thing_names, team_name, waypoint_name)
     if type(parent_thing_name) ~= "string" then
         LoggerModule.error("UnitCreateHelper.create_unit_with_garrison", "parent_thing_name must be a string")

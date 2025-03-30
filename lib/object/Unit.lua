@@ -390,3 +390,29 @@ end
 function Unit:enable_upgrade(upgrade_name, is_allow)
     UpgradeModule.unit_enable_upgrade(self.unit_table, upgrade_name, is_allow)
 end
+
+--- 其他 ------
+
+
+--- 设置单位清雾距离
+--- @param distance number
+function Unit:set_fog_clearing_distance(distance)
+    UnitModule.set_fog_clearing_distance(self.id, distance)
+end
+
+--- 设置单位视线距离
+--- @param distance number
+function Unit:set_vision_range(distance)
+    UnitModule.set_vision_range(self.id, distance)
+end
+
+--- 获取当前物体正在控制的单位的id  (此函数针对有控制技能的物体， 例如 JapanPsychicInhibitor )
+--- @return Unit 
+function Unit:get_temporary_owned_unit()
+    local unit_id = UnitModule.get_temporary_owned_unit_id(self.id)
+    if unit_id == nil then
+        return nil
+    end
+    return UnitHelper.get_unit_from_id(unit_id)
+end
+

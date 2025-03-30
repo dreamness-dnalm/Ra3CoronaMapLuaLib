@@ -78,7 +78,7 @@ end
 
 --- 根据齐次坐标矩阵获取单位的x, y, z轴的方向向量
 --- @param m Matrix
---- @return Vector, Vector, Vector 分别为x, y, z轴的方向向量
+--- @return Vector 在x轴的方向向量, Vector 在y轴的方向向量, Vector 在z轴的方向向量
 HomogeneousCoordinatesUtil.get_axis_vecs_by_hc = function(m)
     return VectorUtil.to_unit_vec({m[1][1], m[1][2], m[1][3]}),
         VectorUtil.to_unit_vec({m[2][1], m[2][2], m[2][3]}),
@@ -136,7 +136,7 @@ end
 
 --- 获取齐次坐标矩阵的缩放比例
 --- @param m Matrix
---- @return number, number, number 分别在x, y, z轴的缩放比例
+--- @return number 在x轴的缩放比例, number 在y轴的缩放比例, number 在z轴的缩放比例
 HomogeneousCoordinatesUtil.get_scale_by_hc = function(m)
     return VectorUtil.norm({m[1][1], m[1][2], m[1][3]}),
         VectorUtil.norm({m[2][1], m[2][2], m[2][3]}),

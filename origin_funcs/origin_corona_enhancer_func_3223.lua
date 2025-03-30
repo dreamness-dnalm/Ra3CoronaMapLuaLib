@@ -27,11 +27,12 @@ function exWaypointSetPos(waypoint_name, x, y, z) end
 --- @param thing ThingEnum
 function exObjectRegisterDieEvent(thing) end
 --然后定义一个固定名字的函数
--- function onUnitDieEvent(dyingObjId, attackerId, dyingObjInstanceId, attackerInstanceId)
+-- function onUnitDieEvent(dyingObjId, attackerId, dyingObjInstanceId, attackerInstanceId, ownerPlayerName)
 --     -- dyingObjId 即将死亡的物体id
 --     -- attackedId 攻击者id 注意不一定有攻击者，这时这个参数是nil
 --     -- dyingObjInstanceId 死亡物体的InstanceId  (每种单位都有唯一的InstanceId)
 --     -- attackerInstanceId 攻击者的InstanceId  注意不一定有攻击者，这时这个参数是nil
+--     -- ownerPlayerName 单位所属玩家
 -- end
 
 

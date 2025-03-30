@@ -59,7 +59,7 @@ function Unit:set_scale(scale)
 end
 
 --- 获取单位的缩放比例
---- @return number, number, number 分别在x, y, z轴的缩放比例
+--- @return number 在x轴的缩放比例, number 在y轴的缩放比例, number 在z轴的缩放比例
 function Unit:get_scale()
     return UnitPhysicsModule.get_scale(self.unit_table)
 end

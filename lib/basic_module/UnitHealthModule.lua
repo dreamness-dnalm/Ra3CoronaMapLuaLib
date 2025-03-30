@@ -83,7 +83,6 @@ UnitHealthModule.kill_unit = function(unit_name_or_table)
     ExecuteAction("NAMED_KILL", unit_name_or_table)
 end
 
--- TODO: test
 --- 注册单位死亡事件
 --- @param thing ThingEnum
 UnitHealthModule.register_unit_die_event = function(thing)
@@ -94,9 +93,8 @@ UnitHealthModule.register_unit_die_event = function(thing)
     exObjectRegisterDieEvent(thing)
 end
 
--- TODO: test
 --- 注册单位死亡事件回调
---- @param func function func(dying_object_id, attacker_object_id, dying_object_instance_id, attacker_object_instance_id)
+--- @param func function func(dying_object_id, attacker_object_id, dying_object_instance_id, attacker_object_instance_id, owner_player_name)
 --- dying_object_id 即将死亡的物体id
 --- attacker_object_id 攻击者id 注意不一定有攻击者，这时这个参数是nil
 --- dying_object_instance_id 死亡物体的InstanceId  (每种单位都有唯一的InstanceId)

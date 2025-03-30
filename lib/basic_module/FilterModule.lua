@@ -21,7 +21,7 @@ FilterModule = {}
 --- @param unit_table table|nil 用于关系参考的单位table
 --- @param area_config_table AreaConfig 区域配置table
 --- @param filter SystemFilter|nil 
---- @return SystemUnitTable[], number 单位集合, 单位数量
+--- @return SystemUnitTable[] 单位集合, number 单位数量
 FilterModule.filter_units = function(unit_table, area_config_table, filter)
     return ObjectFindObjects(unit_table, area_config_table, filter)
 end
