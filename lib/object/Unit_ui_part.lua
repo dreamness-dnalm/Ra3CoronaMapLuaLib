@@ -33,7 +33,7 @@ end
 --- @param content string 文字内容
 --- @param z_offset number z轴偏移量
 --- @param color Color 颜色
---- @param player_name_list string|string[]|nil 玩家名字列表
+--- @param player_name_list string|string[]|nil 玩家名字列表，nil表示所有玩家
 function Unit:set_top_text(content, z_offset, color, player_name_list)
     UnitTopTextModule.set_or_update(self.id, content, z_offset, color.dec_value, player_name_list)
 end

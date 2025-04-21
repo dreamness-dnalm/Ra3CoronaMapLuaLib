@@ -8,6 +8,8 @@ UnitHelper = {}
 
 UnitHelper.__unit_auto_number = 0
 
+--- 获取一个不重复的名字
+--- @return string
 function UnitHelper.get_unit_auto_name()
     UnitHelper.__unit_auto_number = UnitHelper.__unit_auto_number + 1
     return 'name_temp_name__' .. UnitHelper.__unit_auto_number

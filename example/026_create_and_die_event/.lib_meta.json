@@ -1,6 +1,6 @@
 {
   "FileName": "026_create_and_die_event",
-  "FilePath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\026_create_and_die_event",
+  "FilePath": "dir",
   "FileType": "dir",
   "IsEnabled": true,
   "IsIncluded": true,
@@ -26,8 +26,8 @@
       "ActiveInHard": true,
       "OrderNum": 0,
       "Children": [],
-      "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\026_create_and_die_event"
+      "Comment": ""
     }
   ],
-  "LibPath": "H:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\example\\026_create_and_die_event"
+  "Comment": ""
 }

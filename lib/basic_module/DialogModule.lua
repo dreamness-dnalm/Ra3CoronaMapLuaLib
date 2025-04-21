@@ -10,6 +10,8 @@ DialogModule._meta = {
     auto_index = 1
 }
 
+--- 获取一个自动的对话框id
+--- @return number
 DialogModule.get_auto_dialog_id = function()
     DialogModule._meta.auto_index = DialogModule._meta.auto_index + 1
     return DialogModule._meta.auto_index

@@ -148,9 +148,15 @@ EventHelper.register_top_button_click_event = function(pos_index, callback_func)
     )
 end
 
---- 注册任务热点检测事件
+--- 注册任务热点事件
+--- @param hotspot_id string
 --- @param callback_func function 监听器 func(hotspot_id)
 EventHelper.register_mission_hotspot_event = function(hotspot_id, callback_func)
+    if type(hotspot_id) ~= "string" then
+        LoggerModule.error("EventHelper.register_mission_hotspot_event", "hotspot_id must be a string")
+        return
+    end
+
     if callback_func ~= nil and type(callback_func) ~= "function" then
         LoggerModule.error("EventHelper.register_mission_hotspot_event", "callback_func must be a function")
         return
@@ -173,7 +179,6 @@ EventHelper.register_mission_hotspot_event = function(hotspot_id, callback_func)
     end
 end
 
--- TODO: test
 --- 注册单位创建事件
 --- @param thing ThingEnum
 --- @param callback_func function 监听器 func(unit)

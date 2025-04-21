@@ -66,7 +66,7 @@ end
 --- @param ore_node_unit Unit 矿脉unit
 --- @param faction_name FactionEnum
 --- @param player_name PlayerEnum
---- @param waypoint_name WeaponEnum
+--- @param waypoint_name string
 --- @return Unit
 function UnitCreateHelper.create_refinery(ore_node_unit, faction_name, player_name, waypoint_name)
     if type(ore_node_unit) ~= "table" then

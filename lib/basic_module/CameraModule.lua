@@ -264,9 +264,9 @@ end
 
 --- 重置相机, 到达指定路径点 (19)
 --- @param waypoint_name string
---- @param duration number 总时长
---- @param ease_in number 开始移动时, 从静止到运动的时间
---- @param ease_out number 结束移动时, 从运动到静止的时间
+--- @param duration number 总时长(秒)
+--- @param ease_in number 开始移动时, 从静止到运动的时间(秒)
+--- @param ease_out number 结束移动时, 从运动到静止的时间(秒)
 CameraModule.reset_camera = function(waypoint_name, duration, ease_in, ease_out)
     if type(waypoint_name) ~= 'string' then
         LoggerModule.error('CameraModule.reset_camera', 'waypoint_name must be a string')

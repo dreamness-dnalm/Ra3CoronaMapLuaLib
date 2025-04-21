@@ -57,7 +57,7 @@ end
 
 -- -------- 单位存活 --------
 
---- 删除单位
+--- 删除单位, 不会触发死亡事件, 不建议使用
 function Unit:delete()
     UnitModule.delete(self.unit_table)
 end
@@ -118,7 +118,7 @@ end
 
 -- -------- 单位状态 --------
 
---- 设置单位状态
+--- 添加单位状态
 --- @param status StatusEnum|StatusEnum[] 状态 或 状态数组
 function Unit:add_status(statuses)
     if type(statuses) ~= 'table' and type(statuses) ~= 'string' then
@@ -149,7 +149,7 @@ end
 
 --- 添加BUFF
 --- @param modifiers AttributeModifierEnum | AttributeModifierEnum[] 修改器数组
---- @param frame_cnt number 帧数
+--- @param frame_cnt number | nil 帧数
 function Unit:add_modifier(modifiers, frame_cnt)
     if type(modifiers) ~= 'table' and type(modifiers) ~= 'string' then
         LoggerModule.error('Unit:add_Modifier', 'modifiers type error: ' .. type(modifiers))
@@ -172,7 +172,7 @@ end
 
 --- 添加模型状态
 --- @param model_states ModuleStateEnum | ModuleStateEnum[] 模型状态 或 模型状态数组
---- @param duration_seconds number
+--- @param duration_seconds number|nil 持续时间, nil为默认时间
 function Unit:add_model_state(model_states, duration_seconds)
     if type(model_states) == 'string' then
         UnitModelStateModule.add_unit_model_state(self.unit_table, model_states, duration_seconds)
@@ -264,7 +264,7 @@ end
 --- @param x number 目标位置x
 --- @param y number 目标位置y
 --- @param z number 目标位置z
---- @param target_unit Unit|nil 目标单位table
+--- @param target_unit Unit|nil 目标单位
 function Unit:fire_with_temp_weapon(weapon_name, x, y, z, target_unit)
     if type(weapon_name) ~= "string" then
         LoggerModule.error("Unit:fire_with_temp_weapon", "weapon_name must be a string")
@@ -333,7 +333,7 @@ end
 
 -- ------- 进驻 ------
 
---- 进驻可进驻单位(建造,ifv等)
+--- 进驻可进驻单位(建筑物,ifv等)
 --- @param parent_unit Unit
 function Unit:garrison_other_unit(parent_unit)
     if type(parent_unit) ~= "table" then
@@ -342,7 +342,7 @@ function Unit:garrison_other_unit(parent_unit)
     GarrisonModule.garrison(parent_unit.name, self.name)
 end
 
---- 离开可进驻单位(建造,ifv等)
+--- 离开可进驻单位(建筑物,ifv等)
 function Unit:cancel_garrison()
     GarrisonModule.leave(self.unit_table)
 end
@@ -391,7 +391,7 @@ function Unit:enable_upgrade(upgrade_name, is_allow)
     UpgradeModule.unit_enable_upgrade(self.unit_table, upgrade_name, is_allow)
 end
 
---- 其他 ------
+--- 视野 ------
 
 
 --- 设置单位清雾距离
@@ -405,6 +405,8 @@ end
 function Unit:set_vision_range(distance)
     UnitModule.set_vision_range(self.id, distance)
 end
+
+-- -------- 心灵控制 --------
 
 --- 获取当前物体正在控制的单位的id  (此函数针对有控制技能的物体， 例如 JapanPsychicInhibitor )
 --- @return Unit 

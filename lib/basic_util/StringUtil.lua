@@ -6,7 +6,7 @@
 StringUtil = {}
 
 --- 将字符串数组连接成一个字符串
---- @param strTbl table 字符串数组
+--- @param strTbl string[] 字符串数组
 --- @param sep string 分隔符
 --- @return string
 StringUtil.make_string = function(strTbl, sep)
@@ -23,7 +23,7 @@ end
 --- 分割字符串
 --- @param str string 字符串
 --- @param sep string 分隔符
---- @return table 子字符串列表, number 子字符串数量
+--- @return string[] 子字符串列表, number 子字符串数量
 StringUtil.split = function(str, sep)
     if sep == "" then
         -- 返回字符数组
