@@ -100,3 +100,30 @@ end
 function Unit:set_model_radius(radius)
     UnitPhysicsModule.set_model_radius(self.id, radius)
 end
+
+--- 设置单位速度
+--- @param speed number
+function Unit:set_speed(speed)
+    if type(speed) ~= "number" then
+        LoggerModule.error("Unit:set_speed", "speed must be a number")
+        return
+    end
+    UnitPhysicsModule.set_speed(self.id, speed)
+end
+
+--- 获取单位速度
+--- @return number
+function Unit:get_speed()
+    return UnitPhysicsModule.get_speed(self.id)
+end
+
+--- 设置物体缩放（永久缩放，和地编那个一样）
+--- @param scale number
+function Unit:set_fixed_scale(scale)
+    if type(scale) ~= "number" then
+        LoggerModule.error("Unit:set_fixed_scale", "scale must be a number")
+        return
+    end
+    UnitPhysicsModule.set_fixed_scale(self.id, scale)
+end
+

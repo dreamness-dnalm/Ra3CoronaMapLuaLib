@@ -45,6 +45,17 @@ KeyboardModule.register_hot_key_listener = function(func)
     end
 end
 
+
+--- 取消热键监听
+--- @param command_code number
+KeyboardModule.unregister_hot_key = function(command_code)
+    if type(command_code) ~= "number" then
+        LoggerModule.error("KeyboardModule.unregister_hot_key", "command_code must be a number")
+        return
+    end
+    exUnregisterHotKey(command_code)
+end
+
 --- @class KeyboardKeyCodeEnum 键盘按键枚举
 KeyboardKeyCodeEnum = {
     LEFT_MOUSE_BUTTON = '1',

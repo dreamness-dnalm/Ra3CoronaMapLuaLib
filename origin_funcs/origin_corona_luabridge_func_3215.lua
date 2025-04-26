@@ -168,14 +168,12 @@ function GetObjectById(objectId) end
 --- @return table 单位的 table
 function GetObjectByScriptName(object_name) end
 
--- TODO: test, package
 --- 返回贴在当前单位身上贴着的单位的列表。例如，假如 self 是矿车，那么可能返回包含蜻蜓以及信标、钱套子之类的列表
 --- @param unit_table table 单位
 --- @return table 贴在当前单位身上的单位的列表, number 单位数量
 function ObjectGetAttachers(unit_table)  end
 
 
--- TODO: test, package
 --- 返回贴在当前单位正在贴的单位。例如，假如 self 是蜻蜓，那么可能返回包含矿车的列表。一般来说这个列表只会有 0 个或者 1 个单位，除非 self 有多个 AttachUpdate 模块
 --- @param unit_table table 单位
 --- @return table 贴在当前单位身上的单位的列表, number 单位数量
@@ -233,7 +231,6 @@ function ObjectDetonateProjectile(unit_table, target_unit_table) end
 --- @param target_unit_table table 目标单位; 假如没有特别指定的目标单位，那么必须传入 nil
 function ObjectCreateAndFireTempWeaponToTarget(unit_table, weapon_name, target_position, target_unit_table) end
 
--- TODO: test, package
 --- 获取单位目标, 假如没有目标，会返回 nil
 --- @param unit_table table 单位
 --- @return table 目标单位, 假如没有目标，会返回 nil
@@ -247,7 +244,6 @@ function ObjectFindTarget(unit_table) end
 --- @return table 建造者单位, 假如没有建造者，会返回 nil
 function ObjectGetProducerObject(unit_table) end
 
--- TODO: test, package
 --- 获取单位造价
 --- 这个就会直接返回 1000（而不是单位原来的造价）， 除非有特殊的 buff, ObjectGetValue(self, producer, 1000)
 --- @param unit_table table 单位
@@ -256,20 +252,18 @@ function ObjectGetProducerObject(unit_table) end
 --- @return number 造价
 function ObjectGetValue(unit_table, producer, cost) end
 
--- TODO: test, package
 --- 获取单位造价
 --- @param unit_table table 单位
 --- @param producer table 生产建筑，可以获取该单位在该建筑里的造价
 --- @return number 造价
 function ObjectGetValue(unit_table, producer) end
 
--- TODO: test, package
 --- 获取单位造价
 --- @param unit_table table 单位
 --- @return number 造价
 function ObjectGetValue(unit_table) end
 
--- TODO: test, package
+-- TODO: with bug
 --- 获取玩家所有单位的造价
 --- @param unit_table_or_player_string table|string 单位table 或 玩家字符串 "<This Player>" / "<1st Human Player>" / "<1st Human Player's Enemies>"(复数的会把所有敌人的造价加起来)
 --- @return number 造价

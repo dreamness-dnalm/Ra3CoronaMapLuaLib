@@ -24,3 +24,25 @@ WaypointModule.set_position = function(waypoint_name, x, y, z)
     end
     exWaypointSetPos(waypoint_name, x, y, z)
 end
+
+--- 获取指定路径点的位置
+--- @param waypoint_name string 路径点名称
+--- @return number x, number y, number z 路径点x,y,z坐标, 如果非法返回nil
+WaypointModule.get_position = function(waypoint_name)
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("WaypointModule.get_position", "waypoint_name must be a string")
+        return nil, nil, nil
+    end
+    local pos = exWaypointGetPos(waypoint_name)
+    if pos == nil then
+        LoggerModule.error("WaypointModule.get_position", "error waypoint_name: " .. tostring(waypoint_name))
+        return nil, nil, nil
+    end
+    local x, y, z = pos[1], pos[2], pos[3]
+    if x == -1 and y == -1 and z == -1 then
+        LoggerModule.error("WaypointModule.get_position", "error waypoint_name: " .. tostring(waypoint_name))
+        return nil, nil, nil
+    end
+    return x, y, z
+end
+

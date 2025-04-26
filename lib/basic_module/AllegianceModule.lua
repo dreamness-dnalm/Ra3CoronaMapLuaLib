@@ -53,3 +53,21 @@ AllegianceModule.set_allegiance_both_way = function(player_name1, player_name2, 
     AllegianceModule.set_allegiance_single_way(player_name1, player_name2, allegiance)
     AllegianceModule.set_allegiance_single_way(player_name2, player_name1, allegiance)
 end
+
+--- 获取玩家关系
+--- @param player_name1 PlayerEnum 玩家1
+--- @param player_name2 PlayerEnum 玩家2
+--- @return AllegianceEnum
+AllegianceModule.get_player_relation = function(player_name1, player_name2)
+    local ret = exPlayerGetRelationShip(player_name1, player_name2)
+    if ret == 0 then
+        return AllegianceEnum.ENEMY
+    elseif ret == 1 then
+        return AllegianceEnum.NEUTRAL
+    elseif ret == 2 then
+        return AllegianceEnum.FRIEND
+    else
+        LoggerModule.error("AllegianceModule.get_player_relation", "invalid player relation")
+        return nil
+    end
+end

@@ -418,3 +418,34 @@ function Unit:get_temporary_owned_unit()
     return UnitHelper.get_unit_from_id(unit_id)
 end
 
+-- -------- 集结点 --------
+
+--- 获取单位集结点坐标
+--- @return number x, number y, number z 集结点x,y,z坐标
+function Unit:get_rally_pos()
+    return UnitRallyModule.get_rally_pos(self.id)
+end
+
+--- 设置单位集结点坐标
+--- @param x number 集结点x坐标
+--- @param y number 集结点y坐标
+--- @param z number 集结点z坐标
+function Unit:set_rally_pos(x, y, z)
+    UnitRallyModule.set_rally_pos(self.id, x, y, z)
+end
+
+-- -------- 造价 --------
+
+--- 获取单位造价
+--- @param producer_unit Unit|nil 生产建筑
+--- @return number 造价
+function Unit:get_money_value(producer_unit)
+    if producer_unit == nil then
+        return MoneyModule.get_unit_money_value(self.unit_table, nil, nil)
+    elseif type(producer_unit) == "table" then
+        return MoneyModule.get_unit_money_value(self.unit_table, producer_unit.unit_table, nil)
+    else
+        LoggerModule.error("Unit:get_money_value", "producer_unit must be a Unit or nil")
+        return nil
+    end
+end

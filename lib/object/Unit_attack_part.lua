@@ -39,6 +39,15 @@ end
 --     UnitAttackModule.attack_area(self.unit_table, area_name, duration_seconds)
 -- end
 
+--- 获取单位目标单位
+--- @return Unit|nil 目标单位
+function Unit:get_target_unit()
+    local target_unit_table = UnitAttackModule.get_target_unit(self.unit_table)
+    if target_unit_table == nil then
+        return nil
+    end
+    return UnitHelper.get_unit_from_table(target_unit_table)
+end
 
 
 

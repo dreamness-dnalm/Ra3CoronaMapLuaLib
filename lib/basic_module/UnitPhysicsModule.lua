@@ -149,6 +149,47 @@ UnitPhysicsModule.set_model_radius = function(object_id, radius)
     exObjectSetGeometryMajorRadius(object_id, radius)
 end
 
+--- 设置物体缩放（永久缩放，和地编那个一样）
+--- @param object_id number 物体id
+--- @param scale number 缩放比例
+UnitPhysicsModule.set_fixed_scale = function(object_id, scale)
+    if type(object_id) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_fixed_scale", "object_id must be a number")
+        return
+    end
+    if type(scale) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_fixed_scale", "scale must be a number")
+        return
+    end
+    exObjectSetFixedScale(object_id, scale)
+end
+
+--- 设置单位速度（注意，这个速度在单位下海，上陆地，变形，回到机场 之后会失效）
+--- @param object_id number 物体id
+--- @param speed_value number 速度值
+UnitPhysicsModule.set_speed = function(object_id, speed_value)
+    if type(object_id) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_current_locomotor_speed", "object_id must be a number")
+        return
+    end
+    if type(speed_value) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.set_current_locomotor_speed", "speed_value must be a number")
+        return
+    end
+    exObjectSetCurrentLocomotorSpeed(object_id, speed_value)
+end
+
+--- 获取单位当前速度
+--- @param object_id number 物体id
+--- @return number 当前速度
+UnitPhysicsModule.get_speed = function(object_id)
+    if type(object_id) ~= "number" then
+        LoggerModule.error("UnitPhysicsModule.get_current_locomotor_speed", "object_id must be a number")
+        return nil
+    end
+    return exObjectGetCurrentLocomotorSpeed(object_id)
+end
+
 -- ------------ 以下为齐次坐标系相关 ------------
 
 --- 获取单位的齐次坐标矩阵

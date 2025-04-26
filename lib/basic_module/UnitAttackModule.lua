@@ -72,6 +72,19 @@ UnitAttackModule.move_attack_to_nearest_thing = function(attacker_unit_table_or_
     ExecuteAction("UNIT_ATTACK_MOVE_TOWARDS_NEAREST_OBJECT_TYPE", attacker_unit_table_or_name, nearby_thing) -- (417)
 end
 
+--- 获取单位目标单位
+--- @param unit_table SystemUnitTable 单位table
+--- @return SystemUnitTable 目标单位table
+UnitAttackModule.get_target_unit = function(unit_table)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitAttackModule.get_target_unit", "unit_table must be a table")
+        return nil
+    end
+    return ObjectFindTarget(unit_table)
+end
+
+
+
 -- 无效
 -- --- 攻击区域 (40), (41)
 -- --- @param attacker_unit_table_or_name SystemUnitTable|string

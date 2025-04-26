@@ -47,3 +47,27 @@ end
 MoneyModule.get_cheat_multiplier = function()
     return exModeGetCheatMultiplier()
 end
+
+
+--- 获取单位造价
+--- @param unit_table SystemUnitTable 单位table
+--- @param producer_table SystemUnitTable 生产建筑table
+--- @param custom_cost number 自定义造价
+--- @return number 造价
+MoneyModule.get_unit_money_value = function(unit_table, producer_table, custom_cost)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("MoneyModule.get_money_value", "unit_table must be a table")
+        return nil
+    end
+    
+    return ObjectGetValue(unit_table, producer_table, custom_cost)
+end
+
+-- TODO: with bug (函数有bug, 传Player_1等字符串返回0)
+--- 获取玩家所有单位的造价
+--- @param unit_table_or_player_string SystemUnitTable|string 单位table 或 玩家字符串 "<This Player>" / "<1st Human Player>" / "<1st Human Player's Enemies>"(复数的会把所有敌人的造价加起来)
+--- @return number 造价
+MoneyModule.get_player_all_units_money_value = function(unit_table_or_player_string)
+    return GetPlayerAllUnitsValue(unit_table_or_player_string)
+end
+
