@@ -29,11 +29,11 @@ function FastHash(content)  end
 function CreateObjectFilter(filter_config_table)  end
 
 --- 测试目标单位是否满足过滤器
---- @param unit_table table 单位
 --- @param relation_reference_unit_table table 参考单位
+--- @param unit_table table 单位
 --- @param filter SystemFilter 过滤器 {Rule(string), Relationship(string), Include(string), StatusBitFlagsExclude(string), IncludeThing(table), ExcludeThing(table)}
 --- @return boolean 是否满足过滤器
-function ObjectTestTargetObjectWithFilter(unit_table, relation_reference_unit_table, filter)  end
+function ObjectTestTargetObjectWithFilter(relation_reference_unit_table, unit_table, filter)  end
 
 --- 获取单位的位置
 --- @param unit_table table 单位

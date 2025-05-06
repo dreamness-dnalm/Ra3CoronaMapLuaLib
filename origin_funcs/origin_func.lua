@@ -83,7 +83,7 @@ function ObjectRemoveUpgrade(unit_table, upgrade_name) end
 --- 隐藏单位的一个子物体，第三个参数为 false 时则为显示
 --- @param unit_table table 单位table
 --- @param sub_object_name string 子物体名
---- @param isActive boolean 是否隐藏
+--- @param is_active boolean 是否隐藏
 function ObjectHideSubObject(unit_table, sub_object_name, is_active) end
 
 
@@ -91,6 +91,6 @@ function ObjectHideSubObject(unit_table, sub_object_name, is_active) end
 --- 隐藏单位的一个子物体，第三个参数为 false 时则为显示
 --- @param unit_table table 单位table
 --- @param sub_object_name string 子物体名
---- @param isActive boolean 是否隐藏
+--- @param is_active boolean 是否隐藏
 function ObjectHideSubObjectPermanently(unit_table, sub_object_name, is_active) end
 

@@ -135,5 +135,5 @@ end
 --- @param relation_reference_unit_table SystemUnitTable
 --- @param filter SystemFilter
 FilterModule.is_unit_pass_filter = function(unit_table, relation_reference_unit_table, filter)
-    return ObjectTestTargetObjectWithFilter(unit_table, relation_reference_unit_table, filter)
+    return ObjectTestTargetObjectWithFilter(relation_reference_unit_table, unit_table, filter)
 end
