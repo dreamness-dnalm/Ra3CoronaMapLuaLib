@@ -39,7 +39,7 @@ function ObjectTeamName(unit_table) end
 --- @param unit_table table 单位table
 --- @param model_status string 模型状态
 --- @return boolean
-function  ObjectTestModuleCondition(unit_table, model_status) end
+function  ObjectTestModelCondition(unit_table, model_status) end
 
 -- TODO: test, package
 --- 设置物体状态
@@ -94,3 +94,20 @@ function ObjectHideSubObject(unit_table, sub_object_name, is_active) end
 --- @param is_active boolean 是否隐藏
 function ObjectHideSubObjectPermanently(unit_table, sub_object_name, is_active) end
 
+-- TODO: test, package
+--- PlayerSide字符串
+--- @param unit_table SystemUnitTable 单位table
+--- @return string
+function ObjectPlayerSide(unit_table) end
+
+-- TODO: test, package
+--- UNKNOWN
+--- @param unit_table SystemUnitTable 单位table
+--- @return string
+function ObjectCapturingObjectPlayerSide(unit_table) end
+
+-- TODO: test, package
+--- 获取单位模板名称
+--- @param unit_table SystemUnitTable 单位table
+--- @return string
+function ObjectTemplateName(unit_table) end

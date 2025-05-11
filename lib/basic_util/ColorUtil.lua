@@ -41,6 +41,14 @@ ColorUtil.get_color_from_hex = function(hex_value)
     return color
 end
 
+--- 颜色判等
+--- @param color1 Color
+--- @param color2 Color
+--- @return boolean
+ColorUtil.is_color_equal = function(color1, color2)
+    return color1.hex_value == color2.hex_value
+end
+
 ColorEnum = {
     RED = ColorUtil.get_color_from_rgb(255, 0, 0),
     GREEN = ColorUtil.get_color_from_rgb(0, 255, 0),
@@ -73,5 +81,6 @@ ColorEnum = {
     DARK_ORANGE = ColorUtil.get_color_from_rgb(255, 140, 0),
     DARK_BROWN = ColorUtil.get_color_from_rgb(139, 69, 19),
     DARK_PINK = ColorUtil.get_color_from_rgb(255, 20, 147),
-    DARK_GRAY = ColorUtil.get_color_from_rgb(169, 169, 169)
+    
+    PLYAER_COLOR_YELLOW = ColorUtil.get_color_from_rgb(237, 231, 47),
 }

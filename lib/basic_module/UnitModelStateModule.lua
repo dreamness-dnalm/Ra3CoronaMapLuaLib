@@ -7,13 +7,13 @@
 UnitModelStateModule = {}
 
 --- 设置单位的模型状态 (547)
---- @param unit_name_table string|SystemUnitTable 单位名
+--- @param unit_name_or_table string|SystemUnitTable 单位名
 --- @param model_state_name string 模型状态名
 --- @param duration_seconds number|nil 持续时间
-UnitModelStateModule.add_unit_model_state = function(unit_name_table, model_state_name, duration_seconds)
+UnitModelStateModule.add_unit_model_state = function(unit_name_or_table, model_state_name, duration_seconds)
     -- LoggerModule.debug("UnitModelStateModule.setUnitModelState", "unitName: " .. tostring(unit_name) .. ", modelStateName: " .. tostring(model_state_name) .. ", durationSeconds: " .. tostring(duration_seconds))
-    if type(unit_name_table) ~= "string" and type(unit_name_table) ~= 'table' then
-        LoggerModule.error("UnitModelStateModule.add_unit_model_state", "unit_name must be a string or table")
+    if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= 'table' then
+        LoggerModule.error("UnitModelStateModule.add_unit_model_state", "unit_name_or_table must be a string or table")
         return
     end
     if type(model_state_name) ~= "string" then
@@ -25,9 +25,9 @@ UnitModelStateModule.add_unit_model_state = function(unit_name_table, model_stat
         return
     end
     if duration_seconds == nil then
-        ExecuteAction("UNIT_SET_MODELCONDITION_GENERIC", unit_name_table, model_state_name)
+        ExecuteAction("UNIT_SET_MODELCONDITION_GENERIC", unit_name_or_table, model_state_name)
     else
-        ExecuteAction("UNIT_SET_MODELCONDITION_GENERIC", unit_name_table, model_state_name, duration_seconds)
+        ExecuteAction("UNIT_SET_MODELCONDITION_GENERIC", unit_name_or_table, model_state_name, duration_seconds)
     end
     -- LoggerModule.debug("UnitModelStateModule.add_unit_model_state", "end")
 end
@@ -38,7 +38,7 @@ end
 UnitModelStateModule.remove_unit_model_state = function(unit_name_or_table, model_state_name)
     -- LoggerModule.debug("UnitModelStateModule.remove_unit_model_state", "unitName: " .. tostring(unitName) .. ", modelStateName: " .. tostring(modelStateName))
     if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= 'table' then
-        LoggerModule.error("UnitModelStateModule.remove_unit_model_state", "unit_name must be a string or table")
+        LoggerModule.error("UnitModelStateModule.remove_unit_model_state", "unit_name_or_table must be a string or table")
         return
     end
     if type(model_state_name) ~= "string" then
@@ -47,4 +47,21 @@ UnitModelStateModule.remove_unit_model_state = function(unit_name_or_table, mode
     end
     ExecuteAction("UNIT_CLEAR_MODELCONDITION", unit_name_or_table, model_state_name)
     -- LoggerModule.debug("UnitModelStateModule.remove_unit_model_state", "end")
+end
+
+-- TODO: test, package
+--- 单位是否拥有模型状态 [150]
+--- @param unit_name_or_table string|SystemUnitTable 单位名
+--- @param model_state_name string 模型状态名
+--- @return boolean
+UnitModelStateModule.is_unit_has_model_state = function(unit_name_or_table, model_state_name)
+    if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= 'table' then
+        LoggerModule.error("UnitModelStateModule.is_unit_has_model_state", "unit_name_or_table must be a string or table, but: " .. tostring(type(unit_name_or_table)))
+        return nil
+    end
+    if type(model_state_name) ~= "string" then
+        LoggerModule.error("UnitModelStateModule.is_unit_has_model_state", "model_state_name must be a string")
+        return nil
+    end
+    return GameModule.from_ra3_boolean(EvaluateCondition("UNIT_HAS_MODELCONDITION", unit_name_or_table, model_state_name)) -- [150]
 end

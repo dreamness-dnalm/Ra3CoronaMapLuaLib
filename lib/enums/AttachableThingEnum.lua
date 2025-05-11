@@ -1,5 +1,5 @@
 
---- @class AttachableThingEnum
+--- @enum AttachableThingEnum
 AttachableThingEnum = {
     Map_CustomAttaches01 = "Map_CustomAttaches01",
     Map_CustomAttaches02 = "Map_CustomAttaches02",

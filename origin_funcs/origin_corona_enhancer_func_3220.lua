@@ -257,6 +257,7 @@ function exPlayerTechChangeTechFaction(player_name, faction_tech) end
 --- @param btn4 string 按钮4
 --- @param btn5 string 按钮5
 --- @param btn6 string 按钮6
+--- @param btn7 string 按钮7
 function exShowCustomBtnChoiceDialog(dialog_id, title, btn1, btn2, btn3, btn4, btn5, btn6, btn7) end
 
 -- TODO: test
@@ -274,7 +275,8 @@ function exShowCustomBtnChoiceDialog(dialog_id, title, btn1, btn2, btn3, btn4, b
 --- @param btn4 string 按钮4
 --- @param btn5 string 按钮5
 --- @param btn6 string 按钮6
-function exShowCustomBtnChoiceDialogForPlayer(player_name, dialog_Id, title, btn1, btn2, btn3, btn4, btn5, btn6) end
+--- @param btn7 string 按钮7
+function exShowCustomBtnChoiceDialogForPlayer(player_name, dialog_Id, title, btn1, btn2, btn3, btn4, btn5, btn6, btn7) end
 
 -- TODO: test
 --- 关闭按钮选项弹框

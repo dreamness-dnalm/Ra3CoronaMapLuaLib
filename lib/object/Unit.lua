@@ -209,6 +209,18 @@ function Unit:remove_model_state(model_states)
     end
 end
 
+--- 单位是否拥有模型状态
+--- @param model_state_name string 模型状态名
+--- @return boolean
+function Unit:is_has_model_state(model_state_name)
+    if type(model_state_name) ~= "string" then
+        LoggerModule.error("Unit:is_has_model_state", "model_state_name must be a string")
+        return nil
+    end
+    -- LoggerModule.warn("Unit:is_has_model_state", 'unit: id: ' .. tostring(self.id) .. ', table: ' .. tostring(self.unit_table) .. ', name: ' .. tostring(self.name))
+    return UnitModelStateModule.is_unit_has_model_state(self.unit_table, model_state_name)
+end
+
 -- ------ 单位健康 -------
 
 --- 获取单位的生命值

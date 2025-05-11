@@ -99,8 +99,6 @@ PlayerModule.get_ai_cheat_multiplier = function()
     return exModeGetAICheatMultiplier()
 end
 
-
--- TODO: package
 --- 获取玩家选中的单位id列表
 --- @param player_name PlayerEnum
 --- @return number[] id列表, number 数量
@@ -111,3 +109,16 @@ PlayerModule.get_player_selected_unit_ids = function(player_name)
     end
     return exPlayerGetSelectedObjectIds(player_name)
 end
+
+--- 获取玩家颜色
+--- @param player_name PlayerEnum
+--- @return Color
+PlayerModule.get_player_color = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.get_player_color", "player_name must be a string")
+        return nil
+    end
+    color_ret = exPlayerGetColor(player_name)
+    return ColorUtil.get_color_from_rgb(color_ret[1], color_ret[2], color_ret[3])
+end
+

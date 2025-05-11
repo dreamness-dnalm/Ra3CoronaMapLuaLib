@@ -3,7 +3,7 @@
 --- DateTime: 10/18/2024 5:52 PM
 ---
 
---- @class StatusEnum
+--- @enum StatusEnum
 StatusEnum = {
     --- 缩小
     SHRUNK = "SHRUNK",

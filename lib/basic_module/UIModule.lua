@@ -43,3 +43,13 @@ end
 UIModule.enable_coop_command_panel = function(enable)
     ExecuteAction("SET_COOP_AI_COMMAND_UI_ENABLED", GameModule.to_ra3_boolean(enable)) -- (522)
 end
+
+--- 设置所有ui是否可见 (264) / (263)
+--- @param visible boolean
+UIModule.set_all_ui_visible = function(visible)
+    if visible then
+        ExecuteAction("SHOW_UI") -- (264)
+    else
+        ExecuteAction("HIDE_UI")    -- (263)
+    end
+end

@@ -22,7 +22,11 @@ function tinsert(table, pos, value) end
 --- @param pos number 可选参数, 移除位置, 默认为最后一个元素
 function tremove(table, pos) end
 
-
+--- 对table进行排序
+---@param table table 数组
+---@param func function 可选参数, 排序函数
+---@return table table
+function sort(table, func) end
 
 -------- 数学函数 --------
 
@@ -101,6 +105,20 @@ function strsub(s, i, j) end
 --- @param s string
 --- @return number
 function strlen(s) end
+
+--- 获取字符串第几个元素
+---@param str string 字符串
+---@param index number 索引
+---@return number
+function strbyte(str, index) end
+
+--- 字符串元素替换
+---@param str string 字符串
+---@param pattern string 匹配模式
+---@param replacement string 替换字符串
+---@param _count number  可选参数, 替换的次数
+---@return string 替换后的字符串
+function gsub(str, pattern, replacement, _count) end
 
 -------- tag相关 -------
 

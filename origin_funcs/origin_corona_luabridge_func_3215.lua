@@ -236,6 +236,13 @@ function ObjectCreateAndFireTempWeaponToTarget(unit_table, weapon_name, target_p
 --- @return table 目标单位, 假如没有目标，会返回 nil
 function ObjectFindTarget(unit_table) end
 
+-- TODO: test
+--- 功能和ObjectFindTarget完全相同
+--- 获取单位目标, 假如没有目标，会返回 nil
+--- @param unit_table table 单位
+--- @return table 目标单位, 假如没有目标，会返回 nil
+function ObjectGetTarget(unit_table) end
+
 -- TODO: test, package
 --- 获取单位的建造者（生产者）;
 --- 例如可以通过矿车找到矿场，或者通过小飞机找到航母;
@@ -392,4 +399,14 @@ function ObjectGetAttributeModifier(unit_table, attribute_name, ignore_attribute
 --- @param attribute_modifier_name string AttributeModifier 名称
 --- @return AttributeModifier AttributeModifier
 function FindAttributeModifier(attribute_modifier_name) end
+
+-- TODO: test, package
+--- 修复bug, 调用后, 在`回调函数`里可以对player进行操作  </br>
+--- eg:  </br>
+--- local prev = SetWorldBuilderThisPlayer(1) </br>
+--- MoneyModule.set_player_money('Player_1', 10000)  </br>
+--- SetWorldBuilderThisPlayer(prev)  </br>
+--- @param value any
+function SetWorldBuilderThisPlayer(value) end
+
 

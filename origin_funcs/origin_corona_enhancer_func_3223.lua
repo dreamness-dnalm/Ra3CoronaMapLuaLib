@@ -87,3 +87,8 @@ function exScoreBoardSetTextForPlayer(player_name, text, row, col) end
 --- 设置公屏文字的颜色(是整个公屏文字的颜色)
 --- @param color number
 function exSetPublicBoardColor(color) end
+
+--- 获取玩家颜色
+--- @param player_name string 玩家名字
+--- @return table 长度为3, 分别是rgb的十进制数
+function exPlayerGetColor(player_name) end
