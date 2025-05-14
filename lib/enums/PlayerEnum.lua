@@ -2,7 +2,7 @@
 --- Created by dreamness
 --- DateTime: 12/15/2024 00:13 AM
 
---- @class PlayerEnum
+--- @enum PlayerEnum
 PlayerEnum = {
     Player_1 = "Player_1",
     Player_2 = "Player_2",
@@ -24,7 +24,7 @@ PlayerEnum = {
     SkirmishSoviet = "SkirmishSoviet"
 }
 
---- @class PlayerStrEnum
+--- @enum PlayerStrEnum
 PlayerStrEnum = {
     FirstHumanPlayer = "<1st Human Player>",
     FirstHumanPlayerAliesAndSelf = "<1st Human Player's Allies ind Self>",

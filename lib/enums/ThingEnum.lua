@@ -3,7 +3,7 @@
 --- DateTime: 10/13/2024 2:38 PM
 ---
 
---- @class ThingEnum
+--- @enum ThingEnum
 ThingEnum = {
     SovietMiner = "SovietMiner",
     SovietMiner_Naval = "SovietMiner_Naval",
