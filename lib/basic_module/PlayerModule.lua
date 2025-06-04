@@ -122,3 +122,21 @@ PlayerModule.get_player_color = function(player_name)
     return ColorUtil.get_color_from_rgb(color_ret[1], color_ret[2], color_ret[3])
 end
 
+
+-- TODO: test, package
+-- 获取玩家的编队
+--- @param player_name PlayerEnum
+--- @param index number 队伍编号
+--- @return table 编队成员
+--- @return number 编队成员数量
+PlayerModule.get_player_formation = function(player_name, index)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.get_player_formation", "player_name must be a string")
+        return nil, nil
+    end
+    if type(index) ~= "number" then
+        LoggerModule.error("PlayerModule.get_player_formation", "index must be a number")
+        return nil, nil
+    end
+    return exPlayerGetFormationTeam(player_name, index)
+end

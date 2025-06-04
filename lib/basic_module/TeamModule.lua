@@ -34,3 +34,18 @@ TeamModule.from_player_name = function(player_name)
     end
     return player_name .. "/team" .. player_name
 end
+
+
+-- TODO: test, package
+-- 获取指定队伍的成员
+--- @param team_name TeamEnum
+--- @return table 成员列表
+--- @return number 成员数量
+TeamModule.get_members = function(team_name)
+    if type(team_name) ~= "string" then
+        LoggerModule.error("TeamModule.get_members", "team_name must be a string")
+        return nil, 0
+    end
+    return exTeamGetMembers(team_name)
+end
+
