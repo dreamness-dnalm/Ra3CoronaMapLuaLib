@@ -342,7 +342,15 @@ function Unit:get_weapon_ammo_cnt(weapon_slot_id, weapon_ording, weapon_index)
     return UnitWeaponMododule.get_weapon_ammo_cnt(self.unit_table, weapon_slot_id, weapon_ording, weapon_index)
 end
 
-
+-- TODO: test
+--- 获取单位武器最大弹药量
+--- @param weapon_slot_id number 武器槽位id
+--- @param weapon_ording number 武器排序
+--- @param weapon_index number 武器索引
+--- @return number 最大弹药量
+function Unit:get_weapon_max_ammo_cnt(weapon_slot_id, weapon_ording, weapon_index)
+    return UnitWeaponMododule.get_weapon_max_ammo_cnt(self.unit_table, weapon_slot_id, weapon_ording, weapon_index)
+end
 -- ------- 进驻 ------
 
 --- 进驻可进驻单位(建筑物,ifv等)

@@ -101,3 +101,32 @@ UnitWeaponMododule.get_weapon_ammo_cnt = function(unit_table, weapon_slot_id, we
 
     return ObjectGetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_id, weapon_ording, weapon_index)
 end
+
+
+-- TODO: test
+--- 获取单位武器最大弹药量
+--- @param unit_table SystemUnitTable 单位table
+--- @param weapon_slot_id number 武器槽位id
+--- @param weapon_ording number 武器排序
+--- @param weapon_index number 武器索引
+--- @return number 最大弹药量
+UnitWeaponMododule.get_weapon_max_ammo_cnt = function(unit_table, weapon_slot_id, weapon_ording, weapon_index)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitWeaponMododule.get_weapon_max_ammo_cnt", "unit_table must be a table")
+        return nil
+    end
+    if type(weapon_slot_id) ~= "number" then
+        LoggerModule.error("UnitWeaponMododule.get_weapon_max_ammo_cnt", "weapon_slot_id must be a number")
+        return nil
+    end
+    if type(weapon_ording) ~= "number" then
+        LoggerModule.error("UnitWeaponMododule.get_weapon_max_ammo_cnt", "weapon_ording must be a number")
+        return nil
+    end
+    if type(weapon_index) ~= "number" then
+        LoggerModule.error("UnitWeaponMododule.get_weapon_max_ammo_cnt", "weapon_index must be a number")
+        return nil
+    end
+
+    return ObjectGetWeaponSetUpdateWeaponMaxAmmoCount(unit_table, weapon_slot_id, weapon_ording, weapon_index)
+end

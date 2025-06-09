@@ -329,6 +329,16 @@ function ObjectGetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_
 --- @param ammo_count number 弹药量
 function ObjectSetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_id, weapon_ordering, weapon_index, ammo_count) end
 
+-- TODO: test
+--- 获取单位指定武器组、武器槽、弹药类型的最大弹药数
+--- @param unit_table table 单位
+--- @param weapon_slot_id number 武器槽 ID
+--- @param weapon_ordering number 武器排序
+--- @param weapon_index number 武器序号
+--- @return number 最大弹药数 若获取失败返回nil
+function ObjectGetWeaponSetUpdateWeaponMaxAmmoCount(unit_table, weapon_slot_id, weapon_ordering, weapon_index) end
+
+
 -- TODO: test, package
 --- 获取单位武器的当前 WeaponLaunchBone 序号
 --- @param unit_table table 单位
@@ -337,6 +347,8 @@ function ObjectSetWeaponSetUpdateWeaponCurrentAmmoCount(unit_table, weapon_slot_
 --- @param weapon_index number 武器序号
 --- @return number WeaponLaunchBone 序号
 function ObjectGetWeaponSetUpdateWeaponCurrentWeaponLaunchBoneIndex(unit_table, weapon_slot_id, weapon_ordering, weapon_index) end
+
+
 
 -- TODO: test, package
 --- 检测单位是否处于瘫痪状态
