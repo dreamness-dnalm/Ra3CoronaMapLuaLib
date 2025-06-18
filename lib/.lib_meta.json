@@ -1324,6 +1324,22 @@
           "OrderNum": 50,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+        },
+        {
+          "FileName": "TeamAttackModule.lua",
+          "FilePath": "\\lib\\basic_module\\TeamAttackModule.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 51,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
         }
       ],
       "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
@@ -1453,6 +1469,22 @@
           "OrderNum": 6,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+        },
+        {
+          "FileName": "TeamHelper.lua",
+          "FilePath": "\\lib\\helper\\TeamHelper.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 7,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
         }
       ],
       "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
@@ -1580,6 +1612,38 @@
           "ActiveInMedium": true,
           "ActiveInHard": true,
           "OrderNum": 6,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+        },
+        {
+          "FileName": "Team.lua",
+          "FilePath": "\\lib\\object\\Team.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 7,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+        },
+        {
+          "FileName": "Team_attack_part.lua",
+          "FilePath": "\\lib\\object\\Team_attack_part.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 8,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
         }

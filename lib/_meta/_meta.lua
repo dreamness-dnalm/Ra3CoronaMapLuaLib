@@ -9,6 +9,7 @@ _meta = {
         filter_tag = newtag(),
         player_tag = newtag(),
         unit_tag = newtag(),
+        team_tag = newtag(),
     },
     cache = {}
 }

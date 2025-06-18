@@ -57,7 +57,6 @@ end
 --- @param team_name string 队伍名/playerName
 --- @param waypoint_name string 路径点名
 UnitModule.create_and_name_unit_at_waypoint = function(name, thing, team_name, waypoint_name)
-    -- LoggerModule.debug("UnitModule.create_and_name_unit_at_waypoint", "name: " .. tostring(name) .. ", thing: " .. tostring(thing) .. ", teamName: " .. tostring(team_name) .. ", waypointName: " .. tostring(waypoint_name))
     if type(name) ~= "string" then
         LoggerModule.error("UnitModule.create_and_name_unit_at_waypoint", "name must be a string")
         return
@@ -103,7 +102,6 @@ end
 --- @param unit_table_or_name table|string unitTable | unit_name
 --- @param player_name string playerEnum
 UnitModule.set_owner_player = function(unit_table_or_name, player_name)
-    LoggerModule.debug("UnitModule.set_owner_player", "unit_table_or_name: " .. tostring(unit_table_or_name) .. ", player_name: " .. tostring(player_name))
     if type(unit_table_or_name) ~= "string" and type(unit_table_or_name) ~= "table" then
         LoggerModule.error("UnitModule.set_owner_player", "unit_table_or_name must be a table or string")
     end
@@ -112,7 +110,6 @@ UnitModule.set_owner_player = function(unit_table_or_name, player_name)
         LoggerModule.error("UnitModule.set_owner_player", "player_name must be a string")
     end
     ExecuteAction("NAMED_TRANSFER_OWNERSHIP_PLAYER", unit_table_or_name, player_name)
-    LoggerModule.debug("UnitModule.set_owner_player", "finished")
 end
 
 

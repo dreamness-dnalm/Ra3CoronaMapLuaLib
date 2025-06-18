@@ -50,7 +50,7 @@ UnitCreateHelper.create_unit_at_waypoint = function(unit_name, thing, team_name,
         return
     end
     
-    UnitModule.create_and_name_unit_at_waypoint(unit_name, thing, team_name, waypoint_name, attrs, statuses)
+    UnitModule.create_and_name_unit_at_waypoint(unit_name, thing, team_name, waypoint_name)
     local unit = UnitHelper.get_unit_from_name(unit_name)
     if attrs ~= nil then
         unit:add_modifier(attrs, attrs_frame_cnt)
