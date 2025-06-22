@@ -50,5 +50,12 @@ function Unit:get_target_unit()
 end
 
 
+-- TODO: test, doc
+--- 移动到指定路径点
+--- @param waypoint_name string
+function Unit:move_to_waypoint(waypoint_name)
+    UnitAttackModule.move_to_waypoint(self.unit_table, waypoint_name)
+end
+
 
 

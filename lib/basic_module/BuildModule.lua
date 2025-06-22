@@ -37,3 +37,19 @@ BuildModule.allow_build_unit = function(player_name, is_allow)
         ExecuteAction("PLAYER_DISABLE_UNIT_CONSTRUCTION", player_name)
     end
 end
+
+-- TODO: test, package, doc
+--- 允许/禁止玩家建造一个单位 (283)
+--- @param player_name PlayerEnum
+--- @param thing_name ThingEnum
+--- @param is_allow boolean
+BuildModule.allow_build_a_unit = function(player_name, thing_name, is_allow)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("BuildModule.allow_build_a_unit", "player_name must be a string")
+    end
+    if type(thing_name) ~= "string" then
+        LoggerModule.error("BuildModule.allow_build_a_unit", "thing_name must be a string")
+    end
+    local is_allow_value = GameModule.to_ra3_boolean(is_allow)
+    ExecuteAction("ALLOW_DISALLOW_ONE_BUILDING", player_name, thing_name, is_allow_value)
+end

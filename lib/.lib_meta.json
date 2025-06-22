@@ -1485,6 +1485,22 @@
           "OrderNum": 7,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
+        },
+        {
+          "FileName": "PlayerHelper.lua",
+          "FilePath": "\\lib\\helper\\PlayerHelper.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 8,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
         }
       ],
       "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\helper"
@@ -1644,6 +1660,22 @@
           "ActiveInMedium": true,
           "ActiveInHard": true,
           "OrderNum": 8,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
+        },
+        {
+          "FileName": "Player.lua",
+          "FilePath": "\\lib\\object\\Player.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 9,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\object"
         }

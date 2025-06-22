@@ -83,6 +83,22 @@ UnitAttackModule.get_target_unit = function(unit_table)
     return ObjectFindTarget(unit_table)
 end
 
+-- TODO: test, package, doc
+--- 移动到指定路径点 (33)
+--- @param unit_table SystemUnitTable 单位table
+--- @param waypoint_name string 路径点名称
+UnitAttackModule.move_to_waypoint = function(unit_table, waypoint_name)
+    if type(unit_table) ~= "table" then
+        LoggerModule.error("UnitAttackModule.move_to_waypoint", "unit_table must be a table")
+        return
+    end
+    if type(waypoint_name) ~= "string" then
+        LoggerModule.error("UnitAttackModule.move_to_waypoint", "waypoint_name must be a string")
+        return
+    end
+
+    ExecuteAction("MOVE_NAMED_UNIT_TO", unit_table, waypoint_name) -- (33)
+end
 
 
 -- 无效
