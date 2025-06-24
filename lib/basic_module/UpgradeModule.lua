@@ -10,7 +10,7 @@ UpgradeModule = {}
 --- @param upgrade_name UpgradeEnum
 --- @return boolean
 UpgradeModule.has_upgrade = function(player_name, upgrade_name)
-    LoggerModule.debug("UpgradeModule.has_upgrade", "start")
+    -- LoggerModule.debug("UpgradeModule.has_upgrade", "start")
     if type(player_name) ~= "string" then
         LoggerModule.error("UpgradeModule.has_upgrade", "player_name must be a string")
         return nil
@@ -20,7 +20,7 @@ UpgradeModule.has_upgrade = function(player_name, upgrade_name)
         return nil
     end
     ret = EvaluateCondition("PLAYER_BUILT_UPGRADE", player_name, upgrade_name)
-    LoggerModule.debug("UpgradeModule.has_upgrade", "end")
+    -- LoggerModule.debug("UpgradeModule.has_upgrade", "end")
     return ret
 end
 
@@ -43,7 +43,7 @@ end
 --- @param upgrade_name UpgradeEnum
 --- @param is_enable boolean
 UpgradeModule.enable_upgrade = function(player_name, upgrade_name, is_enable)
-    LoggerModule.debug("UpgradeModule.enable_upgrade", "start")
+    -- LoggerModule.debug("UpgradeModule.enable_upgrade", "start")
     if type(player_name) ~= "string" then
         LoggerModule.error("UpgradeModule.enable_upgrade", "player_name must be a string")
     end
@@ -55,7 +55,7 @@ UpgradeModule.enable_upgrade = function(player_name, upgrade_name, is_enable)
     else
         ExecuteAction("REMOVE_PLAYER_UPGRADE", player_name, upgrade_name)
     end
-    LoggerModule.debug("UpgradeModule.enable_upgrade", "end")
+    -- LoggerModule.debug("UpgradeModule.enable_upgrade", "end")
 end
 
 --- 给单位升级  (201) (502)
@@ -63,7 +63,7 @@ end
 --- @param upgrade_name UpgradeEnum
 --- @param is_enable boolean
 UpgradeModule.unit_enable_upgrade = function(unit_name_or_table, upgrade_name, is_enable)
-    LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "start")
+    -- LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "start")
     if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
         LoggerModule.error("UpgradeModule.unit_enable_upgrade", "unit_name_or_table must be a string or table")
     end
@@ -75,14 +75,14 @@ UpgradeModule.unit_enable_upgrade = function(unit_name_or_table, upgrade_name, i
     else
         ExecuteAction("NAMED_REMOVE_UPGRADE", upgrade_name, unit_name_or_table)
     end
-    LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "end")
+    -- LoggerModule.debug("UpgradeModule.unit_enable_upgrade", "end")
 end
 
 --- 单位是否有升级 [138]
 --- @param unit_name_or_table string|SystemUnitTable
 --- @param upgrade_name UpgradeEnum
 UpgradeModule.unit_has_upgrade = function(unit_name_or_table, upgrade_name)
-    LoggerModule.debug("UpgradeModule.unit_has_upgrade", "start")
+    -- LoggerModule.debug("UpgradeModule.unit_has_upgrade", "start")
        if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
         LoggerModule.error("UpgradeModule.unit_has_upgrade", "unitName must be a string or table")
     end
