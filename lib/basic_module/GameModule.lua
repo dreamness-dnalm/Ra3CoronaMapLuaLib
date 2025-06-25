@@ -62,3 +62,16 @@ GameModule.enable_script = function(script_name, enable)
         exDisableWBScript(script_name)
     end
 end
+
+
+--- 获取上一次调用该函数到这次调用的时间间隔，单位是纳秒
+--- @return number
+GameModule.get_duration_from_last_call_nanosecond = function()
+    return HighResolutionClock()
+end
+
+--- 获取上一次调用该函数到这次调用的时间间隔，单位是毫秒
+--- @return number
+GameModule.get_duration_from_last_call_millisecond = function()
+    return GameModule.get_duration_from_last_call_nanosecond() / 1000000
+end
