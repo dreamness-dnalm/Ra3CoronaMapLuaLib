@@ -30,5 +30,8 @@ StatusEnum = {
 
     PLACED_BY_PLAYER = "PLACED_BY_PLAYER",
     LOADED_BY_MAP = "LOADED_BY_MAP",
+    
+    --- 不可移动
+    IMMOBILE = "IMMOBILE",
 
 }

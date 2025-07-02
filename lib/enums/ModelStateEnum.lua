@@ -10,5 +10,7 @@ ModelStateEnum = {
     DECAY = "DECAY",
     STRUCTURE_UNPACKING = "STRUCTURE_UNPACKING",
 
-    SELECTED = "SELECTED"
+    SELECTED = "SELECTED",
+    --- 隐藏ui, 如血条,等级等
+    HIDDEN_UI = "HIDDEN",
 }
