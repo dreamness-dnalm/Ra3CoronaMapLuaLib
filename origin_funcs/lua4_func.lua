@@ -65,6 +65,94 @@ function mod(x, y) end
 --- @return number
 function sqrt(x) end
 
+--- 计算余弦值
+--- @param x number
+--- @return number
+function cos(x) end
+
+--- 计算正弦值
+--- @param angle number
+--- @return number
+function sin(angle) end
+
+--- 计算正切值
+--- @param angle number
+--- @return number
+function tan(angle) end
+
+--- 计算反正切值
+--- @param x number
+--- @return number
+function atan(x) end
+
+--- 计算反正切值
+--- @param y number
+--- @param x number
+--- @return number
+function atan2(y, x) end
+
+--- 计算反正弦值
+--- @param x number
+--- @return number
+function asin(x) end
+
+--- 计算反余弦值
+--- @param x number
+--- @return number
+function acos(x) end
+
+--- 计算以e为底x的对数
+--- @param x number
+--- @return number
+function log(x) end
+
+--- 计算以10为底x的对数
+--- @param x number
+--- @return number
+function log10(x) end
+
+
+--- 将角度转换为弧度
+--- @param angle number
+--- @return number
+function rad(angle) end
+
+--- 将弧度转换为角度
+--- @param x number
+--- @return number
+function deg(x) end
+
+--- 计算平方根
+--- @param x number
+--- @return number
+function sqrt(x) end
+
+--- 生成随机数 0-1
+--- @return number
+function random() end
+
+--- 设置随机数种子
+--- @param seed number
+function randomseed(seed) end
+
+--- 计算以e为底x的指数值
+--- @param x number
+--- @return number
+function exp(x) end
+
+--- 将x分解为m*2^e的形式
+--- @param x number
+--- @return number, number
+function frexp(x) end
+
+--- 将m*2^e的形式转换为x
+--- @param m number
+--- @param e number
+--- @return number
+function ldexp(m, e) end
+
+
+
 ------ 字符串 ---------
 
 --- 将任意类型转换为字符串
@@ -120,6 +208,21 @@ function strbyte(str, index) end
 ---@return string 替换后的字符串
 function gsub(str, pattern, replacement, _count) end
 
+--- 字符串重复
+--- @param str string 字符串
+--- @param n number 重复次数
+--- @return string 重复后的字符串
+function strrep(str, n) end
+
+--- ascii码转字符
+--- @param ... number 多个ascii码
+function strchar(...) end
+
+--- 格式化字符串
+--- @param formatstring string 格式化字符串
+--- @param ... any 多个参数
+function format(formatstring, ...) end
+
 -------- tag相关 -------
 
 --- 创建一个新的tag
@@ -163,3 +266,8 @@ function globals() end
 --- @param cmd string
 --- @return any  失败返回nil
 function dostring(cmd) end
+
+--- 获取当前cpu时间 单位秒
+--- @return number
+function clock() end
+
