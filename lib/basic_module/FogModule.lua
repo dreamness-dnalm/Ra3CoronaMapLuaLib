@@ -31,3 +31,22 @@ FogModule.reveal_map = function(player_name, is_enable)
     end
     LoggerModule.debug("FogModule.reveal_map", "end")
 end
+
+-- TODO: doc
+--- 判断单位是否在玩家的视野中
+--- @param player_name PlayerEnum
+--- @param unit_name_or_table string | SystemUnitTable
+--- @return boolean
+FogModule.is_unit_in_sight = function(player_name, unit_name_or_table)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("FogModule.is_unit_in_sight", "player_name should be a string")
+        return nil
+    end
+
+    if type(unit_name_or_table) ~= "string" and type(unit_name_or_table) ~= "table" then
+        LoggerModule.error("FogModule.is_unit_in_sight", "unit_name_or_table should be a string or table")
+        return nil
+    end
+
+    return GameModule.from_ra3_boolean(EvaluateCondition('NAMED_DISCOVERED', player_name, unit_name_or_table)) -- [23]
+end

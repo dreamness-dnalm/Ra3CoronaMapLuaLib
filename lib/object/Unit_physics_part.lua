@@ -127,3 +127,17 @@ function Unit:set_fixed_scale(scale)
     UnitPhysicsModule.set_fixed_scale(self.id, scale)
 end
 
+-- TODO: doc
+--- 判断单位是否在玩家的视野中
+--- @param player_name PlayerEnum
+--- @return boolean
+function Unit:is_in_player_sight(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("Unit:is_in_player_sight", "player_name must be a string")
+        return nil
+    end
+    return UnitModule.is_in_player_sight(self.unit_table, player_name)
+end
+
+
+

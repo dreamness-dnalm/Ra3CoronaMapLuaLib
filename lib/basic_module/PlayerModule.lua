@@ -140,3 +140,4 @@ PlayerModule.get_player_formation = function(player_name, index)
     end
     return exPlayerGetFormationTeam(player_name, index)
 end
+

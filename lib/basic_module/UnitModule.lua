@@ -179,6 +179,14 @@ UnitModule.get_temporary_owned_unit_id = function(unit_id)
     return exObjectGetTemporaryOwnedObjectId(unit_id)
 end
 
+-- TODO: doc
+--- 判断单位是否在玩家的视野中
+--- @param unit_name_or_table string | SystemUnitTable
+--- @param player_name PlayerEnum
+--- @return boolean
+UnitModule.is_in_player_sight = function(unit_name_or_table, player_name)
+    return FogModule.is_unit_in_sight(player_name, unit_name_or_table)
+end
 
 
 
