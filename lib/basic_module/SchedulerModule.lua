@@ -12,7 +12,6 @@ SchedulerModule = {}
 --- @field interval_frame_num number 间隔帧数
 --- @field passed_frames number 已经过去的帧数
 --- @field is_active boolean 是否激活
---- @field auto_clean boolean 是否自动清理
 --- @field arguments table 回调函数参数, 数组
 --- @field argument_length number 回调函数参数个数
 
@@ -24,8 +23,7 @@ SchedulerModule._schedulers = {}
 --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
 --- @param repeat_num number| nil 重复次数, nil表示无限次, 0或小于0表示不调用
 --- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
---- @param auto_clean boolean|nil 是否自动清理, nil表示不自动清理
-SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num, arguments, auto_clean)
+SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num, arguments)
     if type(callback) ~= "function" then
         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "callback must be a function")
         return
@@ -52,19 +50,10 @@ SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repe
         interval_frame_num = interval_frame_num,
         passed_frames = 0,
         is_active = 1,
-        auto_clean = auto_clean,
         arguments = arguments or {},
         argument_length = getn(arguments or {})
     }
     return id
-end
-
---- N帧后调用某函数
---- @param callback function 回调函数
---- @param delay number 延迟帧数 (15帧=1秒)
---- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
-SchedulerModule.delay_call = function(callback, delay, arguments)
-    return SchedulerModule.call_every_x_frame(callback, delay, 1, arguments, 1)
 end
 
 --- 暂停调度器
@@ -114,11 +103,9 @@ SchedulerModule.get_config = function(id)
 end
 
 --- 调度器内部函数, 请勿使用该函数
-SchedulerModule.__runner_function = function()
+SchedulerModule.__scheduler_runner_function = function()
     if GetFrame() > 1 then
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner start")
-
-        local clean_index_list = {}
     
         for i = 1, getn(SchedulerModule._schedulers) do
             local scheduler = SchedulerModule._schedulers[i]
@@ -186,18 +173,142 @@ SchedulerModule.__runner_function = function()
                     end
                     if scheduler.repeat_times and scheduler.aready_called_times >= scheduler.repeat_times then
                         scheduler.is_active = nil
-                        if scheduler.auto_clean then
-                            tinsert(clean_index_list, i)
-                        end
                     end
                 end
             end
-        end
-
-        for i = getn(clean_index_list), 1, -1 do
-            tremove(SchedulerModule._schedulers, clean_index_list[i])
         end
         
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner finished")
     end
 end
+
+
+
+--- @class DelayCallSchedulerConfig
+--- @field callback function 回调函数
+--- @field delay_frame_num number 延迟帧数
+--- @field passed_frames number 已经过去的帧数
+--- @field arguments table 回调函数参数, 数组
+--- @field argument_length number 回调函数参数个数
+
+--- @type DelayCallSchedulerConfig[]
+SchedulerModule._delay_call_schedulers = {}
+
+--- N帧后调用某函数
+--- @param callback function 回调函数
+--- @param delay number 延迟帧数 (15帧=1秒)
+--- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
+SchedulerModule.delay_call = function(callback, delay, arguments)
+    if type(callback) ~= "function" then
+        LoggerModule.error("SchedulerModule.delay_call", "callback must be a function")
+        return
+    end
+    if type(delay) ~= "number" or delay <= 0 then
+        LoggerModule.error("SchedulerModule.delay_call", "delay must be a number and greater than 0")
+        return
+    end
+    if type(arguments) ~= "table" and arguments ~= nil then
+        LoggerModule.error("SchedulerModule.delay_call", "arguments must be a table or nil")
+        return
+    end
+
+    local scheduler = SchedulerModule._delay_call_schedulers
+    local id = getn(SchedulerModule._delay_call_schedulers) + 1
+    scheduler[id] = {
+        callback = callback,
+        delay_frame_num = delay,
+        passed_frames = 0,
+        arguments = arguments or {},
+        argument_length = getn(arguments or {})
+    }
+end
+
+
+--- delay_call调度器内部函数, 请勿使用该函数
+SchedulerModule.__delay_call_scheduler_runner_function = function()
+    if GetFrame() > 1 then
+        LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner delay call start")
+
+        local aready_called_delay_call_scheduler_index_list = {}
+    
+        for i = 1, getn(SchedulerModule._delay_call_schedulers) do
+            --- @type DelayCallSchedulerConfig
+            local scheduler = SchedulerModule._delay_call_schedulers[i]
+            
+            scheduler.passed_frames = scheduler.passed_frames + 1
+            if scheduler.passed_frames >= scheduler.delay_frame_num then
+                local callbacked = 1
+
+                if scheduler.argument_length == 0 then
+                    scheduler.callback()
+                elseif scheduler.argument_length == 1 then
+                    scheduler.callback(scheduler.arguments[1])
+                elseif scheduler.argument_length == 2 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2])
+                elseif scheduler.argument_length == 3 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3])
+                elseif scheduler.argument_length == 4 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4])
+                elseif scheduler.argument_length == 5 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5])
+                elseif scheduler.argument_length == 6 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6])
+                elseif scheduler.argument_length == 7 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7])
+                elseif scheduler.argument_length == 8 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8])
+                elseif scheduler.argument_length == 9 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9])
+                elseif scheduler.argument_length == 10 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10])
+                elseif scheduler.argument_length == 11 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11])
+                elseif scheduler.argument_length == 12 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12])
+                elseif scheduler.argument_length == 13 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13])
+                elseif scheduler.argument_length == 14 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14])
+                elseif scheduler.argument_length == 15 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15])
+                elseif scheduler.argument_length == 16 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16])
+                elseif scheduler.argument_length == 17 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17])
+                elseif scheduler.argument_length == 18 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18])
+                elseif scheduler.argument_length == 19 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19])
+                elseif scheduler.argument_length == 20 then
+                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19], scheduler.arguments[20])
+                else
+                    LoggerModule.error("SchedulerModuleRunner", "argument length is out of range")
+                    callbacked = nil
+                end
+                if callbacked then
+                    LoggerModule.debug("SchedulerModuleRunner", "delay call scheduler index: " .. i .. " called successfully")
+                else
+                    LoggerModule.error("SchedulerModuleRunner", "delay call scheduler index: " .. i .. " called failed")
+                end
+                tinsert(aready_called_delay_call_scheduler_index_list, i)
+            end
+        end
+
+        for i = getn(aready_called_delay_call_scheduler_index_list), 1, -1 do
+            tremove(SchedulerModule._delay_call_schedulers, aready_called_delay_call_scheduler_index_list[i])
+        end
+        
+        LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner delay call finished")
+    end
+end
+
+
+
+
+--- 调度器内部函数, 请勿使用该函数
+SchedulerModule.__runner_function = function()
+    SchedulerModule.__scheduler_runner_function()
+    SchedulerModule.__delay_call_scheduler_runner_function()
+end
+
+
