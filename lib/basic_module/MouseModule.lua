@@ -40,7 +40,7 @@ end
 --- @type table<string, MouseModule.PlayerMousePosTable> 玩家鼠标位置数据
 MouseModule.mouse_pos_table = {}
 
--- TODO: test
+
 --- 获取玩家鼠标屏幕坐标
 --- @param player_name string 玩家名字
 --- @return number 屏幕坐标x, number 屏幕坐标y

@@ -12,6 +12,7 @@ SchedulerModule = {}
 --- @field interval_frame_num number 间隔帧数
 --- @field passed_frames number 已经过去的帧数
 --- @field is_active boolean 是否激活
+--- @field auto_clean boolean 是否自动清理
 --- @field arguments table 回调函数参数, 数组
 --- @field argument_length number 回调函数参数个数
 
@@ -23,7 +24,8 @@ SchedulerModule._schedulers = {}
 --- @param interval_frame_num number 间隔帧数, 大于0 (15帧=1秒)
 --- @param repeat_num number| nil 重复次数, nil表示无限次, 0或小于0表示不调用
 --- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
-SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num, arguments)
+--- @param auto_clean boolean|nil 是否自动清理, nil表示不自动清理
+SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repeat_num, arguments, auto_clean)
     if type(callback) ~= "function" then
         LoggerModule.error("SchedulerModule.call_every_x_frame_with_arguments", "callback must be a function")
         return
@@ -50,6 +52,7 @@ SchedulerModule.call_every_x_frame = function(callback, interval_frame_num, repe
         interval_frame_num = interval_frame_num,
         passed_frames = 0,
         is_active = 1,
+        auto_clean = auto_clean,
         arguments = arguments or {},
         argument_length = getn(arguments or {})
     }
@@ -61,7 +64,7 @@ end
 --- @param delay number 延迟帧数 (15帧=1秒)
 --- @param arguments table|nil 回调函数参数, 数组. 元素个数需要和回调函数参数个数一致; nil等同于{}
 SchedulerModule.delay_call = function(callback, delay, arguments)
-    return SchedulerModule.call_every_x_frame(callback, delay, 1, arguments)
+    return SchedulerModule.call_every_x_frame(callback, delay, 1, arguments, 1)
 end
 
 --- 暂停调度器
@@ -114,6 +117,8 @@ end
 SchedulerModule.__runner_function = function()
     if GetFrame() > 1 then
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner start")
+
+        local clean_index_list = {}
     
         for i = 1, getn(SchedulerModule._schedulers) do
             local scheduler = SchedulerModule._schedulers[i]
@@ -181,9 +186,16 @@ SchedulerModule.__runner_function = function()
                     end
                     if scheduler.repeat_times and scheduler.aready_called_times >= scheduler.repeat_times then
                         scheduler.is_active = nil
+                        if scheduler.auto_clean then
+                            tinsert(clean_index_list, i)
+                        end
                     end
                 end
             end
+        end
+
+        for i = 1, getn(clean_index_list) do
+            tremove(SchedulerModule._schedulers, clean_index_list[i])
         end
         
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner finished")

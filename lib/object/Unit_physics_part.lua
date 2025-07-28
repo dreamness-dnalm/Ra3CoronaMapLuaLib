@@ -140,4 +140,14 @@ function Unit:is_in_player_sight(player_name)
 end
 
 
-
+-- TODO: test, doc
+--- 单位是否在指定区域
+--- @param area_name string 区域名称
+--- @return boolean
+function Unit:is_in_area(area_name)
+    if type(area_name) ~= "string" then
+        LoggerModule.error("Unit:is_in_area", "area_name must be a string")
+        return nil
+    end
+    return AreaModule.is_unit_in_area(self.unit_table, area_name)
+end
