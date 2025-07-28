@@ -1340,6 +1340,22 @@
           "OrderNum": 51,
           "Children": [],
           "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
+        },
+        {
+          "FileName": "AreaModule.lua",
+          "FilePath": "\\lib\\basic_module\\AreaModule.lua",
+          "FileType": "lua",
+          "IsEnabled": true,
+          "IsIncluded": true,
+          "RunOnce": true,
+          "IsEvaluateEachFrame": true,
+          "EvaluationInterval": 1,
+          "ActiveInEasy": true,
+          "ActiveInMedium": true,
+          "ActiveInHard": true,
+          "OrderNum": 52,
+          "Children": [],
+          "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"
         }
       ],
       "LibPath": "N:\\Program Files (x86)\\Red Alert 3(Incomplete)\\ra3_map_workspace\\RA3CoronaMapLuaLib\\lib\\basic_module"

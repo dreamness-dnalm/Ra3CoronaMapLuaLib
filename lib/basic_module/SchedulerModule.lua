@@ -194,7 +194,7 @@ SchedulerModule.__runner_function = function()
             end
         end
 
-        for i = 1, getn(clean_index_list) do
+        for i = getn(clean_index_list), 1, -1 do
             tremove(SchedulerModule._schedulers, clean_index_list[i])
         end
         
