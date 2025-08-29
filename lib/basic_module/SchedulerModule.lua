@@ -219,7 +219,8 @@ SchedulerModule.delay_call = function(callback, delay, arguments)
                 delay_frame_num = delay,
                 passed_frames = 0,
                 arguments = arguments or {},
-                argument_length = getn(arguments or {})
+                argument_length = getn(arguments or {}),
+                to_remove = false
             }
     )
 
@@ -238,8 +239,6 @@ end
 SchedulerModule.__delay_call_scheduler_runner_function = function()
     if GetFrame() > 1 then
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner delay call start")
-
-        local aready_called_delay_call_scheduler_index_list = {}
     
         for i = 1, getn(SchedulerModule._delay_call_schedulers) do
             --- @type DelayCallSchedulerConfig
@@ -300,14 +299,16 @@ SchedulerModule.__delay_call_scheduler_runner_function = function()
                 else
                     LoggerModule.error("SchedulerModuleRunner", "delay call scheduler index: " .. i .. " called failed")
                 end
-                tinsert(aready_called_delay_call_scheduler_index_list, i)
+                scheduler.to_remove = true
             end
         end
 
-        for i = getn(aready_called_delay_call_scheduler_index_list), 1, -1 do
-            tremove(SchedulerModule._delay_call_schedulers, aready_called_delay_call_scheduler_index_list[i])
+        for i = getn(SchedulerModule._delay_call_schedulers), 1, -1 do
+            if SchedulerModule._delay_call_schedulers[i].to_remove then
+                tremove(SchedulerModule._delay_call_schedulers, i)
+            end
         end
-        
+
         LoggerModule.trace("SchedulerModuleRunner", "SchedulerModuleRunner delay call finished")
     end
 end
