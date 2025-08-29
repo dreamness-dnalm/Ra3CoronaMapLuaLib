@@ -213,14 +213,24 @@ SchedulerModule.delay_call = function(callback, delay, arguments)
     end
 
     local scheduler = SchedulerModule._delay_call_schedulers
-    local id = getn(SchedulerModule._delay_call_schedulers) + 1
-    scheduler[id] = {
-        callback = callback,
-        delay_frame_num = delay,
-        passed_frames = 0,
-        arguments = arguments or {},
-        argument_length = getn(arguments or {})
-    }
+    tinsert(scheduler, 
+        {
+                callback = callback,
+                delay_frame_num = delay,
+                passed_frames = 0,
+                arguments = arguments or {},
+                argument_length = getn(arguments or {})
+            }
+    )
+
+    -- local id = getn(SchedulerModule._delay_call_schedulers) + 1
+    -- scheduler[id] = {
+    --     callback = callback,
+    --     delay_frame_num = delay,
+    --     passed_frames = 0,
+    --     arguments = arguments or {},
+    --     argument_length = getn(arguments or {})
+    -- }
 end
 
 
