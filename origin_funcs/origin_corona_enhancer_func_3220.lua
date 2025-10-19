@@ -39,14 +39,14 @@ function exCounterSetByName(counterName, value) end
 --- @return number 计数器值
 function exCounterGetByName(counterName) end
 
--- TODO: test, package
+-- TODO: test
 --- 获取指定地点的地面高度
 --- @param x number x
 --- @param y number y
 --- @return number 高度
 function exTerrainGetHeightByPos(x, y) end
 
--- TODO: test, package
+-- TODO: test
 --- 获取指定地点的地面纹理名称
 --- @param x number x
 --- @param y number y

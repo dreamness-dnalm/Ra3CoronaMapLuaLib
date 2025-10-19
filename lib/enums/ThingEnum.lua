@@ -357,5 +357,10 @@ ThingEnum = {
     CelestialEngineerRepairDrone = "CelestialEngineerRepairDrone",
 
     
-    
+    -- --------------- 特殊 ----------
+
+    --- 心灵控制器
+    JapanPsychicInhibitor = "JapanPsychicInhibitor",
+    --- 治疗站
+    JapanHealingStation = "JapanHealingStation",
 }

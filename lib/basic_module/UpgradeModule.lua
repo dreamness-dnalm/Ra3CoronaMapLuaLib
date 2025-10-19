@@ -91,3 +91,25 @@ UpgradeModule.unit_has_upgrade = function(unit_name_or_table, upgrade_name)
     end
     return GameModule.from_ra3_boolean(EvaluateCondition("UNIT_HAS_UPGRADE", unit_name_or_table, upgrade_name))
 end
+
+
+-- TODO: test, package, doc
+--- 开启监听玩家某个升级完成的事件
+--- @param upgrade_name string 升级名
+UpgradeModule.enable_upgrade_complete_event = function(upgrade_name)
+    if type(upgrade_name) ~= "string" then
+        LoggerModule.error("UpgradeModule.enable_upgrade_complete_event", "upgrade_name must be a string")
+    end
+    exRegisterUpgradeCompleteEvent(upgrade_name)
+end
+
+-- TODO: test, package, doc
+--- 注册玩家某个升级完成的事件回调
+--- @param callback_func function 回调函数(player_name, upgrade_instance_id, object_id)
+UpgradeModule.register_upgrade_complete_callback = function(callback_func)
+    if type(callback_func) ~= "function" then
+        LoggerModule.error("UpgradeModule.register_upgrade_complete_callback", "callback_func must be a function")
+    end
+    globals().onPlayerUpgradeCompleteEvent = callback_func
+end
+

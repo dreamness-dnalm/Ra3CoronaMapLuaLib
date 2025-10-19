@@ -54,12 +54,12 @@ function exTogglePlayerGetTechEvent(enable) end
 -- -- 具体逻辑
 -- end 
 
--- TODO: test, package
+-- TODO: test
 --- 监听玩家某个升级完成的事件
 --- @param upgrade_name string 升级名
 function exRegisterUpgradeCompleteEvent(upgrade_name) end
 
--- TODO: test, package
+-- TODO: test
 -- 然后定义一个固定名字的函数
 -- function onPlayerUpgradeCompleteEvent(player_name, upgrade_instance_id, object_id)
 -- -- object_id是完成这个升级的物体的id，比如某个盟军基地完成了中级许可
