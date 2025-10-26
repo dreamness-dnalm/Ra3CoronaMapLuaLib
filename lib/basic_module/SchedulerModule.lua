@@ -119,53 +119,54 @@ SchedulerModule.__scheduler_runner_function = function()
                     scheduler.passed_frames = 0
                     scheduler.aready_called_times = scheduler.aready_called_times + 1
                     local callbacked = 1
+                    call(scheduler.callback, scheduler.arguments, 'x')
 
-                    if scheduler.argument_length == 0 then
-                        scheduler.callback()
-                    elseif scheduler.argument_length == 1 then
-                        scheduler.callback(scheduler.arguments[1])
-                    elseif scheduler.argument_length == 2 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2])
-                    elseif scheduler.argument_length == 3 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3])
-                    elseif scheduler.argument_length == 4 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4])
-                    elseif scheduler.argument_length == 5 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5])
-                    elseif scheduler.argument_length == 6 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6])
-                    elseif scheduler.argument_length == 7 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7])
-                    elseif scheduler.argument_length == 8 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8])
-                    elseif scheduler.argument_length == 9 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9])
-                    elseif scheduler.argument_length == 10 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10])
-                    elseif scheduler.argument_length == 11 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11])
-                    elseif scheduler.argument_length == 12 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12])
-                    elseif scheduler.argument_length == 13 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13])
-                    elseif scheduler.argument_length == 14 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14])
-                    elseif scheduler.argument_length == 15 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15])
-                    elseif scheduler.argument_length == 16 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16])
-                    elseif scheduler.argument_length == 17 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17])
-                    elseif scheduler.argument_length == 18 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18])
-                    elseif scheduler.argument_length == 19 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19])
-                    elseif scheduler.argument_length == 20 then
-                        scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19], scheduler.arguments[20])
-                    else
-                        LoggerModule.error("SchedulerModuleRunner", "argument length is out of range")
-                        callbacked = nil
-                    end
+                    -- if scheduler.argument_length == 0 then
+                    --     scheduler.callback()
+                    -- elseif scheduler.argument_length == 1 then
+                    --     scheduler.callback(scheduler.arguments[1])
+                    -- elseif scheduler.argument_length == 2 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2])
+                    -- elseif scheduler.argument_length == 3 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3])
+                    -- elseif scheduler.argument_length == 4 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4])
+                    -- elseif scheduler.argument_length == 5 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5])
+                    -- elseif scheduler.argument_length == 6 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6])
+                    -- elseif scheduler.argument_length == 7 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7])
+                    -- elseif scheduler.argument_length == 8 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8])
+                    -- elseif scheduler.argument_length == 9 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9])
+                    -- elseif scheduler.argument_length == 10 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10])
+                    -- elseif scheduler.argument_length == 11 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11])
+                    -- elseif scheduler.argument_length == 12 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12])
+                    -- elseif scheduler.argument_length == 13 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13])
+                    -- elseif scheduler.argument_length == 14 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14])
+                    -- elseif scheduler.argument_length == 15 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15])
+                    -- elseif scheduler.argument_length == 16 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16])
+                    -- elseif scheduler.argument_length == 17 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17])
+                    -- elseif scheduler.argument_length == 18 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18])
+                    -- elseif scheduler.argument_length == 19 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19])
+                    -- elseif scheduler.argument_length == 20 then
+                    --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19], scheduler.arguments[20])
+                    -- else
+                    --     LoggerModule.error("SchedulerModuleRunner", "argument length is out of range")
+                    --     callbacked = nil
+                    -- end
                     if callbacked then
                         LoggerModule.debug("SchedulerModuleRunner", "scheduler id: " .. i .. " called successfully")
                     else
@@ -247,53 +248,53 @@ SchedulerModule.__delay_call_scheduler_runner_function = function()
             scheduler.passed_frames = scheduler.passed_frames + 1
             if scheduler.passed_frames >= scheduler.delay_frame_num then
                 local callbacked = 1
-
-                if scheduler.argument_length == 0 then
-                    scheduler.callback()
-                elseif scheduler.argument_length == 1 then
-                    scheduler.callback(scheduler.arguments[1])
-                elseif scheduler.argument_length == 2 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2])
-                elseif scheduler.argument_length == 3 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3])
-                elseif scheduler.argument_length == 4 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4])
-                elseif scheduler.argument_length == 5 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5])
-                elseif scheduler.argument_length == 6 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6])
-                elseif scheduler.argument_length == 7 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7])
-                elseif scheduler.argument_length == 8 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8])
-                elseif scheduler.argument_length == 9 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9])
-                elseif scheduler.argument_length == 10 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10])
-                elseif scheduler.argument_length == 11 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11])
-                elseif scheduler.argument_length == 12 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12])
-                elseif scheduler.argument_length == 13 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13])
-                elseif scheduler.argument_length == 14 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14])
-                elseif scheduler.argument_length == 15 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15])
-                elseif scheduler.argument_length == 16 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16])
-                elseif scheduler.argument_length == 17 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17])
-                elseif scheduler.argument_length == 18 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18])
-                elseif scheduler.argument_length == 19 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19])
-                elseif scheduler.argument_length == 20 then
-                    scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19], scheduler.arguments[20])
-                else
-                    LoggerModule.error("SchedulerModuleRunner", "argument length is out of range")
-                    callbacked = nil
-                end
+                call(scheduler.callback, scheduler.arguments, 'x')
+                -- if scheduler.argument_length == 0 then
+                --     scheduler.callback()
+                -- elseif scheduler.argument_length == 1 then
+                --     scheduler.callback(scheduler.arguments[1])
+                -- elseif scheduler.argument_length == 2 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2])
+                -- elseif scheduler.argument_length == 3 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3])
+                -- elseif scheduler.argument_length == 4 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4])
+                -- elseif scheduler.argument_length == 5 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5])
+                -- elseif scheduler.argument_length == 6 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6])
+                -- elseif scheduler.argument_length == 7 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7])
+                -- elseif scheduler.argument_length == 8 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8])
+                -- elseif scheduler.argument_length == 9 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9])
+                -- elseif scheduler.argument_length == 10 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10])
+                -- elseif scheduler.argument_length == 11 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11])
+                -- elseif scheduler.argument_length == 12 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12])
+                -- elseif scheduler.argument_length == 13 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13])
+                -- elseif scheduler.argument_length == 14 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14])
+                -- elseif scheduler.argument_length == 15 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15])
+                -- elseif scheduler.argument_length == 16 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16])
+                -- elseif scheduler.argument_length == 17 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17])
+                -- elseif scheduler.argument_length == 18 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18])
+                -- elseif scheduler.argument_length == 19 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19])
+                -- elseif scheduler.argument_length == 20 then
+                --     scheduler.callback(scheduler.arguments[1], scheduler.arguments[2], scheduler.arguments[3], scheduler.arguments[4], scheduler.arguments[5], scheduler.arguments[6], scheduler.arguments[7], scheduler.arguments[8], scheduler.arguments[9], scheduler.arguments[10], scheduler.arguments[11], scheduler.arguments[12], scheduler.arguments[13], scheduler.arguments[14], scheduler.arguments[15], scheduler.arguments[16], scheduler.arguments[17], scheduler.arguments[18], scheduler.arguments[19], scheduler.arguments[20])
+                -- else
+                --     LoggerModule.error("SchedulerModuleRunner", "argument length is out of range")
+                --     callbacked = nil
+                -- end
                 if callbacked then
                     LoggerModule.debug("SchedulerModuleRunner", "delay call scheduler index: " .. i .. " called successfully")
                 else
