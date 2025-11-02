@@ -76,10 +76,3 @@ FogModule.reveal_area = function(player_name, area_name, reveal_name)
 end
 
 
--- {
---     .index = "421",
---     .id = "MAP_REVEAL_PERMANENTLY_IN_TRIGGER",
---     .name = R"#(Map/Fog or Reveal/Reveal map in polytrigger -- permanently.[421])#",
---     .help = R"#(No help text has been defined for this script. Contact your local help text provider for details. Have a nice day!)#",
---     .argHint = R"#(The map is permanently revealed in trigger ${TriggerAreaName} for ${PlayerName}. (Afterwards referred to as ${MapRevealName}).)#",
--- },
