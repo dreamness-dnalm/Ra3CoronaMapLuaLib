@@ -141,3 +141,15 @@ PlayerModule.get_player_formation = function(player_name, index)
     return exPlayerGetFormationTeam(player_name, index)
 end
 
+
+-- TODO: doc
+--- 玩家是否为人类
+--- @param player_name PlayerEnum
+--- @return boolean
+PlayerModule.is_player_human = function(player_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("PlayerModule.is_player_human", "player_name must be a string")
+        return nil
+    end
+    return GameModule.from_ra3_boolean( EvaluateCondition("PLAYER_IS_HUMAN_OR_AI_PERSONALITY", player_name, 'Human'))
+end

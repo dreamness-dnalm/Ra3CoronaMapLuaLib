@@ -108,3 +108,7 @@ LoggerModule.error = function(pos, msg)
 end
 
 logger = LoggerModule
+
+globals()._ALERT = function(s)
+    logger.error("LUA ERROR", "Lua Alert: " .. (s or "debug string"))
+end
