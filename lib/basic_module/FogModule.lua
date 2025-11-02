@@ -33,7 +33,7 @@ FogModule.reveal_map = function(player_name, is_enable)
 end
 
 -- TODO: doc
---- 判断单位是否在玩家的视野中
+--- 判断单位是否在玩家的视野中  [23]
 --- @param player_name PlayerEnum
 --- @param unit_name_or_table string | SystemUnitTable
 --- @return boolean
@@ -50,3 +50,36 @@ FogModule.is_unit_in_sight = function(player_name, unit_name_or_table)
 
     return GameModule.from_ra3_boolean(EvaluateCondition('NAMED_DISCOVERED', player_name, unit_name_or_table)) -- [23]
 end
+
+
+-- TODO: test, doc
+--- 为玩家揭示区域中的视野 (421)
+--- @param player_name PlayerEnum
+--- @param area_name string 区域名称
+--- @param reveal_name string 揭示名称
+FogModule.reveal_area = function(player_name, area_name, reveal_name)
+    if type(player_name) ~= "string" then
+        LoggerModule.error("FogModule.reveal_area", "player_name should be a string")
+        return nil
+    end
+    if type(area_name) ~= "string" then
+        LoggerModule.error("FogModule.reveal_area", "area_name should be a string")
+        return nil
+    end
+    if type(reveal_name) ~= "string" then
+        LoggerModule.error("FogModule.reveal_area", "reveal_name should be a string")
+        return nil
+    end
+
+    ExecuteAction("MAP_REVEAL_PERMANENTLY_IN_TRIGGER", area_name, player_name,   reveal_name) -- (421)
+
+end
+
+
+-- {
+--     .index = "421",
+--     .id = "MAP_REVEAL_PERMANENTLY_IN_TRIGGER",
+--     .name = R"#(Map/Fog or Reveal/Reveal map in polytrigger -- permanently.[421])#",
+--     .help = R"#(No help text has been defined for this script. Contact your local help text provider for details. Have a nice day!)#",
+--     .argHint = R"#(The map is permanently revealed in trigger ${TriggerAreaName} for ${PlayerName}. (Afterwards referred to as ${MapRevealName}).)#",
+-- },
