@@ -52,7 +52,7 @@ FogModule.is_unit_in_sight = function(player_name, unit_name_or_table)
 end
 
 
--- TODO: test, doc
+-- TODO: doc
 --- 为玩家揭示区域中的视野 (421)
 --- @param player_name PlayerEnum
 --- @param area_name string 区域名称
