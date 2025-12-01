@@ -51,8 +51,7 @@ GameModule.from_ra3_boolean = function(value)
     end
 end
 
---- 启用/禁用脚本, 不优雅的方法, 不建议使用
---- 只支持启用/禁用根目录下的脚本/文件夹, 不支持子目录
+--- 启用/禁用脚本
 --- @param script_name string
 --- @param enable boolean
 GameModule.enable_script = function(script_name, enable)

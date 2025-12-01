@@ -38,7 +38,7 @@ BuildModule.allow_build_unit = function(player_name, is_allow)
     end
 end
 
--- TODO: test, package, doc
+-- TODO: package
 --- 允许/禁止玩家建造一个单位 (283)
 --- @param player_name PlayerEnum
 --- @param thing_name ThingEnum

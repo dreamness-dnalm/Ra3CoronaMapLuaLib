@@ -32,7 +32,6 @@ FogModule.reveal_map = function(player_name, is_enable)
     LoggerModule.debug("FogModule.reveal_map", "end")
 end
 
--- TODO: doc
 --- 判断单位是否在玩家的视野中  [23]
 --- @param player_name PlayerEnum
 --- @param unit_name_or_table string | SystemUnitTable
@@ -52,9 +51,8 @@ FogModule.is_unit_in_sight = function(player_name, unit_name_or_table)
 end
 
 
--- TODO: doc
 --- 为玩家揭示区域中的视野 (421)
---- @param player_name PlayerEnum
+--- @param player_name PlayerEnum | nil 针对所有玩家时传入nil
 --- @param area_name string 区域名称
 --- @param reveal_name string 揭示名称
 FogModule.reveal_area = function(player_name, area_name, reveal_name)
@@ -71,8 +69,13 @@ FogModule.reveal_area = function(player_name, area_name, reveal_name)
         return nil
     end
 
-    ExecuteAction("MAP_REVEAL_PERMANENTLY_IN_TRIGGER", area_name, player_name,   reveal_name) -- (421)
-
+    if player_name == nil then
+        for _, player_name in PlayerEnum do
+            ExecuteAction("MAP_REVEAL_PERMANENTLY_IN_TRIGGER", area_name, player_name, reveal_name)
+        end
+    else
+        ExecuteAction("MAP_REVEAL_PERMANENTLY_IN_TRIGGER", area_name, player_name, reveal_name)
+    end
 end
 
 

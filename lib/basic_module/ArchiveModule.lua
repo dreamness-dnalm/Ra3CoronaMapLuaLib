@@ -9,9 +9,8 @@ if  GetFrame() > 1 then
     exEnableWBScript("LuaLibAutoLoadRunner.lua")
 end
 
--- TODO: doc
---- 添加自动加载的lua文件
---- @param lua_script_names string|table 要添加的lua文件名或文件名列表
+--- 设置自动加载的lua文件
+--- @param lua_script_names string|string[] 需要自动加载的lua文件名或文件名列表
 ArchiveModule.set_auto_load_lua_files = function(lua_script_names)
     if type(lua_script_names) == "table" then
         ArchiveModule.__custom_auto_load_lua_files = lua_script_names
@@ -23,15 +22,13 @@ ArchiveModule.set_auto_load_lua_files = function(lua_script_names)
     end
 end
 
--- TODO: doc
 --- 设置保存数据函数
 --- @param save_data_function function 保存数据函数 没有参数, 返回值为table(需要保存的数据)
 ArchiveModule.set_save_data_function = function(save_data_function)
     ArchiveModule.__save_data_function = save_data_function
 end
 
--- TODO: doc
---- 获取保存的数据
+--- 读取存档中已保存的数据, 只能获取调用一次, 之后会自动释放
 --- @return any 保存的数据, 如果没有保存数据则返回nil
 ArchiveModule.fetch_and_clean_saved_data = function()
     local res = ArchiveModule.__custom_saved_data
@@ -39,21 +36,18 @@ ArchiveModule.fetch_and_clean_saved_data = function()
     return res
 end
 
--- TODO: test, doc
 --- 禁用保存功能 (不可逆)
 ArchiveModule.disable_save_feature = function()
     LuaLib_DisableSaveFeature = true
     exDisableWBScript("lua_lib_auto_load.lua")
 end
 
--- TODO: test, doc
 --- 允许/禁止保存功能 (默认允许)
 --- @param is_allow boolean 是否允许玩家保存
 ArchiveModule.allow_save = function(is_allow)
     LuaLib_TemporaryForbidSaveFeature = not is_allow
 end
 
--- TODO: test
 --- 设置回调函数, 在触发保存时调用
 --- @param func function 没有参数
 ArchiveModule.set_save_data_callback = function(func)
